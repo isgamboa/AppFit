@@ -1,126 +1,144 @@
-# 🏋️ Treino
+# AppFit — Treino
 
-> Acompanhe seu treino de musculação direto do navegador — no PC ou no celular, **100% offline** e sem instalar nada.
+Aplicativo de treino, dieta e acompanhamento corporal em HTML, CSS e JavaScript.
+Funciona localmente e offline, sem cadastro obrigatório e sem etapa de build.
 
-![HTML5](https://img.shields.io/badge/HTML5-vanilla-E34F26?logo=html5&logoColor=white)
-![Offline](https://img.shields.io/badge/Offline-100%25-27d07a)
-![PWA](https://img.shields.io/badge/PWA-instal%C3%A1vel-ff4d2e)
-![Dependências](https://img.shields.io/badge/depend%C3%AAncias-0-444)
-![Arquivo único](https://img.shields.io/badge/arquivo-%C3%BAnico-ff8a3d)
+Este é o fork [isgamboa/AppFit](https://github.com/isgamboa/AppFit), baseado em
+[DUK22/AppFit](https://github.com/DUK22/AppFit). As personalizações desta versão
+são mantidas neste fork; o projeto original permanece independente.
 
-App de treino em **um único arquivo HTML**. Abre com dois cliques no computador, ou pode ser adicionado à tela inicial do celular como um aplicativo. Todos os dados ficam salvos no próprio dispositivo — sem servidor, sem cadastro e sem rastreamento.
+## Novidades da versão 1.1.0
 
-A divisão de treino segue o modelo **ABCDE + Full Body**, com alternância automática das semanas C1/C2 e D1/D2.
+### Meus programas
 
----
+- Criação de vários programas personalizados, com um programa ativo por vez.
+- Modelos iniciais **ABC — três dias** e **Full-body — três dias**.
+- Escolha dos três dias da semana e edição dos nomes das sessões A, B e C.
+- Inclusão de exercícios do banco, remoção e reordenação.
+- Edição de nome, grupo muscular, séries, repetições e observações dos exercícios.
+- Duplicação, edição, exclusão e ativação de programas salvos.
+- Inclusão dos programas personalizados no backup JSON e na sincronização Firebase opcional.
+- Identificadores estáveis para exercícios personalizados e cópia da sessão nos registros,
+  para preservar o histórico após alterações ou exclusão do programa.
 
-## ✨ Funcionalidades
+### Correções da montagem de treino
 
-**Treino do dia**
-- Divisão semanal A, B, C, D, E + recuperação ativa e descanso.
-- Alternância automática de ciclo: quarta e sexta trocam entre **C1/C2** e **D1/D2** a cada semana (com botão para inverter manualmente).
-- Marcação de exercícios concluídos e barra de progresso do dia.
+- A seleção ABC/full-body é aplicada diretamente, sem depender de uma confirmação nativa.
+  A troca redefine os exercícios, preservando o nome do programa e os dias escolhidos.
+- Ao escolher um dia ocupado por outra sessão, as duas sessões trocam de dia.
+- A introdução automática não substitui uma janela que já esteja aberta.
+- Atualização da versão do cache da PWA para distribuir a versão nova quando hospedada.
 
-**Registro de cargas**
-- Anotação de **carga × repetições por série**, com o valor da última sessão como sugestão.
-- Estimativa de **1RM** (fórmula de Epley) a cada registro.
-- Destaque automático de **recordes pessoais (PRs)**.
+## Como usar
 
-**Banco de exercícios e substituição**
-- Banco embutido com ~90 exercícios organizados por grupo muscular.
-- **Trocar** qualquer exercício por outro do mesmo grupo (ou de todos os grupos), com busca.
-- **Editar** nome, grupo, séries e repetições — e restaurar o original quando quiser.
+### Arquivo local
 
-**Vídeos de execução**
-- Botão de execução em cada exercício que abre uma busca no YouTube pela técnica correta — sempre atualizada, sem links quebrados.
+Baixe o [index.html](index.html) e abra no navegador. Não é necessário instalar
+as dependências de desenvolvimento para usar o aplicativo. Os dados são salvos
+no navegador; mantenha backups antes de trocar de navegador, dispositivo ou endereço.
 
-**Progresso**
-- Gráfico de evolução por exercício.
-- Lista de recordes, sequência de treinos (streak) e totais (treinos, exercícios e séries).
-- Gráfico de adesão das últimas 8 semanas.
+### Criar seu programa
 
-**Peso corporal**
-- Registro de peso com gráfico de evolução e variação total.
+1. Na aba **Hoje**, toque em **trocar treino → Criar meu treino**.
+2. Escolha ABC ou full-body e os três dias da semana.
+3. Navegue pelos botões **A**, **B** e **C** para montar cada sessão.
+4. Adicione exercícios do banco e ajuste séries, repetições e observações.
+5. Toque em **Salvar programa** e depois em **Usar este programa**.
 
-**Ferramentas**
-- Calculadora de **1RM** (com tabela de percentuais).
-- Calculadora de **anilhas** por lado, configurável conforme as anilhas disponíveis.
+Na tela de programas, use **Editar**, **Duplicar** ou **Excluir** para gerenciar
+seus treinos. Salvar um programa novo não o ativa automaticamente.
 
-**Cronômetro de descanso**
-- Inicia automaticamente ao marcar um exercício (configurável), com som e vibração ao terminar.
+### Instalação como PWA
 
-**Sincronização**
-- Exportação e importação dos dados em JSON para sincronizar entre PC e celular.
+Hospede os arquivos do aplicativo em HTTPS, por exemplo no GitHub Pages, ou use
+localhost para desenvolvimento. Abra o endereço no navegador e use a opção
+**Instalar aplicativo** ou **Adicionar à tela de início**, quando disponível.
 
----
+A publicação deve incluir `index.html`, `sw.js`, `manifest.webmanifest`,
+`icon-192.png`, `icon-512.png` e `apple-touch-icon.png`. A instalação da PWA exige
+um endereço servido; abrir somente o HTML local não registra o service worker.
 
-## 🚀 Como usar
+## Recursos originais mantidos
 
-**No computador**
+- Programas ABCDE + Full Body (Laércio Refundini), Saitama, Ramon Dino, Arnold e CBum.
+- Abas Hoje e Semana, marcação de exercícios, progresso diário e duração da sessão.
+- Alternância C1/C2 e D1/D2 no programa original, com ajuste manual do ciclo.
+- Registro de carga e repetições por série, sugestão da última sessão e de aumento de carga.
+- Estimativa de 1RM, recordes pessoais, gráficos de evolução e adesão semanal.
+- Banco de exercícios, substituição, edição e buscas de execução no YouTube.
+- Cronômetro de descanso, som e vibração quando suportados pelo dispositivo.
+- Calculadoras de 1RM e anilhas, aquecimento e rotinas de alongamento.
+- Dieta: refeições, alimentos, metas nutricionais e registro de água.
+- Corpo: peso, medidas, fotos de progresso e gráficos.
+- Registro de atividades físicas com estimativas de gasto energético.
+- Exportação/importação de backup JSON e sincronização Firebase opcional.
 
-1. Baixe o arquivo `Treino.html`.
-2. Dê dois cliques para abrir no navegador. Pronto.
+## Dados, backup e sincronização
 
-**No celular**
+O uso local não exige conta. O estado do aplicativo é salvo em `localStorage`.
+Em **⚙️ Ajustes**, exporte um backup JSON e importe no outro dispositivo quando
+quiser transferir os dados, incluindo seus programas personalizados.
 
-1. Abra o `Treino.html` no navegador.
-2. No menu do navegador, toque em **"Adicionar à tela de início"**.
-3. Ele passa a abrir como um app, em tela cheia e offline.
+Para sincronização automática, siga [CONFIGURAR-SYNC.md](CONFIGURAR-SYNC.md).
+Quando ativada, a sincronização envia dados ao projeto Firebase configurado;
+as fotos permanecem no aparelho e podem ser transferidas por backup. O carregamento
+do Firebase e a sincronização exigem internet, assim como os links do YouTube.
 
-> 💡 Dica: hospedando o arquivo no **GitHub Pages**, fica fácil abrir no celular e instalar a partir de um link.
+Os novos registros guardam uma cópia da sessão para manter a interpretação do
+histórico após mudanças no programa. O aplicativo antigo não registrava o programa
+ativo em cada data: registros anteriores sem essa informação são preservados com
+base no programa selecionado antes da primeira alteração. Não é possível reconstruir
+automaticamente trocas antigas que nunca foram registradas.
 
----
+## Desenvolvimento e testes
 
-## 🔄 Sincronizar entre dispositivos
+Use Node.js compatível com o lockfile (validado com Node.js 24) e Python 3:
 
-Os dados ficam salvos localmente em cada aparelho. Para usar o mesmo histórico no PC e no celular:
-
-1. Em **⚙️ Ajustes → Exportar**, salve o arquivo de backup `.json`.
-2. No outro dispositivo, use **⚙️ Ajustes → Importar** e selecione esse arquivo.
-
----
-
-## 🛠️ Tecnologia
-
-- HTML, CSS e JavaScript puros (vanilla), em **um único arquivo**.
-- Sem frameworks, sem bibliotecas externas e sem build.
-- Gráficos desenhados em `<canvas>` nativo.
-- Persistência via `localStorage`.
-- Funciona totalmente offline.
-
----
-
-## 🔒 Privacidade
-
-Nenhum dado sai do seu dispositivo. Não há contas, servidores, analytics ou rastreamento — todo o histórico fica apenas no navegador onde você usa o app.
-
----
-
-## 📁 Estrutura
-
-```
-.
-└── Treino.html   # o app inteiro (interface + lógica + dados)
+```sh
+npm ci
+python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
----
+Não há build. O aplicativo não usa JSDOM em produção; essa dependência é usada nos testes.
 
-## 📋 Estrutura do treino
+Em outro terminal, na raiz do projeto:
 
-Divisão **ABCDE + Full Body**, inspirada na proposta de treino de Laércio Refundini:
+```sh
+node tests/custom-programs.mjs
+```
 
-| Dia | Treino |
-|-----|--------|
-| Segunda | A |
-| Terça | B |
-| Quarta | C1 / C2 (alterna por semana) |
-| Quinta | Recuperação ativa |
-| Sexta | D1 / D2 (alterna por semana) |
-| Sábado | E |
-| Domingo | Descanso |
+A suíte contém **170 verificações** de criação, validação, seleções, ativação,
+duplicação, reordenação, exclusão, histórico, persistência, escape de nomes,
+payload de sincronização, restauração remota e navegação. Canvas e áudio são simulados.
+O comando `npm test` herdado do projeto é um placeholder; use o comando acima.
 
----
+Nesta versão também passaram 27 verificações de regressão do teste legado,
+executado em cópia adaptada ao nome `index.html`, às seis abas atuais e ao descanso
+automático opcional, além de 236 verificações no Chromium em telas de computador
+e celular. O teste de navegador foi executado durante o desenvolvimento e não
+integra a suíte versionada. Essas verificações não validam sincronização com um
+Firebase real nem instalação e funcionamento offline completo da PWA.
 
-## 📄 Licença
+## Estrutura
 
-Livre para uso pessoal. Sugestão: [MIT](https://choosealicense.com/licenses/mit/).
+```text
+index.html              Aplicativo e lógica principal
+sw.js                   Cache para uso offline quando hospedado
+manifest.webmanifest    Metadados de instalação da PWA
+icon-*.png              Ícones do aplicativo
+apple-touch-icon.png    Ícone para dispositivos Apple
+CONFIGURAR-SYNC.md       Configuração opcional do Firebase
+package*.json           Dependências de desenvolvimento e lockfile
+tests/                  Testes dos programas personalizados
+_*.js / _*.mjs          Verificações e arquivos auxiliares herdados
+```
+
+## Autoria e licença
+
+Baseado no trabalho de [DUK22/AppFit](https://github.com/DUK22/AppFit), com
+personalizações mantidas por [isgamboa](https://github.com/isgamboa).
+
+O README original declara “Livre para uso pessoal” e sugere
+[MIT](https://choosealicense.com/licenses/mit/), enquanto o `package.json` declara
+ISC. Não há arquivo `LICENSE` neste checkout. Esta versão preserva essas informações
+sem declarar uma nova licença para o código original.

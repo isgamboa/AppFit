@@ -361,7 +361,7 @@ function mondayOf(d){const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());
 function addDays(d,n){const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()+n);return x;}
 function today(){const n=new Date();return new Date(n.getFullYear(),n.getMonth(),n.getDate());}
 const DEFAULT_DIET={targets:{kcal:0,p:0,c:0,f:0,water:0},meals:[{nome:"Café da manhã",itens:[]},{nome:"Almoço",itens:[]},{nome:"Lanche da tarde",itens:[]},{nome:"Jantar",itens:[]}],customFoods:[],log:{}};
-const defaultState={anchor:ymd(mondayOf(today())),log:{},weights:[],overrides:{},sessions:{},measures:[],photos:[],activities:[],programId:"refundini",diet:clone(DEFAULT_DIET),
+const defaultState={anchor:ymd(mondayOf(today())),log:{},weights:[],overrides:{},sessions:{},measures:[],photos:[],activities:[],programId:"refundini",customPrograms:[],diet:clone(DEFAULT_DIET),
   settings:{rest:90,sound:true,autoRest:false,progReps:12,bar:20,plates:[20,15,10,5,2.5,1.25]}};
 let state=load();
 function load(){try{const r=localStorage.getItem(LS_KEY);if(r){const s=JSON.parse(r);const m=Object.assign({},clone(defaultState),s);
@@ -375,12 +375,13 @@ function cycleParity(d){const a=parseYmd(state.anchor),m=mondayOf(d);return ((Ma
 function cycleWeekLabel(d){return actProg().cycle?(cycleParity(d)===0?"Semana 1 · C1/D1":"Semana 2 · C2/D2"):actProg().nome;}
 function refundiniKey(d){const wd=d.getDay(),p=cycleParity(d);
   if(wd===1)return"A";if(wd===2)return"B";if(wd===3)return p===0?"C1":"C2";if(wd===4)return"REC";if(wd===5)return p===0?"D1":"D2";if(wd===6)return"E";return"OFF";}
-function planKeyForDate(d){return actProg().keyForDate(d);}
-function actProg(){return PROGRAMS[state.programId]||PROGRAMS.refundini;}
-function PLN(tipo){const p=actProg();if(p.plans&&p.plans[tipo])return p.plans[tipo];for(const id in PROGRAMS){if(PROGRAMS[id].plans&&PROGRAMS[id].plans[tipo])return PROGRAMS[id].plans[tipo];}return PLANS[tipo]||{tipo:tipo,titulo:tipo,foco:"",dia:"",ex:[]};}
-function exAt(tipo,i){const base=(PLN(tipo).ex||[])[i]||{nome:"—",grupo:"",series:"",reps:"",obs:""};return Object.assign({},base,(state.overrides[tipo]||{})[i]||{});}
-function slotId(tipo,i){return tipo+"-"+i;}
-function exNameOfSid(sid){const p=sid.split("-");return exAt(p[0],+p[1]).nome;}
+function planKeyForDate(d){const k=ymd(d);return k<ymd(today())&&state.log[k]&&state.log[k].snapshot&&(state.log[k].snapshot.custom||state.log[k].snapshot.programId!==state.programId)?"HIST_"+k:actProg().keyForDate(d);}
+function customCatalog(){const out={};(state.customPrograms||[]).forEach(p=>{out[p.id]={...p,autor:"Você",emoji:"✏️",cycle:false,desc:p.model==="abc"?"ABC personalizado · três dias":"Full-body personalizado · três dias",keyForDate:d=>p.days[d.getDay()]||p.off};});return out;}
+function actProg(){return customCatalog()[state.programId]||PROGRAMS[state.programId]||PROGRAMS.refundini;}
+function PLN(tipo){if(tipo.startsWith("HIST_"))return state.log[tipo.slice(5)].snapshot;const p=actProg();if(p.plans&&p.plans[tipo])return p.plans[tipo];for(const p of Object.values({...PROGRAMS,...customCatalog()})){if(p.plans&&p.plans[tipo])return p.plans[tipo];}for(const l of Object.values(state.log)){if(l.snapshot&&l.snapshot.tipo===tipo)return l.snapshot;}return PLANS[tipo]||{tipo:tipo,titulo:tipo,foco:"",dia:"",ex:[]};}
+function exAt(tipo,i){const base=(PLN(tipo).ex||[])[i]||{nome:"—",grupo:"",series:"",reps:"",obs:""};return Object.assign({},base,(state.overrides[tipo]||{})[overrideKey(tipo,i)]||{});}
+function slotId(tipo,i){const e=(PLN(tipo).ex||[])[i];return e&&e.sid||tipo+"-"+(e&&e.id||i);}
+function exNameOfSid(sid){const n=sid.lastIndexOf("-"),tipo=sid.slice(0,n),id=sid.slice(n+1),ex=PLN(tipo).ex||[],i=ex.findIndex(e=>e.id===id);return exAt(tipo,i>=0?i:+id).nome;}
 function dayLog(k){if(!state.log[k])state.log[k]={done:{}};if(!state.log[k].done)state.log[k].done={};return state.log[k];}
 function exDone(k,tipo,i){const l=state.log[k];return !!(l&&l.done&&l.done[slotId(tipo,i)]);}
 function countDone(k,tipo){let n=0,ex=PLN(tipo).ex||[];for(let i=0;i<ex.length;i++)if(exDone(k,tipo,i))n++;return n;}
@@ -393,7 +394,7 @@ function seriesCount(tipo,i){const n=parseInt(exAt(tipo,i).series);return n>0?n:
 function getSets(k,tipo,i){const sid=slotId(tipo,i);const s=(state.sessions[k]||{})[sid];const n=seriesCount(tipo,i)||3;
   const arr=(s&&s.sets)?clone(s.sets):[];while(arr.length<n)arr.push({kg:"",reps:""});return arr;}
 function setSet(k,tipo,i,idx,field,val){const sid=slotId(tipo,i);state.sessions[k]=state.sessions[k]||{};
-  const cur=state.sessions[k][sid]||{sets:[]};cur.sets=cur.sets||[];while(cur.sets.length<=idx)cur.sets.push({kg:"",reps:""});
+  snapshotDay(k,tipo);const cur=state.sessions[k][sid]||{sets:[]};cur.sets=cur.sets||[];while(cur.sets.length<=idx)cur.sets.push({kg:"",reps:""});
   cur.sets[idx][field]=val;try{const _e=exAt(tipo,i);cur.nm=_e.nome;cur.gp=_e.grupo;}catch(e){}state.sessions[k][sid]=cur;save();}
 function lastSets(sid,beforeKey){const ks=Object.keys(state.sessions).filter(k=>k<beforeKey&&state.sessions[k][sid]&&(state.sessions[k][sid].sets||[]).some(s=>s.kg)).sort();
   if(!ks.length)return null;const k=ks[ks.length-1];return state.sessions[k][sid].sets;}
@@ -415,7 +416,7 @@ function render(){const v=document.getElementById("view");if(sessInt){clearInter
   bind();}
 function ring(pct,size){size=size||74;const r=(size-10)/2,c=2*Math.PI*r,off=c*(1-pct/100);
   return `<div class="ring" style="width:${size}px;height:${size}px"><svg width="${size}" height="${size}"><circle cx="${size/2}" cy="${size/2}" r="${r}" stroke="var(--surface2)" stroke-width="8" fill="none"/><circle cx="${size/2}" cy="${size/2}" r="${r}" stroke="url(#g1)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"/><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4d2e"/><stop offset="1" stop-color="#ff8a3d"/></linearGradient></defs></svg><div class="pct">${Math.round(pct)}%</div></div>`;}
-function esc(s){return String(s==null?"":s).replace(/"/g,"&quot;");}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
 
 function viewHoje(){
   const d=curDate(),key=ymd(d),tipo=planKeyForDate(d),p=PLN(tipo);
@@ -514,10 +515,9 @@ function progressByName(){const map={};
 
 function viewProgresso(){
   let allTrained=0,allEx=0,allSeries=0;
-  Object.keys(state.log).forEach(k=>{const t=planKeyForDate(parseYmd(k)),dn=countDone(k,t);if(isTrainingDay(t)&&dn>0)allTrained++;allEx+=dn;
-    for(let i=0;i<(PLN(t).ex||[]).length;i++)if(exDone(k,t,i)){const s=parseInt(exAt(t,i).series);if(s)allSeries+=s;}});
+  Object.keys(state.log).forEach(k=>{const x=historyStats(k);if(x.done>0)allTrained++;allEx+=x.done;allSeries+=x.series;});
   let streak=0,d=today();
-  for(let n=0;n<400;n++){const t=planKeyForDate(d),k=ymd(d);if(!isTrainingDay(t)){d=addDays(d,-1);continue;}const dn=countDone(k,t);
+  for(let n=0;n<400;n++){const t=planKeyForDate(d),k=ymd(d);if(!isTrainingDay(t)){d=addDays(d,-1);continue;}const dn=historyStats(k).done;
     if(dn>0){streak++;d=addDays(d,-1);}else{if(k===ymd(today())){d=addDays(d,-1);continue;}break;}}
   const map=progressByName(),names=Object.keys(map).sort();
   if(progEx&&names.indexOf(progEx)<0)progEx=null;if(!progEx&&names.length)progEx=names[0];
@@ -533,7 +533,7 @@ function viewProgresso(){
   let prs="";
   if(prList.length){prs=`<div class="card"><div class="section-title" style="margin-top:0">🏆 Recordes (PRs)</div>`+
     prList.map(x=>{const dt=parseYmd(x.d);return `<div class="prrow"><div class="pn">${x.n}</div><div style="text-align:right"><div class="pv">${x.kg.toFixed(1)} kg</div><div class="pd">${dt.getDate()} ${MES[dt.getMonth()]}</div></div></div>`;}).join("")+`</div>`;}
-  const weeks=[];for(let w=7;w>=0;w--){const base=mondayOf(addDays(today(),-w*7));let tot=0,dn=0;for(let i=0;i<7;i++){const dd=addDays(base,i),t=planKeyForDate(dd);tot+=dayTotal(t);dn+=countDone(ymd(dd),t);}weeks.push({pct:tot?Math.round(dn/tot*100):0});}
+  const weeks=[];for(let w=7;w>=0;w--){const base=mondayOf(addDays(today(),-w*7));let tot=0,dn=0;for(let i=0;i<7;i++){const dd=addDays(base,i),t=planKeyForDate(dd);const hs=historyStats(ymd(dd));tot+=hs.total;dn+=hs.done;}weeks.push({pct:tot?Math.round(dn/tot*100):0});}
   const avg=Math.round(weeks.reduce((a,b)=>a+b.pct,0)/weeks.length);
   return `<div class="stats">
     <div class="stat accent"><div class="v">${streak}</div><div class="k">🔥 Sequência (dias)</div></div>
@@ -542,7 +542,7 @@ function viewProgresso(){
     <div class="stat"><div class="v">${allSeries}</div><div class="k">Séries totais</div></div></div>
   ${prog}${prs}
   <div class="card"><div class="section-title" style="margin-top:0">Adesão semanal · média ${avg}%</div><canvas id="achart" height="190"></canvas><div class="hint">Últimas 8 semanas · % de exercícios concluídos</div></div>
-  <div class="card"><div class="section-title" style="margin-top:0">Resumo do ciclo</div><p class="muted" style="margin:0">Divisão <b>ABCDE + Full Body</b>. Quartas e sextas alternam <b>C1/C2</b> e <b>D1/D2</b> automaticamente. Hoje: <b>${cycleWeekLabel(today())}</b>.</p></div>`;
+  <div class="card"><div class="section-title" style="margin-top:0">Resumo do ciclo</div><p class="muted" style="margin:0">Divisão <b>${esc(actProg().nome)}</b>. ${actProg().cycle?"Quartas e sextas alternam C1/C2 e D1/D2 automaticamente.":"Confira os dias e sessões na aba Semana."} Hoje: <b>${cycleWeekLabel(today())}</b>.</p></div>`;
 }
 
 function viewNotas(){
@@ -569,10 +569,10 @@ function viewNotas(){
 /* ===== BIND ===== */
 function bind(){
   const back=document.getElementById("backToday");if(back)back.onclick=()=>{selectedDate=null;render();};
-  const finish=document.getElementById("finishBtn");if(finish)finish.onclick=()=>{const d=curDate(),k=ymd(d),tipo=planKeyForDate(d),l=dayLog(k),tot=dayTotal(tipo),target=!(countDone(k,tipo)===tot);for(let i=0;i<tot;i++)l.done[slotId(tipo,i)]=target;
+  const finish=document.getElementById("finishBtn");if(finish)finish.onclick=()=>{const d=curDate(),k=ymd(d),tipo=planKeyForDate(d),l=dayLog(k),tot=dayTotal(tipo),target=!(countDone(k,tipo)===tot);snapshotDay(k,tipo);for(let i=0;i<tot;i++)l.done[slotId(tipo,i)]=target;
     if(isTrainingDay(tipo)){if(target){if(!l.start)l.start=Date.now();l.end=Date.now();}else{delete l.start;delete l.end;}}save();render();};
   document.querySelectorAll("[data-act]").forEach(el=>{const act=el.dataset.act;
-    if(act==="toggle")el.onclick=()=>{const d=curDate(),k=ymd(d),tipo=planKeyForDate(d),i=+el.dataset.i,l=dayLog(k),sid=slotId(tipo,i);l.done[sid]=!l.done[sid];
+    if(act==="toggle")el.onclick=()=>{const d=curDate(),k=ymd(d),tipo=planKeyForDate(d),i=+el.dataset.i,l=dayLog(k),sid=slotId(tipo,i);snapshotDay(k,tipo);l.done[sid]=!l.done[sid];
       if(isTrainingDay(tipo)){const dn=countDone(k,tipo),tot=dayTotal(tipo);if(dn>0&&!l.start)l.start=Date.now();if(dn===0){delete l.start;delete l.end;}if(dn===tot&&tot>0){if(!l.end)l.end=Date.now();}else{delete l.end;}}
       save();
       if(l.done[sid]&&isTrainingDay(tipo)&&state.settings.autoRest){render();openTimer();return;}render();};
@@ -580,8 +580,8 @@ function bind(){
     if(act==="swap")el.onclick=()=>openSwap(planKeyForDate(curDate()),+el.dataset.i);
     if(act==="edit")el.onclick=()=>{el.closest(".ex").classList.toggle("editing");};
     if(act==="saveEdit")el.onclick=()=>{const i=+el.dataset.i,tipo=planKeyForDate(curDate()),exRow=el.closest(".ex"),g=k=>exRow.querySelector(`[data-e="${k}"]`).value;
-      state.overrides[tipo]=state.overrides[tipo]||{};state.overrides[tipo][i]={nome:g("nome"),grupo:g("grupo"),series:g("series"),reps:g("reps")};save();render();};
-    if(act==="resetEx")el.onclick=()=>{const i=+el.dataset.i,tipo=planKeyForDate(curDate());if(state.overrides[tipo])delete state.overrides[tipo][i];save();render();};
+      state.overrides[tipo]=state.overrides[tipo]||{};state.overrides[tipo][overrideKey(tipo,i)]={nome:g("nome"),grupo:g("grupo"),series:g("series"),reps:g("reps")};save();render();};
+    if(act==="resetEx")el.onclick=()=>{const i=+el.dataset.i,tipo=planKeyForDate(curDate());if(state.overrides[tipo])delete state.overrides[tipo][overrideKey(tipo,i)];save();render();};
   });
   document.querySelectorAll("[data-set]").forEach(inp=>inp.onchange=()=>{const d=curDate();setSet(ymd(d),planKeyForDate(d),+inp.dataset.i,+inp.dataset.s,inp.dataset.set,inp.value);});
   const wp=document.getElementById("wPrev");if(wp)wp.onclick=()=>{weekOffset--;render();};
@@ -608,12 +608,13 @@ function bind(){
   // ---- atividades + alongamento + dashboard ----
   document.querySelectorAll("[data-go]").forEach(el=>el.onclick=()=>setTab(el.dataset.go));
   const gpb=document.getElementById("goProg");if(gpb)gpb.onclick=()=>setTab("programas");
-  document.querySelectorAll("[data-activate]").forEach(el=>el.onclick=()=>{state.programId=el.dataset.activate;save();selectedDate=null;setTab("hoje");});
+  document.querySelectorAll("[data-activate]").forEach(el=>el.onclick=()=>{preserveHistory();state.programId=el.dataset.activate;save();selectedDate=null;setTab("hoje");});
   const gs=document.getElementById("goStretch");if(gs)gs.onclick=openStretch;
   const qa=document.getElementById("quickAct");if(qa)qa.onclick=()=>openActivity(ymd(curDate()));
   const aAct=document.getElementById("addActivity");if(aAct)aAct.onclick=()=>openActivity(ymd(today()));
   const sBtn=document.getElementById("stretchBtn");if(sBtn)sBtn.onclick=openStretch;
   document.querySelectorAll("[data-delact]").forEach(el=>el.onclick=()=>{state.activities=state.activities.filter(a=>a.id!==el.dataset.delact);save();render();});
+  bindCustomPrograms();
   mountSessionClock();
   if(document.getElementById("wchart"))drawWeightChart();
   if(document.getElementById("exchart"))drawExChart();
@@ -648,7 +649,7 @@ function renderSwap(){
   bindPicks();
 }
 function bindPicks(){document.querySelectorAll("[data-pick]").forEach(el=>el.onclick=()=>{const {tipo,i}=swapState,ex=exAt(tipo,i);
-  state.overrides[tipo]=state.overrides[tipo]||{};state.overrides[tipo][i]={nome:el.dataset.pick,grupo:el.dataset.pg,series:ex.series,reps:ex.reps};save();closeSheet();render();});}
+  state.overrides[tipo]=state.overrides[tipo]||{};state.overrides[tipo][overrideKey(tipo,i)]={nome:el.dataset.pick,grupo:el.dataset.pg,series:ex.series,reps:ex.reps};save();closeSheet();render();});}
 
 function openWeight(){
   openSheet(`<h3>⚖️ Registrar peso</h3>
@@ -761,7 +762,7 @@ function lineChart(cv,xs,ys){const {c,w,h}=setupCanvas(cv);const pad={l:38,r:12,
 function drawWeightChart(){const cv=document.getElementById("wchart");if(!cv)return;const ws=[...state.weights].sort((a,b)=>a.date<b.date?-1:1);if(ws.length<2)return;lineChart(cv,ws.map(p=>parseYmd(p.date).getTime()),ws.map(p=>p.kg));}
 function drawExChart(){const cv=document.getElementById("exchart");if(!cv||!progEx)return;const o=progressByName()[progEx];if(!o)return;const ks=Object.keys(o.pts).sort();if(ks.length<2)return;lineChart(cv,ks.map(k=>parseYmd(k).getTime()),ks.map(k=>o.pts[k]));}
 function drawAdherence(){const cv=document.getElementById("achart");if(!cv)return;const {c,w,h}=setupCanvas(cv);const weeks=[];
-  for(let wk=7;wk>=0;wk--){const base=mondayOf(addDays(today(),-wk*7));let tot=0,dn=0;for(let i=0;i<7;i++){const dd=addDays(base,i),t=planKeyForDate(dd);tot+=dayTotal(t);dn+=countDone(ymd(dd),t);}weeks.push({label:base.getDate()+"/"+(base.getMonth()+1),pct:tot?dn/tot*100:0,cur:wk===0});}
+  for(let wk=7;wk>=0;wk--){const base=mondayOf(addDays(today(),-wk*7));let tot=0,dn=0;for(let i=0;i<7;i++){const dd=addDays(base,i),t=planKeyForDate(dd);const hs=historyStats(ymd(dd));tot+=hs.total;dn+=hs.done;}weeks.push({label:base.getDate()+"/"+(base.getMonth()+1),pct:tot?dn/tot*100:0,cur:wk===0});}
   const pad={l:8,r:8,t:10,b:24},n=weeks.length,gap=10,bw=(w-pad.l-pad.r-gap*(n-1))/n,maxH=h-pad.t-pad.b;c.font="10px -apple-system,sans-serif";
   weeks.forEach((wk,i)=>{const x=pad.l+i*(bw+gap),bh=Math.max(3,maxH*wk.pct/100),y=h-pad.b-bh;c.fillStyle="#21262e";c.beginPath();rr(c,x,pad.t,bw,maxH,6);c.fill();
     const g=c.createLinearGradient(0,y,0,h-pad.b);if(wk.cur){g.addColorStop(0,"#ff8a3d");g.addColorStop(1,"#ff4d2e");}else{g.addColorStop(0,"#4a5563");g.addColorStop(1,"#363f4b");}c.fillStyle=g;c.beginPath();rr(c,x,y,bw,bh,6);c.fill();
@@ -1215,6 +1216,7 @@ function progDaysSummary(p){if(p.cycle)return "5 treinos/semana · ABCDE + Full 
 function viewProgramas(){
   let h=`<div class="section-title" style="margin-top:8px">Programa de treino</div>
   <p class="muted" style="margin:0 0 6px;font-size:13.5px">Escolha qual treino seguir. O programa ativo comanda as abas <b>Hoje</b> e <b>Semana</b>. Seu histórico de cargas é guardado por exercício e continua valendo ao trocar.</p>`;
+  h+=customProgramsView();
   PROG_ORDER.forEach(id=>{const p=PROGRAMS[id];if(!p)return;const active=state.programId===id;
     h+=`<div class="card" style="${active?'border-color:rgba(255,77,46,.5);box-shadow:0 0 0 1px rgba(255,77,46,.25),var(--shadow)':''}">
       <div class="row" style="gap:12px;align-items:flex-start"><div style="font-size:30px;line-height:1.1">${p.emoji}</div>
@@ -1237,6 +1239,47 @@ function openOnboard(){openSheet(`<h3>👋 Bem-vindo ao Treino</h3>
   document.getElementById("obClose").onclick=()=>{markOnboarded();closeSheet();};}
 function markOnboarded(){try{localStorage.setItem("treino_onboarded","1");}catch(e){}}
 
+/* ===== MEUS PROGRAMAS ===== */
+function uid(){return 'u'+crypto.randomUUID().replaceAll('-','');}
+function overrideKey(tipo,i){return ((PLN(tipo).ex||[])[i]||{}).id||i;}
+function snapshotDay(k,tipo){const l=dayLog(k);if(!l.snapshot){l.snapshot=clone(PLN(tipo));l.snapshot.programId=state.programId;l.snapshot.custom=!!customCatalog()[state.programId];l.snapshot.ex=l.snapshot.ex.map((e,i)=>({...exAt(tipo,i),sid:slotId(tipo,i)}));}}
+function preserveHistory(){Object.keys(state.log).forEach(k=>{if(!state.log[k].snapshot)snapshotDay(k,planKeyForDate(parseYmd(k)));});}
+function historyStats(k){const l=state.log[k],p=l&&l.snapshot;if(p){const ex=p.rest?[]:p.ex;const done=ex.filter(e=>l.done[e.sid]);return {total:ex.length,done:done.length,series:done.reduce((n,e)=>n+(parseInt(e.series)||0),0)};}const t=planKeyForDate(parseYmd(k));return {total:isTrainingDay(t)?dayTotal(t):0,done:countDone(k,t),series:(PLN(t).ex||[]).reduce((n,e,i)=>n+(exDone(k,t,i)?parseInt(exAt(t,i).series)||0:0),0)};}
+function customProgramsView(){return `<div class="card"><h3>Meus programas</h3><p class="muted">Monte um ABC ou full-body de três dias. Salve quantos programas quiser e mantenha um ativo por vez.</p><button class="btn primary" id="newCustom">＋ Criar meu treino</button></div>`+(state.customPrograms||[]).map(p=>`<div class="card"><h3>${esc(p.nome)} ${state.programId===p.id?'<span class="pill ok">ativo</span>':''}</h3><p class="muted">${p.model==='abc'?'ABC':'Full-body'} · ${p.sessions.map(t=>WD_SHORT[p.days.indexOf(t)]).join(' / ')}</p><div class="row" style="gap:8px;flex-wrap:wrap">${state.programId===p.id?'':`<button class="btn primary" data-activate="${p.id}">Usar este programa</button>`}<button class="btn ghost" data-custom-edit="${p.id}">Editar</button><button class="btn ghost" data-custom-copy="${p.id}">Duplicar</button><button class="btn ghost" data-custom-delete="${p.id}">Excluir</button></div></div>`).join('');}
+let customDraft=null,customSession=0;
+function newCustomProgram(model='abc'){const id=uid(),sessions=[0,1,2].map(()=>uid()),off=uid(),days=Array(7).fill(off),plans={[off]:_off(off)};sessions.forEach((t,i)=>{days[[1,3,5][i]]=t;const groups=model==='abc'?[['Peito','Tríceps','Lateral de Ombro'],['Costas','Bíceps','Posterior de Ombro'],['Quadríceps','Posterior de Coxa','Panturrilha']][i]:['Quadríceps','Peito','Costas','Posterior de Coxa','Abdômen'];plans[t]=_d(t,(model==='abc'?'Treino ':'Full-body ')+['A','B','C'][i],WD_NAMES[[1,3,5][i]],model==='abc'?groups.join(' + '):'Corpo inteiro',groups.map(g=>({...clone(EXDB.find(e=>e.grupo===g)||E(g,'Novo exercício',3,'8–12')),id:uid(),series:3,reps:'8–12'})));});return {id,nome:model==='abc'?'Meu ABC':'Meu full-body',model,sessions,off,days,plans};}
+function openCustom(id){const p=(state.customPrograms||[]).find(p=>p.id===id);customDraft=p?clone(p):newCustomProgram();if(p)p.sessions.forEach(t=>customDraft.plans[t].ex=p.plans[t].ex.map((e,i)=>({...exAt(t,i),id:e.id})));customSession=0;renderCustomEditor();}
+function captureCustom(){const n=document.getElementById('customName');if(!n)return;customDraft.nome=n.value.trim();const t=customDraft.sessions[customSession];customDraft.plans[t].titulo=document.getElementById('sessionName').value.trim();document.querySelectorAll('[data-custom-ex]').forEach(row=>{const e=customDraft.plans[t].ex.find(e=>e.id===row.dataset.customEx);row.querySelectorAll('[data-field]').forEach(input=>e[input.dataset.field]=input.value.trim());});}
+function renderCustomEditor(){const p=customDraft,t=p.sessions[customSession],plan=p.plans[t];openSheet(`<h3>Montar meu treino</h3><label class="fld"><span>Nome do programa</span><input id="customName" maxlength="80" value="${esc(p.nome)}"></label><label class="fld"><span>Modelo inicial (trocar redefine os exercícios)</span><select id="customModel"><option value="abc" ${p.model==='abc'?'selected':''}>ABC — 3 dias</option><option value="fullbody" ${p.model==='fullbody'?'selected':''}>Full-body — 3 dias</option></select></label><p class="hint">Escolha os dias das sessões. Ao escolher um dia ocupado, as duas sessões trocam de dia.</p>${p.sessions.map((sid,i)=>`<label class="fld"><span>Sessão ${['A','B','C'][i]}</span><select data-custom-day="${sid}">${WD_NAMES.map((n,d)=>`<option value="${d}" ${p.days.indexOf(sid)===d?'selected':''}>${n}</option>`).join('')}</select></label>`).join('')}<div class="row" style="gap:8px">${p.sessions.map((sid,i)=>`<button class="btn ${customSession===i?'primary':'ghost'}" data-custom-tab="${i}">${['A','B','C'][i]}</button>`).join('')}</div><label class="fld"><span>Nome da sessão</span><input id="sessionName" maxlength="80" value="${esc(plan.titulo)}"></label>${plan.ex.map((e,i)=>`<div class="card" data-custom-ex="${e.id}"><label class="fld"><span>Exercício ${i+1}</span><input data-field="nome" maxlength="120" value="${esc(e.nome)}"></label><label class="fld"><span>Grupo muscular</span><input data-field="grupo" maxlength="80" value="${esc(e.grupo)}"></label><div class="g2"><label class="fld"><span>Séries</span><input data-field="series" type="number" min="1" max="30" value="${esc(e.series)}"></label><label class="fld"><span>Repetições</span><input data-field="reps" maxlength="60" value="${esc(e.reps)}"></label></div><label class="fld"><span>Observações</span><input data-field="obs" maxlength="300" value="${esc(e.obs)}"></label><div class="row" style="gap:8px"><button class="btn ghost" data-ex-move="${i}" data-dir="-1" ${i===0?'disabled':''}>↑</button><button class="btn ghost" data-ex-move="${i}" data-dir="1" ${i===plan.ex.length-1?'disabled':''}>↓</button><button class="btn ghost" data-ex-remove="${e.id}">Remover</button></div></div>`).join('')}<label class="fld"><span>Adicionar do banco</span><select id="customExercise">${EXDB.map((e,i)=>`<option value="${i}">${esc(e.grupo+' — '+e.nome)}</option>`).join('')}</select></label><button class="btn ghost" id="customAdd">＋ Adicionar exercício</button><div style="height:16px"></div><button class="btn primary block" id="customSave">Salvar programa</button><div style="height:8px"></div><button class="btn ghost block" id="customCancel">Cancelar</button>`);
+ document.getElementById('customModel').onchange=e=>{
+   const model=e.target.value;
+   captureCustom();
+   const previous=customDraft,next=newCustomProgram(model);
+   next.id=previous.id;
+   next.nome=previous.nome;
+   next.sessions.forEach((sid,i)=>{
+     const day=previous.days.indexOf(previous.sessions[i]);
+     next.days=next.days.map(t=>t===sid?next.off:t);
+     next.plans[sid].dia=WD_NAMES[day];
+   });
+   next.days=previous.days.map(t=>{const i=previous.sessions.indexOf(t);return i<0?next.off:next.sessions[i];});
+   customDraft=next;customSession=0;renderCustomEditor();
+ };
+ document.querySelectorAll('[data-custom-tab]').forEach(b=>b.onclick=()=>{captureCustom();customSession=+b.dataset.customTab;renderCustomEditor();});
+ document.querySelectorAll('[data-custom-day]').forEach(el=>el.onchange=()=>{
+   const sid=el.dataset.customDay,d=+el.value,old=p.days.indexOf(sid),other=p.days[d];
+   p.days[old]=other;p.days[d]=sid;p.plans[sid].dia=WD_NAMES[d];
+   if(other!==p.off)p.plans[other].dia=WD_NAMES[old];
+   document.querySelectorAll('[data-custom-day]').forEach(select=>select.value=p.days.indexOf(select.dataset.customDay));
+ });
+ document.querySelectorAll('[data-ex-move]').forEach(b=>b.onclick=()=>{captureCustom();const i=+b.dataset.exMove,j=i+(+b.dataset.dir);[plan.ex[i],plan.ex[j]]=[plan.ex[j],plan.ex[i]];renderCustomEditor();});
+ document.querySelectorAll('[data-ex-remove]').forEach(b=>b.onclick=()=>{captureCustom();plan.ex=plan.ex.filter(e=>e.id!==b.dataset.exRemove);renderCustomEditor();});
+ document.getElementById('customAdd').onclick=()=>{captureCustom();plan.ex.push({...clone(EXDB[+document.getElementById('customExercise').value]),id:uid(),series:3,reps:'8–12'});renderCustomEditor();};
+ document.getElementById('customSave').onclick=saveCustomProgram;document.getElementById('customCancel').onclick=()=>{customDraft=null;closeSheet();};
+}
+function saveCustomProgram(){captureCustom();const p=customDraft;if(!p.nome||p.sessions.some(t=>!p.plans[t].titulo||!p.plans[t].ex.length||p.plans[t].ex.some(e=>!e.nome||!e.grupo||!Number.isInteger(+e.series)||+e.series<1||+e.series>30||!e.reps))){alert('Preencha o nome do programa e das sessões. Cada sessão precisa de exercícios com nome, grupo, 1 a 30 séries inteiras e repetições.');return;}preserveHistory();state.customPrograms=state.customPrograms||[];const i=state.customPrograms.findIndex(x=>x.id===p.id);if(i<0)state.customPrograms.push(clone(p));else state.customPrograms[i]=clone(p);p.sessions.forEach(t=>delete state.overrides[t]);save();customDraft=null;closeSheet();setTab('programas');}
+function bindCustomPrograms(){const b=document.getElementById('newCustom');if(b)b.onclick=()=>openCustom();document.querySelectorAll('[data-custom-edit]').forEach(b=>b.onclick=()=>openCustom(b.dataset.customEdit));document.querySelectorAll('[data-custom-copy]').forEach(b=>b.onclick=()=>{const old=(state.customPrograms||[]).find(p=>p.id===b.dataset.customCopy),p=clone(old);p.id=uid();p.nome+=' (cópia)';const map={};[p.off,...p.sessions].forEach(t=>map[t]=uid());p.days=p.days.map(t=>map[t]);p.sessions=p.sessions.map(t=>map[t]);p.off=map[p.off];p.plans=Object.fromEntries(Object.entries(old.plans).map(([t,plan])=>[map[t],{...clone(plan),tipo:map[t],t:map[t],ex:plan.ex.map((e,i)=>({...exAt(t,i),id:uid()}))}]));state.customPrograms.push(p);save();render();});document.querySelectorAll('[data-custom-delete]').forEach(b=>b.onclick=()=>{if(!confirm('Excluir este programa? O histórico registrado será preservado.'))return;preserveHistory();state.customPrograms=state.customPrograms.filter(p=>p.id!==b.dataset.customDelete);if(state.programId===b.dataset.customDelete)state.programId='refundini';save();render();});}
+
 /* ===== INIT ===== */
 document.getElementById("settingsBtn").onclick=openSettings;
 document.getElementById("infoBtn").onclick=()=>setTab("notas");
@@ -1248,7 +1291,7 @@ window.addEventListener("resize",()=>{if(["peso","corpo","progresso"].indexOf(cu
 if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{});});}
 if(getFbCfg())fbInit();
 setTab("hoje");
-if(!localStorage.getItem("treino_onboarded"))setTimeout(openOnboard,500);
+if(!localStorage.getItem("treino_onboarded"))setTimeout(()=>{if(!overlay.classList.contains("open"))openOnboard();},500);
 </script>
 </body>
 </html>
