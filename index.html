@@ -335,21 +335,658 @@ const MES=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","de
 const MESL=["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
 /* ===== BANCO DE EXERCÍCIOS ===== */
 const EXDB=[
- ["Supino reto barra","Peito"],["Supino inclinado barra","Peito"],["Supino reto halteres","Peito"],["Supino inclinado halteres 30º","Peito"],["Supino máquina","Peito"],["Crucifixo máquina (peck deck)","Peito"],["Crucifixo halteres","Peito"],["Crossover na polia","Peito"],["Flexão de braço","Peito"],["Supino declinado","Peito"],
- ["Puxada frente (pulldown)","Costas"],["Puxada supinada","Costas"],["Remada baixa sentado","Costas"],["Remada curvada barra","Costas"],["Remada unilateral halter (serrote)","Costas"],["Remada cavalinho (T-bar)","Costas"],["Remada aberta máquina","Costas"],["Pulldown com corda","Costas"],["Barra fixa","Costas"],["Pullover","Costas"],
- ["Agachamento livre","Quadríceps"],["Agachamento hack","Quadríceps"],["Leg press 45","Quadríceps"],["Cadeira extensora","Quadríceps"],["Afundo com halteres","Quadríceps"],["Agachamento no smith","Quadríceps"],["Agachamento búlgaro","Quadríceps"],["Leg press horizontal","Quadríceps"],
- ["Stiff com barra","Posterior de Coxa"],["Stiff com halteres","Posterior de Coxa"],["Cadeira flexora","Posterior de Coxa"],["Mesa flexora (deitado)","Posterior de Coxa"],["Flexora em pé unilateral","Posterior de Coxa"],["Levantamento terra romeno","Posterior de Coxa"],["Good morning","Posterior de Coxa"],["Banco de extensão lombar","Posterior de Coxa"],
- ["Elevação pélvica (hip thrust)","Glúteo"],["Abdução na máquina","Glúteo"],["Coice na polia","Glúteo"],["Agachamento sumô","Glúteo"],["Cadeira abdutora","Glúteo"],
- ["Panturrilha em pé (máquina)","Panturrilha"],["Panturrilha sentado","Panturrilha"],["Panturrilha no leg press","Panturrilha"],["Panturrilha unilateral halter","Panturrilha"],["Panturrilha no smith","Panturrilha"],
- ["Elevação lateral halteres","Lateral de Ombro"],["Elevação lateral na polia","Lateral de Ombro"],["Elevação lateral máquina","Lateral de Ombro"],["Desenvolvimento militar","Lateral de Ombro"],["Desenvolvimento halteres","Lateral de Ombro"],["Remada alta","Lateral de Ombro"],
- ["Elevação frontal halteres","Anterior de Ombro"],["Elevação frontal anilha","Anterior de Ombro"],["Desenvolvimento Arnold","Anterior de Ombro"],["Desenvolvimento máquina","Anterior de Ombro"],["Elevação frontal na polia","Anterior de Ombro"],
- ["Crucifixo inverso máquina","Posterior de Ombro"],["Crucifixo inverso halteres","Posterior de Ombro"],["Face pull (corda)","Posterior de Ombro"],["Deltoide posterior na polia","Posterior de Ombro"],["Remada alta pegada aberta","Posterior de Ombro"],
- ["Rosca direta barra","Bíceps"],["Rosca direta barra W","Bíceps"],["Rosca alternada halteres","Bíceps"],["Rosca martelo","Bíceps"],["Rosca Scott no banco","Bíceps"],["Rosca Scott máquina","Bíceps"],["Rosca concentrada","Bíceps"],["Rosca inclinada 45º","Bíceps"],["Rosca simultânea halteres","Bíceps"],["Rosca na polia","Bíceps"],
- ["Tríceps pulley barra","Tríceps"],["Tríceps pulley corda","Tríceps"],["Tríceps testa com barra","Tríceps"],["Tríceps francês","Tríceps"],["Tríceps coice (kickback)","Tríceps"],["Tríceps mergulho no banco","Tríceps"],["Tríceps na máquina","Tríceps"],["Supino fechado","Tríceps"],
- ["Abdominal máquina","Abdômen"],["Abdominal supra (crunch)","Abdômen"],["Prancha","Abdômen"],["Elevação de pernas","Abdômen"],["Abdominal infra","Abdômen"],["Abdominal oblíquo","Abdômen"],["Roda abdominal","Abdômen"],
- ["Encolhimento com halteres","Trapézio"],["Encolhimento com barra","Trapézio"],["Encolhimento no smith","Trapézio"],
- ["Rosca de punho","Antebraço"],["Rosca inversa","Antebraço"],["Farmer walk","Antebraço"]
-].map(a=>({nome:a[0],grupo:a[1]}));
+  {
+    "nome": "Supino reto barra",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "Supino reto halteres",
+    "segundaSubstituicao": "Supino máquina",
+    "urlVideo": "https://www.youtube.com/watch?v=x5cAnDj3sVc"
+  },
+  {
+    "nome": "Supino inclinado barra",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "Supino inclinado halteres 30º",
+    "segundaSubstituicao": "Supino máquina",
+    "urlVideo": "https://www.youtube.com/watch?v=7lm16JD0S08"
+  },
+  {
+    "nome": "Supino reto halteres",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "Supino reto barra",
+    "segundaSubstituicao": "Supino máquina",
+    "urlVideo": "https://www.youtube.com/watch?v=ORO9-Sh7hIA"
+  },
+  {
+    "nome": "Supino inclinado halteres 30º",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "Supino inclinado barra",
+    "segundaSubstituicao": "Supino máquina",
+    "urlVideo": "https://www.youtube.com/watch?v=PZecKOpWOrk"
+  },
+  {
+    "nome": "Supino máquina",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "Supino reto barra",
+    "segundaSubstituicao": "Supino reto halteres",
+    "urlVideo": "https://www.youtube.com/results?search_query=chest+press+machine+proper+form"
+  },
+  {
+    "nome": "Crucifixo máquina (peck deck)",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "Crucifixo halteres",
+    "segundaSubstituicao": "Crossover na polia",
+    "urlVideo": "https://www.youtube.com/results?search_query=pec+deck+machine+chest+fly+proper+form"
+  },
+  {
+    "nome": "Crucifixo halteres",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "Crucifixo máquina (peck deck)",
+    "segundaSubstituicao": "Crossover na polia",
+    "urlVideo": "https://www.youtube.com/results?search_query=dumbbell+chest+fly+proper+form"
+  },
+  {
+    "nome": "Crossover na polia",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "Crucifixo máquina (peck deck)",
+    "segundaSubstituicao": "Crucifixo halteres",
+    "urlVideo": "https://www.youtube.com/results?search_query=cable+crossover+chest+fly+proper+form"
+  },
+  {
+    "nome": "Flexão de braço",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "Supino reto barra",
+    "segundaSubstituicao": "Supino reto halteres",
+    "urlVideo": "https://www.youtube.com/watch?v=i9sTjhN4Z3M"
+  },
+  {
+    "nome": "Supino declinado",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "Supino reto barra",
+    "segundaSubstituicao": "Supino máquina",
+    "urlVideo": "https://www.youtube.com/results?search_query=decline+bench+press+proper+form"
+  },
+  {
+    "nome": "Puxada frente (pulldown)",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "Puxada supinada",
+    "segundaSubstituicao": "Barra fixa",
+    "urlVideo": "https://www.youtube.com/watch?v=SALxEARiMkw"
+  },
+  {
+    "nome": "Puxada supinada",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "Puxada frente (pulldown)",
+    "segundaSubstituicao": "Barra fixa",
+    "urlVideo": "https://www.youtube.com/results?search_query=underhand+lat+pulldown+proper+form"
+  },
+  {
+    "nome": "Remada baixa sentado",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "Remada aberta máquina",
+    "segundaSubstituicao": "Remada curvada barra",
+    "urlVideo": "https://www.youtube.com/watch?v=vwHG9Jfu4sw"
+  },
+  {
+    "nome": "Remada curvada barra",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "Remada cavalinho (T-bar)",
+    "segundaSubstituicao": "Remada unilateral halter (serrote)",
+    "urlVideo": "https://www.youtube.com/results?search_query=barbell+bent+over+row+proper+form"
+  },
+  {
+    "nome": "Remada unilateral halter (serrote)",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "Remada curvada barra",
+    "segundaSubstituicao": "Remada cavalinho (T-bar)",
+    "urlVideo": "https://www.youtube.com/results?search_query=one+arm+dumbbell+row+proper+form"
+  },
+  {
+    "nome": "Remada cavalinho (T-bar)",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "Remada curvada barra",
+    "segundaSubstituicao": "Remada aberta máquina",
+    "urlVideo": "https://www.youtube.com/results?search_query=T+bar+row+proper+form"
+  },
+  {
+    "nome": "Remada aberta máquina",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "Remada baixa sentado",
+    "segundaSubstituicao": "Remada cavalinho (T-bar)",
+    "urlVideo": "https://www.youtube.com/results?search_query=wide+grip+machine+row+proper+form"
+  },
+  {
+    "nome": "Pulldown com corda",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "Pullover",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=straight+arm+rope+pulldown+proper+form"
+  },
+  {
+    "nome": "Barra fixa",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "Puxada frente (pulldown)",
+    "segundaSubstituicao": "Puxada supinada",
+    "urlVideo": "https://www.youtube.com/watch?v=s6dap4LMvdw"
+  },
+  {
+    "nome": "Pullover",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "Pulldown com corda",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=dumbbell+pullover+proper+form"
+  },
+  {
+    "nome": "Agachamento livre",
+    "grupo": "Quadríceps",
+    "primeiraSubstituicao": "Agachamento no smith",
+    "segundaSubstituicao": "Agachamento hack",
+    "urlVideo": "https://www.youtube.com/watch?v=AuQ5Ezph7eg"
+  },
+  {
+    "nome": "Agachamento hack",
+    "grupo": "Quadríceps",
+    "primeiraSubstituicao": "Agachamento no smith",
+    "segundaSubstituicao": "Agachamento livre",
+    "urlVideo": "https://www.youtube.com/results?search_query=hack+squat+machine+proper+form"
+  },
+  {
+    "nome": "Leg press 45",
+    "grupo": "Quadríceps",
+    "primeiraSubstituicao": "Leg press horizontal",
+    "segundaSubstituicao": "Agachamento hack",
+    "urlVideo": "https://www.youtube.com/results?search_query=45+degree+leg+press+proper+form"
+  },
+  {
+    "nome": "Cadeira extensora",
+    "grupo": "Quadríceps",
+    "primeiraSubstituicao": "Leg press 45",
+    "segundaSubstituicao": "Leg press horizontal",
+    "urlVideo": "https://www.youtube.com/results?search_query=leg+extension+machine+proper+form"
+  },
+  {
+    "nome": "Afundo com halteres",
+    "grupo": "Quadríceps",
+    "primeiraSubstituicao": "Agachamento búlgaro",
+    "segundaSubstituicao": "Agachamento livre",
+    "urlVideo": "https://www.youtube.com/results?search_query=dumbbell+lunges+proper+form"
+  },
+  {
+    "nome": "Agachamento no smith",
+    "grupo": "Quadríceps",
+    "primeiraSubstituicao": "Agachamento livre",
+    "segundaSubstituicao": "Agachamento hack",
+    "urlVideo": "https://www.youtube.com/results?search_query=smith+machine+squat+proper+form"
+  },
+  {
+    "nome": "Agachamento búlgaro",
+    "grupo": "Quadríceps",
+    "primeiraSubstituicao": "Afundo com halteres",
+    "segundaSubstituicao": "Agachamento livre",
+    "urlVideo": "https://www.youtube.com/results?search_query=Bulgarian+split+squat+proper+form"
+  },
+  {
+    "nome": "Leg press horizontal",
+    "grupo": "Quadríceps",
+    "primeiraSubstituicao": "Leg press 45",
+    "segundaSubstituicao": "Agachamento hack",
+    "urlVideo": "https://www.youtube.com/results?search_query=horizontal+seated+leg+press+proper+form"
+  },
+  {
+    "nome": "Stiff com barra",
+    "grupo": "Posterior de Coxa",
+    "primeiraSubstituicao": "Levantamento terra romeno",
+    "segundaSubstituicao": "Stiff com halteres",
+    "urlVideo": "https://www.youtube.com/results?search_query=barbell+stiff+leg+deadlift+proper+form"
+  },
+  {
+    "nome": "Stiff com halteres",
+    "grupo": "Posterior de Coxa",
+    "primeiraSubstituicao": "Stiff com barra",
+    "segundaSubstituicao": "Levantamento terra romeno",
+    "urlVideo": "https://www.youtube.com/results?search_query=dumbbell+stiff+leg+deadlift+proper+form"
+  },
+  {
+    "nome": "Cadeira flexora",
+    "grupo": "Posterior de Coxa",
+    "primeiraSubstituicao": "Mesa flexora (deitado)",
+    "segundaSubstituicao": "Flexora em pé unilateral",
+    "urlVideo": "https://www.youtube.com/watch?v=ELOCsoDSmrg"
+  },
+  {
+    "nome": "Mesa flexora (deitado)",
+    "grupo": "Posterior de Coxa",
+    "primeiraSubstituicao": "Cadeira flexora",
+    "segundaSubstituicao": "Flexora em pé unilateral",
+    "urlVideo": "https://www.youtube.com/results?search_query=lying+leg+curl+proper+form"
+  },
+  {
+    "nome": "Flexora em pé unilateral",
+    "grupo": "Posterior de Coxa",
+    "primeiraSubstituicao": "Cadeira flexora",
+    "segundaSubstituicao": "Mesa flexora (deitado)",
+    "urlVideo": "https://www.youtube.com/results?search_query=standing+single+leg+curl+proper+form"
+  },
+  {
+    "nome": "Levantamento terra romeno",
+    "grupo": "Posterior de Coxa",
+    "primeiraSubstituicao": "Stiff com barra",
+    "segundaSubstituicao": "Stiff com halteres",
+    "urlVideo": "https://www.youtube.com/results?search_query=barbell+Romanian+deadlift+proper+form"
+  },
+  {
+    "nome": "Good morning",
+    "grupo": "Posterior de Coxa",
+    "primeiraSubstituicao": "Stiff com barra",
+    "segundaSubstituicao": "Levantamento terra romeno",
+    "urlVideo": "https://www.youtube.com/results?search_query=barbell+good+morning+exercise+proper+form"
+  },
+  {
+    "nome": "Banco de extensão lombar",
+    "grupo": "Posterior de Coxa",
+    "primeiraSubstituicao": "Good morning",
+    "segundaSubstituicao": "Levantamento terra romeno",
+    "urlVideo": "https://www.youtube.com/results?search_query=45+degree+back+extension+proper+form"
+  },
+  {
+    "nome": "Elevação pélvica (hip thrust)",
+    "grupo": "Glúteo",
+    "primeiraSubstituicao": "Coice na polia",
+    "segundaSubstituicao": "Agachamento sumô",
+    "urlVideo": "https://www.youtube.com/results?search_query=barbell+hip+thrust+proper+form"
+  },
+  {
+    "nome": "Abdução na máquina",
+    "grupo": "Glúteo",
+    "primeiraSubstituicao": "Cadeira abdutora",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=seated+hip+abduction+machine+proper+form"
+  },
+  {
+    "nome": "Coice na polia",
+    "grupo": "Glúteo",
+    "primeiraSubstituicao": "Elevação pélvica (hip thrust)",
+    "segundaSubstituicao": "Agachamento sumô",
+    "urlVideo": "https://www.youtube.com/results?search_query=cable+glute+kickback+proper+form"
+  },
+  {
+    "nome": "Agachamento sumô",
+    "grupo": "Glúteo",
+    "primeiraSubstituicao": "Elevação pélvica (hip thrust)",
+    "segundaSubstituicao": "Coice na polia",
+    "urlVideo": "https://www.youtube.com/results?search_query=sumo+squat+proper+form"
+  },
+  {
+    "nome": "Cadeira abdutora",
+    "grupo": "Glúteo",
+    "primeiraSubstituicao": "Abdução na máquina",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=hip+abductor+machine+exercise+proper+form"
+  },
+  {
+    "nome": "Panturrilha em pé (máquina)",
+    "grupo": "Panturrilha",
+    "primeiraSubstituicao": "Panturrilha no smith",
+    "segundaSubstituicao": "Panturrilha unilateral halter",
+    "urlVideo": "https://www.youtube.com/results?search_query=standing+calf+raise+machine+proper+form"
+  },
+  {
+    "nome": "Panturrilha sentado",
+    "grupo": "Panturrilha",
+    "primeiraSubstituicao": "Panturrilha no leg press",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/watch?v=ZrBroyhSJZ4"
+  },
+  {
+    "nome": "Panturrilha no leg press",
+    "grupo": "Panturrilha",
+    "primeiraSubstituicao": "Panturrilha em pé (máquina)",
+    "segundaSubstituicao": "Panturrilha no smith",
+    "urlVideo": "https://www.youtube.com/results?search_query=leg+press+calf+raise+proper+form"
+  },
+  {
+    "nome": "Panturrilha unilateral halter",
+    "grupo": "Panturrilha",
+    "primeiraSubstituicao": "Panturrilha em pé (máquina)",
+    "segundaSubstituicao": "Panturrilha no smith",
+    "urlVideo": "https://www.youtube.com/results?search_query=single+leg+dumbbell+calf+raise+proper+form"
+  },
+  {
+    "nome": "Panturrilha no smith",
+    "grupo": "Panturrilha",
+    "primeiraSubstituicao": "Panturrilha em pé (máquina)",
+    "segundaSubstituicao": "Panturrilha unilateral halter",
+    "urlVideo": "https://www.youtube.com/results?search_query=smith+machine+calf+raise+proper+form"
+  },
+  {
+    "nome": "Elevação lateral halteres",
+    "grupo": "Lateral de Ombro",
+    "primeiraSubstituicao": "Elevação lateral na polia",
+    "segundaSubstituicao": "Elevação lateral máquina",
+    "urlVideo": "https://www.youtube.com/watch?v=PzsMitRdI_8"
+  },
+  {
+    "nome": "Elevação lateral na polia",
+    "grupo": "Lateral de Ombro",
+    "primeiraSubstituicao": "Elevação lateral halteres",
+    "segundaSubstituicao": "Elevação lateral máquina",
+    "urlVideo": "https://www.youtube.com/results?search_query=cable+lateral+raise+proper+form"
+  },
+  {
+    "nome": "Elevação lateral máquina",
+    "grupo": "Lateral de Ombro",
+    "primeiraSubstituicao": "Elevação lateral halteres",
+    "segundaSubstituicao": "Elevação lateral na polia",
+    "urlVideo": "https://www.youtube.com/results?search_query=lateral+raise+machine+proper+form"
+  },
+  {
+    "nome": "Desenvolvimento militar",
+    "grupo": "Lateral de Ombro",
+    "primeiraSubstituicao": "Desenvolvimento halteres",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=barbell+overhead+military+press+proper+form"
+  },
+  {
+    "nome": "Desenvolvimento halteres",
+    "grupo": "Lateral de Ombro",
+    "primeiraSubstituicao": "Desenvolvimento militar",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/watch?v=qEwKCR5JCog"
+  },
+  {
+    "nome": "Remada alta",
+    "grupo": "Lateral de Ombro",
+    "primeiraSubstituicao": "Elevação lateral halteres",
+    "segundaSubstituicao": "Elevação lateral na polia",
+    "urlVideo": "https://www.youtube.com/results?search_query=upright+row+proper+form"
+  },
+  {
+    "nome": "Elevação frontal halteres",
+    "grupo": "Anterior de Ombro",
+    "primeiraSubstituicao": "Elevação frontal anilha",
+    "segundaSubstituicao": "Elevação frontal na polia",
+    "urlVideo": "https://www.youtube.com/results?search_query=dumbbell+front+raise+proper+form"
+  },
+  {
+    "nome": "Elevação frontal anilha",
+    "grupo": "Anterior de Ombro",
+    "primeiraSubstituicao": "Elevação frontal halteres",
+    "segundaSubstituicao": "Elevação frontal na polia",
+    "urlVideo": "https://www.youtube.com/results?search_query=plate+front+raise+proper+form"
+  },
+  {
+    "nome": "Desenvolvimento Arnold",
+    "grupo": "Anterior de Ombro",
+    "primeiraSubstituicao": "Desenvolvimento máquina",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=Arnold+press+proper+form"
+  },
+  {
+    "nome": "Desenvolvimento máquina",
+    "grupo": "Anterior de Ombro",
+    "primeiraSubstituicao": "Desenvolvimento Arnold",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=shoulder+press+machine+proper+form"
+  },
+  {
+    "nome": "Elevação frontal na polia",
+    "grupo": "Anterior de Ombro",
+    "primeiraSubstituicao": "Elevação frontal halteres",
+    "segundaSubstituicao": "Elevação frontal anilha",
+    "urlVideo": "https://www.youtube.com/results?search_query=cable+front+raise+proper+form"
+  },
+  {
+    "nome": "Crucifixo inverso máquina",
+    "grupo": "Posterior de Ombro",
+    "primeiraSubstituicao": "Crucifixo inverso halteres",
+    "segundaSubstituicao": "Deltoide posterior na polia",
+    "urlVideo": "https://www.youtube.com/results?search_query=reverse+pec+deck+proper+form"
+  },
+  {
+    "nome": "Crucifixo inverso halteres",
+    "grupo": "Posterior de Ombro",
+    "primeiraSubstituicao": "Crucifixo inverso máquina",
+    "segundaSubstituicao": "Deltoide posterior na polia",
+    "urlVideo": "https://www.youtube.com/results?search_query=bent+over+reverse+dumbbell+fly+proper+form"
+  },
+  {
+    "nome": "Face pull (corda)",
+    "grupo": "Posterior de Ombro",
+    "primeiraSubstituicao": "Deltoide posterior na polia",
+    "segundaSubstituicao": "Crucifixo inverso máquina",
+    "urlVideo": "https://www.youtube.com/watch?v=ljgqer1ZpXg"
+  },
+  {
+    "nome": "Deltoide posterior na polia",
+    "grupo": "Posterior de Ombro",
+    "primeiraSubstituicao": "Crucifixo inverso máquina",
+    "segundaSubstituicao": "Crucifixo inverso halteres",
+    "urlVideo": "https://www.youtube.com/results?search_query=cable+rear+delt+fly+proper+form"
+  },
+  {
+    "nome": "Remada alta pegada aberta",
+    "grupo": "Posterior de Ombro",
+    "primeiraSubstituicao": "Face pull (corda)",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=wide+grip+upright+row+proper+form"
+  },
+  {
+    "nome": "Rosca direta barra",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "Rosca direta barra W",
+    "segundaSubstituicao": "Rosca simultânea halteres",
+    "urlVideo": "https://www.youtube.com/results?search_query=barbell+biceps+curl+proper+form"
+  },
+  {
+    "nome": "Rosca direta barra W",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "Rosca direta barra",
+    "segundaSubstituicao": "Rosca na polia",
+    "urlVideo": "https://www.youtube.com/watch?v=V6UEDzY51gY"
+  },
+  {
+    "nome": "Rosca alternada halteres",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "Rosca simultânea halteres",
+    "segundaSubstituicao": "Rosca direta barra",
+    "urlVideo": "https://www.youtube.com/results?search_query=alternating+dumbbell+curl+proper+form"
+  },
+  {
+    "nome": "Rosca martelo",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "Rosca alternada halteres",
+    "segundaSubstituicao": "Rosca simultânea halteres",
+    "urlVideo": "https://www.youtube.com/results?search_query=hammer+curl+proper+form"
+  },
+  {
+    "nome": "Rosca Scott no banco",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "Rosca Scott máquina",
+    "segundaSubstituicao": "Rosca concentrada",
+    "urlVideo": "https://www.youtube.com/results?search_query=preacher+curl+bench+proper+form"
+  },
+  {
+    "nome": "Rosca Scott máquina",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "Rosca Scott no banco",
+    "segundaSubstituicao": "Rosca concentrada",
+    "urlVideo": "https://www.youtube.com/results?search_query=preacher+curl+machine+proper+form"
+  },
+  {
+    "nome": "Rosca concentrada",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "Rosca Scott no banco",
+    "segundaSubstituicao": "Rosca Scott máquina",
+    "urlVideo": "https://www.youtube.com/results?search_query=concentration+curl+proper+form"
+  },
+  {
+    "nome": "Rosca inclinada 45º",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "Rosca alternada halteres",
+    "segundaSubstituicao": "Rosca simultânea halteres",
+    "urlVideo": "https://www.youtube.com/watch?v=VD0mc0oX2ac"
+  },
+  {
+    "nome": "Rosca simultânea halteres",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "Rosca alternada halteres",
+    "segundaSubstituicao": "Rosca direta barra",
+    "urlVideo": "https://www.youtube.com/results?search_query=standing+dumbbell+bicep+curl+proper+form"
+  },
+  {
+    "nome": "Rosca na polia",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "Rosca direta barra",
+    "segundaSubstituicao": "Rosca direta barra W",
+    "urlVideo": "https://www.youtube.com/results?search_query=cable+bicep+curl+proper+form"
+  },
+  {
+    "nome": "Tríceps pulley barra",
+    "grupo": "Tríceps",
+    "primeiraSubstituicao": "Tríceps pulley corda",
+    "segundaSubstituicao": "Tríceps na máquina",
+    "urlVideo": "https://www.youtube.com/results?search_query=straight+bar+triceps+pushdown+proper+form"
+  },
+  {
+    "nome": "Tríceps pulley corda",
+    "grupo": "Tríceps",
+    "primeiraSubstituicao": "Tríceps pulley barra",
+    "segundaSubstituicao": "Tríceps na máquina",
+    "urlVideo": "https://www.youtube.com/results?search_query=rope+triceps+pushdown+proper+form"
+  },
+  {
+    "nome": "Tríceps testa com barra",
+    "grupo": "Tríceps",
+    "primeiraSubstituicao": "Tríceps francês",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=barbell+skull+crushers+proper+form"
+  },
+  {
+    "nome": "Tríceps francês",
+    "grupo": "Tríceps",
+    "primeiraSubstituicao": "Tríceps testa com barra",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=overhead+dumbbell+triceps+extension+proper+form"
+  },
+  {
+    "nome": "Tríceps coice (kickback)",
+    "grupo": "Tríceps",
+    "primeiraSubstituicao": "Tríceps pulley barra",
+    "segundaSubstituicao": "Tríceps pulley corda",
+    "urlVideo": "https://www.youtube.com/shorts/Cbi7Z6uvEXU"
+  },
+  {
+    "nome": "Tríceps mergulho no banco",
+    "grupo": "Tríceps",
+    "primeiraSubstituicao": "Supino fechado",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=bench+dips+triceps+proper+form"
+  },
+  {
+    "nome": "Tríceps na máquina",
+    "grupo": "Tríceps",
+    "primeiraSubstituicao": "Tríceps pulley barra",
+    "segundaSubstituicao": "Tríceps pulley corda",
+    "urlVideo": "https://www.youtube.com/results?search_query=seated+triceps+extension+machine+proper+form"
+  },
+  {
+    "nome": "Supino fechado",
+    "grupo": "Tríceps",
+    "primeiraSubstituicao": "Tríceps mergulho no banco",
+    "segundaSubstituicao": "Tríceps na máquina",
+    "urlVideo": "https://www.youtube.com/results?search_query=close+grip+bench+press+proper+form"
+  },
+  {
+    "nome": "Abdominal máquina",
+    "grupo": "Abdômen",
+    "primeiraSubstituicao": "Abdominal supra (crunch)",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=machine+crunch+proper+form"
+  },
+  {
+    "nome": "Abdominal supra (crunch)",
+    "grupo": "Abdômen",
+    "primeiraSubstituicao": "Abdominal máquina",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=abdominal+crunch+proper+form"
+  },
+  {
+    "nome": "Prancha",
+    "grupo": "Abdômen",
+    "primeiraSubstituicao": "Roda abdominal",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=forearm+plank+proper+form"
+  },
+  {
+    "nome": "Elevação de pernas",
+    "grupo": "Abdômen",
+    "primeiraSubstituicao": "Abdominal infra",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=lying+leg+raises+proper+form"
+  },
+  {
+    "nome": "Abdominal infra",
+    "grupo": "Abdômen",
+    "primeiraSubstituicao": "Elevação de pernas",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=reverse+crunch+proper+form"
+  },
+  {
+    "nome": "Abdominal oblíquo",
+    "grupo": "Abdômen",
+    "primeiraSubstituicao": "Abdominal supra (crunch)",
+    "segundaSubstituicao": "Abdominal máquina",
+    "urlVideo": "https://www.youtube.com/results?search_query=oblique+crunch+proper+form"
+  },
+  {
+    "nome": "Roda abdominal",
+    "grupo": "Abdômen",
+    "primeiraSubstituicao": "Prancha",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=ab+wheel+rollout+proper+form"
+  },
+  {
+    "nome": "Encolhimento com halteres",
+    "grupo": "Trapézio",
+    "primeiraSubstituicao": "Encolhimento com barra",
+    "segundaSubstituicao": "Encolhimento no smith",
+    "urlVideo": "https://www.youtube.com/watch?v=xDt6qbKgLkY"
+  },
+  {
+    "nome": "Encolhimento com barra",
+    "grupo": "Trapézio",
+    "primeiraSubstituicao": "Encolhimento no smith",
+    "segundaSubstituicao": "Encolhimento com halteres",
+    "urlVideo": "https://www.youtube.com/results?search_query=barbell+shrug+proper+form"
+  },
+  {
+    "nome": "Encolhimento no smith",
+    "grupo": "Trapézio",
+    "primeiraSubstituicao": "Encolhimento com barra",
+    "segundaSubstituicao": "Encolhimento com halteres",
+    "urlVideo": "https://www.youtube.com/results?search_query=smith+machine+shrug+proper+form"
+  },
+  {
+    "nome": "Rosca de punho",
+    "grupo": "Antebraço",
+    "primeiraSubstituicao": "Rosca inversa",
+    "segundaSubstituicao": "Farmer walk",
+    "urlVideo": "https://www.youtube.com/results?search_query=wrist+curl+proper+form"
+  },
+  {
+    "nome": "Rosca inversa",
+    "grupo": "Antebraço",
+    "primeiraSubstituicao": "Rosca de punho",
+    "segundaSubstituicao": "Farmer walk",
+    "urlVideo": "https://www.youtube.com/results?search_query=reverse+barbell+curl+proper+form"
+  },
+  {
+    "nome": "Farmer walk",
+    "grupo": "Antebraço",
+    "primeiraSubstituicao": "Rosca de punho",
+    "segundaSubstituicao": "Rosca inversa",
+    "urlVideo": "https://www.youtube.com/watch?v=Hvwv2uliIqc"
+  }
+];
 const DB_GROUPS=[...new Set(EXDB.map(e=>e.grupo))];
 
 /* ===== ESTADO ===== */
@@ -379,33 +1016,36 @@ function planKeyForDate(d){const k=ymd(d);return k<ymd(today())&&state.log[k]&&s
 function customCatalog(){const out={};(state.customPrograms||[]).forEach(p=>{out[p.id]={...p,autor:"Você",emoji:"✏️",cycle:false,desc:p.model==="abc"?"ABC personalizado · três dias":"Full-body personalizado · três dias",keyForDate:d=>p.days[d.getDay()]||p.off};});return out;}
 function actProg(){return customCatalog()[state.programId]||PROGRAMS[state.programId]||PROGRAMS.refundini;}
 function PLN(tipo){if(tipo.startsWith("HIST_"))return state.log[tipo.slice(5)].snapshot;const p=actProg();if(p.plans&&p.plans[tipo])return p.plans[tipo];for(const p of Object.values({...PROGRAMS,...customCatalog()})){if(p.plans&&p.plans[tipo])return p.plans[tipo];}for(const l of Object.values(state.log)){if(l.snapshot&&l.snapshot.tipo===tipo)return l.snapshot;}return PLANS[tipo]||{tipo:tipo,titulo:tipo,foco:"",dia:"",ex:[]};}
-function exAt(tipo,i){const base=(PLN(tipo).ex||[])[i]||{nome:"—",grupo:"",series:"",reps:"",obs:""};return Object.assign({},base,(state.overrides[tipo]||{})[overrideKey(tipo,i)]||{});}
-function slotId(tipo,i){const e=(PLN(tipo).ex||[])[i];return e&&e.sid||tipo+"-"+(e&&e.id||i);}
+function exAt(tipo,i){const base=(PLN(tipo).ex||[])[i]||{nome:"—",grupo:"",series:"",reps:"",obs:""};return Object.assign({},base.planned||base,(state.overrides[tipo]||{})[overrideKey(tipo,i)]||{});}
+function slotId(tipo,i){const e=(PLN(tipo).ex||[])[i];return e&&(e.baseSid||e.sid)||tipo+"-"+(e&&e.id||i);}
 function exNameOfSid(sid){const n=sid.lastIndexOf("-"),tipo=sid.slice(0,n),id=sid.slice(n+1),ex=PLN(tipo).ex||[],i=ex.findIndex(e=>e.id===id);return exAt(tipo,i>=0?i:+id).nome;}
 function dayLog(k){if(!state.log[k])state.log[k]={done:{}};if(!state.log[k].done)state.log[k].done={};return state.log[k];}
-function exDone(k,tipo,i){const l=state.log[k];return !!(l&&l.done&&l.done[slotId(tipo,i)]);}
+function exDone(k,tipo,i){const l=state.log[k];return !!(l&&l.done&&l.done[daySlotId(k,tipo,i)]);}
 function countDone(k,tipo){let n=0,ex=PLN(tipo).ex||[];for(let i=0;i<ex.length;i++)if(exDone(k,tipo,i))n++;return n;}
 function dayTotal(tipo){return (PLN(tipo).ex||[]).length;}
 function isTrainingDay(tipo){return !PLN(tipo).rest;}
 function curDate(){return selectedDate?parseYmd(selectedDate):today();}
 
 /* sessões: carga x reps por série */
-function seriesCount(tipo,i){const n=parseInt(exAt(tipo,i).series);return n>0?n:0;}
-function getSets(k,tipo,i){const sid=slotId(tipo,i);const s=(state.sessions[k]||{})[sid];const n=seriesCount(tipo,i)||3;
+function seriesCount(tipo,i,k){const n=parseInt((k?dayExercise(k,tipo,i):exAt(tipo,i)).series);return n>0?n:0;}
+function getSets(k,tipo,i){const sid=daySlotId(k,tipo,i);const s=(state.sessions[k]||{})[sid];const n=seriesCount(tipo,i,k)||3;
   const arr=(s&&s.sets)?clone(s.sets):[];while(arr.length<n)arr.push({kg:"",reps:""});return arr;}
-function setSet(k,tipo,i,idx,field,val){const sid=slotId(tipo,i);state.sessions[k]=state.sessions[k]||{};
+function setSet(k,tipo,i,idx,field,val){const sid=daySlotId(k,tipo,i);state.sessions[k]=state.sessions[k]||{};
   snapshotDay(k,tipo);const cur=state.sessions[k][sid]||{sets:[]};cur.sets=cur.sets||[];while(cur.sets.length<=idx)cur.sets.push({kg:"",reps:""});
-  cur.sets[idx][field]=val;try{const _e=exAt(tipo,i);cur.nm=_e.nome;cur.gp=_e.grupo;}catch(e){}state.sessions[k][sid]=cur;save();}
-function lastSets(sid,beforeKey){const ks=Object.keys(state.sessions).filter(k=>k<beforeKey&&state.sessions[k][sid]&&(state.sessions[k][sid].sets||[]).some(s=>s.kg)).sort();
-  if(!ks.length)return null;const k=ks[ks.length-1];return state.sessions[k][sid].sets;}
+  cur.sets[idx][field]=val;try{const _e=dayExercise(k,tipo,i);cur.nm=_e.nome;cur.gp=_e.grupo;}catch(e){}state.sessions[k][sid]=cur;save();}
+function lastSets(sid,beforeKey,name){
+  const ks=Object.keys(state.sessions).filter(k=>k<beforeKey).sort().reverse();
+  for(const k of ks){const entries=Object.entries(state.sessions[k]);const found=entries.find(([id,s])=>id===sid&&(!name||exerciseSessionName(id,s)===name)&&(s.sets||[]).some(x=>x.kg))||entries.find(([id,s])=>name&&exerciseSessionName(id,s)===name&&(s.sets||[]).some(x=>x.kg));if(found)return found[1].sets;}
+  return null;
+}
 function best1RM(sets){let b=0;(sets||[]).forEach(s=>{const kg=parseFloat(s.kg),r=parseInt(s.reps);if(kg>0&&r>0){const e=kg*(1+r/30);if(e>b)b=e;}});return b;}
 function maxKg(sets){let b=0;(sets||[]).forEach(s=>{const kg=parseFloat(s.kg);if(kg>b)b=kg;});return b;}
 function sidBest1RM(k,sid){const s=(state.sessions[k]||{})[sid];return s?best1RM(s.sets):0;}
-function allTimeBest1RM(sid,exceptKey){let b=0;Object.keys(state.sessions).forEach(k=>{if(k===exceptKey)return;const s=state.sessions[k][sid];if(s){const e=best1RM(s.sets);if(e>b)b=e;}});return b;}
+function allTimeBest1RM(sid,exceptKey,name){let b=0;Object.keys(state.sessions).forEach(k=>{if(k===exceptKey)return;Object.entries(state.sessions[k]).forEach(([id,s])=>{if(name?exerciseSessionName(id,s)===name:id===sid)b=Math.max(b,best1RM(s.sets));});});return b;}
 
 /* vídeo: busca curada no YouTube */
 function cleanName(n){return n.replace(/\(.*?\)/g,"").replace(/\s+ou\s+.*$/i,"").trim();}
-function ytUrl(ex){const q=cleanName(ex.nome)+" "+ex.grupo+" execução correta";return "https://www.youtube.com/results?search_query="+encodeURIComponent(q);}
+function ytUrl(ex){const entry=catalogExercise(ex),url=entry?entry.urlVideo:ex.urlVideo;if(typeof url==="string"&&/^https:\/\//i.test(url))return url;const q=cleanName(ex.nome)+" "+ex.grupo+" execução correta";return "https://www.youtube.com/results?search_query="+encodeURIComponent(q);}
 
 /* ===== NAV / RENDER ===== */
 let currentTab="hoje",weekOffset=0,selectedDate=null,progEx=null;
@@ -437,11 +1077,11 @@ function viewHoje(){
   if(p.rest){return h+`<div class="card" style="text-align:center"><div style="font-size:38px">🧘</div><div style="font-weight:700;margin-top:6px">${tipo==="REC"?"Recuperação ativa":"Descanso completo"}</div><p class="muted" style="margin:6px 0 0">${p.ex[0].obs||p.foco}</p></div>`+(tipo==="REC"?`<div class="ex ${exDone(key,'REC',0)?'done':''}"><div class="top"><div class="chk" data-act="toggle" data-i="0"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div><div class="body"><div class="name">Fiz o cardio / abdômen</div><div class="meta">opcional · marque se realizou</div></div></div></div>`:"");}
   let lastG=null,body="";
   p.ex.forEach((_,i)=>{
-    const ex=exAt(tipo,i),sid=slotId(tipo,i),isd=exDone(key,tipo,i);
+    const ex=dayExercise(key,tipo,i),sid=daySlotId(key,tipo,i),isd=exDone(key,tipo,i);
     if(ex.grupo!==lastG){lastG=ex.grupo;body+=`<div class="grp-head"><span class="gname">${ex.grupo}</span><span class="gline"></span></div>`;}
     const meta=[];if(ex.series)meta.push(`<span class="s">${ex.series} séries</span>`);if(ex.reps)meta.push(ex.reps);if(ex.obs)meta.push(ex.obs);
-    const isPR=sidBest1RM(key,sid)>0 && sidBest1RM(key,sid)>=allTimeBest1RM(sid,key);
-    const sets=getSets(key,tipo,i),last=lastSets(sid,key);
+    const isPR=sidBest1RM(key,sid)>0 && sidBest1RM(key,sid)>=allTimeBest1RM(sid,key,ex.nome);
+    const sets=getSets(key,tipo,i),last=lastSets(sid,key,ex.nome);
     const _goal=state.settings.progReps||12,_topR=last?Math.max(0,...last.map(s=>parseInt(s.reps)||0)):0,_hadKg=!!(last&&last.some(s=>parseFloat(s.kg)>0));
     const progHtml=(isTrainingDay(tipo)&&_hadKg&&_topR>=_goal)?`<div class="proghint"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>Você fez ${_topR} reps na última sessão — tente subir a carga (+${progInc(ex.grupo)} kg).</div>`:"";
     let setsHtml=`<div class="sets"><div class="setshead"><span>série</span><span>kg</span><span>reps</span></div>`;
@@ -453,10 +1093,11 @@ function viewHoje(){
       <div class="body"><div class="name">${ex.nome}${isPR?'<span class="prbadge">🏆 PR</span>':''}</div>
         <div class="meta">${meta.join('<span class="dim">·</span> ')}</div>
         ${setsHtml}
+        ${executionChoices(key,tipo,i)}
         ${progHtml}
         <div class="exacts">
-          <a class="chip-sm play" href="${ytUrl(ex)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg> Execução</a>
-          <span class="chip-sm" data-act="swap" data-i="${i}"><svg viewBox="0 0 24 24"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg> Trocar</span>
+          <a class="chip-sm play" href="${esc(ytUrl(ex))}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg> Execução</a>
+          <span class="chip-sm" data-act="swap" data-i="${i}"><svg viewBox="0 0 24 24"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg> Trocar no programa</span>
           <span class="chip-sm rst" data-act="rest"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg> Descanso</span>
           <span class="chip-sm" data-act="edit" data-i="${i}"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg> Editar</span>
         </div>
@@ -569,10 +1210,10 @@ function viewNotas(){
 /* ===== BIND ===== */
 function bind(){
   const back=document.getElementById("backToday");if(back)back.onclick=()=>{selectedDate=null;render();};
-  const finish=document.getElementById("finishBtn");if(finish)finish.onclick=()=>{const d=curDate(),k=ymd(d),tipo=planKeyForDate(d),l=dayLog(k),tot=dayTotal(tipo),target=!(countDone(k,tipo)===tot);snapshotDay(k,tipo);for(let i=0;i<tot;i++)l.done[slotId(tipo,i)]=target;
+  const finish=document.getElementById("finishBtn");if(finish)finish.onclick=()=>{const d=curDate(),k=ymd(d),tipo=planKeyForDate(d),l=dayLog(k),tot=dayTotal(tipo),target=!(countDone(k,tipo)===tot);snapshotDay(k,tipo);for(let i=0;i<tot;i++)l.done[daySlotId(k,tipo,i)]=target;
     if(isTrainingDay(tipo)){if(target){if(!l.start)l.start=Date.now();l.end=Date.now();}else{delete l.start;delete l.end;}}save();render();};
   document.querySelectorAll("[data-act]").forEach(el=>{const act=el.dataset.act;
-    if(act==="toggle")el.onclick=()=>{const d=curDate(),k=ymd(d),tipo=planKeyForDate(d),i=+el.dataset.i,l=dayLog(k),sid=slotId(tipo,i);snapshotDay(k,tipo);l.done[sid]=!l.done[sid];
+    if(act==="toggle")el.onclick=()=>{const d=curDate(),k=ymd(d),tipo=planKeyForDate(d),i=+el.dataset.i,l=dayLog(k),sid=daySlotId(k,tipo,i);snapshotDay(k,tipo);l.done[sid]=!l.done[sid];
       if(isTrainingDay(tipo)){const dn=countDone(k,tipo),tot=dayTotal(tipo);if(dn>0&&!l.start)l.start=Date.now();if(dn===0){delete l.start;delete l.end;}if(dn===tot&&tot>0){if(!l.end)l.end=Date.now();}else{delete l.end;}}
       save();
       if(l.done[sid]&&isTrainingDay(tipo)&&state.settings.autoRest){render();openTimer();return;}render();};
@@ -614,6 +1255,7 @@ function bind(){
   const aAct=document.getElementById("addActivity");if(aAct)aAct.onclick=()=>openActivity(ymd(today()));
   const sBtn=document.getElementById("stretchBtn");if(sBtn)sBtn.onclick=openStretch;
   document.querySelectorAll("[data-delact]").forEach(el=>el.onclick=()=>{state.activities=state.activities.filter(a=>a.id!==el.dataset.delact);save();render();});
+  document.querySelectorAll("[data-day-choice]").forEach(button=>button.onclick=()=>{const k=ymd(curDate());selectDayExercise(k,planKeyForDate(curDate()),+button.dataset.i,button.dataset.dayChoice);});
   bindCustomPrograms();
   mountSessionClock();
   if(document.getElementById("wchart"))drawWeightChart();
@@ -640,15 +1282,15 @@ function renderSwap(){
     <div class="muted" style="margin:-6px 0 10px;font-size:13px">Atual: <b>${ex.nome}</b></div>
     <input id="swSearch" placeholder="Buscar exercício..." value="${esc(q)}">
     <div class="row" style="gap:8px;margin:10px 0"><button class="chip ${!all?'on':''}" id="swGroup" ${groupHas?'':'disabled style="opacity:.4"'}>${grupo}</button><button class="chip ${all?'on':''}" id="swAll">Todos os grupos</button></div>
-    <div class="picklist">${list.length?list.map(e=>`<div class="pickitem ${e.nome===ex.nome?'cur':''}" data-pick="${esc(e.nome)}" data-pg="${esc(e.grupo)}"><div><div class="pi-n">${e.nome}</div>${all?`<div class="pi-g">${e.grupo}</div>`:''}</div><a class="pi-v" href="https://www.youtube.com/results?search_query=${encodeURIComponent(cleanName(e.nome)+' '+e.grupo+' execução correta')}" target="_blank" rel="noopener" title="Ver execução"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg></a></div>`).join(""):'<div class="empty">Nada encontrado.</div>'}</div>
+    <div class="picklist">${list.length?list.map(e=>`<div class="pickitem ${e.nome===ex.nome?'cur':''}" data-pick="${esc(e.nome)}" data-pg="${esc(e.grupo)}"><div><div class="pi-n">${e.nome}</div>${all?`<div class="pi-g">${e.grupo}</div>`:''}</div><a class="pi-v" href="${esc(ytUrl(e))}" target="_blank" rel="noopener" title="Ver execução"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg></a></div>`).join(""):'<div class="empty">Nada encontrado.</div>'}</div>
     <div style="height:10px"></div><button class="btn ghost block" onclick="closeSheet()">Cancelar</button>`);
   const s=document.getElementById("swSearch");s.oninput=()=>{swapState.q=s.value;const list2=EXDB.filter(e=>(swapState.all?true:e.grupo===grupo)&&e.nome.toLowerCase().includes(s.value.toLowerCase()));
-    document.querySelector(".picklist").innerHTML=list2.length?list2.map(e=>`<div class="pickitem ${e.nome===ex.nome?'cur':''}" data-pick="${esc(e.nome)}" data-pg="${esc(e.grupo)}"><div><div class="pi-n">${e.nome}</div>${swapState.all?`<div class="pi-g">${e.grupo}</div>`:''}</div><a class="pi-v" href="https://www.youtube.com/results?search_query=${encodeURIComponent(cleanName(e.nome)+' '+e.grupo+' execução correta')}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg></a></div>`).join(""):'<div class="empty">Nada encontrado.</div>';bindPicks();};
+    document.querySelector(".picklist").innerHTML=list2.length?list2.map(e=>`<div class="pickitem ${e.nome===ex.nome?'cur':''}" data-pick="${esc(e.nome)}" data-pg="${esc(e.grupo)}"><div><div class="pi-n">${e.nome}</div>${swapState.all?`<div class="pi-g">${e.grupo}</div>`:''}</div><a class="pi-v" href="${esc(ytUrl(e))}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg></a></div>`).join(""):'<div class="empty">Nada encontrado.</div>';bindPicks();};
   document.getElementById("swGroup").onclick=()=>{if(!groupHas)return;swapState.all=false;renderSwap();};
   document.getElementById("swAll").onclick=()=>{swapState.all=true;renderSwap();};
   bindPicks();
 }
-function bindPicks(){document.querySelectorAll("[data-pick]").forEach(el=>el.onclick=()=>{const {tipo,i}=swapState,ex=exAt(tipo,i);
+function bindPicks(){document.querySelectorAll(".picklist a").forEach(a=>a.onclick=e=>e.stopPropagation());document.querySelectorAll("[data-pick]").forEach(el=>el.onclick=()=>{const {tipo,i}=swapState,ex=exAt(tipo,i);
   state.overrides[tipo]=state.overrides[tipo]||{};state.overrides[tipo][overrideKey(tipo,i)]={nome:el.dataset.pick,grupo:el.dataset.pg,series:ex.series,reps:ex.reps};save();closeSheet();render();});}
 
 function openWeight(){
@@ -1239,10 +1881,41 @@ function openOnboard(){openSheet(`<h3>👋 Bem-vindo ao Treino</h3>
   document.getElementById("obClose").onclick=()=>{markOnboarded();closeSheet();};}
 function markOnboarded(){try{localStorage.setItem("treino_onboarded","1");}catch(e){}}
 
+/* Substituições de execução: escolha por data e posição, sem editar o programa. */
+function catalogExercise(ex){return EXDB.find(e=>e.nome===ex.nome);}
+function dayExercise(k,tipo,i){
+  const planned=exAt(tipo,i),choice=(state.log[k]&&state.log[k].exerciseChoices||{})[slotId(tipo,i)];
+  return choice?{...planned,...choice,series:planned.series,reps:planned.reps,obs:planned.obs}:planned;
+}
+function daySlotId(k,tipo,i){
+  const base=slotId(tipo,i),ex=dayExercise(k,tipo,i);
+  return ex.nome===exAt(tipo,i).nome?base:base+'~'+encodeURIComponent(ex.nome);
+}
+function executionChoices(k,tipo,i){
+  const planned=exAt(tipo,i),current=dayExercise(k,tipo,i),entry=catalogExercise(planned);
+  const names=[entry&&entry.primeiraSubstituicao,entry&&entry.segundaSubstituicao].filter(Boolean);
+  if(!names.length)return '';
+  return `<div class="daily-choices"><div class="hint">Substituições para este dia · mantém séries e repetições planejadas</div><div class="row" style="gap:8px;flex-wrap:wrap;margin-top:8px">${[...new Set(names)].map(name=>`<button class="chip-sm" data-day-choice="${esc(name)}" data-i="${i}" ${name===current.nome?'disabled':''}>${esc(name)}${name===current.nome?' ✓':''}</button>`).join('')}${current.nome!==planned.nome?`<button class="chip-sm" data-day-choice="" data-i="${i}">Voltar para ${esc(planned.nome)}</button>`:''}</div></div>`;
+}
+function selectDayExercise(k,tipo,i,name){
+  const planned=exAt(tipo,i),entry=catalogExercise(planned);
+  if(name&&(!entry||![entry.primeiraSubstituicao,entry.segundaSubstituicao].includes(name)))return;
+  const replacement=name&&EXDB.find(e=>e.nome===name);if(name&&!replacement)return;
+  snapshotDay(k,tipo);
+  const l=dayLog(k),base=slotId(tipo,i);l.exerciseChoices=l.exerciseChoices||{};
+  if(replacement)l.exerciseChoices[base]=clone(replacement);else delete l.exerciseChoices[base];
+  const snap=l.snapshot.ex.find(e=>(e.baseSid||e.sid)===base);
+  if(snap){const selected=dayExercise(k,tipo,i);Object.assign(snap,selected,{planned:clone(planned),baseSid:base,sid:daySlotId(k,tipo,i)});}
+  // Completion belongs to the selected exercise; never transfer the old mark.
+  if(countDone(k,tipo)!==dayTotal(tipo))delete l.end;
+  save();render();
+}
+function exerciseSessionName(sid,session){return session.nm||exNameOfSid(sid.split('~')[0]);}
+
 /* ===== MEUS PROGRAMAS ===== */
 function uid(){return 'u'+crypto.randomUUID().replaceAll('-','');}
 function overrideKey(tipo,i){return ((PLN(tipo).ex||[])[i]||{}).id||i;}
-function snapshotDay(k,tipo){const l=dayLog(k);if(!l.snapshot){l.snapshot=clone(PLN(tipo));l.snapshot.programId=state.programId;l.snapshot.custom=!!customCatalog()[state.programId];l.snapshot.ex=l.snapshot.ex.map((e,i)=>({...exAt(tipo,i),sid:slotId(tipo,i)}));}}
+function snapshotDay(k,tipo){const l=dayLog(k);if(!l.snapshot){l.snapshot=clone(PLN(tipo));l.snapshot.programId=state.programId;l.snapshot.custom=!!customCatalog()[state.programId];l.snapshot.ex=l.snapshot.ex.map((e,i)=>({...dayExercise(k,tipo,i),baseSid:slotId(tipo,i),sid:daySlotId(k,tipo,i)}));}}
 function preserveHistory(){Object.keys(state.log).forEach(k=>{if(!state.log[k].snapshot)snapshotDay(k,planKeyForDate(parseYmd(k)));});}
 function historyStats(k){const l=state.log[k],p=l&&l.snapshot;if(p){const ex=p.rest?[]:p.ex;const done=ex.filter(e=>l.done[e.sid]);return {total:ex.length,done:done.length,series:done.reduce((n,e)=>n+(parseInt(e.series)||0),0)};}const t=planKeyForDate(parseYmd(k));return {total:isTrainingDay(t)?dayTotal(t):0,done:countDone(k,t),series:(PLN(t).ex||[]).reduce((n,e,i)=>n+(exDone(k,t,i)?parseInt(exAt(t,i).series)||0:0),0)};}
 function customProgramsView(){return `<div class="card"><h3>Meus programas</h3><p class="muted">Monte um ABC ou full-body de três dias. Salve quantos programas quiser e mantenha um ativo por vez.</p><button class="btn primary" id="newCustom">＋ Criar meu treino</button></div>`+(state.customPrograms||[]).map(p=>`<div class="card"><h3>${esc(p.nome)} ${state.programId===p.id?'<span class="pill ok">ativo</span>':''}</h3><p class="muted">${p.model==='abc'?'ABC':'Full-body'} · ${p.sessions.map(t=>WD_SHORT[p.days.indexOf(t)]).join(' / ')}</p><div class="row" style="gap:8px;flex-wrap:wrap">${state.programId===p.id?'':`<button class="btn primary" data-activate="${p.id}">Usar este programa</button>`}<button class="btn ghost" data-custom-edit="${p.id}">Editar</button><button class="btn ghost" data-custom-copy="${p.id}">Duplicar</button><button class="btn ghost" data-custom-delete="${p.id}">Excluir</button></div></div>`).join('');}

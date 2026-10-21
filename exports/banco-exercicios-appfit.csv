@@ -1,94 +1,94 @@
-﻿exercicio,grupo_muscular
-Supino reto barra,Peito
-Supino inclinado barra,Peito
-Supino reto halteres,Peito
-Supino inclinado halteres 30º,Peito
-Supino máquina,Peito
-Crucifixo máquina (peck deck),Peito
-Crucifixo halteres,Peito
-Crossover na polia,Peito
-Flexão de braço,Peito
-Supino declinado,Peito
-Puxada frente (pulldown),Costas
-Puxada supinada,Costas
-Remada baixa sentado,Costas
-Remada curvada barra,Costas
-Remada unilateral halter (serrote),Costas
-Remada cavalinho (T-bar),Costas
-Remada aberta máquina,Costas
-Pulldown com corda,Costas
-Barra fixa,Costas
-Pullover,Costas
-Agachamento livre,Quadríceps
-Agachamento hack,Quadríceps
-Leg press 45,Quadríceps
-Cadeira extensora,Quadríceps
-Afundo com halteres,Quadríceps
-Agachamento no smith,Quadríceps
-Agachamento búlgaro,Quadríceps
-Leg press horizontal,Quadríceps
-Stiff com barra,Posterior de Coxa
-Stiff com halteres,Posterior de Coxa
-Cadeira flexora,Posterior de Coxa
-Mesa flexora (deitado),Posterior de Coxa
-Flexora em pé unilateral,Posterior de Coxa
-Levantamento terra romeno,Posterior de Coxa
-Good morning,Posterior de Coxa
-Banco de extensão lombar,Posterior de Coxa
-Elevação pélvica (hip thrust),Glúteo
-Abdução na máquina,Glúteo
-Coice na polia,Glúteo
-Agachamento sumô,Glúteo
-Cadeira abdutora,Glúteo
-Panturrilha em pé (máquina),Panturrilha
-Panturrilha sentado,Panturrilha
-Panturrilha no leg press,Panturrilha
-Panturrilha unilateral halter,Panturrilha
-Panturrilha no smith,Panturrilha
-Elevação lateral halteres,Lateral de Ombro
-Elevação lateral na polia,Lateral de Ombro
-Elevação lateral máquina,Lateral de Ombro
-Desenvolvimento militar,Lateral de Ombro
-Desenvolvimento halteres,Lateral de Ombro
-Remada alta,Lateral de Ombro
-Elevação frontal halteres,Anterior de Ombro
-Elevação frontal anilha,Anterior de Ombro
-Desenvolvimento Arnold,Anterior de Ombro
-Desenvolvimento máquina,Anterior de Ombro
-Elevação frontal na polia,Anterior de Ombro
-Crucifixo inverso máquina,Posterior de Ombro
-Crucifixo inverso halteres,Posterior de Ombro
-Face pull (corda),Posterior de Ombro
-Deltoide posterior na polia,Posterior de Ombro
-Remada alta pegada aberta,Posterior de Ombro
-Rosca direta barra,Bíceps
-Rosca direta barra W,Bíceps
-Rosca alternada halteres,Bíceps
-Rosca martelo,Bíceps
-Rosca Scott no banco,Bíceps
-Rosca Scott máquina,Bíceps
-Rosca concentrada,Bíceps
-Rosca inclinada 45º,Bíceps
-Rosca simultânea halteres,Bíceps
-Rosca na polia,Bíceps
-Tríceps pulley barra,Tríceps
-Tríceps pulley corda,Tríceps
-Tríceps testa com barra,Tríceps
-Tríceps francês,Tríceps
-Tríceps coice (kickback),Tríceps
-Tríceps mergulho no banco,Tríceps
-Tríceps na máquina,Tríceps
-Supino fechado,Tríceps
-Abdominal máquina,Abdômen
-Abdominal supra (crunch),Abdômen
-Prancha,Abdômen
-Elevação de pernas,Abdômen
-Abdominal infra,Abdômen
-Abdominal oblíquo,Abdômen
-Roda abdominal,Abdômen
-Encolhimento com halteres,Trapézio
-Encolhimento com barra,Trapézio
-Encolhimento no smith,Trapézio
-Rosca de punho,Antebraço
-Rosca inversa,Antebraço
-Farmer walk,Antebraço
+﻿exercicio,grupo_muscular,primeiraSubstituicao,segundaSubstituicao,urlVideo
+Supino reto barra,Peito,Supino reto halteres,Supino máquina,https://www.youtube.com/watch?v=x5cAnDj3sVc
+Supino inclinado barra,Peito,Supino inclinado halteres 30º,Supino máquina,https://www.youtube.com/watch?v=7lm16JD0S08
+Supino reto halteres,Peito,Supino reto barra,Supino máquina,https://www.youtube.com/watch?v=ORO9-Sh7hIA
+Supino inclinado halteres 30º,Peito,Supino inclinado barra,Supino máquina,https://www.youtube.com/watch?v=PZecKOpWOrk
+Supino máquina,Peito,Supino reto barra,Supino reto halteres,https://www.youtube.com/results?search_query=chest+press+machine+proper+form
+Crucifixo máquina (peck deck),Peito,Crucifixo halteres,Crossover na polia,https://www.youtube.com/results?search_query=pec+deck+machine+chest+fly+proper+form
+Crucifixo halteres,Peito,Crucifixo máquina (peck deck),Crossover na polia,https://www.youtube.com/results?search_query=dumbbell+chest+fly+proper+form
+Crossover na polia,Peito,Crucifixo máquina (peck deck),Crucifixo halteres,https://www.youtube.com/results?search_query=cable+crossover+chest+fly+proper+form
+Flexão de braço,Peito,Supino reto barra,Supino reto halteres,https://www.youtube.com/watch?v=i9sTjhN4Z3M
+Supino declinado,Peito,Supino reto barra,Supino máquina,https://www.youtube.com/results?search_query=decline+bench+press+proper+form
+Puxada frente (pulldown),Costas,Puxada supinada,Barra fixa,https://www.youtube.com/watch?v=SALxEARiMkw
+Puxada supinada,Costas,Puxada frente (pulldown),Barra fixa,https://www.youtube.com/results?search_query=underhand+lat+pulldown+proper+form
+Remada baixa sentado,Costas,Remada aberta máquina,Remada curvada barra,https://www.youtube.com/watch?v=vwHG9Jfu4sw
+Remada curvada barra,Costas,Remada cavalinho (T-bar),Remada unilateral halter (serrote),https://www.youtube.com/results?search_query=barbell+bent+over+row+proper+form
+Remada unilateral halter (serrote),Costas,Remada curvada barra,Remada cavalinho (T-bar),https://www.youtube.com/results?search_query=one+arm+dumbbell+row+proper+form
+Remada cavalinho (T-bar),Costas,Remada curvada barra,Remada aberta máquina,https://www.youtube.com/results?search_query=T+bar+row+proper+form
+Remada aberta máquina,Costas,Remada baixa sentado,Remada cavalinho (T-bar),https://www.youtube.com/results?search_query=wide+grip+machine+row+proper+form
+Pulldown com corda,Costas,Pullover,,https://www.youtube.com/results?search_query=straight+arm+rope+pulldown+proper+form
+Barra fixa,Costas,Puxada frente (pulldown),Puxada supinada,https://www.youtube.com/watch?v=s6dap4LMvdw
+Pullover,Costas,Pulldown com corda,,https://www.youtube.com/results?search_query=dumbbell+pullover+proper+form
+Agachamento livre,Quadríceps,Agachamento no smith,Agachamento hack,https://www.youtube.com/watch?v=AuQ5Ezph7eg
+Agachamento hack,Quadríceps,Agachamento no smith,Agachamento livre,https://www.youtube.com/results?search_query=hack+squat+machine+proper+form
+Leg press 45,Quadríceps,Leg press horizontal,Agachamento hack,https://www.youtube.com/results?search_query=45+degree+leg+press+proper+form
+Cadeira extensora,Quadríceps,Leg press 45,Leg press horizontal,https://www.youtube.com/results?search_query=leg+extension+machine+proper+form
+Afundo com halteres,Quadríceps,Agachamento búlgaro,Agachamento livre,https://www.youtube.com/results?search_query=dumbbell+lunges+proper+form
+Agachamento no smith,Quadríceps,Agachamento livre,Agachamento hack,https://www.youtube.com/results?search_query=smith+machine+squat+proper+form
+Agachamento búlgaro,Quadríceps,Afundo com halteres,Agachamento livre,https://www.youtube.com/results?search_query=Bulgarian+split+squat+proper+form
+Leg press horizontal,Quadríceps,Leg press 45,Agachamento hack,https://www.youtube.com/results?search_query=horizontal+seated+leg+press+proper+form
+Stiff com barra,Posterior de Coxa,Levantamento terra romeno,Stiff com halteres,https://www.youtube.com/results?search_query=barbell+stiff+leg+deadlift+proper+form
+Stiff com halteres,Posterior de Coxa,Stiff com barra,Levantamento terra romeno,https://www.youtube.com/results?search_query=dumbbell+stiff+leg+deadlift+proper+form
+Cadeira flexora,Posterior de Coxa,Mesa flexora (deitado),Flexora em pé unilateral,https://www.youtube.com/watch?v=ELOCsoDSmrg
+Mesa flexora (deitado),Posterior de Coxa,Cadeira flexora,Flexora em pé unilateral,https://www.youtube.com/results?search_query=lying+leg+curl+proper+form
+Flexora em pé unilateral,Posterior de Coxa,Cadeira flexora,Mesa flexora (deitado),https://www.youtube.com/results?search_query=standing+single+leg+curl+proper+form
+Levantamento terra romeno,Posterior de Coxa,Stiff com barra,Stiff com halteres,https://www.youtube.com/results?search_query=barbell+Romanian+deadlift+proper+form
+Good morning,Posterior de Coxa,Stiff com barra,Levantamento terra romeno,https://www.youtube.com/results?search_query=barbell+good+morning+exercise+proper+form
+Banco de extensão lombar,Posterior de Coxa,Good morning,Levantamento terra romeno,https://www.youtube.com/results?search_query=45+degree+back+extension+proper+form
+Elevação pélvica (hip thrust),Glúteo,Coice na polia,Agachamento sumô,https://www.youtube.com/results?search_query=barbell+hip+thrust+proper+form
+Abdução na máquina,Glúteo,Cadeira abdutora,,https://www.youtube.com/results?search_query=seated+hip+abduction+machine+proper+form
+Coice na polia,Glúteo,Elevação pélvica (hip thrust),Agachamento sumô,https://www.youtube.com/results?search_query=cable+glute+kickback+proper+form
+Agachamento sumô,Glúteo,Elevação pélvica (hip thrust),Coice na polia,https://www.youtube.com/results?search_query=sumo+squat+proper+form
+Cadeira abdutora,Glúteo,Abdução na máquina,,https://www.youtube.com/results?search_query=hip+abductor+machine+exercise+proper+form
+Panturrilha em pé (máquina),Panturrilha,Panturrilha no smith,Panturrilha unilateral halter,https://www.youtube.com/results?search_query=standing+calf+raise+machine+proper+form
+Panturrilha sentado,Panturrilha,Panturrilha no leg press,,https://www.youtube.com/watch?v=ZrBroyhSJZ4
+Panturrilha no leg press,Panturrilha,Panturrilha em pé (máquina),Panturrilha no smith,https://www.youtube.com/results?search_query=leg+press+calf+raise+proper+form
+Panturrilha unilateral halter,Panturrilha,Panturrilha em pé (máquina),Panturrilha no smith,https://www.youtube.com/results?search_query=single+leg+dumbbell+calf+raise+proper+form
+Panturrilha no smith,Panturrilha,Panturrilha em pé (máquina),Panturrilha unilateral halter,https://www.youtube.com/results?search_query=smith+machine+calf+raise+proper+form
+Elevação lateral halteres,Lateral de Ombro,Elevação lateral na polia,Elevação lateral máquina,https://www.youtube.com/watch?v=PzsMitRdI_8
+Elevação lateral na polia,Lateral de Ombro,Elevação lateral halteres,Elevação lateral máquina,https://www.youtube.com/results?search_query=cable+lateral+raise+proper+form
+Elevação lateral máquina,Lateral de Ombro,Elevação lateral halteres,Elevação lateral na polia,https://www.youtube.com/results?search_query=lateral+raise+machine+proper+form
+Desenvolvimento militar,Lateral de Ombro,Desenvolvimento halteres,,https://www.youtube.com/results?search_query=barbell+overhead+military+press+proper+form
+Desenvolvimento halteres,Lateral de Ombro,Desenvolvimento militar,,https://www.youtube.com/watch?v=qEwKCR5JCog
+Remada alta,Lateral de Ombro,Elevação lateral halteres,Elevação lateral na polia,https://www.youtube.com/results?search_query=upright+row+proper+form
+Elevação frontal halteres,Anterior de Ombro,Elevação frontal anilha,Elevação frontal na polia,https://www.youtube.com/results?search_query=dumbbell+front+raise+proper+form
+Elevação frontal anilha,Anterior de Ombro,Elevação frontal halteres,Elevação frontal na polia,https://www.youtube.com/results?search_query=plate+front+raise+proper+form
+Desenvolvimento Arnold,Anterior de Ombro,Desenvolvimento máquina,,https://www.youtube.com/results?search_query=Arnold+press+proper+form
+Desenvolvimento máquina,Anterior de Ombro,Desenvolvimento Arnold,,https://www.youtube.com/results?search_query=shoulder+press+machine+proper+form
+Elevação frontal na polia,Anterior de Ombro,Elevação frontal halteres,Elevação frontal anilha,https://www.youtube.com/results?search_query=cable+front+raise+proper+form
+Crucifixo inverso máquina,Posterior de Ombro,Crucifixo inverso halteres,Deltoide posterior na polia,https://www.youtube.com/results?search_query=reverse+pec+deck+proper+form
+Crucifixo inverso halteres,Posterior de Ombro,Crucifixo inverso máquina,Deltoide posterior na polia,https://www.youtube.com/results?search_query=bent+over+reverse+dumbbell+fly+proper+form
+Face pull (corda),Posterior de Ombro,Deltoide posterior na polia,Crucifixo inverso máquina,https://www.youtube.com/watch?v=ljgqer1ZpXg
+Deltoide posterior na polia,Posterior de Ombro,Crucifixo inverso máquina,Crucifixo inverso halteres,https://www.youtube.com/results?search_query=cable+rear+delt+fly+proper+form
+Remada alta pegada aberta,Posterior de Ombro,Face pull (corda),,https://www.youtube.com/results?search_query=wide+grip+upright+row+proper+form
+Rosca direta barra,Bíceps,Rosca direta barra W,Rosca simultânea halteres,https://www.youtube.com/results?search_query=barbell+biceps+curl+proper+form
+Rosca direta barra W,Bíceps,Rosca direta barra,Rosca na polia,https://www.youtube.com/watch?v=V6UEDzY51gY
+Rosca alternada halteres,Bíceps,Rosca simultânea halteres,Rosca direta barra,https://www.youtube.com/results?search_query=alternating+dumbbell+curl+proper+form
+Rosca martelo,Bíceps,Rosca alternada halteres,Rosca simultânea halteres,https://www.youtube.com/results?search_query=hammer+curl+proper+form
+Rosca Scott no banco,Bíceps,Rosca Scott máquina,Rosca concentrada,https://www.youtube.com/results?search_query=preacher+curl+bench+proper+form
+Rosca Scott máquina,Bíceps,Rosca Scott no banco,Rosca concentrada,https://www.youtube.com/results?search_query=preacher+curl+machine+proper+form
+Rosca concentrada,Bíceps,Rosca Scott no banco,Rosca Scott máquina,https://www.youtube.com/results?search_query=concentration+curl+proper+form
+Rosca inclinada 45º,Bíceps,Rosca alternada halteres,Rosca simultânea halteres,https://www.youtube.com/watch?v=VD0mc0oX2ac
+Rosca simultânea halteres,Bíceps,Rosca alternada halteres,Rosca direta barra,https://www.youtube.com/results?search_query=standing+dumbbell+bicep+curl+proper+form
+Rosca na polia,Bíceps,Rosca direta barra,Rosca direta barra W,https://www.youtube.com/results?search_query=cable+bicep+curl+proper+form
+Tríceps pulley barra,Tríceps,Tríceps pulley corda,Tríceps na máquina,https://www.youtube.com/results?search_query=straight+bar+triceps+pushdown+proper+form
+Tríceps pulley corda,Tríceps,Tríceps pulley barra,Tríceps na máquina,https://www.youtube.com/results?search_query=rope+triceps+pushdown+proper+form
+Tríceps testa com barra,Tríceps,Tríceps francês,,https://www.youtube.com/results?search_query=barbell+skull+crushers+proper+form
+Tríceps francês,Tríceps,Tríceps testa com barra,,https://www.youtube.com/results?search_query=overhead+dumbbell+triceps+extension+proper+form
+Tríceps coice (kickback),Tríceps,Tríceps pulley barra,Tríceps pulley corda,https://www.youtube.com/shorts/Cbi7Z6uvEXU
+Tríceps mergulho no banco,Tríceps,Supino fechado,,https://www.youtube.com/results?search_query=bench+dips+triceps+proper+form
+Tríceps na máquina,Tríceps,Tríceps pulley barra,Tríceps pulley corda,https://www.youtube.com/results?search_query=seated+triceps+extension+machine+proper+form
+Supino fechado,Tríceps,Tríceps mergulho no banco,Tríceps na máquina,https://www.youtube.com/results?search_query=close+grip+bench+press+proper+form
+Abdominal máquina,Abdômen,Abdominal supra (crunch),,https://www.youtube.com/results?search_query=machine+crunch+proper+form
+Abdominal supra (crunch),Abdômen,Abdominal máquina,,https://www.youtube.com/results?search_query=abdominal+crunch+proper+form
+Prancha,Abdômen,Roda abdominal,,https://www.youtube.com/results?search_query=forearm+plank+proper+form
+Elevação de pernas,Abdômen,Abdominal infra,,https://www.youtube.com/results?search_query=lying+leg+raises+proper+form
+Abdominal infra,Abdômen,Elevação de pernas,,https://www.youtube.com/results?search_query=reverse+crunch+proper+form
+Abdominal oblíquo,Abdômen,Abdominal supra (crunch),Abdominal máquina,https://www.youtube.com/results?search_query=oblique+crunch+proper+form
+Roda abdominal,Abdômen,Prancha,,https://www.youtube.com/results?search_query=ab+wheel+rollout+proper+form
+Encolhimento com halteres,Trapézio,Encolhimento com barra,Encolhimento no smith,https://www.youtube.com/watch?v=xDt6qbKgLkY
+Encolhimento com barra,Trapézio,Encolhimento no smith,Encolhimento com halteres,https://www.youtube.com/results?search_query=barbell+shrug+proper+form
+Encolhimento no smith,Trapézio,Encolhimento com barra,Encolhimento com halteres,https://www.youtube.com/results?search_query=smith+machine+shrug+proper+form
+Rosca de punho,Antebraço,Rosca inversa,Farmer walk,https://www.youtube.com/results?search_query=wrist+curl+proper+form
+Rosca inversa,Antebraço,Rosca de punho,Farmer walk,https://www.youtube.com/results?search_query=reverse+barbell+curl+proper+form
+Farmer walk,Antebraço,Rosca de punho,Rosca inversa,https://www.youtube.com/watch?v=Hvwv2uliIqc

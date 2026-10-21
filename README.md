@@ -90,6 +90,57 @@ ativo em cada data: registros anteriores sem essa informação são preservados 
 base no programa selecionado antes da primeira alteração. Não é possível reconstruir
 automaticamente trocas antigas que nunca foram registradas.
 
+## Banco de exercícios revisado
+
+O catálogo contém 93 exercícios em 14 grupos, conforme o CSV revisado em
+[exports/banco-exercicios-appfit.csv](exports/banco-exercicios-appfit.csv).
+Cada registro embutido no HTML possui os seguintes campos:
+
+| Coluna do CSV | Campo interno | Conteúdo |
+| --- | --- | --- |
+| `exercicio` | `nome` | Nome do exercício |
+| `grupo_muscular` | `grupo` | Grupo muscular |
+| `primeiraSubstituicao` | `primeiraSubstituicao` | Nome da primeira alternativa |
+| `segundaSubstituicao` | `segundaSubstituicao` | Nome da segunda alternativa; vazio quando não informado |
+| `urlVideo` | `urlVideo` | Endereço informado no CSV |
+
+Os nomes, grupos e a ordem dos exercícios foram mantidos. Na execução diária,
+`primeiraSubstituicao` e `segundaSubstituicao` oferecem alternativas para aquela
+sessão, e o botão **Execução** usa `urlVideo`. Exercícios manuais fora do catálogo
+continuam com busca no YouTube como alternativa. Os programas e registros já
+salvos não são reescritos pela carga do catálogo.
+
+### Substituir um exercício apenas naquele dia
+
+Na aba **Hoje**, cada exercício do catálogo mostra suas substituições cadastradas.
+Toque em uma alternativa para executar esse exercício no lugar do planejado.
+A troca mantém as séries e a meta de repetições, sem alterar o programa ou os
+outros dias. **Voltar para [exercício]** restaura a escolha original.
+
+Cargas, repetições realizadas e a marca de conclusão são separadas por exercício.
+Ao alternar entre as opções, os valores já anotados reaparecem no exercício
+correspondente; valores do exercício anterior não são copiados. Se você registrar
+séries em mais de uma alternativa no mesmo dia, todos os registros permanecem
+no progresso dos respectivos exercícios. A conclusão do item do treino considera
+a opção atualmente selecionada. Recordes e sugestões da última carga consultam
+o histórico do exercício escolhido, inclusive em outras posições do treino.
+
+As escolhas diárias acompanham o backup JSON, a persistência local e o payload
+de sincronização Firebase. **Trocar no programa** continua disponível para alterar
+a programação; as opções de substituição diária não fazem essa alteração.
+
+O HTML continua autocontido: o app não precisa buscar o CSV para funcionar offline.
+Para carregar uma revisão do CSV ou conferir se o catálogo embutido está atualizado:
+
+```sh
+python3 scripts/import-exercises.py
+python3 scripts/import-exercises.py --check
+```
+
+A carga verifica as cinco colunas, os nomes únicos, as referências de substituição,
+os campos obrigatórios e o formato HTTPS dos endereços; preserva os valores do CSV.
+O formato do endereço não comprova disponibilidade ou conteúdo do vídeo.
+
 ## Desenvolvimento e testes
 
 Use Node.js compatível com o lockfile (validado com Node.js 24) e Python 3:
@@ -105,12 +156,16 @@ Em outro terminal, na raiz do projeto:
 
 ```sh
 node tests/custom-programs.mjs
+node tests/daily-substitutions.mjs
+python3 scripts/import-exercises.py --check
 ```
 
 A suíte contém **170 verificações** de criação, validação, seleções, ativação,
 duplicação, reordenação, exclusão, histórico, persistência, escape de nomes,
 payload de sincronização, restauração remota e navegação. Canvas e áudio são simulados.
-O comando `npm test` herdado do projeto é um placeholder; use o comando acima.
+O comando `npm test` herdado do projeto é um placeholder; use os comandos acima.
+A suíte de substituições diárias adiciona 31 verificações de seleção, separação de
+cargas e conclusão, progresso, URLs, persistência e preservação do histórico.
 
 Nesta versão também passaram 27 verificações de regressão do teste legado,
 executado em cópia adaptada ao nome `index.html`, às seis abas atuais e ao descanso
