@@ -1,0 +1,334 @@
+{
+  "id": "excel_fullbody_aprovado_v1_1",
+  "nome": "Full-body | Força, Hipertrofia e Condicionamento (v1.1)",
+  "model": "fullbody",
+  "sessions": [
+    "excel_fullbody_aprovado_v1_1_A",
+    "excel_fullbody_aprovado_v1_1_B",
+    "excel_fullbody_aprovado_v1_1_C"
+  ],
+  "off": "excel_fullbody_aprovado_v1_1_OFF",
+  "days": [
+    "excel_fullbody_aprovado_v1_1_OFF",
+    "excel_fullbody_aprovado_v1_1_OFF",
+    "excel_fullbody_aprovado_v1_1_A",
+    "excel_fullbody_aprovado_v1_1_OFF",
+    "excel_fullbody_aprovado_v1_1_B",
+    "excel_fullbody_aprovado_v1_1_OFF",
+    "excel_fullbody_aprovado_v1_1_C"
+  ],
+  "plans": {
+    "excel_fullbody_aprovado_v1_1_OFF": {
+      "t": "excel_fullbody_aprovado_v1_1_OFF",
+      "tipo": "excel_fullbody_aprovado_v1_1_OFF",
+      "titulo": "Descanso",
+      "dia": "Descanso",
+      "foco": "Recuperação",
+      "rest": true,
+      "ex": [
+        {
+          "grupo": "Recuperação",
+          "nome": "Descanso completo",
+          "series": "",
+          "reps": "",
+          "obs": "Sem treino planejado"
+        }
+      ]
+    },
+    "excel_fullbody_aprovado_v1_1_A": {
+      "t": "excel_fullbody_aprovado_v1_1_A",
+      "tipo": "excel_fullbody_aprovado_v1_1_A",
+      "titulo": "Full-body A — Base geral",
+      "dia": "Terça",
+      "foco": "Corpo inteiro",
+      "ex": [
+        {
+          "id": "excel_fullbody_aprovado_v1_1_A_01",
+          "nome": "Leg press 45",
+          "grupo": "Quadríceps",
+          "primeiraSubstituicao": "Leg press horizontal",
+          "segundaSubstituicao": "Agachamento hack",
+          "urlVideo": "https://www.youtube.com/results?search_query=45+degree+leg+press+proper+form",
+          "series": 3,
+          "reps": "8–12",
+          "obs": "Amplitude confortável; observar a resposta dos joelhos."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_A_02",
+          "nome": "Supino reto barra",
+          "grupo": "Peito",
+          "primeiraSubstituicao": "Supino reto halteres",
+          "segundaSubstituicao": "Supino máquina",
+          "urlVideo": "https://www.youtube.com/watch?v=x5cAnDj3sVc",
+          "series": 3,
+          "reps": "6–10",
+          "obs": "Intervalos de 2–3 min; técnica antes da carga."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_A_03",
+          "nome": "Puxada frente (pulldown)",
+          "grupo": "Costas",
+          "primeiraSubstituicao": "Puxada supinada",
+          "segundaSubstituicao": "Barra fixa",
+          "urlVideo": "https://www.youtube.com/watch?v=SALxEARiMkw",
+          "series": 3,
+          "reps": "8–12",
+          "obs": "Poupar ombros para o remo de quarta."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_A_04",
+          "nome": "Cadeira flexora",
+          "grupo": "Posterior de Coxa",
+          "primeiraSubstituicao": "Mesa flexora (deitado)",
+          "segundaSubstituicao": "Flexora em pé unilateral",
+          "urlVideo": "https://www.youtube.com/watch?v=ELOCsoDSmrg",
+          "series": 3,
+          "reps": "10–15",
+          "obs": "Versão sentada, confortável para o refluxo."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_A_05",
+          "nome": "Rosca inclinada 45º",
+          "grupo": "Bíceps",
+          "primeiraSubstituicao": "Rosca alternada halteres",
+          "segundaSubstituicao": "Rosca simultânea halteres",
+          "urlVideo": "https://www.youtube.com/watch?v=VD0mc0oX2ac",
+          "series": 3,
+          "reps": "10–12",
+          "obs": "Manter ombros estáveis e sem balanço."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_A_06",
+          "nome": "Tríceps na máquina",
+          "grupo": "Tríceps",
+          "primeiraSubstituicao": "Tríceps pulley barra",
+          "segundaSubstituicao": "Tríceps pulley corda",
+          "urlVideo": "https://www.youtube.com/results?search_query=seated+triceps+extension+machine+proper+form",
+          "series": 3,
+          "reps": "10–15",
+          "obs": "RIR inicial 3–4; sem falha."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_A_07",
+          "nome": "Panturrilha em pé (máquina)",
+          "grupo": "Panturrilha",
+          "primeiraSubstituicao": "Panturrilha no smith",
+          "segundaSubstituicao": "Panturrilha unilateral halter",
+          "urlVideo": "https://www.youtube.com/results?search_query=standing+calf+raise+machine+proper+form",
+          "series": 3,
+          "reps": "10–15",
+          "obs": "Movimento controlado."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_A_08",
+          "nome": "Prancha",
+          "grupo": "Abdômen",
+          "primeiraSubstituicao": "Roda abdominal",
+          "segundaSubstituicao": "",
+          "urlVideo": "https://www.youtube.com/results?search_query=forearm+plank+proper+form",
+          "series": 3,
+          "reps": "20–40 s",
+          "obs": "Postura estável; respiração contínua."
+        }
+      ]
+    },
+    "excel_fullbody_aprovado_v1_1_B": {
+      "t": "excel_fullbody_aprovado_v1_1_B",
+      "tipo": "excel_fullbody_aprovado_v1_1_B",
+      "titulo": "Full-body B — Ombros e posterior",
+      "dia": "Quinta",
+      "foco": "Corpo inteiro",
+      "ex": [
+        {
+          "id": "excel_fullbody_aprovado_v1_1_B_01",
+          "nome": "Agachamento livre",
+          "grupo": "Quadríceps",
+          "primeiraSubstituicao": "Agachamento no smith",
+          "segundaSubstituicao": "Agachamento hack",
+          "urlVideo": "https://www.youtube.com/watch?v=AuQ5Ezph7eg",
+          "series": 3,
+          "reps": "6–10",
+          "obs": "Aquecimento específico; não buscar carga máxima."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_B_02",
+          "nome": "Remada baixa sentado",
+          "grupo": "Costas",
+          "primeiraSubstituicao": "Remada aberta máquina",
+          "segundaSubstituicao": "Remada curvada barra",
+          "urlVideo": "https://www.youtube.com/watch?v=vwHG9Jfu4sw",
+          "series": 3,
+          "reps": "8–12",
+          "obs": "Postura estável; controlar a fadiga lombar."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_B_03",
+          "nome": "Levantamento terra romeno",
+          "grupo": "Posterior de Coxa",
+          "primeiraSubstituicao": "Stiff com barra",
+          "segundaSubstituicao": "Stiff com halteres",
+          "urlVideo": "https://www.youtube.com/results?search_query=barbell+Romanian+deadlift+proper+form",
+          "series": 3,
+          "reps": "8–10",
+          "obs": "Execução técnica e RIR 3–4."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_B_04",
+          "nome": "Mergulho assistido nas paralelas",
+          "grupo": "Tríceps",
+          "primeiraSubstituicao": "",
+          "segundaSubstituicao": "",
+          "urlVideo": "https://www.youtube.com/results?search_query=assisted+parallel+bar+dips+proper+form",
+          "series": 3,
+          "reps": "8–12",
+          "obs": "Mergulho assistido nas paralelas, conforme ajuste solicitado na planilha; 3 séries de 8–12 repetições."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_B_05",
+          "nome": "Crucifixo máquina (peck deck)",
+          "grupo": "Peito",
+          "primeiraSubstituicao": "Crucifixo halteres",
+          "segundaSubstituicao": "Crossover na polia",
+          "urlVideo": "https://www.youtube.com/results?search_query=pec+deck+machine+chest+fly+proper+form",
+          "series": 3,
+          "reps": "10–15",
+          "obs": "Amplitude confortável para os ombros."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_B_06",
+          "nome": "Elevação lateral halteres",
+          "grupo": "Lateral de Ombro",
+          "primeiraSubstituicao": "Elevação lateral na polia",
+          "segundaSubstituicao": "Elevação lateral máquina",
+          "urlVideo": "https://www.youtube.com/watch?v=PzsMitRdI_8",
+          "series": 3,
+          "reps": "10–15",
+          "obs": "Trabalho direto de ombros concentrado na quinta."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_B_07",
+          "nome": "Face pull (corda)",
+          "grupo": "Posterior de Ombro",
+          "primeiraSubstituicao": "Deltoide posterior na polia",
+          "segundaSubstituicao": "Crucifixo inverso máquina",
+          "urlVideo": "https://www.youtube.com/watch?v=ljgqer1ZpXg",
+          "series": 3,
+          "reps": "12–15",
+          "obs": "Sem compensação e sem ir à falha."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_B_08",
+          "nome": "Abdominal máquina",
+          "grupo": "Abdômen",
+          "primeiraSubstituicao": "Abdominal supra (crunch)",
+          "segundaSubstituicao": "",
+          "urlVideo": "https://www.youtube.com/results?search_query=machine+crunch+proper+form",
+          "series": 3,
+          "reps": "10–15",
+          "obs": "Respirar continuamente; evitar desconforto por refluxo."
+        }
+      ]
+    },
+    "excel_fullbody_aprovado_v1_1_C": {
+      "t": "excel_fullbody_aprovado_v1_1_C",
+      "tipo": "excel_fullbody_aprovado_v1_1_C",
+      "titulo": "Full-body C — Complementar",
+      "dia": "Sábado",
+      "foco": "Corpo inteiro",
+      "ex": [
+        {
+          "id": "excel_fullbody_aprovado_v1_1_C_01",
+          "nome": "Afundo com halteres",
+          "grupo": "Quadríceps",
+          "primeiraSubstituicao": "Agachamento búlgaro",
+          "segundaSubstituicao": "Agachamento livre",
+          "urlVideo": "https://www.youtube.com/results?search_query=dumbbell+lunges+proper+form",
+          "series": 3,
+          "reps": "8–10 por perna",
+          "obs": "Se domingo, ajustar esforço antes do remo de segunda."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_C_02",
+          "nome": "Supino máquina",
+          "grupo": "Peito",
+          "primeiraSubstituicao": "Supino reto barra",
+          "segundaSubstituicao": "Supino reto halteres",
+          "urlVideo": "https://www.youtube.com/results?search_query=chest+press+machine+proper+form",
+          "series": 3,
+          "reps": "8–12",
+          "obs": "Evitar falha; observar fadiga dos ombros."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_C_03",
+          "nome": "Remada aberta máquina",
+          "grupo": "Costas",
+          "primeiraSubstituicao": "Remada baixa sentado",
+          "segundaSubstituicao": "Remada cavalinho (T-bar)",
+          "urlVideo": "https://www.youtube.com/results?search_query=wide+grip+machine+row+proper+form",
+          "series": 3,
+          "reps": "8–12",
+          "obs": "Ajustar intervalos conforme a recuperação."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_C_04",
+          "nome": "Elevação pélvica (hip thrust)",
+          "grupo": "Glúteo",
+          "primeiraSubstituicao": "Coice na polia",
+          "segundaSubstituicao": "Agachamento sumô",
+          "urlVideo": "https://www.youtube.com/results?search_query=barbell+hip+thrust+proper+form",
+          "series": 3,
+          "reps": "8–12",
+          "obs": "Controlar a execução; amplitude confortável."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_C_05",
+          "nome": "Cadeira flexora",
+          "grupo": "Posterior de Coxa",
+          "primeiraSubstituicao": "Mesa flexora (deitado)",
+          "segundaSubstituicao": "Flexora em pé unilateral",
+          "urlVideo": "https://www.youtube.com/watch?v=ELOCsoDSmrg",
+          "series": 3,
+          "reps": "10–15",
+          "obs": "Preferir sentada devido ao refluxo."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_C_06",
+          "nome": "Rosca direta barra W",
+          "grupo": "Bíceps",
+          "primeiraSubstituicao": "Rosca direta barra",
+          "segundaSubstituicao": "Rosca na polia",
+          "urlVideo": "https://www.youtube.com/watch?v=V6UEDzY51gY",
+          "series": 3,
+          "reps": "10–12",
+          "obs": "Evitar balanços do tronco."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_C_07",
+          "nome": "Panturrilha sentado",
+          "grupo": "Panturrilha",
+          "primeiraSubstituicao": "Panturrilha no leg press",
+          "segundaSubstituicao": "",
+          "urlVideo": "https://www.youtube.com/watch?v=ZrBroyhSJZ4",
+          "series": 3,
+          "reps": "10–15",
+          "obs": "Movimento controlado."
+        },
+        {
+          "id": "excel_fullbody_aprovado_v1_1_C_08",
+          "nome": "Abdominal oblíquo",
+          "grupo": "Abdômen",
+          "primeiraSubstituicao": "Abdominal supra (crunch)",
+          "segundaSubstituicao": "Abdominal máquina",
+          "urlVideo": "https://www.youtube.com/results?search_query=oblique+crunch+proper+form",
+          "series": 3,
+          "reps": "10–15 por lado",
+          "obs": "Controlar o tronco; respiração contínua."
+        }
+      ]
+    }
+  },
+  "notes": "Objetivo: força, hipertrofia e condicionamento; remo seg/qua. Readaptação: 3–4 RIR; evitar falha. Descansos: 2–3 min (compostos), 1–2 min (isoladores). Ajustar conforme fadiga/recuperação e orientação da endocrinologista. Treino C: sábado preferencial; domingo eventual, com atenção aos 5 dias consecutivos de atividade.",
+  "sourceNotes": "Objetivo: força, hipertrofia e condicionamento; remo seg/qua. Readaptação: 3–4 RIR; evitar falha. Descansos: 2–3 min (compostos), 1–2 min (isoladores). Ajustar conforme fadiga/recuperação e orientação da endocrinologista. Treino C: sábado preferencial; domingo eventual, com atenção aos 5 dias consecutivos de atividade. EXERCÍCIO PENDENTE NO CATÁLOGO: Mergulho assistido nas paralelas — Sessão B, exercício 4, 3x8–12. A planilha usa TEMPORARIAMENTE 'Tríceps pulley corda' nessa posição apenas para manter compatibilidade. Solicitar inclusão do mergulho assistido e substituição antes da carga definitiva; NÃO equivale a 'Tríceps mergulho no banco'.",
+  "sourceFile": "treino_fullbody_appfit_aprovado_v1_1.xlsx",
+  "sourceSha256": "1af7a5ea5900dd8f0dd44f322372452c073abc3aa1506a88d8c235aa577b3933"
+}

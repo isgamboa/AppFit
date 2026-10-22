@@ -9,3 +9,7 @@ Execute também `node tests/daily-substitutions.mjs` para verificar as escolhas
 diárias, os links do CSV, a separação dos registros por exercício, a restauração
 dos valores, o progresso e a persistência das substituições.
 Use `python3 scripts/import-exercises.py --check` para conferir toda a carga do CSV.
+
+Execute `node tests/seeded-programs.mjs` para validar o programa aprovado,
+a carga única, a não ativação e a preservação dos dados e edições existentes.
+Use `python3 scripts/import-programs.py --check` para comparar o JSON ao HTML.

@@ -92,7 +92,7 @@ automaticamente trocas antigas que nunca foram registradas.
 
 ## Banco de exercícios revisado
 
-O catálogo contém 93 exercícios em 14 grupos, conforme o CSV revisado em
+O catálogo contém 94 exercícios em 14 grupos, conforme o CSV revisado em
 [exports/banco-exercicios-appfit.csv](exports/banco-exercicios-appfit.csv).
 Cada registro embutido no HTML possui os seguintes campos:
 
@@ -137,9 +137,41 @@ python3 scripts/import-exercises.py
 python3 scripts/import-exercises.py --check
 ```
 
-A carga verifica as cinco colunas, os nomes únicos, as referências de substituição,
+A carga verifica as cinco colunas, os nomes únicos, as referências de substituição preenchidas,
 os campos obrigatórios e o formato HTTPS dos endereços; preserva os valores do CSV.
 O formato do endereço não comprova disponibilidade ou conteúdo do vídeo.
+
+## Treino full-body aprovado na planilha v1.1
+
+O programa **Full-body | Força, Hipertrofia e Condicionamento (v1.1)** é carregado
+em **Meus programas**, sem ativação automática, conforme a planilha aprovada:
+
+| Sessão | Dia | Exercícios |
+| --- | --- | --- |
+| A — Base geral | Terça | 8 |
+| B — Ombros e posterior | Quinta | 8 |
+| C — Complementar | Sábado | 8 |
+
+Os 24 itens mantêm a ordem, as três séries, as faixas de repetições/duração e
+as observações da planilha. As orientações gerais aparecem na seleção do programa
+e na execução. Domingo não é programado automaticamente como alternativa ao sábado.
+
+A ressalva da planilha foi resolvida: a sessão B, posição 4, usa **Mergulho assistido
+nas paralelas**, cadastrado separadamente de **Tríceps mergulho no banco**. O nome
+provisório **Tríceps pulley corda** não foi carregado nessa posição. O novo exercício
+não tem substituições indicadas; seu link é uma busca de execução no YouTube,
+sem atribuição de um vídeo específico não fornecido.
+
+Os dados aprovados estão em `data/programas/fullbody-aprovado-v1_1.json` e também
+embutidos no HTML para uso offline. Ao abrir a versão nova, o programa é adicionado
+uma única vez aos programas existentes: o programa ativo, as edições do usuário,
+os históricos e exclusões posteriores são preservados. Para conferir ou atualizar
+o conteúdo embutido a partir dos JSONs:
+
+```sh
+python3 scripts/import-programs.py --check
+python3 scripts/import-programs.py
+```
 
 ## Desenvolvimento e testes
 
@@ -157,10 +189,11 @@ Em outro terminal, na raiz do projeto:
 ```sh
 node tests/custom-programs.mjs
 node tests/daily-substitutions.mjs
+node tests/seeded-programs.mjs
 python3 scripts/import-exercises.py --check
 ```
 
-A suíte contém **170 verificações** de criação, validação, seleções, ativação,
+A suíte de programas personalizados contém **171 verificações** de criação, validação, seleções, ativação,
 duplicação, reordenação, exclusão, histórico, persistência, escape de nomes,
 payload de sincronização, restauração remota e navegação. Canvas e áudio são simulados.
 O comando `npm test` herdado do projeto é um placeholder; use os comandos acima.

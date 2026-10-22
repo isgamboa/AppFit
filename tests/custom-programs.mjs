@@ -41,6 +41,8 @@ ok(typeof window.setTab==="function", "globals reachable (setTab)");
 
 
 const run=code=>window.eval(code);
+// Isolate editor tests from preloaded user programs (covered in seeded-programs.mjs).
+run('state.customPrograms=[]');
 run('openCustom()');
 ok(!!$('#customSave'), 'editor opens');
 $('#customName').value='ABC pessoal';

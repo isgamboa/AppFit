@@ -25,7 +25,7 @@ def load_catalog(path):
     for line, row in enumerate(rows, 2):
         if set(row) != set(COLUMNS) or any(v is None for v in row.values()):
             raise ValueError(f'Invalid CSV row {line}')
-        for field in ['exercicio', 'grupo_muscular', 'primeiraSubstituicao', 'urlVideo']:
+        for field in ['exercicio', 'grupo_muscular', 'urlVideo']:
             if not row[field].strip():
                 raise ValueError(f'Missing {field} on row {line}')
         if row['exercicio'] in names:
