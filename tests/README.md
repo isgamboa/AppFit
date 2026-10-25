@@ -13,3 +13,6 @@ Use `python3 scripts/import-exercises.py --check` para conferir toda a carga do 
 Execute `node tests/seeded-programs.mjs` para validar o programa aprovado,
 a carga única, a não ativação e a preservação dos dados e edições existentes.
 Use `python3 scripts/import-programs.py --check` para comparar o JSON ao HTML.
+
+Execute `node tests/activities-and-removals.mjs` para validar a remoção de dieta
+e água, a migração de dados antigos, os novos esportes e os cálculos de kcal.

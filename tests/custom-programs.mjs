@@ -36,7 +36,7 @@ await new Promise(r=>setTimeout(r,80));
 // --- boot ---
 ok(!jsErr, "no JS errors on boot ("+jsErr+")");
 ok($("#view") && $("#view").innerHTML.length>200, "Hoje view renders");
-ok($$(".navbtn").length===6, "6 tabs present");
+ok($$(".navbtn").length===5, "5 tabs present");
 ok(typeof window.setTab==="function", "globals reachable (setTab)");
 
 
@@ -103,7 +103,7 @@ ok(st().customPrograms.length===2,'custom programs persisted');
 run('state=load()');ok(run('state.customPrograms.length')===2,'reload preserves programs');
 const cloud=run('syncStateForCloud()');ok(JSON.parse(cloud).customPrograms.length===2,'sync payload includes programs');
 run('applyRemote('+JSON.stringify(cloud)+')');ok(run('state.customPrograms.length')===2,'remote restore preserves programs');
-for(const t of ['hoje','semana','dieta','corpo','atividades','progresso','programas']){window.setTab(t);ok($('#view').innerHTML.length>50,'tab '+t);}
+for(const t of ['hoje','semana','corpo','atividades','progresso','programas']){window.setTab(t);ok($('#view').innerHTML.length>50,'tab '+t);}
 ok(!jsErr,'no runtime errors');
 console.log(`RESULT: ${pass} passed, ${fail} failed`);if(fail)console.log(fails.join('\n'));
 dom.window.close();process.exitCode=fail?1:0;

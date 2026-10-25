@@ -1,7 +1,7 @@
 {
   "name": "Treino — Controle Semanal",
   "short_name": "Treino",
-  "description": "Treino, dieta, atividades e progresso — funciona offline.",
+  "description": "Treino, atividades e progresso — funciona offline.",
   "lang": "pt-BR",
   "start_url": "./",
   "scope": "./",

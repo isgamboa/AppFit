@@ -1,5 +1,5 @@
 /* Service worker — cache do app shell para uso offline */
-const CACHE = "treino-v10-approved-fullbody";
+const CACHE = "treino-v11-training-activities";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()).catch(() => self.skipWaiting()));

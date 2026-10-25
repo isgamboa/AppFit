@@ -1,6 +1,6 @@
 # AppFit — Treino
 
-Aplicativo de treino, dieta e acompanhamento corporal em HTML, CSS e JavaScript.
+Aplicativo de treino, atividades e acompanhamento corporal em HTML, CSS e JavaScript.
 Funciona localmente e offline, sem cadastro obrigatório e sem etapa de build.
 
 Este é o fork [isgamboa/AppFit](https://github.com/isgamboa/AppFit), baseado em
@@ -28,6 +28,40 @@ são mantidas neste fork; o projeto original permanece independente.
 - Ao escolher um dia ocupado por outra sessão, as duas sessões trocam de dia.
 - A introdução automática não substitui uma janela que já esteja aberta.
 - Atualização da versão do cache da PWA para distribuir a versão nova quando hospedada.
+
+## Simplificação do app — branch estrutural
+
+A aba Dieta e todas as funções de refeições, alimentos, metas de kcal/macros,
+calculadora de TMB e ingestão de água foram removidas, incluindo os cartões da
+página Hoje. Peso, medidas e fotos continuam na aba Corpo. Calorias de atividades
+físicas continuam disponíveis; são estimativas de gasto, sem controle de ingestão.
+
+Dados antigos de dieta/água são descartados ao carregar, importar ou receber uma
+sincronização, e não entram nos novos backups ou payloads de sincronização.
+Treinos, programas, cargas, medidas, fotos e registros de atividades são preservados.
+
+Muay Thai, Boxe, Basquete, Ciclismo e Natação saíram das opções de novo registro.
+Atividades antigas dessas modalidades continuam no histórico com os valores salvos.
+Padel e Remo olímpico foram incluídos; o remo também aceita distância opcional.
+
+Os testes de remoção e atividades estão em `tests/activities-and-removals.mjs`
+(60 verificações), além das suítes de treinos e programas existentes.
+
+### Estimativa de gasto das novas atividades
+
+O app mantém a aproximação `kcal = MET × peso (kg) × duração (horas)`, com fator
+0,85 para intensidade leve e 1,15 para intensa. Usa o último peso registrado em
+Corpo; sem registro, usa 75 kg e informa essa referência na tela.
+
+- **Padel: 6 MET**, aproximação por tênis em duplas, sem MET específico validado.
+- **Remo olímpico: 7 MET**, aproximação operacional de esforço moderado na água,
+  sem MET específico validado nesta implementação; não é remo ergômetro.
+
+A consulta ao Compendium de atividades foi bloqueada pela rede do ambiente.
+Esses valores permitem estimativas provisórias e aparecem como aproximações na
+interface; não representam medições individuais nem validação científica específica.
+Por exemplo, com 75 kg e intensidade moderada, 30 minutos resultam em cerca de
+225 kcal para Padel e 263 kcal para Remo olímpico.
 
 ## Como usar
 
@@ -58,7 +92,7 @@ A publicação deve incluir `index.html`, `sw.js`, `manifest.webmanifest`,
 `icon-192.png`, `icon-512.png` e `apple-touch-icon.png`. A instalação da PWA exige
 um endereço servido; abrir somente o HTML local não registra o service worker.
 
-## Recursos originais mantidos
+## Recursos disponíveis
 
 - Programas ABCDE + Full Body (Laércio Refundini), Saitama, Ramon Dino, Arnold e CBum.
 - Abas Hoje e Semana, marcação de exercícios, progresso diário e duração da sessão.
@@ -68,7 +102,6 @@ um endereço servido; abrir somente o HTML local não registra o service worker.
 - Banco de exercícios, substituição, edição e buscas de execução no YouTube.
 - Cronômetro de descanso, som e vibração quando suportados pelo dispositivo.
 - Calculadoras de 1RM e anilhas, aquecimento e rotinas de alongamento.
-- Dieta: refeições, alimentos, metas nutricionais e registro de água.
 - Corpo: peso, medidas, fotos de progresso e gráficos.
 - Registro de atividades físicas com estimativas de gasto energético.
 - Exportação/importação de backup JSON e sincronização Firebase opcional.
@@ -190,18 +223,19 @@ Em outro terminal, na raiz do projeto:
 node tests/custom-programs.mjs
 node tests/daily-substitutions.mjs
 node tests/seeded-programs.mjs
+node tests/activities-and-removals.mjs
 python3 scripts/import-exercises.py --check
 ```
 
-A suíte de programas personalizados contém **171 verificações** de criação, validação, seleções, ativação,
+A suíte de programas personalizados contém **170 verificações** de criação, validação, seleções, ativação,
 duplicação, reordenação, exclusão, histórico, persistência, escape de nomes,
 payload de sincronização, restauração remota e navegação. Canvas e áudio são simulados.
 O comando `npm test` herdado do projeto é um placeholder; use os comandos acima.
 A suíte de substituições diárias adiciona 31 verificações de seleção, separação de
 cargas e conclusão, progresso, URLs, persistência e preservação do histórico.
 
-Nesta versão também passaram 27 verificações de regressão do teste legado,
-executado em cópia adaptada ao nome `index.html`, às seis abas atuais e ao descanso
+Nesta versão também passaram 26 verificações de regressão do teste legado,
+executado em cópia adaptada ao nome `index.html`, às cinco abas atuais e ao descanso
 automático opcional, além de 236 verificações no Chromium em telas de computador
 e celular. O teste de navegador foi executado durante o desenvolvimento e não
 integra a suíte versionada. Essas verificações não validam sincronização com um
