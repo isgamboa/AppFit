@@ -4,7 +4,8 @@
   "description": "",
   "main": "_check.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/run-tests.mjs",
+    "check:data": "python3 scripts/import-exercises.py --check && python3 scripts/import-programs.py --check && python3 scripts/embed-cycles.py --check"
   },
   "keywords": [],
   "author": "",

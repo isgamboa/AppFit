@@ -1,266 +1,197 @@
 # AppFit — Treino
 
 Aplicativo de treino, atividades e acompanhamento corporal em HTML, CSS e JavaScript.
-Funciona localmente e offline, sem cadastro obrigatório e sem etapa de build.
+Funciona localmente e offline, sem cadastro obrigatório. Este é o fork
+[isgamboa/AppFit](https://github.com/isgamboa/AppFit), baseado em
+[DUK22/AppFit](https://github.com/DUK22/AppFit).
 
-Este é o fork [isgamboa/AppFit](https://github.com/isgamboa/AppFit), baseado em
-[DUK22/AppFit](https://github.com/DUK22/AppFit). As personalizações desta versão
-são mantidas neste fork; o projeto original permanece independente.
+## Programas com duração e execuções independentes
 
-## Novidades da versão 1.1.0
+Todos os programas exigem **data de início em uma segunda-feira** e **duração de
+1 a 12 semanas** para começar uma execução. Isso se aplica aos programas padrão,
+aos personalizados e aos modelos anteriores. Salvar um modelo não o ativa.
 
-### Meus programas
+- **Programas padrão periodizados:** exercícios, séries e técnicas podem variar
+  em cada dia de cada semana; a duração é definida pelo programa.
+- **Programas semanais anteriores:** a programação semanal se repete pela duração
+  informada na ativação. O ABCDE original mantém a alternância C1/C2 e D1/D2.
+- **Programas personalizados:** continuam com editor de três sessões ABC ou full-body,
+  escolha dos dias e uma duração em semanas. Não há editor manual de 84 sessões.
 
-- Criação de vários programas personalizados, com um programa ativo por vez.
-- Modelos iniciais **ABC — três dias** e **Full-body — três dias**.
-- Escolha dos três dias da semana e edição dos nomes das sessões A, B e C.
-- Inclusão de exercícios do banco, remoção e reordenação.
-- Edição de nome, grupo muscular, séries, repetições e observações dos exercícios.
-- Duplicação, edição, exclusão e ativação de programas salvos.
-- Inclusão dos programas personalizados no backup JSON e na sincronização Firebase opcional.
-- Identificadores estáveis para exercícios personalizados e cópia da sessão nos registros,
-  para preservar o histórico após alterações ou exclusão do programa.
+O modelo do programa é separado de cada execução. Alterações no modelo personalizado
+valem para novas execuções; o planejamento iniciado mantém sua cópia. Reiniciar cria
+outra execução, preservando resultados e históricos anteriores, inclusive quando
+existem registros de duas execuções na mesma data.
 
-### Correções da montagem de treino
+### Boost PRO Ombro
 
-- A seleção ABC/full-body é aplicada diretamente, sem depender de uma confirmação nativa.
-  A troca redefine os exercícios, preservando o nome do programa e os dias escolhidos.
-- Ao escolher um dia ocupado por outra sessão, as duas sessões trocam de dia.
-- A introdução automática não substitui uma janela que já esteja aberta.
-- Atualização da versão do cache da PWA para distribuir a versão nova quando hospedada.
+Primeiro programa padrão com variação diária, transcrito de quatro PDFs fornecidos:
+**4 semanas, 20 sessões de segunda a sexta e 174 prescrições**, com nível
+intermediário/avançado e ênfase em hipertrofia de ombros. Sábado e domingo são descanso.
+Exercícios repetidos com prescrições diferentes têm identificadores separados.
 
-## Simplificação do app — branch estrutural
-
-A aba Dieta e todas as funções de refeições, alimentos, metas de kcal/macros,
-calculadora de TMB e ingestão de água foram removidas, incluindo os cartões da
-página Hoje. Peso, medidas e fotos continuam na aba Corpo. Calorias de atividades
-físicas continuam disponíveis; são estimativas de gasto, sem controle de ingestão.
-
-Dados antigos de dieta/água são descartados ao carregar, importar ou receber uma
-sincronização, e não entram nos novos backups ou payloads de sincronização.
-Treinos, programas, cargas, medidas, fotos e registros de atividades são preservados.
-
-Muay Thai, Boxe, Basquete, Ciclismo e Natação saíram das opções de novo registro.
-Atividades antigas dessas modalidades continuam no histórico com os valores salvos.
-Padel e Remo olímpico foram incluídos; o remo também aceita distância opcional.
-
-Os testes de remoção e atividades estão em `tests/activities-and-removals.mjs`
-(60 verificações), além das suítes de treinos e programas existentes.
-
-### Estimativa de gasto das novas atividades
-
-O app mantém a aproximação `kcal = MET × peso (kg) × duração (horas)`, com fator
-0,85 para intensidade leve e 1,15 para intensa. Usa o último peso registrado em
-Corpo; sem registro, usa 75 kg e informa essa referência na tela.
-
-- **Padel: 6 MET**, aproximação por tênis em duplas, sem MET específico validado.
-- **Remo olímpico: 7 MET**, aproximação operacional de esforço moderado na água,
-  sem MET específico validado nesta implementação; não é remo ergômetro.
-
-A consulta ao Compendium de atividades foi bloqueada pela rede do ambiente.
-Esses valores permitem estimativas provisórias e aparecem como aproximações na
-interface; não representam medições individuais nem validação científica específica.
-Por exemplo, com 75 kg e intensidade moderada, 30 minutos resultam em cerca de
-225 kcal para Padel e 263 kcal para Remo olímpico.
+O programa está na lista de seleção. Os links dos PDFs não foram utilizados.
+Novos exercícios receberam grupo muscular e busca de execução no YouTube. Veja os
+dados e os critérios de conversão em [data/standard-programs](data/standard-programs/README.md).
+Outros programas periodizados podem ter até 12 semanas, com até 84 sessões.
+A inclusão de PDFs é um processo de análise/carga no desenvolvimento, sem upload de PDF no app.
 
 ## Como usar
 
-### Arquivo local
+Baixe o [index.html](index.html) e abra no navegador. Nenhuma instalação de dependências
+é necessária para usar o aplicativo. Dados ficam no navegador; mantenha backups antes
+de trocar de dispositivo, endereço ou navegador.
 
-Baixe o [index.html](index.html) e abra no navegador. Não é necessário instalar
-as dependências de desenvolvimento para usar o aplicativo. Os dados são salvos
-no navegador; mantenha backups antes de trocar de navegador, dispositivo ou endereço.
+1. Em **Hoje → trocar treino**, escolha um programa.
+2. Informe a segunda-feira de início e a quantidade de semanas. Nos periodizados,
+   a duração vem preenchida e é fixa.
+3. Confirme o início. **Hoje** e **Semana** exibem a sessão correspondente à data,
+   identificando a semana do programa.
+4. Registre carga e repetições e marque as séries concluídas. A ação de conclusão
+   do exercício e **Marcar tudo como feito** continuam disponíveis como atalhos.
 
-### Criar seu programa
+Modelos antigos ou dados sem início/duração ficam com **Configuração pendente** até
+que esses campos sejam informados. Isso não apaga os registros anteriores.
 
-1. Na aba **Hoje**, toque em **trocar treino → Criar meu treino**.
-2. Escolha ABC ou full-body e os três dias da semana.
-3. Navegue pelos botões **A**, **B** e **C** para montar cada sessão.
-4. Adicione exercícios do banco e ajuste séries, repetições e observações.
-5. Toque em **Salvar programa** e depois em **Usar este programa**.
+### Faltas e replanejamento
 
-Na tela de programas, use **Editar**, **Duplicar** ou **Excluir** para gerenciar
-seus treinos. Salvar um programa novo não o ativa automaticamente.
+Por padrão, o programa avança pelo calendário, mesmo quando há faltas. A ação
+**Retomar a última sessão perdida** apresenta uma prévia das datas afetadas.
+Após confirmação, a sessão perdida mais recente passa para hoje; as datas posteriores
+sem realização são deslocadas pelo mesmo intervalo, incluindo os descansos.
 
-### Instalação como PWA
+Sessões com séries concluídas ou valores já registrados não são deslocadas. Isso
+protege sessões parciais e os dados anotados. Conflitos de datas são recusados sem
+alterar o planejamento. Faltas anteriores à sessão retomada permanecem no histórico.
+Os dias da semana podem mudar, e a execução pode durar mais de 12 semanas no calendário:
+o limite se refere à programação original, não ao prolongamento por faltas.
 
-Hospede os arquivos do aplicativo em HTTPS, por exemplo no GitHub Pages, ou use
-localhost para desenvolvimento. Abra o endereço no navegador e use a opção
-**Instalar aplicativo** ou **Adicionar à tela de início**, quando disponível.
+### Técnicas, descanso e substituições
 
-A publicação deve incluir `index.html`, `sw.js`, `manifest.webmanifest`,
-`icon-192.png`, `icon-512.png` e `apple-touch-icon.png`. A instalação da PWA exige
-um endereço servido; abrir somente o HTML local não registra o service worker.
+As prescrições mostram técnica e descanso por exercício. **Bi-sets e tri-sets**
+têm cabeçalho com os participantes, números dos exercícios e destaque visual em
+cada integrante. As técnicas como Drop-set, Rest-pause e No-stop são exibidas;
+a execução interna de suas etapas permanece manual.
 
-## Recursos disponíveis
+O cronômetro respeita o descanso prescrito, inclusive **zero segundos**. Para exercícios
+sem descanso específico, usa o valor dos Ajustes. Isometrias mostram segundos no
+campo da série e não entram no cálculo de PR de 1RM.
 
-- Programas ABCDE + Full Body (Laércio Refundini), Saitama, Ramon Dino, Arnold e CBum.
-- Abas Hoje e Semana, marcação de exercícios, progresso diário e duração da sessão.
-- Alternância C1/C2 e D1/D2 no programa original, com ajuste manual do ciclo.
-- Registro de carga e repetições por série, sugestão da última sessão e de aumento de carga.
-- Estimativa de 1RM, recordes pessoais, gráficos de evolução e adesão semanal.
-- Banco de exercícios, substituição, edição e buscas de execução no YouTube.
-- Cronômetro de descanso, som e vibração quando suportados pelo dispositivo.
-- Calculadoras de 1RM e anilhas, aquecimento e rotinas de alongamento.
-- Corpo: peso, medidas, fotos de progresso e gráficos.
-- Registro de atividades físicas com estimativas de gasto energético.
-- Exportação/importação de backup JSON e sincronização Firebase opcional.
+As substituições do catálogo valem apenas para aquele dia e mantêm as metas de séries
+e repetições. Cargas, repetições e marcas de conclusão permanecem associadas ao exercício
+selecionado. Voltar à escolha anterior restaura seus valores. O botão **Execução** usa
+a URL do catálogo; exercícios manuais sem cadastro usam busca no YouTube.
 
-## Dados, backup e sincronização
+### Conclusão e resultados
 
-O uso local não exige conta. O estado do aplicativo é salvo em `localStorage`.
-Em **⚙️ Ajustes**, exporte um backup JSON e importe no outro dispositivo quando
-quiser transferir os dados, incluindo seus programas personalizados.
+Concluir a última sessão agendada abre automaticamente os resultados. O programa
+não reinicia sozinho. Se o prazo passar sem concluir essa sessão, a página identifica
+o prazo encerrado e permite consultar os resultados ou replanejar uma falta.
 
-Para sincronização automática, siga [CONFIGURAR-SYNC.md](CONFIGURAR-SYNC.md).
-Quando ativada, a sincronização envia dados ao projeto Firebase configurado;
-as fotos permanecem no aparelho e podem ser transferidas por backup. O carregamento
-do Firebase e a sincronização exigem internet, assim como os links do YouTube.
+As estatísticas incluem:
 
-Os novos registros guardam uma cópia da sessão para manter a interpretação do
-histórico após mudanças no programa. O aplicativo antigo não registrava o programa
-ativo em cada data: registros anteriores sem essa informação são preservados com
-base no programa selecionado antes da primeira alteração. Não é possível reconstruir
-automaticamente trocas antigas que nunca foram registradas.
+- Dias treinados versus planejados: um dia treinado exige ao menos uma série concluída.
+- Sessões completas, parciais/com registros, faltas e adesão.
+- Séries planejadas e realizadas por grupo muscular principal, sem duplicar auxiliares.
+- Duração original e calendário após replanejamento.
+- Exercícios com novo PR de 1RM estimado (Epley), comparado ao histórico disponível
+  quando a execução foi criada; apenas séries concluídas entram nesse resultado.
 
-## Banco de exercícios revisado
+Nessa página ficam **Reiniciar programa** e **Selecionar outro programa**. Os resultados
+também estão acessíveis pela lista de execuções na seleção de programas.
 
-O catálogo contém 94 exercícios em 14 grupos, conforme o CSV revisado em
-[exports/banco-exercicios-appfit.csv](exports/banco-exercicios-appfit.csv).
-Cada registro embutido no HTML possui os seguintes campos:
+## Meus programas e recursos mantidos
 
-| Coluna do CSV | Campo interno | Conteúdo |
-| --- | --- | --- |
-| `exercicio` | `nome` | Nome do exercício |
-| `grupo_muscular` | `grupo` | Grupo muscular |
-| `primeiraSubstituicao` | `primeiraSubstituicao` | Nome da primeira alternativa |
-| `segundaSubstituicao` | `segundaSubstituicao` | Nome da segunda alternativa; vazio quando não informado |
-| `urlVideo` | `urlVideo` | Endereço informado no CSV |
+Em **trocar treino → Criar meu treino**, escolha ABC ou full-body, informe a duração,
+defina três dias distintos e monte as sessões A, B e C. É possível adicionar exercícios
+do banco, editar séries/repetições/observações, remover e reordenar. Salve vários
+programas, duplique-os e escolha qual executar.
 
-Os nomes, grupos e a ordem dos exercícios foram mantidos. Na execução diária,
-`primeiraSubstituicao` e `segundaSubstituicao` oferecem alternativas para aquela
-sessão, e o botão **Execução** usa `urlVideo`. Exercícios manuais fora do catálogo
-continuam com busca no YouTube como alternativa. Os programas e registros já
-salvos não são reescritos pela carga do catálogo.
+Continuam disponíveis: programas ABCDE, Saitama, Ramon Dino, Arnold e CBum;
+registro de cargas; vídeos de execução; gráficos e recordes gerais; calculadoras
+de 1RM e anilhas; aquecimento e alongamento; peso, medidas e fotos; atividades físicas;
+exportação/importação e sincronização opcional. As variações C/D do ABCDE podem ser
+invertidas, com confirmação, nas sessões futuras sem registros da execução.
 
-### Substituir um exercício apenas naquele dia
+Dieta, metas de ingestão de kcal/macros, refeições, alimentos, TMB e controle de água
+foram removidos, inclusive seus dados antigos. Os gastos de atividades permanecem.
+Muay Thai, Boxe, Basquete, Ciclismo e Natação não aparecem em novos registros;
+os históricos dessas atividades foram preservados. Padel e Remo olímpico estão disponíveis.
 
-Na aba **Hoje**, cada exercício do catálogo mostra suas substituições cadastradas.
-Toque em uma alternativa para executar esse exercício no lugar do planejado.
-A troca mantém as séries e a meta de repetições, sem alterar o programa ou os
-outros dias. **Voltar para [exercício]** restaura a escolha original.
+A estimativa de atividades é `MET × peso × horas`, com fatores 0,85 (leve) e 1,15
+(intensa), usando o último peso ou 75 kg de referência. **Padel usa aproximação de
+6 MET por tênis em duplas; Remo olímpico usa aproximação de 7 MET para esforço
+moderado na água. Esses dois valores são provisórios e não foram validados em uma
+fonte específica acessível neste ambiente.** O aviso aparece na interface.
 
-Cargas, repetições realizadas e a marca de conclusão são separadas por exercício.
-Ao alternar entre as opções, os valores já anotados reaparecem no exercício
-correspondente; valores do exercício anterior não são copiados. Se você registrar
-séries em mais de uma alternativa no mesmo dia, todos os registros permanecem
-no progresso dos respectivos exercícios. A conclusão do item do treino considera
-a opção atualmente selecionada. Recordes e sugestões da última carga consultam
-o histórico do exercício escolhido, inclusive em outras posições do treino.
+## Backups, migração e privacidade
 
-As escolhas diárias acompanham o backup JSON, a persistência local e o payload
-de sincronização Firebase. **Trocar no programa** continua disponível para alterar
-a programação; as opções de substituição diária não fazem essa alteração.
+Em **⚙️ Ajustes**, exporte um backup JSON ou importe no outro aparelho. O formato
+atual usa `schemaVersion: 2`, incluindo execuções, calendários, ajustes e séries.
+O backup é validado por inteiro antes de substituir o estado atual.
 
-O HTML continua autocontido: o app não precisa buscar o CSV para funcionar offline.
-Para carregar uma revisão do CSV ou conferir se o catálogo embutido está atualizado:
+Arquivos anteriores são migrados sem inventar ciclos: registros antigos continuam
+no **Histórico legado**, consultável em Progresso, sem associação arbitrária a datas
+de início ou duração. Os modelos importados precisam de configuração antes da execução.
+Dados de ingestão retirados do app não são restaurados.
 
-```sh
-python3 scripts/import-exercises.py
-python3 scripts/import-exercises.py --check
-```
+Formato inválido ou versão futura não substituem os dados atuais. Se os dados já
+salvos no navegador forem incompatíveis, o app mantém o conteúdo original, oferece
+sua exportação para recuperação e aguarda um backup válido. A mesma validação protege
+a entrada pela sincronização.
 
-A carga verifica as cinco colunas, os nomes únicos, as referências de substituição preenchidas,
-os campos obrigatórios e o formato HTTPS dos endereços; preserva os valores do CSV.
-O formato do endereço não comprova disponibilidade ou conteúdo do vídeo.
+A sincronização automática é opcional: siga [CONFIGURAR-SYNC.md](CONFIGURAR-SYNC.md).
+Quando ativada, envia os dados ao projeto Firebase configurado. Fotos permanecem no
+aparelho e podem ser transferidas pelo backup. O uso local não exige conta.
+Firebase e links do YouTube exigem internet.
 
-## Treino full-body aprovado na planilha v1.1
+## PWA
 
-O programa **Full-body | Força, Hipertrofia e Condicionamento (v1.1)** é carregado
-em **Meus programas**, sem ativação automática, conforme a planilha aprovada:
+Para instalar como aplicativo, hospede em HTTPS ou sirva em localhost. Inclua
+`index.html`, `sw.js`, `manifest.webmanifest` e os três ícones PNG. Abrir somente o
+HTML local não registra o service worker; a instalação depende do navegador.
+O HTML continua autocontido para execução local.
 
-| Sessão | Dia | Exercícios |
-| --- | --- | --- |
-| A — Base geral | Terça | 8 |
-| B — Ombros e posterior | Quinta | 8 |
-| C — Complementar | Sábado | 8 |
+## Desenvolvimento e verificação
 
-Os 24 itens mantêm a ordem, as três séries, as faixas de repetições/duração e
-as observações da planilha. As orientações gerais aparecem na seleção do programa
-e na execução. Domingo não é programado automaticamente como alternativa ao sábado.
-
-A ressalva da planilha foi resolvida: a sessão B, posição 4, usa **Mergulho assistido
-nas paralelas**, cadastrado separadamente de **Tríceps mergulho no banco**. O nome
-provisório **Tríceps pulley corda** não foi carregado nessa posição. O novo exercício
-não tem substituições indicadas; seu link é uma busca de execução no YouTube,
-sem atribuição de um vídeo específico não fornecido.
-
-Os dados aprovados estão em `data/programas/fullbody-aprovado-v1_1.json` e também
-embutidos no HTML para uso offline. Ao abrir a versão nova, o programa é adicionado
-uma única vez aos programas existentes: o programa ativo, as edições do usuário,
-os históricos e exclusões posteriores são preservados. Para conferir ou atualizar
-o conteúdo embutido a partir dos JSONs:
-
-```sh
-python3 scripts/import-programs.py --check
-python3 scripts/import-programs.py
-```
-
-## Desenvolvimento e testes
-
-Use Node.js compatível com o lockfile (validado com Node.js 24) e Python 3:
+Node.js 24 e Python 3 foram usados na validação. Para instalar e servir:
 
 ```sh
 npm ci
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Não há build. O aplicativo não usa JSDOM em produção; essa dependência é usada nos testes.
-
-Em outro terminal, na raiz do projeto:
+Após editar o motor ou os dados, atualize o HTML autocontido:
 
 ```sh
-node tests/custom-programs.mjs
-node tests/daily-substitutions.mjs
-node tests/seeded-programs.mjs
-node tests/activities-and-removals.mjs
-python3 scripts/import-exercises.py --check
+python3 scripts/import-exercises.py
+python3 scripts/import-programs.py
+python3 scripts/embed-cycles.py
+npm test
+npm run check:data
 ```
 
-A suíte de programas personalizados contém **170 verificações** de criação, validação, seleções, ativação,
-duplicação, reordenação, exclusão, histórico, persistência, escape de nomes,
-payload de sincronização, restauração remota e navegação. Canvas e áudio são simulados.
-O comando `npm test` herdado do projeto é um placeholder; use os comandos acima.
-A suíte de substituições diárias adiciona 31 verificações de seleção, separação de
-cargas e conclusão, progresso, URLs, persistência e preservação do histórico.
+`src/cycles.js` contém o motor de execuções. Os JSONs em `data/standard-programs/`
+contêm programas padrão periodizados, e `data/programas/` mantém o modelo full-body
+aprovado anteriormente. O catálogo atual tem **153 exercícios**, com cinco campos
+de origem no [CSV](exports/banco-exercicios-appfit.csv). Não há servidor de banco de dados.
 
-Nesta versão também passaram 26 verificações de regressão do teste legado,
-executado em cópia adaptada ao nome `index.html`, às cinco abas atuais e ao descanso
-automático opcional, além de 236 verificações no Chromium em telas de computador
-e celular. O teste de navegador foi executado durante o desenvolvimento e não
-integra a suíte versionada. Essas verificações não validam sincronização com um
-Firebase real nem instalação e funcionamento offline completo da PWA.
+Os testes usam JSDOM com canvas e áudio simulados. Há também teste opcional de
+navegador, que requer Playwright disponível no Node e Chromium instalado:
 
-## Estrutura
-
-```text
-index.html              Aplicativo e lógica principal
-sw.js                   Cache para uso offline quando hospedado
-manifest.webmanifest    Metadados de instalação da PWA
-icon-*.png              Ícones do aplicativo
-apple-touch-icon.png    Ícone para dispositivos Apple
-CONFIGURAR-SYNC.md       Configuração opcional do Firebase
-package*.json           Dependências de desenvolvimento e lockfile
-tests/                  Testes dos programas personalizados
-_*.js / _*.mjs          Verificações e arquivos auxiliares herdados
+```sh
+CHROMIUM_PATH=/usr/bin/chromium node tests/browser-cycles.cjs
 ```
+
+Foram verificados os fluxos em telas de computador e celular. Essas verificações
+não substituem teste com Firebase real ou validação completa da instalação/offline da PWA.
+Arquivos auxiliares `_*.js`, `_*.mjs` e cópias HTML herdadas não são a suíte atual;
+use `npm test`.
 
 ## Autoria e licença
 
 Baseado no trabalho de [DUK22/AppFit](https://github.com/DUK22/AppFit), com
 personalizações mantidas por [isgamboa](https://github.com/isgamboa).
-
-O README original declara “Livre para uso pessoal” e sugere
-[MIT](https://choosealicense.com/licenses/mit/), enquanto o `package.json` declara
-ISC. Não há arquivo `LICENSE` neste checkout. Esta versão preserva essas informações
-sem declarar uma nova licença para o código original.
+O README original declara “Livre para uso pessoal” e sugere MIT; o `package.json`
+declara ISC. Não há arquivo `LICENSE` neste checkout. Essas informações são
+preservadas, sem atribuir uma nova licença ao código original.

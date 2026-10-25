@@ -35,7 +35,7 @@ await new Promise(r=>setTimeout(r,80));
 
 
 const run=code=>window.eval(code);
-run('state.customPrograms=[newCustomProgram()];state.programId=state.customPrograms[0].id;selectedDate="2026-01-05";setTab("hoje")');
+run('today=()=>parseYmd("2026-01-06");state.customPrograms=[newCustomProgram()];startProgramRun(state.customPrograms[0].id,"2026-01-05",4);selectedDate="2026-01-05";setTab("hoje")');
 const key='2026-01-05';
 const tipo=()=>run('planKeyForDate(curDate())');
 const planned=run('exAt(planKeyForDate(curDate()),0).nome');
@@ -78,7 +78,7 @@ run('selectedDate="2026-01-12";setTab("hoje")');ok(selected()===planned,'next we
 run('selectedDate="2026-01-05";setTab("hoje")');
 const before=selected();run('selectDayExercise(ymd(curDate()),planKeyForDate(curDate()),0,"Não permitido")');ok(selected()===before,'invalid alternative rejected');
 const json=run('syncStateForCloud()');run('applyRemote('+JSON.stringify(json)+')');ok(selected()===before,'choice survives sync restore');
-run('preserveHistory();state.customPrograms=[];state.programId="refundini";render()');
+run('preserveHistory();state.customPrograms=[];render()');
 ok(selected()===before,'historical substitute survives program deletion');
 ok($('[data-set="kg"][data-i="0"]').value==='24','historical load survives program deletion');
 ok(run('historyStats("2026-01-05").done')===1,'historical completion survives program deletion');

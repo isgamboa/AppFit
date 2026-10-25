@@ -47,7 +47,7 @@ ok(run('EXDB.some(e=>e.nome==="Mergulho assistido nas paralelas")'),'assisted di
 ok(run('EXDB.find(e=>e.nome==="Mergulho assistido nas paralelas").primeiraSubstituicao')==='','no unsupported substitution invented');
 run('state=load();state=load()');ok(run('state.customPrograms.length')===1,'reload does not duplicate program');
 run('setTab("programas")');ok($('#view').textContent.includes(approved.nome),'program visible in selector');
-$(`[data-activate="${id}"]`).click();ok(run('state.programId')===id,'program can be activated manually');
+$(`[data-activate="${id}"]`).click();$("#runStart").value="2026-10-19";$("#runWeeks").value="4";$("#startRun").click();ok(run('state.programId')===id,'program can be activated manually');
 run('selectedDate="2026-10-20";setTab("hoje")');
 ok($$('.ex').length===8,'session A renders all exercises');
 ok($('#view').textContent.includes('3–4 RIR'),'general instructions visible');
@@ -56,7 +56,7 @@ run('selectedDate="2026-10-22";setTab("hoje")');ok($('#view').textContent.includ
 run('selectedDate="2026-10-24";setTab("hoje")');ok($('#view').textContent.includes('10–15 por lado'),'session C preserves unilateral reps');
 run('state.customPrograms=state.customPrograms.filter(p=>p.id!=='+JSON.stringify(id)+');save();state=load()');
 ok(run('state.customPrograms.length')===0,'intentional deletion is respected');
-const existing={anchor:'2026-01-05',programId:'saitama',customPrograms:[{id:'my-existing',nome:'Meu treino anterior'}],log:{'2026-01-05':{done:{'A-0':true}}},sessions:{'2026-01-05':{'A-0':{nm:'Puxada frente',sets:[{kg:'60',reps:'10'}]}}},photos:[{id:'photo',img:'data:test'}]};
+const existing={anchor:'2026-01-05',programId:'saitama',customPrograms:[{...run('newCustomProgram()'),id:'my-existing',nome:'Meu treino anterior'}],log:{'2026-01-05':{done:{'A-0':true}}},sessions:{'2026-01-05':{'A-0':{nm:'Puxada frente',sets:[{kg:'60',reps:'10'}]}}},photos:[{id:'photo',date:'2026-01-05',img:'data:test'}]};
 window.localStorage.setItem(LS,JSON.stringify(existing));run('state=load()');
 ok(run('state.customPrograms.length')===2,'preload adds to existing custom programs');
 ok(run('state.customPrograms[0].nome')==='Meu treino anterior','existing program preserved');
