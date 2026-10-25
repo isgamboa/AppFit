@@ -1,6 +1,12 @@
 /* Programs and dated executions. Embedded into index.html for offline use. */
 function validISODate(value){if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;const d=parseYmd(value);return !Number.isNaN(+d)&&ymd(d)===value;}
 function validWeekCount(n){return Number.isInteger(n)&&n>=1&&n<=12;}
+function validExerciseTiming(ex){
+  return (ex.durationUnit==null||['seconds','minutes','mixed'].includes(ex.durationUnit))&&
+    (ex.durationMinutes==null||typeof ex.durationMinutes==='number'&&Number.isFinite(ex.durationMinutes)&&ex.durationMinutes>0)&&
+    (ex.kind==null||ex.kind==='cardio')&&
+    (ex.kind!=='cardio'||ex.durationUnit==='minutes'&&typeof ex.durationMinutes==='number'&&ex.durationMinutes>0);
+}
 function normalizeBackup(raw){
   if(!raw||typeof raw!=='object'||Array.isArray(raw))throw Error('O backup deve conter um objeto de dados.');
   if(raw.schemaVersion!=null&&(!Number.isInteger(raw.schemaVersion)||raw.schemaVersion<1||raw.schemaVersion>2))throw Error('Versão de backup não suportada.');
@@ -30,7 +36,7 @@ function normalizeBackup(raw){
     for(const record of [root,...Object.values(root.runLogs||{})]){
       if(!record||typeof record!=='object'||Array.isArray(record))throw Error('Registro de execução inválido.');
       if(record.done!=null&&(!record.done||typeof record.done!=='object'||Array.isArray(record.done)))throw Error('Marcações inválidas.');
-      if(record.snapshot&&(!Array.isArray(record.snapshot.ex)||record.snapshot.ex.some(e=>!e||typeof e.nome!=='string'||typeof e.grupo!=='string')))throw Error('Cópia de sessão inválida.');
+      if(record.snapshot&&(!Array.isArray(record.snapshot.ex)||record.snapshot.ex.some(e=>!e||typeof e.nome!=='string'||typeof e.grupo!=='string'||!validExerciseTiming(e))))throw Error('Cópia de sessão inválida.');
     }
   }
   for(const [date,records] of Object.entries(s.sessions)){if(!validISODate(date)||!records||typeof records!=='object'||Array.isArray(records))throw Error('Data de sessão inválida.');for(const r of Object.values(records))if(!r||!Array.isArray(r.sets)||r.sets.some(x=>!x||typeof x!=='object'||Array.isArray(x)||x.done!=null&&typeof x.done!=='boolean'||['kg','reps'].some(k=>x[k]!=null&&!['number','string'].includes(typeof x[k]))))throw Error('Séries inválidas no backup.');}
@@ -46,7 +52,7 @@ function normalizeBackup(raw){
     r.adjustments=r.adjustments==null?[]:r.adjustments;if(!Array.isArray(r.adjustments))throw Error('Replanejamentos inválidos.');r.baselinePR=r.baselinePR||{};
     if(r.endDate!==r.schedule.map(d=>d.date).sort().at(-1))throw Error('Término incompatível com o calendário.');
     const dates=new Set(),planIds=new Set();
-    for(const [index,day] of r.schedule.entries()){if(day.index!==index||!Number.isInteger(day.sourceWeek)||day.sourceWeek<1||day.sourceWeek>r.weekCount||!Number.isInteger(day.sourceWeekday)||day.sourceWeekday<0||day.sourceWeekday>6)throw Error('Ordem de planejamento inválida.');if(!validISODate(day.date)||dates.has(day.date)||!day.plan||typeof day.plan.tipo!=='string'||!day.plan.tipo.startsWith('CYCLE_'+r.id+'_')||planIds.has(day.plan.tipo)||!Array.isArray(day.plan.ex)||day.plan.runId!==r.id)throw Error('Planejamento de execução inválido.');if(!day.plan.ex.length||day.plan.ex.some(e=>!e||typeof e.nome!=='string'||typeof e.grupo!=='string'||!day.plan.rest&&(!(parseInt(e.series)>0)||parseInt(e.series)>30)||e.restSeconds!=null&&(typeof e.restSeconds!=='number'||!Number.isFinite(e.restSeconds)||e.restSeconds<0)))throw Error('Prescrição inválida no planejamento.');dates.add(day.date);planIds.add(day.plan.tipo);}
+    for(const [index,day] of r.schedule.entries()){if(day.index!==index||!Number.isInteger(day.sourceWeek)||day.sourceWeek<1||day.sourceWeek>r.weekCount||!Number.isInteger(day.sourceWeekday)||day.sourceWeekday<0||day.sourceWeekday>6)throw Error('Ordem de planejamento inválida.');if(!validISODate(day.date)||dates.has(day.date)||!day.plan||typeof day.plan.tipo!=='string'||!day.plan.tipo.startsWith('CYCLE_'+r.id+'_')||planIds.has(day.plan.tipo)||!Array.isArray(day.plan.ex)||day.plan.runId!==r.id)throw Error('Planejamento de execução inválido.');if(!day.plan.ex.length||day.plan.ex.some(e=>!e||typeof e.nome!=='string'||typeof e.grupo!=='string'||!validExerciseTiming(e)||!day.plan.rest&&(!(parseInt(e.series)>0)||parseInt(e.series)>30)||e.restSeconds!=null&&(typeof e.restSeconds!=='number'||!Number.isFinite(e.restSeconds)||e.restSeconds<0)))throw Error('Prescrição inválida no planejamento.');dates.add(day.date);planIds.add(day.plan.tipo);}
   }
   if(raw.schemaVersion!==2){s.activeRunId=null;s.runs=[];}else if(s.activeRunId!=null&&!ids.has(s.activeRunId))throw Error('Execução ativa não encontrada.');
   if(s.activeRunId)s.programId=s.runs.find(r=>r.id===s.activeRunId).programId;
@@ -129,7 +135,7 @@ function incorporateLegacyRecords(run){
         if(record.runId||!(sid===oldBase||sid.startsWith(oldBase+'~')))continue;
         const nextSid=base+sid.slice(oldBase.length),next=clone(record);
         next.runId=run.id;next.gp=next.gp||ex.grupo;next.nm=next.nm||ex.nome;
-        next.sets.forEach(set=>{if(set.done==null&&root.done?.[sid]===true){set.done=true;set.completionSource='legacy-exercise';}if(set.repsUnit==null)set.repsUnit=isTimedExercise(ex)?'seconds':'reps';});
+        next.sets.forEach(set=>{if(set.done==null&&root.done?.[sid]===true){set.done=true;set.completionSource='legacy-exercise';}if(set.repsUnit==null)set.repsUnit=exerciseRepsUnit(ex);});
         moved[sid]=clone(record);delete records[sid];records[nextSid]=next;
       }
       const count=parseInt(oldChoice?.customPrescription?oldChoice.series:planned.series)||3;
@@ -212,7 +218,13 @@ function cycleBanner(){
   return `<div class="card"><b>${esc(r.programName)}</b><div class="hint">${week?'Semana '+week+' de '+r.weekCount+' · ':''}${esc(r.startDate)} a ${esc(r.endDate)}</div><div class="cycle-actions">${legacyImportCandidates(r).length?'<button class="btn ghost" id="importLegacyRun">Incorporar histórico anterior</button>':''}<button class="btn ghost" id="replanRun">Retomar a última sessão perdida</button><button class="btn ghost" data-run-results="${r.id}">Estatísticas do programa</button></div></div>`;
 }
 function groupHeading(plan,i){const e=plan.ex[i];if(!e.groupId)return '';const members=plan.ex.map((x,j)=>({x,j})).filter(o=>o.x.groupId===e.groupId);if(members[0].j!==i)return '';return `<div class="technique-group"><b>${esc(e.groupType||'Grupo combinado')} · exercícios ${members.map(o=>o.j+1).join(' + ')}</b><div>${members.map(o=>esc(o.x.nome)).join(' → ')}</div><div class="hint">Execute os exercícios deste grupo em sequência, respeitando o descanso de cada prescrição.</div></div>`;}
-function isTimedExercise(ex){return /isometria/i.test(ex.technique||'')||/^\s*\d+(?:[–-]\d+)?\s*s\s*$/i.test(ex.reps||'');}
+function exerciseRepsUnit(ex){
+  if(ex.durationUnit)return ex.durationUnit;
+  if(/^\s*\d+(?:[–-]\d+)?\s*min\s*$/i.test(ex.reps||''))return 'minutes';
+  if(/\d+\s*\+\s*\d+\s*s/i.test(ex.reps||''))return 'mixed';
+  return /isometria/i.test(ex.technique||'')||/^\s*\d+(?:[–-]\d+)?\s*s\s*$/i.test(ex.reps||'')?'seconds':'reps';
+}
+function isTimedExercise(ex){return exerciseRepsUnit(ex)!=='reps';}
 function persistDayChoice(k,tipo,i,choice){
   const planned=exAt(tipo,i);snapshotDay(k,tipo);const l=dayLog(k,tipo),base=slotId(tipo,i);l.exerciseChoices=l.exerciseChoices||{};
   if(choice)l.exerciseChoices[base]=clone(choice);else delete l.exerciseChoices[base];
@@ -221,7 +233,7 @@ function persistDayChoice(k,tipo,i,choice){
 }
 function markExerciseSets(k,tipo,i,done){
   snapshotDay(k,tipo);const sid=daySlotId(k,tipo,i);state.sessions[k]=state.sessions[k]||{};const old=state.sessions[k][sid]||{sets:[]};const count=seriesCount(tipo,i,k)||3;
-  while(old.sets.length<count)old.sets.push({kg:'',reps:''});old.sets.slice(0,count).forEach(s=>s.done=done);const ex=dayExercise(k,tipo,i);old.sets.forEach(set=>set.repsUnit=isTimedExercise(ex)?'seconds':'reps');old.nm=ex.nome;old.gp=ex.grupo;old.runId=runForTipo(tipo)?.id||null;state.sessions[k][sid]=old;dayLog(k,tipo).done[sid]=done;
+  while(old.sets.length<count)old.sets.push({kg:'',reps:''});old.sets.slice(0,count).forEach(s=>s.done=done);const ex=dayExercise(k,tipo,i);old.sets.forEach(set=>set.repsUnit=exerciseRepsUnit(ex));old.nm=ex.nome;old.gp=ex.grupo;old.kind=ex.kind||null;old.runId=runForTipo(tipo)?.id||null;state.sessions[k][sid]=old;dayLog(k,tipo).done[sid]=done;
 }
 function updateSessionCompletion(k,tipo){
   const l=dayLog(k,tipo),dn=countDone(k,tipo),tot=dayTotal(tipo);
@@ -234,21 +246,21 @@ function updateSessionCompletion(k,tipo){
 }
 function toggleSetCompletion(k,tipo,i,j,done){
   snapshotDay(k,tipo);const sid=daySlotId(k,tipo,i);state.sessions[k]=state.sessions[k]||{};const r=state.sessions[k][sid]||{sets:[]};while(r.sets.length<=(j))r.sets.push({kg:'',reps:''});r.sets[j].done=done;
-  const ex=dayExercise(k,tipo,i);r.sets.forEach(set=>set.repsUnit=isTimedExercise(ex)?'seconds':'reps');r.nm=ex.nome;r.gp=ex.grupo;r.runId=runForTipo(tipo)?.id||null;state.sessions[k][sid]=r;
+  const ex=dayExercise(k,tipo,i);r.sets.forEach(set=>set.repsUnit=exerciseRepsUnit(ex));r.nm=ex.nome;r.gp=ex.grupo;r.kind=ex.kind||null;r.runId=runForTipo(tipo)?.id||null;state.sessions[k][sid]=r;
   const n=seriesCount(tipo,i,k)||3;dayLog(k,tipo).done[sid]=r.sets.slice(0,n).filter(x=>x.done).length===n;
   const completed=updateSessionCompletion(k,tipo);save();if(completed){closeSheet();setTab('run-results');}else{render();if(done&&state.settings.autoRest)openTimer(ex.restSeconds);}
 }
 function runStatistics(run){
-  const sessions=run.schedule.filter(d=>!d.plan.rest),groups={},prs={},actualByName={};let complete=0,partial=0,trained=0,missed=0;
+  const sessions=run.schedule.filter(d=>!d.plan.rest),groups={},prs={},actualByName={},cardio={plannedBlocks:0,doneBlocks:0,plannedMinutes:0,actualMinutes:0};let complete=0,partial=0,trained=0,missed=0;
   for(const day of sessions){const c=runCompletion(run,day);if(c.complete)complete++;if(c.partial)partial++;if(c.done>0)trained++;if(day.date<ymd(today())&&!c.hasWork)missed++;
-    for(const e of day.plan.ex){const g=groups[e.grupo]||(groups[e.grupo]={planned:0,actual:0});g.planned+=parseInt(e.series)||0;}}
-  for(const day of Object.values(state.sessions))for(const s of Object.values(day)){if(s.runId!==run.id)continue;const done=(s.sets||[]).filter(x=>x.done);const g=groups[s.gp]||(groups[s.gp]={planned:0,actual:0});g.actual+=done.length;if(done.length){actualByName[s.nm]=Math.max(actualByName[s.nm]||0,best1RM(done));}}
+    for(const e of day.plan.ex){if(e.kind==='cardio'){cardio.plannedBlocks++;cardio.plannedMinutes+=e.durationMinutes||0;continue;}const g=groups[e.grupo]||(groups[e.grupo]={planned:0,actual:0});g.planned+=parseInt(e.series)||0;}}
+  for(const day of Object.values(state.sessions))for(const s of Object.values(day)){if(s.runId!==run.id)continue;const done=(s.sets||[]).filter(x=>x.done);if(s.kind==='cardio'){cardio.doneBlocks+=done.length;cardio.actualMinutes+=done.filter(x=>x.repsUnit==='minutes').reduce((n,x)=>n+(Number(x.reps)||0),0);continue;}const g=groups[s.gp]||(groups[s.gp]={planned:0,actual:0});g.actual+=done.length;if(done.length){actualByName[s.nm]=Math.max(actualByName[s.nm]||0,best1RM(done));}}
   for(const [name,value] of Object.entries(actualByName))if(value>(run.baselinePR&&run.baselinePR[name]||0))prs[name]={before:run.baselinePR&&run.baselinePR[name]||0,after:value};
-  return {planned:sessions.length,trained,complete,partial,missed,groups,prs};
+  return {planned:sessions.length,trained,complete,partial,missed,groups,prs,cardio};
 }
 function viewRunResults(id){
   const r=(state.runs||[]).find(x=>x.id===(id||selectedRunResultId))||activeRun();if(!r)return pendingProgramView();const s=runStatistics(r);const duration=Math.round((parseYmd(r.endDate)-parseYmd(r.startDate))/86400000)+1;
-  return `<div class="results-back"><button class="btn ghost" id="backRunStats">← Voltar</button></div><div class="hero run-results-hero"><h1>${r.status==='completed'?'Programa concluído':r.status==='elapsed'?'Prazo do programa encerrado':'Estatísticas do programa'}</h1><p>${esc(r.programName)}</p><p>Calendário: ${esc(r.startDate)} a ${esc(r.endDate)}</p>${r.finishedOn?`<p>Última sessão concluída em ${esc(r.finishedOn)}</p>`:''}</div><div class="stats"><div class="stat"><div class="v">${s.trained}/${s.planned}</div><div class="k">Dias treinados / planejados</div></div><div class="stat"><div class="v">${s.complete}</div><div class="k">Sessões completas</div></div><div class="stat"><div class="v">${s.partial}</div><div class="k">Sessões parciais / com registros</div></div><div class="stat"><div class="v">${Math.round(s.trained/s.planned*100)||0}%</div><div class="k">Adesão</div></div></div><div class="card"><p>${s.missed} sessões passadas sem realização. ${s.planned-s.trained} sessões sem séries concluídas no total.</p><p>Duração original: ${r.weekCount} semanas (${r.weekCount*7} dias). Calendário atual: ${duration} dias. Prolongamento: ${duration-r.weekCount*7} dias.</p><h3>Séries por grupo muscular</h3><table class="cycle-table"><thead><tr><th>Grupo principal</th><th>Planejadas</th><th>Realizadas</th></tr></thead><tbody>${Object.entries(s.groups).map(([name,g])=>`<tr><td>${esc(name)}</td><td>${g.planned}</td><td>${g.actual}</td></tr>`).join('')}</tbody></table><p class="hint">Um dia treinado exige ao menos uma série marcada como concluída. Uma série conta apenas quando marcada como concluída. O volume usa o grupo principal do exercício, sem duplicar músculos auxiliares.</p><h3>Exercícios com novo PR: ${Object.keys(s.prs).length}</h3>${Object.entries(s.prs).map(([name,p])=>`<p><b>${esc(name)}</b>: 1RM estimado ${p.before.toFixed(1)} → ${p.after.toFixed(1)} kg${p.before===0?' (primeira referência)':''}</p>`).join('')||'<p>Nenhum novo PR com séries concluídas e carga/repetições numéricas.</p>'}<p class="hint">PR de 1RM estimado pela fórmula de Epley, comparado ao histórico disponível no início desta execução. Registros antigos incorporados contam nesta execução. Uma marcação antiga de exercício concluído confirma apenas as séries existentes; registros sem confirmação permanecem pendentes.</p></div><div class="row" style="gap:8px;flex-wrap:wrap">${r.id===state.activeRunId&&legacyImportCandidates(r).length?'<button class="btn ghost" id="importLegacyRun">Incorporar histórico anterior</button>':''}<button class="btn primary" data-restart="${esc(r.programId)}">Reiniciar programa</button><button class="btn ghost" data-go="programas">Selecionar outro programa</button>${r.status!=='completed'&&r.id===state.activeRunId?'<button class="btn ghost" id="replanRun">Retomar a última sessão perdida</button>':''}</div>`;
+  return `<div class="results-back"><button class="btn ghost" id="backRunStats">← Voltar</button></div><div class="hero run-results-hero"><h1>${r.status==='completed'?'Programa concluído':r.status==='elapsed'?'Prazo do programa encerrado':'Estatísticas do programa'}</h1><p>${esc(r.programName)}</p><p>Calendário: ${esc(r.startDate)} a ${esc(r.endDate)}</p>${r.finishedOn?`<p>Última sessão concluída em ${esc(r.finishedOn)}</p>`:''}</div><div class="stats"><div class="stat"><div class="v">${s.trained}/${s.planned}</div><div class="k">Dias treinados / planejados</div></div><div class="stat"><div class="v">${s.complete}</div><div class="k">Sessões completas</div></div><div class="stat"><div class="v">${s.partial}</div><div class="k">Sessões parciais / com registros</div></div><div class="stat"><div class="v">${Math.round(s.trained/s.planned*100)||0}%</div><div class="k">Adesão</div></div></div><div class="card"><p>${s.missed} sessões passadas sem realização. ${s.planned-s.trained} sessões sem séries concluídas no total.</p><p>Duração original: ${r.weekCount} semanas (${r.weekCount*7} dias). Calendário atual: ${duration} dias. Prolongamento: ${duration-r.weekCount*7} dias.</p>${s.cardio.plannedBlocks?`<h3>Cardio</h3><p>${s.cardio.doneBlocks}/${s.cardio.plannedBlocks} blocos concluídos · ${s.cardio.actualMinutes}/${s.cardio.plannedMinutes} minutos registrados em blocos concluídos / planejados.</p><p class="hint">O cardio conta para a conclusão da sessão e fica separado das séries musculares. O registro não cria uma atividade nem uma estimativa de kcal automaticamente.</p>`:''}<h3>Séries por grupo muscular</h3><table class="cycle-table"><thead><tr><th>Grupo principal</th><th>Planejadas</th><th>Realizadas</th></tr></thead><tbody>${Object.entries(s.groups).map(([name,g])=>`<tr><td>${esc(name)}</td><td>${g.planned}</td><td>${g.actual}</td></tr>`).join('')}</tbody></table><p class="hint">Um dia treinado exige ao menos uma série marcada como concluída. Uma série conta apenas quando marcada como concluída. O volume usa o grupo principal do exercício, sem duplicar músculos auxiliares.</p><h3>Exercícios com novo PR: ${Object.keys(s.prs).length}</h3>${Object.entries(s.prs).map(([name,p])=>`<p><b>${esc(name)}</b>: 1RM estimado ${p.before.toFixed(1)} → ${p.after.toFixed(1)} kg${p.before===0?' (primeira referência)':''}</p>`).join('')||'<p>Nenhum novo PR com séries concluídas e carga/repetições numéricas.</p>'}<p class="hint">PR de 1RM estimado pela fórmula de Epley, comparado ao histórico disponível no início desta execução. Registros antigos incorporados contam nesta execução. Uma marcação antiga de exercício concluído confirma apenas as séries existentes; registros sem confirmação permanecem pendentes.</p></div><div class="row" style="gap:8px;flex-wrap:wrap">${r.id===state.activeRunId&&legacyImportCandidates(r).length?'<button class="btn ghost" id="importLegacyRun">Incorporar histórico anterior</button>':''}<button class="btn primary" data-restart="${esc(r.programId)}">Reiniciar programa</button><button class="btn ghost" data-go="programas">Selecionar outro programa</button>${r.status!=='completed'&&r.id===state.activeRunId?'<button class="btn ghost" id="replanRun">Retomar a última sessão perdida</button>':''}</div>`;
 }
 let selectedRunResultId=null;
 let runResultsReturnTab='programas';
@@ -258,7 +270,7 @@ function viewLegacyHistory(){
  const known=new Set((state.runs||[]).map(r=>r.id));
  return `<div class="hero"><h1>Histórico legado</h1><p>Consulta dos dados originais. Séries antigas sem confirmação individual não são atribuídas às novas execuções.</p></div>`+legacyDates().map(k=>{
   const root=state.log[k],records=Object.entries(state.sessions[k]||{}).filter(([sid,s])=>!s.runId||!known.has(s.runId));
-  return `<details class="card"><summary>${esc(k)} · ${records.length} exercício(s) com séries registradas</summary>${root&&root.done?`<p>Marcações antigas de exercício concluído: ${Object.values(root.done).filter(Boolean).length}.</p>`:''}${records.map(([sid,s])=>`<h3>${esc(s.nm||'Exercício '+sid)}</h3><table class="cycle-table"><thead><tr><th>Série</th><th>kg</th><th>Reps / segundos</th><th>Conclusão</th></tr></thead><tbody>${s.sets.map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.kg||'—')}</td><td>${esc(x.reps||'—')}${x.repsUnit==='seconds'?' s':''}</td><td>${x.done===true?'Concluída':x.done===false?'Não marcada':'Não informada'}</td></tr>`).join('')}</tbody></table>`).join('')}</details>`;
+  return `<details class="card"><summary>${esc(k)} · ${records.length} exercício(s) com séries registradas</summary>${root&&root.done?`<p>Marcações antigas de exercício concluído: ${Object.values(root.done).filter(Boolean).length}.</p>`:''}${records.map(([sid,s])=>`<h3>${esc(s.nm||'Exercício '+sid)}</h3><table class="cycle-table"><thead><tr><th>Série</th><th>kg</th><th>Reps / tempo</th><th>Conclusão</th></tr></thead><tbody>${s.sets.map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.kg||'—')}</td><td>${esc(x.reps||'—')}${x.repsUnit==='seconds'?' s':x.repsUnit==='minutes'?' min':''}</td><td>${x.done===true?'Concluída':x.done===false?'Não marcada':'Não informada'}</td></tr>`).join('')}</tbody></table>`).join('')}</details>`;
  }).join('')+`<button class="btn ghost" data-go="progresso">Voltar ao progresso</button>`;
 }
 let programPanel='programas';

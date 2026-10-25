@@ -36,7 +36,7 @@ Há um programa ativo por vez, com históricos independentes para cada execuçã
 | Personalizado ABC ou full-body | Editor de três sessões, dias da semana escolhidos pelo usuário e duração de 1 a 12 semanas. |
 
 Os programas padrão incluem **ABCDE + Full Body**, **Saitama**, **Ramon Dino**,
-**Arnold**, **CBum** e **Boost PRO Ombro**. Também está disponível o modelo personalizado
+**Arnold**, **CBum**, **Boost PRO Ombro** e **Endomonster**. Também está disponível o modelo personalizado
 **Full-body | Força, Hipertrofia e Condicionamento (v1.1)**, com sessões na terça,
 quinta e sábado, carregado a partir da planilha aprovada.
 
@@ -67,6 +67,19 @@ Os critérios e dados estão em [data/standard-programs](data/standard-programs/
 A inclusão de outros programas por PDF é feita no desenvolvimento; não há importador
 de PDF nem editor manual de até 84 sessões na interface do app.
 
+### Endomonster
+
+Programa padrão intermediário de **12 semanas**, com **72 sessões de segunda a
+sábado** e descanso aos domingos. São **505 prescrições**, incluindo **69 blocos
+de cardio**, **27 bi-sets** e **1 tri-set**. As sessões e a divisão muscular variam
+entre as semanas. As duas colunas de técnicas dos PDFs são preservadas.
+
+O cardio é registrado em minutos, com a carga desabilitada, e aparece separado
+das séries musculares nas estatísticas. Ele participa da conclusão da sessão,
+sem criar automaticamente uma atividade ou estimativa de kcal. Prescrições mistas,
+como `10+15s`, aceitam repetições e segundos no mesmo campo e ficam fora dos PRs
+de 1RM. Os PDFs originais e seus links não são incorporados ao aplicativo.
+
 ### Faltas e replanejamento
 
 O planejamento avança pelo calendário, mesmo quando você falta. A opção
@@ -96,7 +109,8 @@ voltar à escolha anterior restaura seus valores. Exercícios manuais sem URL ca
 usam uma busca no YouTube.
 
 Drop-set, Rest-pause e outras técnicas são exibidas como prescritas; o controle das
-etapas dessas técnicas continua manual. Isometrias usam segundos no registro e
+etapas dessas técnicas continua manual. Isometrias por tempo usam segundos no registro. Cardio usa minutos; prescrições
+mistas de repetições com isometria preservam os dois valores. Esses registros
 não entram no cálculo de PR de 1RM. Aquecimento, alongamento, calculadoras de 1RM
 e anilhas e a inversão das variações C/D do ABCDE continuam disponíveis. A inversão
 pede confirmação e afeta somente sessões futuras sem registros.
@@ -214,7 +228,7 @@ Abra `http://127.0.0.1:8000`. Os principais arquivos são:
 | [src/cycles.js](src/cycles.js) | Motor de execuções, calendários, resultados e migração. |
 | [data/standard-programs/](data/standard-programs/README.md) | Programas padrão com variação entre semanas. |
 | [data/programas/](data/programas/) | Modelo full-body aprovado e incorporado ao app. |
-| [exports/banco-exercicios-appfit.csv](exports/banco-exercicios-appfit.csv) | Catálogo com 153 exercícios: nome, grupo muscular, duas substituições e URL de vídeo. |
+| [exports/banco-exercicios-appfit.csv](exports/banco-exercicios-appfit.csv) | Catálogo com 188 exercícios: nome, grupo muscular, duas substituições e URL de vídeo. |
 | [tests/](tests/README.md) | Suítes automatizadas e instruções de validação. |
 
 Após alterar o motor ou os dados, atualize as cópias embutidas no HTML e valide:
@@ -234,6 +248,7 @@ no JSDOM. O teste opcional de navegador requer Playwright disponível no Node e 
 
 ```sh
 CHROMIUM_PATH=/usr/bin/chromium node tests/browser-cycles.cjs
+CHROMIUM_PATH=/usr/bin/chromium node tests/browser-endomonster.cjs
 ```
 
 Os fluxos foram verificados em computador e celular. Firebase real e a instalação

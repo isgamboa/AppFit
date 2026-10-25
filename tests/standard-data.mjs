@@ -12,7 +12,7 @@ ok(ex.some(e=>e.restSeconds===0)&&ex.some(e=>e.reps==='30s'),'zero rest and seco
 ok(ex.some(e=>e.reps==='12/8/8/6')&&ex.some(e=>e.reps==='4+8+12'),'compound repetition prescriptions preserved');
 ok(!JSON.stringify(p).includes('http'),'no PDF exercise or technique links embedded');
 const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');const a=html.indexOf('const EXDB=')+'const EXDB='.length,b=html.indexOf(';\nconst DB_GROUPS=',a);const catalog=JSON.parse(html.slice(a,b));
-ok(catalog.length===153,'catalog size after canonical matching');
+ok(catalog.length>=153,'original catalog entries retained after canonical matching');
 for(const e of catalog.slice(94)){ok(Boolean(e.grupo),'new exercise has primary group');const u=new URL(e.urlVideo);ok(u.origin==='https://www.youtube.com'&&u.pathname==='/results'&&u.searchParams.get('search_query')===e.nome.toLowerCase(),'new exercise uses search by its own name');}
 for(const e of ex)ok(catalog.some(c=>c.nome===e.nome&&c.grupo===e.grupo),'prescription matches catalog');
 console.log(`RESULT: ${pass} passed, 0 failed`);

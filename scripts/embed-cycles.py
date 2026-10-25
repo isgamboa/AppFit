@@ -26,7 +26,10 @@ for program in data:
     assert expected and len(members)==expected and all(t==members[0][1] for i,t in members) and [i for i,t in members]==list(range(members[0][0],members[0][0]+expected))
    ids=set()
    for ex in day['exercises']:
-    assert ex['id'] not in ids and ex['id'] not in program_ids and ex['nome'] in catalog and ex['grupo'] and ex['series']>0 and ex['restSeconds']>=0;ids.add(ex['id']);program_ids.add(ex['id'])
+    assert ex['id'] not in ids and ex['id'] not in program_ids and ex['nome'] in catalog and ex['grupo'] and ex['series']>0 and (ex['restSeconds'] is None or ex['restSeconds']>=0);ids.add(ex['id']);program_ids.add(ex['id'])
+    assert ex.get('durationUnit') in {None,'seconds','minutes','mixed'}
+    if ex.get('kind')=='cardio':assert ex['durationUnit']=='minutes' and ex['durationMinutes']>0
+    if ex['restSeconds'] is None:assert ex.get('kind')=='cardio'
 if args.check:
  assert json.loads(html[a:b])==data,'Program source differs from HTML'
  assert source in html,'Cycle engine source differs from HTML'
