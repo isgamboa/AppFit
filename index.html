@@ -274,6 +274,9 @@ input.set-complete{width:22px;height:22px;accent-color:var(--accent);justify-sel
 .results-back{margin:8px 0 12px}.run-results-hero{height:auto;margin-bottom:18px}
 .run-results-hero h1{line-height:1.2;overflow-wrap:anywhere}
 @media(max-width:600px){.cycle-actions{grid-template-columns:1fr}}
+
+.program-start-actions{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin-top:14px}
+.program-start-actions .btn{width:100%;min-width:0;min-height:46px;line-height:1.3;white-space:normal}
 </style>
 </head>
 <body>
@@ -4801,7 +4804,7 @@ function previewReplan(){
 }
 function openStartProgram(id,forceNew=false){
   const p=programById(id);if(!p)return;const previous=(state.runs||[]).filter(r=>r.programId===id&&r.status!=='completed').at(-1);
-  openSheet(`<h3>${forceNew?'Reiniciar':'Iniciar'} programa</h3><p>${esc(p.nome)}</p><label class="fld"><span>Data de início (segunda-feira)</span><input id="runStart" type="date" value="${ymd(mondayOf(today()))}"></label><label class="fld"><span>Quantidade de semanas (1 a 12)</span><input id="runWeeks" type="number" min="1" max="12" step="1" value="${p.durationWeeks||''}" ${p.periodized?'readonly':''} required></label>${p.periodized?'<p class="hint">Duração definida pelas semanas deste programa padrão.</p>':''}<p class="hint">Uma nova execução mantém os históricos anteriores. A programação avança pelo calendário.</p><button class="btn primary block" id="startRun">Confirmar início</button>${previous&&!forceNew?`<button class="btn ghost block" id="resumeRun">Continuar execução de ${esc(previous.startDate)}</button>`:''}<button class="btn ghost block" onclick="closeSheet()">Cancelar</button>`);
+  openSheet(`<h3>${forceNew?'Reiniciar':'Iniciar'} programa</h3><p>${esc(p.nome)}</p><label class="fld"><span>Data de início (segunda-feira)</span><input id="runStart" type="date" value="${ymd(mondayOf(today()))}"></label><label class="fld"><span>Quantidade de semanas (1 a 12)</span><input id="runWeeks" type="number" min="1" max="12" step="1" value="${p.durationWeeks||''}" ${p.periodized?'readonly':''} required></label>${p.periodized?'<p class="hint">Duração definida pelas semanas deste programa padrão.</p>':''}<p class="hint">Uma nova execução mantém os históricos anteriores. A programação avança pelo calendário.</p><div class="program-start-actions"><button class="btn primary block" id="startRun">Confirmar início</button>${previous&&!forceNew?`<button class="btn ghost block" id="resumeRun">Continuar execução de ${esc(previous.startDate)}</button>`:''}<button class="btn ghost block" onclick="closeSheet()">Cancelar</button></div>`);
   document.getElementById('startRun').onclick=()=>{try{startProgramRun(id,document.getElementById('runStart').value,Number(document.getElementById('runWeeks').value));closeSheet();selectedDate=null;setTab('hoje');}catch(e){alert(e.message);}};
   const resume=document.getElementById('resumeRun');if(resume)resume.onclick=()=>{const old=activeRun();if(old&&old.id!==previous.id&&old.status==='active')old.status='paused';state.activeRunId=previous.id;state.programId=id;previous.status='active';save();closeSheet();selectedDate=null;setTab('hoje');};
 }
