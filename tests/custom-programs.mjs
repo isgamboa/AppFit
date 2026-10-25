@@ -42,14 +42,14 @@ ok(typeof window.setTab==="function", "globals reachable (setTab)");
 
 const run=code=>window.eval(code);
 // Isolate editor tests from preloaded user programs (covered in seeded-programs.mjs).
-run('state.customPrograms=[]');
+run('today=()=>parseYmd("2026-01-06");state.customPrograms=[]');
 run('openCustom()');
 ok(!!$('#customSave'), 'editor opens');
 $('#customName').value='ABC pessoal';
 $('#customSave').click();
 ok(run('state.customPrograms.length')===1,'program saved');
 const id=run('state.customPrograms[0].id');
-$(`[data-activate="${id}"]`).click();
+$(`[data-activate="${id}"]`).click();$("#runStart").value="2026-01-05";$("#startRun").click();
 ok(run('actProg().id')===id,'program activated');
 ok(run('new Set(actProg().days.filter(t=>t!==actProg().off)).size')===3,'three sessions');
 run('setTab("programas")');
@@ -64,9 +64,9 @@ const first=run('customDraft.plans[customDraft.sessions[0]].ex[0].id');
 $('[data-ex-move="0"][data-dir="1"]').click();
 ok(run('customDraft.plans[customDraft.sessions[0]].ex[1].id')===first,'reorder keeps identity');
 $('#customSave').click();
-run('const cp=state.customPrograms[0];const t=cp.sessions[0];setSet("2026-01-05",t,0,0,"kg","60");setSet("2026-01-05",t,0,0,"reps","10");dayLog("2026-01-05").done[slotId(t,0)]=true;save()');
+run('const t=activeRun().schedule[0].plan.tipo;setSet("2026-01-05",t,0,0,"kg","60");setSet("2026-01-05",t,0,0,"reps","10");dayLog("2026-01-05",t).done[slotId(t,0)]=true;save()');
 ok(run('historyStats("2026-01-05").done')===1,'completion captured');
-const historicalName=run('state.log["2026-01-05"].snapshot.ex[0].nome');
+const historicalName=run('readDayLog("2026-01-05",activeRun().schedule[0].plan.tipo).snapshot.ex[0].nome');
 run('setTab("programas")');
 window.confirm=()=>true;
 $(`[data-custom-delete="${id}"]`).click();

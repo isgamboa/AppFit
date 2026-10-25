@@ -63,6 +63,8 @@ button{font-family:inherit}
 input,select,textarea{font-family:inherit;font-size:15px;color:var(--txt);background:var(--bg2);border:1px solid var(--line);border-radius:11px;padding:11px 12px;width:100%;outline:none}
 input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 label.fld{display:block;margin:10px 0}
+.legacy-import-option{display:flex;align-items:flex-start;gap:10px;margin:16px 0;font-size:14px;line-height:1.5}
+.legacy-import-option input{width:20px;height:20px;flex:0 0 20px;padding:0;margin:1px 0;accent-color:var(--accent)}
 label.fld span{display:block;font-size:12px;color:var(--txt2);margin-bottom:5px;letter-spacing:.04em}
 .hero{position:relative;overflow:hidden;border-radius:22px;padding:20px;background:linear-gradient(135deg,#22272f,#171b21);border:1px solid var(--line);margin-top:6px}
 .hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,46,.25),transparent 70%)}
@@ -262,6 +264,28 @@ canvas{width:100%;display:block}
 .stepdots i.on{background:var(--accent2)} .stepdots i.cdone{background:var(--ok)}
 .progbar{display:flex;align-items:center;justify-content:space-between;width:100%;gap:10px;background:linear-gradient(180deg,var(--surface),#14181e);border:1px solid var(--line);border-radius:13px;padding:11px 14px;margin:12px 0 0;cursor:pointer;color:var(--txt);font-weight:600;font-size:14px;box-shadow:var(--shadow-sm)}
 .progbar:hover{border-color:var(--line2)}
+
+.setshead,.setrow{grid-template-columns:36px minmax(0,1fr) minmax(0,1fr) 44px}
+input.set-complete{width:22px;height:22px;accent-color:var(--accent);justify-self:center;padding:0}
+.technique-group{border:2px solid var(--accent);border-radius:12px;padding:12px;margin-top:20px;background:var(--surface)}
+.combined-exercise{border-left:4px solid var(--accent);margin-left:8px}
+.cycle-table{width:100%;border-collapse:collapse;font-size:13px}.cycle-table th,.cycle-table td{text-align:left;padding:8px 4px;border-bottom:1px solid var(--line)}
+
+.cycle-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.cycle-actions .btn{width:100%;min-width:0;min-height:46px;white-space:normal;line-height:1.3;padding:12px}
+.results-back{margin:8px 0 12px}.run-results-hero{height:auto;margin-bottom:18px}
+.run-results-hero h1{line-height:1.2;overflow-wrap:anywhere}
+@media(max-width:600px){.cycle-actions{grid-template-columns:1fr}}
+
+.program-start-actions{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin-top:14px}
+.program-start-actions .btn{width:100%;min-width:0;min-height:46px;line-height:1.3;white-space:normal}
+
+.program-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:16px 0}
+.program-tab{appearance:none;min-width:0;min-height:48px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--txt2);font:inherit;font-size:14px;font-weight:700;line-height:1.3;cursor:pointer;white-space:normal}
+.program-tab[aria-selected="true"]{background:rgba(255,77,46,.14);border-color:var(--accent);color:var(--txt)}
+.program-tab:focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
+
+@media(max-width:360px){.topbar .app{gap:6px}.topbar .logo{gap:6px;font-size:16px;letter-spacing:.1em}.topbar .iconbtn{width:34px;height:36px;flex:0 0 34px}}
 </style>
 </head>
 <body>
@@ -962,6 +986,419 @@ const EXDB=[
     "primeiraSubstituicao": "",
     "segundaSubstituicao": "",
     "urlVideo": "https://www.youtube.com/results?search_query=assisted+parallel+bar+dips+proper+form"
+  },
+  {
+    "nome": "Pulley Frente Barra Romana",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=pulley+frente+barra+romana"
+  },
+  {
+    "nome": "Remada Pronada na Polia Baixa",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=remada+pronada+na+polia+baixa"
+  },
+  {
+    "nome": "Pulldown com Barra",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=pulldown+com+barra"
+  },
+  {
+    "nome": "Crucifixo Inverso",
+    "grupo": "Posterior de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=crucifixo+inverso"
+  },
+  {
+    "nome": "Remada Alta na Polia com Barra Reta",
+    "grupo": "Lateral de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=remada+alta+na+polia+com+barra+reta"
+  },
+  {
+    "nome": "Supino Reto",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=supino+reto"
+  },
+  {
+    "nome": "Dumbell Press Inclinado (45º)",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=dumbell+press+inclinado+%2845%C2%BA%29"
+  },
+  {
+    "nome": "Crucifixo Inclinado",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=crucifixo+inclinado"
+  },
+  {
+    "nome": "Elevação Lateral",
+    "grupo": "Lateral de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=eleva%C3%A7%C3%A3o+lateral"
+  },
+  {
+    "nome": "Leg Press Horizontal Unilateral",
+    "grupo": "Quadríceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=leg+press+horizontal+unilateral"
+  },
+  {
+    "nome": "Mesa Flexora Unilateral",
+    "grupo": "Posterior de Coxa",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=mesa+flexora+unilateral"
+  },
+  {
+    "nome": "Stiff no Smith",
+    "grupo": "Posterior de Coxa",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=stiff+no+smith"
+  },
+  {
+    "nome": "Cadeira Adutora",
+    "grupo": "Adutores",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=cadeira+adutora"
+  },
+  {
+    "nome": "Rosca Direta",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=rosca+direta"
+  },
+  {
+    "nome": "Rosca Martelo Corda",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=rosca+martelo+corda"
+  },
+  {
+    "nome": "Tríceps Testa na Polia Alta",
+    "grupo": "Tríceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=tr%C3%ADceps+testa+na+polia+alta"
+  },
+  {
+    "nome": "Tríceps Testa com Corda",
+    "grupo": "Tríceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=tr%C3%ADceps+testa+com+corda"
+  },
+  {
+    "nome": "Desenvolvimento no Smith",
+    "grupo": "Anterior de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=desenvolvimento+no+smith"
+  },
+  {
+    "nome": "Elevação Lateral no Cabo Unilateral",
+    "grupo": "Lateral de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=eleva%C3%A7%C3%A3o+lateral+no+cabo+unilateral"
+  },
+  {
+    "nome": "Elevação Frontal Neutra",
+    "grupo": "Anterior de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=eleva%C3%A7%C3%A3o+frontal+neutra"
+  },
+  {
+    "nome": "Elevação Frontal com Barra",
+    "grupo": "Anterior de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=eleva%C3%A7%C3%A3o+frontal+com+barra"
+  },
+  {
+    "nome": "Crucifixo Inverso Unilateral na Polia",
+    "grupo": "Posterior de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=crucifixo+inverso+unilateral+na+polia"
+  },
+  {
+    "nome": "Encolhimento no Smith (Atrás)",
+    "grupo": "Trapézio",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=encolhimento+no+smith+%28atr%C3%A1s%29"
+  },
+  {
+    "nome": "Remada Curvada",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=remada+curvada"
+  },
+  {
+    "nome": "Pulley Frente Triângulo",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=pulley+frente+tri%C3%A2ngulo"
+  },
+  {
+    "nome": "Crucifixo Inverso na Polia",
+    "grupo": "Posterior de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=crucifixo+inverso+na+polia"
+  },
+  {
+    "nome": "Supino Inclinado",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=supino+inclinado"
+  },
+  {
+    "nome": "Supino Reto Máquina",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=supino+reto+m%C3%A1quina"
+  },
+  {
+    "nome": "Crucifixo Reto",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=crucifixo+reto"
+  },
+  {
+    "nome": "Elevação Frontal Neutra no Banco 45º",
+    "grupo": "Anterior de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=eleva%C3%A7%C3%A3o+frontal+neutra+no+banco+45%C2%BA"
+  },
+  {
+    "nome": "Afundo no Smith",
+    "grupo": "Quadríceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=afundo+no+smith"
+  },
+  {
+    "nome": "Cadeira Extensora Unilateral",
+    "grupo": "Quadríceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=cadeira+extensora+unilateral"
+  },
+  {
+    "nome": "Stiff",
+    "grupo": "Posterior de Coxa",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=stiff"
+  },
+  {
+    "nome": "Cadeira Flexora Unilateral",
+    "grupo": "Posterior de Coxa",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=cadeira+flexora+unilateral"
+  },
+  {
+    "nome": "Rosca 21",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=rosca+21"
+  },
+  {
+    "nome": "Rosca Alternada",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=rosca+alternada"
+  },
+  {
+    "nome": "Tríceps Testa no Banco Incinado com Barra W",
+    "grupo": "Tríceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=tr%C3%ADceps+testa+no+banco+incinado+com+barra+w"
+  },
+  {
+    "nome": "Tríceps Pulley",
+    "grupo": "Tríceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=tr%C3%ADceps+pulley"
+  },
+  {
+    "nome": "ABS Infra Solo",
+    "grupo": "Abdômen",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=abs+infra+solo"
+  },
+  {
+    "nome": "Elevação Lateral no Banco Inclinado",
+    "grupo": "Lateral de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=eleva%C3%A7%C3%A3o+lateral+no+banco+inclinado"
+  },
+  {
+    "nome": "Levantamento Terra",
+    "grupo": "Lombar",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=levantamento+terra"
+  },
+  {
+    "nome": "Remada Unilateral",
+    "grupo": "Lateral de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=remada+unilateral"
+  },
+  {
+    "nome": "Supino Inclinado no Smith",
+    "grupo": "Peito",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=supino+inclinado+no+smith"
+  },
+  {
+    "nome": "Elevação Frontal",
+    "grupo": "Anterior de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=eleva%C3%A7%C3%A3o+frontal"
+  },
+  {
+    "nome": "ABS Supra no Cabo",
+    "grupo": "Abdômen",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=abs+supra+no+cabo"
+  },
+  {
+    "nome": "Leg Press 45º Unilateral",
+    "grupo": "Quadríceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=leg+press+45%C2%BA+unilateral"
+  },
+  {
+    "nome": "Rosca Scott",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=rosca+scott"
+  },
+  {
+    "nome": "Duplo Bíceps na Polia",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=duplo+b%C3%ADceps+na+polia"
+  },
+  {
+    "nome": "ABS Infra Declinado",
+    "grupo": "Abdômen",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=abs+infra+declinado"
+  },
+  {
+    "nome": "Desenvolvimento Frente",
+    "grupo": "Anterior de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=desenvolvimento+frente"
+  },
+  {
+    "nome": "Remada Máquina",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=remada+m%C3%A1quina"
+  },
+  {
+    "nome": "Remada Baixa Aberta",
+    "grupo": "Costas",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=remada+baixa+aberta"
+  },
+  {
+    "nome": "Elevação Lateral Unilateral",
+    "grupo": "Lateral de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=eleva%C3%A7%C3%A3o+lateral+unilateral"
+  },
+  {
+    "nome": "Elevação Frontal Supinada no Banco 45º",
+    "grupo": "Anterior de Ombro",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=eleva%C3%A7%C3%A3o+frontal+supinada+no+banco+45%C2%BA"
+  },
+  {
+    "nome": "Agachamento Frontal",
+    "grupo": "Quadríceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=agachamento+frontal"
+  },
+  {
+    "nome": "Agachamento Hack com Pés Juntos",
+    "grupo": "Quadríceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=agachamento+hack+com+p%C3%A9s+juntos"
+  },
+  {
+    "nome": "Rosca Direta na Polia Baixa",
+    "grupo": "Bíceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=rosca+direta+na+polia+baixa"
+  },
+  {
+    "nome": "Tríceps Francês Unilateral",
+    "grupo": "Tríceps",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=tr%C3%ADceps+franc%C3%AAs+unilateral"
+  },
+  {
+    "nome": "Rosca Punho (Fazer Unilateral)",
+    "grupo": "Antebraço",
+    "primeiraSubstituicao": "",
+    "segundaSubstituicao": "",
+    "urlVideo": "https://www.youtube.com/results?search_query=rosca+punho+%28fazer+unilateral%29"
   }
 ];
 const DB_GROUPS=[...new Set(EXDB.map(e=>e.grupo))];
@@ -1323,44 +1760,42 @@ function seedInitialPrograms(s){
 const defaultState={anchor:ymd(mondayOf(today())),log:{},weights:[],overrides:{},sessions:{},measures:[],photos:[],activities:[],programId:"refundini",customPrograms:[],
   settings:{rest:90,sound:true,autoRest:false,progReps:12,bar:20,plates:[20,15,10,5,2.5,1.25]}};
 let state=load();
-function load(){try{const r=localStorage.getItem(LS_KEY);if(r){const s=JSON.parse(r);const m=Object.assign({},clone(defaultState),s);
-  m.settings=Object.assign({},defaultState.settings,s.settings||{});m.sessions=s.sessions||{};m.measures=s.measures||[];m.photos=s.photos||[];m.activities=s.activities||[];m.programId=s.programId||"refundini";
-  if(!m.settings._arMig){m.settings.autoRest=false;m.settings._arMig=true;}
-  return seedInitialPrograms(removeRetiredData(m));}}catch(e){}return seedInitialPrograms(clone(defaultState));}
+function load(){const raw=localStorage.getItem(LS_KEY);try{return normalizeBackup(raw?JSON.parse(raw):{});}catch(e){window.appDataLoadError=e.message;return seedInitialPrograms({...clone(defaultState),schemaVersion:2,runs:[],activeRunId:null});}}
 function removeRetiredData(s){delete s.diet;return s;}
-function save(){removeRetiredData(state);try{localStorage.setItem(LS_KEY,JSON.stringify(state));}catch(e){}if(typeof cloudPushDebounced==="function"&&!applyingRemote)cloudPushDebounced();}
+function save(){if(window.appDataLoadError)return;state.schemaVersion=2;removeRetiredData(state);try{localStorage.setItem(LS_KEY,JSON.stringify(state));}catch(e){}if(typeof cloudPushDebounced==="function"&&!applyingRemote)cloudPushDebounced();}
 
 function cycleParity(d){const a=parseYmd(state.anchor),m=mondayOf(d);return ((Math.round((m-a)/604800000)%2)+2)%2;}
-function cycleWeekLabel(d){return actProg().cycle?(cycleParity(d)===0?"Semana 1 · C1/D1":"Semana 2 · C2/D2"):actProg().nome;}
+function cycleWeekLabel(d){const run=activeRun();if(run){const day=runDay(run,ymd(d));return day?"Semana "+day.sourceWeek+" de "+run.weekCount:"Fora do período";}return actProg().cycle?(cycleParity(d)===0?"Semana 1 · C1/D1":"Semana 2 · C2/D2"):actProg().nome;}
 function refundiniKey(d){const wd=d.getDay(),p=cycleParity(d);
   if(wd===1)return"A";if(wd===2)return"B";if(wd===3)return p===0?"C1":"C2";if(wd===4)return"REC";if(wd===5)return p===0?"D1":"D2";if(wd===6)return"E";return"OFF";}
-function planKeyForDate(d){const k=ymd(d);return k<ymd(today())&&state.log[k]&&state.log[k].snapshot&&(state.log[k].snapshot.custom||state.log[k].snapshot.programId!==state.programId)?"HIST_"+k:actProg().keyForDate(d);}
+function legacyPlanForDate(d){const k=ymd(d);return k<ymd(today())&&state.log[k]&&state.log[k].snapshot&&(state.log[k].snapshot.custom||state.log[k].snapshot.programId!==state.programId)?"HIST_"+k:actProg().keyForDate(d);}
+function planKeyForDate(d){const run=activeRun();if(run){const day=runDay(run,ymd(d));return day?day.plan.tipo:'OUTSIDE_CYCLE';}return legacyPlanForDate(d);}
 function customCatalog(){const out={};(state.customPrograms||[]).forEach(p=>{out[p.id]={...p,autor:"Você",emoji:"✏️",cycle:false,desc:p.model==="abc"?"ABC personalizado · três dias":"Full-body personalizado · três dias",keyForDate:d=>p.days[d.getDay()]||p.off};});return out;}
-function actProg(){return customCatalog()[state.programId]||PROGRAMS[state.programId]||PROGRAMS.refundini;}
-function PLN(tipo){if(tipo.startsWith("HIST_"))return state.log[tipo.slice(5)].snapshot;const p=actProg();if(p.plans&&p.plans[tipo])return p.plans[tipo];for(const p of Object.values({...PROGRAMS,...customCatalog()})){if(p.plans&&p.plans[tipo])return p.plans[tipo];}for(const l of Object.values(state.log)){if(l.snapshot&&l.snapshot.tipo===tipo)return l.snapshot;}return PLANS[tipo]||{tipo:tipo,titulo:tipo,foco:"",dia:"",ex:[]};}
+function actProg(){return programById(state.programId)||PROGRAMS.refundini;}
+function PLN(tipo){if(tipo==='OUTSIDE_CYCLE')return {tipo:tipo,titulo:"Fora do período do programa",rest:true,ex:[{nome:"Descanso",obs:"Escolha uma data dentro do calendário da execução."}]};for(const r of state.runs||[]){const d=r.schedule.find(d=>d.plan.tipo===tipo);if(d){const l=readDayLog(d.date,tipo);return l&&l.snapshot||d.plan;}}if(tipo.startsWith("HIST_"))return state.log[tipo.slice(5)].snapshot;const p=actProg();if(p.plans&&p.plans[tipo])return p.plans[tipo];for(const p of Object.values({...PROGRAMS,...customCatalog()})){if(p.plans&&p.plans[tipo])return p.plans[tipo];}for(const l of Object.values(state.log)){if(l.snapshot&&l.snapshot.tipo===tipo)return l.snapshot;}return PLANS[tipo]||{tipo:tipo,titulo:tipo,foco:"",dia:"",ex:[]};}
 function exAt(tipo,i){const base=(PLN(tipo).ex||[])[i]||{nome:"—",grupo:"",series:"",reps:"",obs:""};return Object.assign({},base.planned||base,(state.overrides[tipo]||{})[overrideKey(tipo,i)]||{});}
 function slotId(tipo,i){const e=(PLN(tipo).ex||[])[i];return e&&(e.baseSid||e.sid)||tipo+"-"+(e&&e.id||i);}
 function exNameOfSid(sid){const n=sid.lastIndexOf("-"),tipo=sid.slice(0,n),id=sid.slice(n+1),ex=PLN(tipo).ex||[],i=ex.findIndex(e=>e.id===id);return exAt(tipo,i>=0?i:+id).nome;}
-function dayLog(k){if(!state.log[k])state.log[k]={done:{}};if(!state.log[k].done)state.log[k].done={};return state.log[k];}
-function exDone(k,tipo,i){const l=state.log[k];return !!(l&&l.done&&l.done[daySlotId(k,tipo,i)]);}
+function dayLog(k,tipo){if(!state.log[k])state.log[k]={};const root=state.log[k],run=tipo?runForTipo(tipo):activeRun();let l=root;if(run){root.runLogs=root.runLogs||{};l=root.runLogs[run.id]||(root.runLogs[run.id]={runId:run.id,done:{}});}if(!l.done)l.done={};return l;}
+function exDone(k,tipo,i){const l=readDayLog(k,tipo);return !!(l&&l.done&&l.done[daySlotId(k,tipo,i)]);}
 function countDone(k,tipo){let n=0,ex=PLN(tipo).ex||[];for(let i=0;i<ex.length;i++)if(exDone(k,tipo,i))n++;return n;}
-function dayTotal(tipo){return (PLN(tipo).ex||[]).length;}
+function dayTotal(tipo){return PLN(tipo).rest?0:(PLN(tipo).ex||[]).length;}
 function isTrainingDay(tipo){return !PLN(tipo).rest;}
 function curDate(){return selectedDate?parseYmd(selectedDate):today();}
 
 /* sessões: carga x reps por série */
 function seriesCount(tipo,i,k){const n=parseInt((k?dayExercise(k,tipo,i):exAt(tipo,i)).series);return n>0?n:0;}
 function getSets(k,tipo,i){const sid=daySlotId(k,tipo,i);const s=(state.sessions[k]||{})[sid];const n=seriesCount(tipo,i,k)||3;
-  const arr=(s&&s.sets)?clone(s.sets):[];while(arr.length<n)arr.push({kg:"",reps:""});return arr;}
+  const arr=(s&&s.sets)?clone(s.sets):[];while(arr.length<n)arr.push({kg:"",reps:""});return arr.slice(0,n);}
 function setSet(k,tipo,i,idx,field,val){const sid=daySlotId(k,tipo,i);state.sessions[k]=state.sessions[k]||{};
   snapshotDay(k,tipo);const cur=state.sessions[k][sid]||{sets:[]};cur.sets=cur.sets||[];while(cur.sets.length<=idx)cur.sets.push({kg:"",reps:""});
-  cur.sets[idx][field]=val;try{const _e=dayExercise(k,tipo,i);cur.nm=_e.nome;cur.gp=_e.grupo;}catch(e){}state.sessions[k][sid]=cur;save();}
+  cur.sets[idx][field]=val;try{const _e=dayExercise(k,tipo,i);cur.nm=_e.nome;cur.gp=_e.grupo;cur.sets.forEach(set=>set.repsUnit=isTimedExercise(_e)?"seconds":"reps");}catch(e){}cur.runId=runForTipo(tipo)?.id||null;state.sessions[k][sid]=cur;save();}
 function lastSets(sid,beforeKey,name){
   const ks=Object.keys(state.sessions).filter(k=>k<beforeKey).sort().reverse();
   for(const k of ks){const entries=Object.entries(state.sessions[k]);const found=entries.find(([id,s])=>id===sid&&(!name||exerciseSessionName(id,s)===name)&&(s.sets||[]).some(x=>x.kg))||entries.find(([id,s])=>name&&exerciseSessionName(id,s)===name&&(s.sets||[]).some(x=>x.kg));if(found)return found[1].sets;}
   return null;
 }
-function best1RM(sets){let b=0;(sets||[]).forEach(s=>{const kg=parseFloat(s.kg),r=parseInt(s.reps);if(kg>0&&r>0){const e=kg*(1+r/30);if(e>b)b=e;}});return b;}
+function best1RM(sets){let b=0;(sets||[]).forEach(s=>{const kg=parseFloat(s.kg),r=parseInt(s.reps);if(s.repsUnit!=="seconds"&&kg>0&&r>0){const e=kg*(1+r/30);if(e>b)b=e;}});return b;}
 function maxKg(sets){let b=0;(sets||[]).forEach(s=>{const kg=parseFloat(s.kg);if(kg>b)b=kg;});return b;}
 function sidBest1RM(k,sid){const s=(state.sessions[k]||{})[sid];return s?best1RM(s.sets):0;}
 function allTimeBest1RM(sid,exceptKey,name){let b=0;Object.keys(state.sessions).forEach(k=>{if(k===exceptKey)return;Object.entries(state.sessions[k]).forEach(([id,s])=>{if(name?exerciseSessionName(id,s)===name:id===sid)b=Math.max(b,best1RM(s.sets));});});return b;}
@@ -1374,54 +1809,58 @@ let currentTab="hoje",weekOffset=0,selectedDate=null,progEx=null;
 function setTab(t){currentTab=t;document.querySelectorAll(".navbtn").forEach(b=>b.classList.toggle("active",b.dataset.tab===t));render();try{window.scrollTo({top:0,behavior:"instant"});}catch(e){}}
 document.querySelectorAll(".navbtn").forEach(b=>b.addEventListener("click",()=>setTab(b.dataset.tab)));
 function render(){const v=document.getElementById("view");if(sessInt){clearInterval(sessInt);sessInt=null;}
-  v.innerHTML=currentTab==="hoje"?viewHoje():currentTab==="semana"?viewSemana():currentTab==="atividades"?viewAtividades():currentTab==="programas"?viewProgramas():currentTab==="corpo"||currentTab==="peso"?viewCorpo():currentTab==="progresso"?viewProgresso():viewNotas();
+  v.innerHTML=currentTab==="legacy-history"?viewLegacyHistory():currentTab==="run-results"?viewRunResults():currentTab==="hoje"?viewHoje():currentTab==="semana"?viewSemana():currentTab==="atividades"?viewAtividades():currentTab==="programas"?viewProgramas():currentTab==="corpo"||currentTab==="peso"?viewCorpo():currentTab==="progresso"?viewProgresso():viewNotas();
   bind();}
 function ring(pct,size){size=size||74;const r=(size-10)/2,c=2*Math.PI*r,off=c*(1-pct/100);
   return `<div class="ring" style="width:${size}px;height:${size}px"><svg width="${size}" height="${size}"><circle cx="${size/2}" cy="${size/2}" r="${r}" stroke="var(--surface2)" stroke-width="8" fill="none"/><circle cx="${size/2}" cy="${size/2}" r="${r}" stroke="url(#g1)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"/><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff4d2e"/><stop offset="1" stop-color="#ff8a3d"/></linearGradient></defs></svg><div class="pct">${Math.round(pct)}%</div></div>`;}
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
 
 function viewHoje(){
+  const run=activeRun();if(!run||window.appDataLoadError)return pendingProgramView();
+  if(!selectedDate&&(run.status==='completed'||ymd(today())>run.endDate)){if(run.status!=='completed'&&run.status!=='elapsed'){run.status='elapsed';save();}return viewRunResults(run.id);}
   const d=curDate(),key=ymd(d),tipo=planKeyForDate(d),p=PLN(tipo);
   const total=dayTotal(tipo),done=countDone(key,tipo),pct=total?done/total*100:0;
   const isToday=key===ymd(today());
   const dateStr=`${WD_NAMES[d.getDay()]}, ${d.getDate()} de ${MESL[d.getMonth()]}`;
-  const _lg=state.log[key]||{};const sessChip=(!p.rest&&_lg.start)?`<span class="sesschip" id="sessChip" data-start="${_lg.start}" data-end="${_lg.end||0}"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg>${sessElapsedStr(_lg.start,_lg.end)}</span>`:"";
+  const _lg=readDayLog(key,tipo)||{};const sessChip=(!p.rest&&_lg.start)?`<span class="sesschip" id="sessChip" data-start="${_lg.start}" data-end="${_lg.end||0}"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg>${sessElapsedStr(_lg.start,_lg.end)}</span>`:"";
   let h=`<div class="hero"><div class="eyebrow">${isToday?"Treino de hoje":"Treino"} · ${dateStr}</div>
-    <h1>${p.titulo}${p.variacao?' <span class="pill amber" style="vertical-align:middle">variação</span>':''}</h1>
-    <div class="foco">${p.foco}</div>
-    <div class="tags"><span class="pill ${p.rest?'gray':'accent'}">${p.dia}</span><span class="pill gray">${cycleWeekLabel(d)}</span>${!p.rest?`<span class="pill ok">${done}/${total} feitos</span>`:''}${sessChip}</div>`;
+    <h1>${esc(p.titulo)}${p.variacao?' <span class="pill amber" style="vertical-align:middle">variação</span>':''}</h1>
+    <div class="foco">${esc(p.foco)}</div>
+    <div class="tags"><span class="pill ${p.rest?'gray':'accent'}">${esc(p.dia)}</span><span class="pill gray">${cycleWeekLabel(d)}</span>${!p.rest?`<span class="pill ok">${done}/${total} feitos</span>`:''}${sessChip}</div>`;
   if(!p.rest)h+=`<div class="ring-wrap">${ring(pct)}<div class="ring-stats"><div class="big">${done} de ${total} exercícios</div><div class="bar"><i style="width:${pct}%"></i></div><div class="muted" style="font-size:13px;margin-top:6px">${done===total&&total>0?"Treino concluído! 💪":(done>0?"Continue, falta pouco":"Bora começar")}</div></div></div>`;
   h+=`</div>`;
   if(!isToday)h=`<div class="row" style="margin:10px 2px"><button class="btn ghost" id="backToday"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg> Voltar para hoje</button></div>`+h;
+  h+=cycleBanner();
   h+=`<button class="progbar" id="goProg"><span>${actProg().emoji} <b>${esc(actProg().nome)}</b></span><span class="muted" style="font-size:12px">trocar treino ›</span></button>`;
   if(actProg().notes)h+=`<div class="card"><b>Orientações do programa</b><p class="muted" style="white-space:pre-wrap">${esc(actProg().notes)}</p></div>`;
   if(isToday)h+=dashCard();
   h+=`<div class="row" style="gap:10px;margin:12px 0"><button class="btn ghost" id="goStretch" style="flex:1">🧘 Alongamento</button><button class="btn ghost" id="quickAct" style="flex:1">➕ Atividade</button></div>`;
-  if(p.rest){return h+`<div class="card" style="text-align:center"><div style="font-size:38px">🧘</div><div style="font-weight:700;margin-top:6px">${tipo==="REC"?"Recuperação ativa":"Descanso completo"}</div><p class="muted" style="margin:6px 0 0">${p.ex[0].obs||p.foco}</p></div>`+(tipo==="REC"?`<div class="ex ${exDone(key,'REC',0)?'done':''}"><div class="top"><div class="chk" data-act="toggle" data-i="0"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div><div class="body"><div class="name">Fiz o cardio / abdômen</div><div class="meta">opcional · marque se realizou</div></div></div></div>`:"");}
+  if(p.rest){return h+`<div class="card" style="text-align:center"><div style="font-size:38px">🧘</div><div style="font-weight:700;margin-top:6px">${(tipo==="REC"||p.sourceTipo==="REC")?"Recuperação ativa":"Descanso completo"}</div><p class="muted" style="margin:6px 0 0">${esc((p.ex[0]||{}).obs||p.foco)}</p></div>`+((tipo==="REC"||p.sourceTipo==="REC")?`<div class="ex ${exDone(key,tipo,0)?'done':''}"><div class="top"><div class="chk" data-act="toggle" data-i="0"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div><div class="body"><div class="name">Fiz o cardio / abdômen</div><div class="meta">opcional · marque se realizou</div></div></div></div>`:"");}
   let lastG=null,body="";
   p.ex.forEach((_,i)=>{
-    const ex=dayExercise(key,tipo,i),sid=daySlotId(key,tipo,i),isd=exDone(key,tipo,i);
-    if(ex.grupo!==lastG){lastG=ex.grupo;body+=`<div class="grp-head"><span class="gname">${ex.grupo}</span><span class="gline"></span></div>`;}
-    const meta=[];if(ex.series)meta.push(`<span class="s">${ex.series} séries</span>`);if(ex.reps)meta.push(ex.reps);if(ex.obs)meta.push(ex.obs);
+    body+=groupHeading(p,i);
+    const ex=dayExercise(key,tipo,i),timed=isTimedExercise(ex),sid=daySlotId(key,tipo,i),isd=exDone(key,tipo,i);
+    if(ex.grupo!==lastG){lastG=ex.grupo;body+=`<div class="grp-head"><span class="gname">${esc(ex.grupo)}</span><span class="gline"></span></div>`;}
+    const meta=[];if(ex.technique)meta.push(`<b>${esc(ex.technique)}</b>`);if(ex.restSeconds!=null)meta.push(`Descanso: ${ex.restSeconds} s`);if(ex.groupId){const members=p.ex.map((e,j)=>({e,j})).filter(o=>o.e.groupId===ex.groupId);meta.push(`${esc(ex.groupType||"Grupo")} · ${members.map(o=>o.j+1).join(" + ")}`);}if(ex.series)meta.push(`<span class="s">${esc(ex.series)} séries</span>`);if(ex.reps)meta.push(esc(ex.reps));if(ex.obs)meta.push(esc(ex.obs));
     const isPR=sidBest1RM(key,sid)>0 && sidBest1RM(key,sid)>=allTimeBest1RM(sid,key,ex.nome);
     const sets=getSets(key,tipo,i),last=lastSets(sid,key,ex.nome);
     const _goal=state.settings.progReps||12,_topR=last?Math.max(0,...last.map(s=>parseInt(s.reps)||0)):0,_hadKg=!!(last&&last.some(s=>parseFloat(s.kg)>0));
-    const progHtml=(isTrainingDay(tipo)&&_hadKg&&_topR>=_goal)?`<div class="proghint"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>Você fez ${_topR} reps na última sessão — tente subir a carga (+${progInc(ex.grupo)} kg).</div>`:"";
-    let setsHtml=`<div class="sets"><div class="setshead"><span>série</span><span>kg</span><span>reps</span></div>`;
+    const progHtml=(isTrainingDay(tipo)&&!timed&&_hadKg&&_topR>=_goal)?`<div class="proghint"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>Você fez ${_topR} reps na última sessão — tente subir a carga (+${progInc(ex.grupo)} kg).</div>`:"";
+    let setsHtml=`<div class="sets"><div class="setshead"><span>série</span><span>kg</span><span>${timed?"seg":"reps"}</span><span>feito</span></div>`;
     for(let s=0;s<sets.length;s++){const ph=last&&last[s]?last[s]:null;
-      setsHtml+=`<div class="setrow"><span class="sn">${s+1}ª</span><input type="number" inputmode="decimal" step="0.5" data-set="kg" data-i="${i}" data-s="${s}" value="${esc(sets[s].kg)}" placeholder="${ph&&ph.kg?esc(ph.kg):'–'}"><input type="number" inputmode="numeric" data-set="reps" data-i="${i}" data-s="${s}" value="${esc(sets[s].reps)}" placeholder="${ph&&ph.reps?esc(ph.reps):'–'}"></div>`;}
+      setsHtml+=`<div class="setrow"><span class="sn">${s+1}ª</span><input type="number" inputmode="decimal" step="0.5" data-set="kg" data-i="${i}" data-s="${s}" value="${esc(sets[s].kg)}" placeholder="${ph&&ph.kg?esc(ph.kg):'–'}"><input type="number" inputmode="numeric" data-set="reps" data-i="${i}" data-s="${s}" value="${esc(sets[s].reps)}" placeholder="${ph&&ph.reps?esc(ph.reps):'–'}"><input class="set-complete" type="checkbox" aria-label="Série ${s+1} concluída: ${esc(ex.nome)}" data-set-done data-i="${i}" data-s="${s}" ${sets[s].done?'checked':''}></div>`;}
     setsHtml+=`</div>`;
-    body+=`<div class="ex ${isd?'done':''}"><div class="top">
+    body+=`<div class="ex ${isd?'done':''} ${ex.groupId?'combined-exercise':''}"><div class="top">
       <div class="chk" data-act="toggle" data-i="${i}"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
-      <div class="body"><div class="name">${ex.nome}${isPR?'<span class="prbadge">🏆 PR</span>':''}</div>
+      <div class="body"><div class="name">${esc(ex.nome)}${isPR?'<span class="prbadge">🏆 PR</span>':''}</div>
         <div class="meta">${meta.join('<span class="dim">·</span> ')}</div>
         ${setsHtml}
         ${executionChoices(key,tipo,i)}
         ${progHtml}
         <div class="exacts">
           <a class="chip-sm play" href="${esc(ytUrl(ex))}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg> Execução</a>
-          <span class="chip-sm" data-act="swap" data-i="${i}"><svg viewBox="0 0 24 24"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg> Trocar no programa</span>
-          <span class="chip-sm rst" data-act="rest"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg> Descanso</span>
+          <span class="chip-sm" data-act="swap" data-i="${i}"><svg viewBox="0 0 24 24"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg> ${runForTipo(tipo)?"Trocar nesta sessão":"Trocar no programa"}</span>
+          <span class="chip-sm rst" data-act="rest" data-i="${i}"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg> Descanso</span>
           <span class="chip-sm" data-act="edit" data-i="${i}"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg> Editar</span>
         </div>
         <div class="ex-edit"><div class="g2">
@@ -1436,6 +1875,7 @@ function viewHoje(){
 }
 
 function viewSemana(){
+  if(!activeRun()||window.appDataLoadError)return pendingProgramView();
   const base=mondayOf(addDays(today(),weekOffset*7));
   const days=[0,1,2,3,4,5,6].map(i=>addDays(base,i));
   let trained=0,exSum=0,totalPrev=0;
@@ -1449,7 +1889,7 @@ function viewSemana(){
     <div><div style="font-size:22px;font-weight:800;color:var(--txt3)">${totalPrev}</div><div class="muted" style="font-size:12px">previstos</div></div>
   </div></div></div>`;
   days.forEach(d=>{const t=planKeyForDate(d),p=PLN(t),k=ymd(d),tot=dayTotal(t),dn=countDone(k,t),pct=tot?Math.round(dn/tot*100):0,isToday=k===ymd(today()),doneFull=isTrainingDay(t)&&dn>0;
-    h+=`<div class="daycard ${isToday?'today':''} ${doneFull?'done':''}" data-open="${k}"><div class="dnum"><div class="wd">${WD_SHORT[d.getDay()]}</div><div class="dd">${d.getDate()}</div></div><div class="info"><div class="t">${p.titulo}${p.variacao?' · var':''}</div><div class="f">${p.foco}</div></div><div class="rt">${p.rest?`<span class="pill gray">descanso</span>`:`<div class="p" style="color:${pct>=100?'var(--ok)':(pct>0?'var(--accent2)':'var(--txt3)')}">${pct}%</div><div class="l">${dn}/${tot}</div>`}</div></div>`;});
+    h+=`<div class="daycard ${isToday?'today':''} ${doneFull?'done':''}" data-open="${k}"><div class="dnum"><div class="wd">${WD_SHORT[d.getDay()]}</div><div class="dd">${d.getDate()}</div></div><div class="info"><div class="t">${esc(p.titulo)}${p.variacao?' · var':''}</div><div class="f">${esc(p.foco)}</div></div><div class="rt">${p.rest?`<span class="pill gray">descanso</span>`:`<div class="p" style="color:${pct>=100?'var(--ok)':(pct>0?'var(--accent2)':'var(--txt3)')}">${pct}%</div><div class="l">${dn}/${tot}</div>`}</div></div>`;});
   return h;
 }
 
@@ -1499,7 +1939,7 @@ function viewProgresso(){
     prList.map(x=>{const dt=parseYmd(x.d);return `<div class="prrow"><div class="pn">${x.n}</div><div style="text-align:right"><div class="pv">${x.kg.toFixed(1)} kg</div><div class="pd">${dt.getDate()} ${MES[dt.getMonth()]}</div></div></div>`;}).join("")+`</div>`;}
   const weeks=[];for(let w=7;w>=0;w--){const base=mondayOf(addDays(today(),-w*7));let tot=0,dn=0;for(let i=0;i<7;i++){const dd=addDays(base,i),t=planKeyForDate(dd);const hs=historyStats(ymd(dd));tot+=hs.total;dn+=hs.done;}weeks.push({pct:tot?Math.round(dn/tot*100):0});}
   const avg=Math.round(weeks.reduce((a,b)=>a+b.pct,0)/weeks.length);
-  return `<div class="stats">
+  return legacyHistorySummary()+`<div class="stats">
     <div class="stat accent"><div class="v">${streak}</div><div class="k">🔥 Sequência (dias)</div></div>
     <div class="stat ok"><div class="v">${allTrained}</div><div class="k">Treinos concluídos</div></div>
     <div class="stat"><div class="v">${allEx}</div><div class="k">Exercícios feitos</div></div>
@@ -1532,19 +1972,16 @@ function viewNotas(){
 /* ===== BIND ===== */
 function bind(){
   const back=document.getElementById("backToday");if(back)back.onclick=()=>{selectedDate=null;render();};
-  const finish=document.getElementById("finishBtn");if(finish)finish.onclick=()=>{const d=curDate(),k=ymd(d),tipo=planKeyForDate(d),l=dayLog(k),tot=dayTotal(tipo),target=!(countDone(k,tipo)===tot);snapshotDay(k,tipo);for(let i=0;i<tot;i++)l.done[daySlotId(k,tipo,i)]=target;
-    if(isTrainingDay(tipo)){if(target){if(!l.start)l.start=Date.now();l.end=Date.now();}else{delete l.start;delete l.end;}}save();render();};
+  const finish=document.getElementById("finishBtn");if(finish)finish.onclick=()=>{const k=ymd(curDate()),tipo=planKeyForDate(curDate()),target=countDone(k,tipo)!==dayTotal(tipo);for(let i=0;i<dayTotal(tipo);i++)markExerciseSets(k,tipo,i,target);const completed=updateSessionCompletion(k,tipo);save();if(completed){closeSheet();setTab('run-results');}else render();};
   document.querySelectorAll("[data-act]").forEach(el=>{const act=el.dataset.act;
-    if(act==="toggle")el.onclick=()=>{const d=curDate(),k=ymd(d),tipo=planKeyForDate(d),i=+el.dataset.i,l=dayLog(k),sid=daySlotId(k,tipo,i);snapshotDay(k,tipo);l.done[sid]=!l.done[sid];
-      if(isTrainingDay(tipo)){const dn=countDone(k,tipo),tot=dayTotal(tipo);if(dn>0&&!l.start)l.start=Date.now();if(dn===0){delete l.start;delete l.end;}if(dn===tot&&tot>0){if(!l.end)l.end=Date.now();}else{delete l.end;}}
-      save();
-      if(l.done[sid]&&isTrainingDay(tipo)&&state.settings.autoRest){render();openTimer();return;}render();};
-    if(act==="rest")el.onclick=()=>openTimer();
+    if(act==="toggle")el.onclick=()=>{const k=ymd(curDate()),tipo=planKeyForDate(curDate()),i=+el.dataset.i,target=!exDone(k,tipo,i);if(PLN(tipo).rest){snapshotDay(k,tipo);dayLog(k,tipo).done[daySlotId(k,tipo,i)]=target;save();render();return;}markExerciseSets(k,tipo,i,target);const completed=updateSessionCompletion(k,tipo);save();if(completed){closeSheet();setTab('run-results');return;}render();if(target&&state.settings.autoRest)openTimer(dayExercise(k,tipo,i).restSeconds);};
+    if(act==="rest")el.onclick=()=>openTimer(dayExercise(ymd(curDate()),planKeyForDate(curDate()),+el.dataset.i).restSeconds);
     if(act==="swap")el.onclick=()=>openSwap(planKeyForDate(curDate()),+el.dataset.i);
     if(act==="edit")el.onclick=()=>{el.closest(".ex").classList.toggle("editing");};
     if(act==="saveEdit")el.onclick=()=>{const i=+el.dataset.i,tipo=planKeyForDate(curDate()),exRow=el.closest(".ex"),g=k=>exRow.querySelector(`[data-e="${k}"]`).value;
+      if(runForTipo(tipo)){const name=g("nome").trim(),group=g("grupo").trim(),series=Number(g("series")),reps=g("reps").trim();if(!name||!group||!Number.isInteger(series)||series<1||series>30||!reps){alert("Preencha nome, grupo, séries inteiras de 1 a 30 e repetições.");return;}const entry=EXDB.find(e=>e.nome===name);persistDayChoice(ymd(curDate()),tipo,i,{...(entry||{urlVideo:'',primeiraSubstituicao:'',segundaSubstituicao:''}),nome:name,grupo:group,series,reps,customPrescription:true});return;}
       state.overrides[tipo]=state.overrides[tipo]||{};state.overrides[tipo][overrideKey(tipo,i)]={nome:g("nome"),grupo:g("grupo"),series:g("series"),reps:g("reps")};save();render();};
-    if(act==="resetEx")el.onclick=()=>{const i=+el.dataset.i,tipo=planKeyForDate(curDate());if(state.overrides[tipo])delete state.overrides[tipo][overrideKey(tipo,i)];save();render();};
+    if(act==="resetEx")el.onclick=()=>{const i=+el.dataset.i,tipo=planKeyForDate(curDate());if(runForTipo(tipo)){persistDayChoice(ymd(curDate()),tipo,i,null);return;}if(state.overrides[tipo])delete state.overrides[tipo][overrideKey(tipo,i)];save();render();};
   });
   document.querySelectorAll("[data-set]").forEach(inp=>inp.onchange=()=>{const d=curDate();setSet(ymd(d),planKeyForDate(d),+inp.dataset.i,+inp.dataset.s,inp.dataset.set,inp.value);});
   const wp=document.getElementById("wPrev");if(wp)wp.onclick=()=>{weekOffset--;render();};
@@ -1561,9 +1998,9 @@ function bind(){
   document.querySelectorAll("[data-photo]").forEach(el=>el.onclick=()=>viewPhoto(el.dataset.photo));
   const mSel=document.getElementById("measureSel");if(mSel)mSel.onchange=()=>{measureMetric=mSel.value;render();};
   // ---- atividades + alongamento + dashboard ----
-  document.querySelectorAll("[data-go]").forEach(el=>el.onclick=()=>setTab(el.dataset.go));
-  const gpb=document.getElementById("goProg");if(gpb)gpb.onclick=()=>setTab("programas");
-  document.querySelectorAll("[data-activate]").forEach(el=>el.onclick=()=>{preserveHistory();state.programId=el.dataset.activate;save();selectedDate=null;setTab("hoje");});
+  document.querySelectorAll("[data-go]").forEach(el=>el.onclick=()=>{if(el.dataset.go==='programas')programPanel='programas';setTab(el.dataset.go);});
+  const gpb=document.getElementById("goProg");if(gpb)gpb.onclick=()=>{programPanel="programas";setTab("programas");};
+  document.querySelectorAll("[data-activate]").forEach(el=>el.onclick=()=>openStartProgram(el.dataset.activate));
   const gs=document.getElementById("goStretch");if(gs)gs.onclick=openStretch;
   const qa=document.getElementById("quickAct");if(qa)qa.onclick=()=>openActivity(ymd(curDate()));
   const aAct=document.getElementById("addActivity");if(aAct)aAct.onclick=()=>openActivity(ymd(today()));
@@ -1571,6 +2008,7 @@ function bind(){
   document.querySelectorAll("[data-delact]").forEach(el=>el.onclick=()=>{state.activities=state.activities.filter(a=>a.id!==el.dataset.delact);save();render();});
   document.querySelectorAll("[data-day-choice]").forEach(button=>button.onclick=()=>{const k=ymd(curDate());selectDayExercise(k,planKeyForDate(curDate()),+button.dataset.i,button.dataset.dayChoice);});
   bindCustomPrograms();
+  bindCycles();
   mountSessionClock();
   if(document.getElementById("wchart"))drawWeightChart();
   if(document.getElementById("exchart"))drawExChart();
@@ -1588,7 +2026,7 @@ window.closeSheet=closeSheet;
 let swapState={tipo:null,i:null,all:false,q:""};
 function openSwap(tipo,i){swapState={tipo,i,all:false,q:""};renderSwap();}
 function renderSwap(){
-  const {tipo,i,all,q}=swapState,ex=exAt(tipo,i),grupo=ex.grupo;
+  const {tipo,i,all,q}=swapState,ex=runForTipo(tipo)?dayExercise(ymd(curDate()),tipo,i):exAt(tipo,i),grupo=ex.grupo;
   let list=EXDB.filter(e=>all?true:e.grupo===grupo);
   if(q)list=list.filter(e=>e.nome.toLowerCase().includes(q.toLowerCase()));
   const groupHas=DB_GROUPS.indexOf(grupo)>=0;
@@ -1604,7 +2042,7 @@ function renderSwap(){
   document.getElementById("swAll").onclick=()=>{swapState.all=true;renderSwap();};
   bindPicks();
 }
-function bindPicks(){document.querySelectorAll(".picklist a").forEach(a=>a.onclick=e=>e.stopPropagation());document.querySelectorAll("[data-pick]").forEach(el=>el.onclick=()=>{const {tipo,i}=swapState,ex=exAt(tipo,i);
+function bindPicks(){document.querySelectorAll(".picklist a").forEach(a=>a.onclick=e=>e.stopPropagation());document.querySelectorAll("[data-pick]").forEach(el=>el.onclick=()=>{const {tipo,i}=swapState,ex=exAt(tipo,i);if(runForTipo(tipo)){selectDayExercise(ymd(curDate()),tipo,i,el.dataset.pick,true);closeSheet();return;}
   state.overrides[tipo]=state.overrides[tipo]||{};state.overrides[tipo][overrideKey(tipo,i)]={nome:el.dataset.pick,grupo:el.dataset.pg,series:ex.series,reps:ex.reps};save();closeSheet();render();});}
 
 function openWeight(){
@@ -1654,10 +2092,12 @@ function openSettings(){const s=state.settings;
   document.getElementById("impBtn").onclick=()=>document.getElementById("impFile").click();
   document.getElementById("impFile").onchange=importData;
   document.getElementById("openSyncBtn").onclick=openSync;
-  document.getElementById("resetData").onclick=()=>{if(confirm("Apagar TODOS os dados (treinos, séries, cargas e pesos)? Não dá para desfazer.")){localStorage.removeItem(LS_KEY);state=clone(defaultState);state.anchor=ymd(mondayOf(today()));save();closeSheet();render();}};
+  document.getElementById("resetData").onclick=()=>{if(confirm("Apagar TODOS os dados (treinos, séries, cargas e pesos)? Não dá para desfazer.")){localStorage.removeItem(LS_KEY);window.appDataLoadError=null;state=normalizeBackup({});selectedDate=null;selectedRunResultId=null;state.anchor=ymd(mondayOf(today()));save();closeSheet();render();}};
 }
-function exportData(){const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="treino-backup-"+ymd(today())+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);}
-function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);state=removeRetiredData(Object.assign({},clone(defaultState),o));state.settings=Object.assign({},defaultState.settings,o.settings||{});save();closeSheet();render();alert("Dados importados com sucesso!");}catch(err){alert("Arquivo inválido.");}};r.readAsText(f);}
+function serializeBackup(){if(window.appDataLoadError)throw Error('Os dados originais precisam de recuperação. Use Salvar dados originais.');return JSON.stringify(normalizeBackup(state),null,2);}
+function exportData(){try{const blob=new Blob([serializeBackup()],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="treino-backup-"+ymd(today())+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);}catch(err){alert('Não foi possível exportar o backup. '+err.message);}}
+function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const next=normalizeBackup(JSON.parse(r.result));localStorage.setItem(LS_KEY,JSON.stringify(next));state=next;window.appDataLoadError=null;save();closeSheet();selectedDate=null;selectedRunResultId=null;programPanel="programas";setTab("hoje");alert(activeRun()?"Dados importados. Execuções, calendário e registros restaurados.":"Dados importados. Configure a data de início e a duração do programa. Na configuração, mantenha a opção de incorporar os registros antigos do mesmo programa para incluí-los na semana e nas estatísticas.");}catch(err){alert("Importação cancelada; seus dados atuais foram mantidos. "+err.message);}};r.readAsText(f);}
+
 
 /* ===== FERRAMENTAS (calculadoras) ===== */
 function openTools(){
@@ -1687,7 +2127,9 @@ function roundTo(v,step){return Math.round(v/step)*step;}
 
 /* ===== CRONÔMETRO ===== */
 let tInt=null,tLeft=0,tTotal=0,tPaused=false,actx=null;
-function openTimer(){tTotal=state.settings.rest||90;tLeft=tTotal;tPaused=false;
+function openTimer(seconds){if(typeof seconds!=='number'||!Number.isFinite(seconds))seconds=undefined;tTotal=seconds==null?(state.settings.rest||90):Math.max(0,Number(seconds)||0);tLeft=tTotal;tPaused=false;
+  if(tTotal===0){stopTimer();openSheet('<h3>Sem descanso</h3><p>Continue para o próximo exercício ou lado, conforme a técnica indicada.</p><button class="btn primary block" onclick="closeSheet()">Continuar</button>');return;}
+
   openSheet(`<h3>⏱️ Descanso</h3><div class="chips" id="tChips">${[45,60,90,120,150].map(x=>`<span class="chip ${tTotal===x?'on':''}" data-t="${x}">${x}s</span>`).join("")}</div>
     <div class="timer" id="timerBox"><div class="tnum" id="tNum">${fmt(tLeft)}</div><div class="tprog"><i id="tBar" style="width:100%"></i></div></div>
     <div class="tbtns"><button class="btn ghost" id="tReset">Reiniciar</button><button class="btn primary" id="tToggle">Pausar</button><button class="btn ghost" id="tPlus">+15s</button></div>
@@ -1770,8 +2212,8 @@ function photosSection(){const ps=[...(state.photos||[])].sort((a,b)=>a.date<b.d
   else h+=`<div class="photogrid">`+ps.map(p=>{const d=parseYmd(p.date);return `<div class="photo" data-photo="${p.id}"><img src="${p.img}" alt=""><div class="pdate">${d.getDate()} ${MES[d.getMonth()]}</div></div>`;}).join("")+`</div>`;
   h+=`<button class="btn ghost block" id="addPhoto" style="margin-top:10px"><svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2"><path d="M3 7h4l2-3h6l2 3h4v13H3z"/><circle cx="12" cy="13" r="4"/></svg> Adicionar foto</button><div class="hint">As fotos ficam só neste aparelho e contam no backup. O espaço é limitado.</div>`;
   return h;}
-function trySave(){try{localStorage.setItem(LS_KEY,JSON.stringify(state));return true;}catch(e){return false;}}
-function onPhotoPick(e){const f=e.target.files&&e.target.files[0];if(!f)return;const r=new FileReader();
+function trySave(){if(window.appDataLoadError)return false;try{localStorage.setItem(LS_KEY,JSON.stringify(state));return true;}catch(e){return false;}}
+function onPhotoPick(e){if(window.appDataLoadError){alert("Importe um backup válido antes de adicionar fotos.");return;}const f=e.target.files&&e.target.files[0];if(!f)return;const r=new FileReader();
   r.onload=()=>{const img=new Image();img.onload=()=>{
     const max=720,sc=Math.min(1,max/Math.max(img.width,img.height)),w=Math.round(img.width*sc),hh=Math.round(img.height*sc);
     const c=document.createElement("canvas");c.width=w;c.height=hh;c.getContext("2d").drawImage(img,0,0,w,hh);
@@ -1939,10 +2381,7 @@ function attachSync(){if(!fbUser||!fbDb)return;detachSync();const ref=fbDb.colle
   syncUnsub=ref.onSnapshot(snap=>{if(!snap.exists)return;const d=snap.data();if(!d||!d.state)return;if(d.state===lastSyncJson)return;applyRemote(d.state);},function(){syncState="error";});
   ref.get().then(snap=>{if(!snap.exists)cloudPush(true);}).catch(()=>{});}
 function detachSync(){if(syncUnsub){try{syncUnsub();}catch(e){}syncUnsub=null;}}
-function applyRemote(json){try{const remote=JSON.parse(json);applyingRemote=true;const photos=state.photos;
-  state=removeRetiredData(Object.assign({},clone(defaultState),remote));state.photos=photos;
-  state.settings=Object.assign({},defaultState.settings,state.settings||{});
-  try{localStorage.setItem(LS_KEY,JSON.stringify(state));}catch(e){}lastSyncJson=json;applyingRemote=false;render();if(Object.prototype.hasOwnProperty.call(remote,"diet"))cloudPushDebounced();}catch(e){applyingRemote=false;}}
+function applyRemote(json){try{const next=normalizeBackup(JSON.parse(json)),photos=state.photos;next.photos=photos;localStorage.setItem(LS_KEY,JSON.stringify(next));applyingRemote=true;state=next;window.appDataLoadError=null;lastSyncJson=json;applyingRemote=false;render();if(json!==syncStateForCloud())cloudPushDebounced();}catch(e){applyingRemote=false;syncState='error';}}
 function cloudPushDebounced(){if(!fbUser||!fbDb)return;clearTimeout(pushTimer);pushTimer=setTimeout(()=>cloudPush(),900);}
 function cloudPush(force){if(!fbUser||!fbDb)return;const json=syncStateForCloud();if(json===lastSyncJson&&!force)return;syncState="syncing";
   fbDb.collection("treino").doc(fbUser.uid).set({state:json,cid:CID,updatedAt:firebase.firestore.FieldValue.serverTimestamp(),v:5}).then(()=>{lastSyncJson=json;syncState="ready";}).catch(function(){syncState="error";});}
@@ -2020,21 +2459,23 @@ const PROGRAMS={
     _d("CB_LEGS2","Legs (pernas)","Sábado","Pernas + glúteo",[E("Quadríceps","Agachamento hack",4,"10-12"),E("Glúteo","Elevação pélvica (hip thrust)",4,"10-15"),E("Quadríceps","Cadeira extensora",3,"12-15"),E("Posterior de Coxa","Cadeira flexora",3,"12-15"),E("Panturrilha","Panturrilha sentado",4,"15-20")])])
 };
 const PROG_ORDER=["refundini","saitama","ramondino","arnold","cbum"];
-function progDaysSummary(p){if(p.cycle)return "5 treinos/semana · ABCDE + Full Body";let tr=0;for(let i=0;i<7;i++){const t=p.keyForDate({getDay:function(){return i;}});if(!(p.plans[t]||{}).rest)tr++;}return tr+" treinos por semana";}
+function progDaysSummary(p){if(p.periodized)return p.durationWeeks+" semanas · variação diária";if(p.cycle)return "5 treinos/semana · ABCDE + Full Body";let tr=0;for(let i=0;i<7;i++){const t=p.keyForDate({getDay:function(){return i;}});if(!(p.plans[t]||{}).rest)tr++;}return tr+" treinos por semana";}
 function viewProgramas(){
-  let h=`<div class="section-title" style="margin-top:8px">Programa de treino</div>
-  <p class="muted" style="margin:0 0 6px;font-size:13.5px">Escolha qual treino seguir. O programa ativo comanda as abas <b>Hoje</b> e <b>Semana</b>. Seu histórico de cargas é guardado por exercício e continua valendo ao trocar.</p>`;
+  let h=`<div class="section-title" style="margin-top:8px">Programa de treino</div>`+programPanelTabs();
+  const panel=`<section id="program-panel" role="tabpanel" aria-labelledby="tab-${programPanel}">`;
+  if(programPanel==='execucoes')return h+panel+(executionHistoryView()||'<div class="card"><h3>Nenhuma execução iniciada</h3><p>Ao iniciar um programa, suas execuções e resultados aparecerão aqui.</p><button class="btn primary" data-program-panel="programas">Escolher programa</button></div>')+'</section>';
+  h+=panel+`<p class="muted" style="margin:0 0 6px;font-size:13.5px">Escolha qual treino seguir. O programa ativo comanda as abas <b>Hoje</b> e <b>Semana</b>. Seu histórico de cargas é guardado por exercício e continua valendo ao trocar.</p>`;
   h+=customProgramsView();
-  PROG_ORDER.forEach(id=>{const p=PROGRAMS[id];if(!p)return;const active=state.programId===id;
+  PROG_ORDER.forEach(id=>{const p=PROGRAMS[id];if(!p)return;const active=!!activeRun()&&activeRun().programId===id&&activeRun().status==='active';
     h+=`<div class="card" style="${active?'border-color:rgba(255,77,46,.5);box-shadow:0 0 0 1px rgba(255,77,46,.25),var(--shadow)':''}">
       <div class="row" style="gap:12px;align-items:flex-start"><div style="font-size:30px;line-height:1.1">${p.emoji}</div>
       <div style="flex:1;min-width:0"><div style="font-weight:800;font-size:16px">${esc(p.nome)} ${active?'<span class="pill ok" style="vertical-align:middle">ativo</span>':''}</div>
       <div class="muted" style="font-size:12px;margin:1px 0 6px">por ${esc(p.autor)} · ${progDaysSummary(p)}</div>
       <div class="muted" style="font-size:13px;line-height:1.4">${esc(p.desc)}</div>
-      ${active?'':`<div style="height:10px"></div><button class="btn primary" data-activate="${id}">Usar este programa</button>`}
+      ${`<div style="height:10px"></div><button class="btn primary" data-activate="${id}">${activeRun()&&activeRun().programId===id?"Configurar outra execução":"Usar este programa"}</button>`}
       </div></div></div>`;});
   h+=`<div class="hint" style="margin:10px 2px 0">Os treinos de atletas são aproximações para inspiração — ajuste cargas, volume e descanso ao seu nível e objetivo. Você pode trocar exercícios em cada treino na aba Hoje.</div>`;
-  return h;
+  return h+'</section>';
 }
 function openOnboard(){openSheet(`<h3>👋 Bem-vindo ao Treino</h3>
   <p class="muted" style="font-size:14px;margin:-2px 0 12px">Seu app de treino e atividades — funciona offline e pode ser instalado no celular e no PC.</p>
@@ -2050,8 +2491,8 @@ function markOnboarded(){try{localStorage.setItem("treino_onboarded","1");}catch
 /* Substituições de execução: escolha por data e posição, sem editar o programa. */
 function catalogExercise(ex){return EXDB.find(e=>e.nome===ex.nome);}
 function dayExercise(k,tipo,i){
-  const planned=exAt(tipo,i),choice=(state.log[k]&&state.log[k].exerciseChoices||{})[slotId(tipo,i)];
-  return choice?{...planned,...choice,series:planned.series,reps:planned.reps,obs:planned.obs}:planned;
+  const planned=exAt(tipo,i),choice=(readDayLog(k,tipo)&&readDayLog(k,tipo).exerciseChoices||{})[slotId(tipo,i)];
+  return choice?{...planned,...choice,series:choice.customPrescription?choice.series:planned.series,reps:choice.customPrescription?choice.reps:planned.reps,obs:planned.obs}:planned;
 }
 function daySlotId(k,tipo,i){
   const base=slotId(tipo,i),ex=dayExercise(k,tipo,i);
@@ -2060,42 +2501,35 @@ function daySlotId(k,tipo,i){
 function executionChoices(k,tipo,i){
   const planned=exAt(tipo,i),current=dayExercise(k,tipo,i),entry=catalogExercise(planned);
   const names=[entry&&entry.primeiraSubstituicao,entry&&entry.segundaSubstituicao].filter(Boolean);
-  if(!names.length)return '';
+  if(!names.length&&current.nome===planned.nome)return '';
   return `<div class="daily-choices"><div class="hint">Substituições para este dia · mantém séries e repetições planejadas</div><div class="row" style="gap:8px;flex-wrap:wrap;margin-top:8px">${[...new Set(names)].map(name=>`<button class="chip-sm" data-day-choice="${esc(name)}" data-i="${i}" ${name===current.nome?'disabled':''}>${esc(name)}${name===current.nome?' ✓':''}</button>`).join('')}${current.nome!==planned.nome?`<button class="chip-sm" data-day-choice="" data-i="${i}">Voltar para ${esc(planned.nome)}</button>`:''}</div></div>`;
 }
-function selectDayExercise(k,tipo,i,name){
+function selectDayExercise(k,tipo,i,name,allowAny=false){
   const planned=exAt(tipo,i),entry=catalogExercise(planned);
-  if(name&&(!entry||![entry.primeiraSubstituicao,entry.segundaSubstituicao].includes(name)))return;
+  if(name&&!allowAny&&(!entry||![entry.primeiraSubstituicao,entry.segundaSubstituicao].includes(name)))return;
   const replacement=name&&EXDB.find(e=>e.nome===name);if(name&&!replacement)return;
-  snapshotDay(k,tipo);
-  const l=dayLog(k),base=slotId(tipo,i);l.exerciseChoices=l.exerciseChoices||{};
-  if(replacement)l.exerciseChoices[base]=clone(replacement);else delete l.exerciseChoices[base];
-  const snap=l.snapshot.ex.find(e=>(e.baseSid||e.sid)===base);
-  if(snap){const selected=dayExercise(k,tipo,i);Object.assign(snap,selected,{planned:clone(planned),baseSid:base,sid:daySlotId(k,tipo,i)});}
-  // Completion belongs to the selected exercise; never transfer the old mark.
-  if(countDone(k,tipo)!==dayTotal(tipo))delete l.end;
-  save();render();
+  persistDayChoice(k,tipo,i,replacement||null);
 }
 function exerciseSessionName(sid,session){return session.nm||exNameOfSid(sid.split('~')[0]);}
 
 /* ===== MEUS PROGRAMAS ===== */
 function uid(){return 'u'+crypto.randomUUID().replaceAll('-','');}
 function overrideKey(tipo,i){return ((PLN(tipo).ex||[])[i]||{}).id||i;}
-function snapshotDay(k,tipo){const l=dayLog(k);if(!l.snapshot){l.snapshot=clone(PLN(tipo));l.snapshot.programId=state.programId;l.snapshot.custom=!!customCatalog()[state.programId];l.snapshot.ex=l.snapshot.ex.map((e,i)=>({...dayExercise(k,tipo,i),baseSid:slotId(tipo,i),sid:daySlotId(k,tipo,i)}));}}
-function preserveHistory(){Object.keys(state.log).forEach(k=>{if(!state.log[k].snapshot)snapshotDay(k,planKeyForDate(parseYmd(k)));});}
-function historyStats(k){const l=state.log[k],p=l&&l.snapshot;if(p){const ex=p.rest?[]:p.ex;const done=ex.filter(e=>l.done[e.sid]);return {total:ex.length,done:done.length,series:done.reduce((n,e)=>n+(parseInt(e.series)||0),0)};}const t=planKeyForDate(parseYmd(k));return {total:isTrainingDay(t)?dayTotal(t):0,done:countDone(k,t),series:(PLN(t).ex||[]).reduce((n,e,i)=>n+(exDone(k,t,i)?parseInt(exAt(t,i).series)||0:0),0)};}
-function customProgramsView(){return `<div class="card"><h3>Meus programas</h3><p class="muted">Monte um ABC ou full-body de três dias. Salve quantos programas quiser e mantenha um ativo por vez.</p><button class="btn primary" id="newCustom">＋ Criar meu treino</button></div>`+(state.customPrograms||[]).map(p=>`<div class="card"><h3>${esc(p.nome)} ${state.programId===p.id?'<span class="pill ok">ativo</span>':''}</h3><p class="muted">${p.model==='abc'?'ABC':'Full-body'} · ${p.sessions.map(t=>WD_SHORT[p.days.indexOf(t)]).join(' / ')}</p>${p.notes?`<p class="muted" style="white-space:pre-wrap">${esc(p.notes)}</p>`:''}<div class="row" style="gap:8px;flex-wrap:wrap">${state.programId===p.id?'':`<button class="btn primary" data-activate="${p.id}">Usar este programa</button>`}<button class="btn ghost" data-custom-edit="${p.id}">Editar</button><button class="btn ghost" data-custom-copy="${p.id}">Duplicar</button><button class="btn ghost" data-custom-delete="${p.id}">Excluir</button></div></div>`).join('');}
+function snapshotDay(k,tipo){const l=dayLog(k,tipo);if(!l.snapshot){l.snapshot=clone(PLN(tipo));l.snapshot.programId=state.programId;l.snapshot.custom=!!customCatalog()[state.programId];l.snapshot.ex=l.snapshot.ex.map((e,i)=>({...dayExercise(k,tipo,i),baseSid:slotId(tipo,i),sid:daySlotId(k,tipo,i)}));}}
+function preserveHistory(){/* Legacy snapshots are retained without inventing dates or cycle ownership. */}
+function historyStats(k){let total=0,done=0,series=0;for(const l of allDateLogs(k)){const p=l.snapshot;if(!p){done+=Object.values(l.done||{}).filter(Boolean).length;continue;}const ex=p.rest?[]:p.ex;total+=ex.length;for(const e of ex){if(l.done&&l.done[e.sid])done++;const stored=(state.sessions[k]||{})[e.sid];series+=p.runId?(stored&&stored.sets||[]).filter(x=>x.done).length:(l.done&&l.done[e.sid]?parseInt(e.series)||0:0);}}return {total,done,series};}
+function customProgramsView(){return `<div class="card"><h3>Meus programas</h3><p class="muted">Monte um ABC ou full-body de três dias. Salve quantos programas quiser e mantenha um ativo por vez.</p><button class="btn primary" id="newCustom">＋ Criar meu treino</button></div>`+(state.customPrograms||[]).map(p=>`<div class="card"><h3>${esc(p.nome)} ${!p.durationWeeks?'<span class="pill amber">Configuração pendente</span>':''} ${activeRun()&&activeRun().programId===p.id&&activeRun().status==='active'?'<span class="pill ok">ativo</span>':''}</h3><p class="muted">${p.model==='abc'?'ABC':'Full-body'} · ${p.sessions.map(t=>WD_SHORT[p.days.indexOf(t)]).join(' / ')}</p>${p.notes?`<p class="muted" style="white-space:pre-wrap">${esc(p.notes)}</p>`:''}<div class="row" style="gap:8px;flex-wrap:wrap">${`<button class="btn primary" data-activate="${p.id}">${activeRun()&&activeRun().programId===p.id?"Configurar outra execução":"Usar este programa"}</button>`}<button class="btn ghost" data-custom-edit="${p.id}">Editar</button><button class="btn ghost" data-custom-copy="${p.id}">Duplicar</button><button class="btn ghost" data-custom-delete="${p.id}">Excluir</button></div></div>`).join('');}
 let customDraft=null,customSession=0;
-function newCustomProgram(model='abc'){const id=uid(),sessions=[0,1,2].map(()=>uid()),off=uid(),days=Array(7).fill(off),plans={[off]:_off(off)};sessions.forEach((t,i)=>{days[[1,3,5][i]]=t;const groups=model==='abc'?[['Peito','Tríceps','Lateral de Ombro'],['Costas','Bíceps','Posterior de Ombro'],['Quadríceps','Posterior de Coxa','Panturrilha']][i]:['Quadríceps','Peito','Costas','Posterior de Coxa','Abdômen'];plans[t]=_d(t,(model==='abc'?'Treino ':'Full-body ')+['A','B','C'][i],WD_NAMES[[1,3,5][i]],model==='abc'?groups.join(' + '):'Corpo inteiro',groups.map(g=>({...clone(EXDB.find(e=>e.grupo===g)||E(g,'Novo exercício',3,'8–12')),id:uid(),series:3,reps:'8–12'})));});return {id,nome:model==='abc'?'Meu ABC':'Meu full-body',model,sessions,off,days,plans};}
+function newCustomProgram(model='abc'){const id=uid(),sessions=[0,1,2].map(()=>uid()),off=uid(),days=Array(7).fill(off),plans={[off]:_off(off)};sessions.forEach((t,i)=>{days[[1,3,5][i]]=t;const groups=model==='abc'?[['Peito','Tríceps','Lateral de Ombro'],['Costas','Bíceps','Posterior de Ombro'],['Quadríceps','Posterior de Coxa','Panturrilha']][i]:['Quadríceps','Peito','Costas','Posterior de Coxa','Abdômen'];plans[t]=_d(t,(model==='abc'?'Treino ':'Full-body ')+['A','B','C'][i],WD_NAMES[[1,3,5][i]],model==='abc'?groups.join(' + '):'Corpo inteiro',groups.map(g=>({...clone(EXDB.find(e=>e.grupo===g)||E(g,'Novo exercício',3,'8–12')),id:uid(),series:3,reps:'8–12'})));});return {id,nome:model==='abc'?'Meu ABC':'Meu full-body',durationWeeks:4,model,sessions,off,days,plans};}
 function openCustom(id){const p=(state.customPrograms||[]).find(p=>p.id===id);customDraft=p?clone(p):newCustomProgram();if(p)p.sessions.forEach(t=>customDraft.plans[t].ex=p.plans[t].ex.map((e,i)=>({...exAt(t,i),id:e.id})));customSession=0;renderCustomEditor();}
-function captureCustom(){const n=document.getElementById('customName');if(!n)return;customDraft.nome=n.value.trim();const t=customDraft.sessions[customSession];customDraft.plans[t].titulo=document.getElementById('sessionName').value.trim();document.querySelectorAll('[data-custom-ex]').forEach(row=>{const e=customDraft.plans[t].ex.find(e=>e.id===row.dataset.customEx);row.querySelectorAll('[data-field]').forEach(input=>e[input.dataset.field]=input.value.trim());});}
-function renderCustomEditor(){const p=customDraft,t=p.sessions[customSession],plan=p.plans[t];openSheet(`<h3>Montar meu treino</h3><label class="fld"><span>Nome do programa</span><input id="customName" maxlength="80" value="${esc(p.nome)}"></label><label class="fld"><span>Modelo inicial (trocar redefine os exercícios)</span><select id="customModel"><option value="abc" ${p.model==='abc'?'selected':''}>ABC — 3 dias</option><option value="fullbody" ${p.model==='fullbody'?'selected':''}>Full-body — 3 dias</option></select></label><p class="hint">Escolha os dias das sessões. Ao escolher um dia ocupado, as duas sessões trocam de dia.</p>${p.sessions.map((sid,i)=>`<label class="fld"><span>Sessão ${['A','B','C'][i]}</span><select data-custom-day="${sid}">${WD_NAMES.map((n,d)=>`<option value="${d}" ${p.days.indexOf(sid)===d?'selected':''}>${n}</option>`).join('')}</select></label>`).join('')}<div class="row" style="gap:8px">${p.sessions.map((sid,i)=>`<button class="btn ${customSession===i?'primary':'ghost'}" data-custom-tab="${i}">${['A','B','C'][i]}</button>`).join('')}</div><label class="fld"><span>Nome da sessão</span><input id="sessionName" maxlength="80" value="${esc(plan.titulo)}"></label>${plan.ex.map((e,i)=>`<div class="card" data-custom-ex="${e.id}"><label class="fld"><span>Exercício ${i+1}</span><input data-field="nome" maxlength="120" value="${esc(e.nome)}"></label><label class="fld"><span>Grupo muscular</span><input data-field="grupo" maxlength="80" value="${esc(e.grupo)}"></label><div class="g2"><label class="fld"><span>Séries</span><input data-field="series" type="number" min="1" max="30" value="${esc(e.series)}"></label><label class="fld"><span>Repetições</span><input data-field="reps" maxlength="60" value="${esc(e.reps)}"></label></div><label class="fld"><span>Observações</span><input data-field="obs" maxlength="300" value="${esc(e.obs)}"></label><div class="row" style="gap:8px"><button class="btn ghost" data-ex-move="${i}" data-dir="-1" ${i===0?'disabled':''}>↑</button><button class="btn ghost" data-ex-move="${i}" data-dir="1" ${i===plan.ex.length-1?'disabled':''}>↓</button><button class="btn ghost" data-ex-remove="${e.id}">Remover</button></div></div>`).join('')}<label class="fld"><span>Adicionar do banco</span><select id="customExercise">${EXDB.map((e,i)=>`<option value="${i}">${esc(e.grupo+' — '+e.nome)}</option>`).join('')}</select></label><button class="btn ghost" id="customAdd">＋ Adicionar exercício</button><div style="height:16px"></div><button class="btn primary block" id="customSave">Salvar programa</button><div style="height:8px"></div><button class="btn ghost block" id="customCancel">Cancelar</button>`);
+function captureCustom(){const n=document.getElementById('customName');if(!n)return;customDraft.nome=n.value.trim();customDraft.durationWeeks=Number(document.getElementById('customWeeks').value);const t=customDraft.sessions[customSession];customDraft.plans[t].titulo=document.getElementById('sessionName').value.trim();document.querySelectorAll('[data-custom-ex]').forEach(row=>{const e=customDraft.plans[t].ex.find(e=>e.id===row.dataset.customEx);row.querySelectorAll('[data-field]').forEach(input=>e[input.dataset.field]=input.value.trim());});}
+function renderCustomEditor(){const p=customDraft,t=p.sessions[customSession],plan=p.plans[t];openSheet(`<h3>Montar meu treino</h3><p class="hint">Alterações no modelo valem para novas execuções. A execução já iniciada mantém seu planejamento.</p><label class="fld"><span>Duração (1 a 12 semanas)</span><input id="customWeeks" type="number" min="1" max="12" step="1" value="${p.durationWeeks||''}" required></label><label class="fld"><span>Nome do programa</span><input id="customName" maxlength="80" value="${esc(p.nome)}"></label><label class="fld"><span>Modelo inicial (trocar redefine os exercícios)</span><select id="customModel"><option value="abc" ${p.model==='abc'?'selected':''}>ABC — 3 dias</option><option value="fullbody" ${p.model==='fullbody'?'selected':''}>Full-body — 3 dias</option></select></label><p class="hint">Escolha os dias das sessões. Ao escolher um dia ocupado, as duas sessões trocam de dia.</p>${p.sessions.map((sid,i)=>`<label class="fld"><span>Sessão ${['A','B','C'][i]}</span><select data-custom-day="${sid}">${WD_NAMES.map((n,d)=>`<option value="${d}" ${p.days.indexOf(sid)===d?'selected':''}>${n}</option>`).join('')}</select></label>`).join('')}<div class="row" style="gap:8px">${p.sessions.map((sid,i)=>`<button class="btn ${customSession===i?'primary':'ghost'}" data-custom-tab="${i}">${['A','B','C'][i]}</button>`).join('')}</div><label class="fld"><span>Nome da sessão</span><input id="sessionName" maxlength="80" value="${esc(plan.titulo)}"></label>${plan.ex.map((e,i)=>`<div class="card" data-custom-ex="${e.id}"><label class="fld"><span>Exercício ${i+1}</span><input data-field="nome" maxlength="120" value="${esc(e.nome)}"></label><label class="fld"><span>Grupo muscular</span><input data-field="grupo" maxlength="80" value="${esc(e.grupo)}"></label><div class="g2"><label class="fld"><span>Séries</span><input data-field="series" type="number" min="1" max="30" value="${esc(e.series)}"></label><label class="fld"><span>Repetições</span><input data-field="reps" maxlength="60" value="${esc(e.reps)}"></label></div><label class="fld"><span>Observações</span><input data-field="obs" maxlength="300" value="${esc(e.obs)}"></label><div class="row" style="gap:8px"><button class="btn ghost" data-ex-move="${i}" data-dir="-1" ${i===0?'disabled':''}>↑</button><button class="btn ghost" data-ex-move="${i}" data-dir="1" ${i===plan.ex.length-1?'disabled':''}>↓</button><button class="btn ghost" data-ex-remove="${e.id}">Remover</button></div></div>`).join('')}<label class="fld"><span>Adicionar do banco</span><select id="customExercise">${EXDB.map((e,i)=>`<option value="${i}">${esc(e.grupo+' — '+e.nome)}</option>`).join('')}</select></label><button class="btn ghost" id="customAdd">＋ Adicionar exercício</button><div style="height:16px"></div><button class="btn primary block" id="customSave">Salvar programa</button><div style="height:8px"></div><button class="btn ghost block" id="customCancel">Cancelar</button>`);
  document.getElementById('customModel').onchange=e=>{
    const model=e.target.value;
    captureCustom();
    const previous=customDraft,next=newCustomProgram(model);
    next.id=previous.id;
-   next.nome=previous.nome;
+   next.nome=previous.nome;next.durationWeeks=previous.durationWeeks;
    next.sessions.forEach((sid,i)=>{
      const day=previous.days.indexOf(previous.sessions[i]);
      next.days=next.days.map(t=>t===sid?next.off:t);
@@ -2116,8 +2550,2443 @@ function renderCustomEditor(){const p=customDraft,t=p.sessions[customSession],pl
  document.getElementById('customAdd').onclick=()=>{captureCustom();plan.ex.push({...clone(EXDB[+document.getElementById('customExercise').value]),id:uid(),series:3,reps:'8–12'});renderCustomEditor();};
  document.getElementById('customSave').onclick=saveCustomProgram;document.getElementById('customCancel').onclick=()=>{customDraft=null;closeSheet();};
 }
-function saveCustomProgram(){captureCustom();const p=customDraft;if(!p.nome||p.sessions.some(t=>!p.plans[t].titulo||!p.plans[t].ex.length||p.plans[t].ex.some(e=>!e.nome||!e.grupo||!Number.isInteger(+e.series)||+e.series<1||+e.series>30||!e.reps))){alert('Preencha o nome do programa e das sessões. Cada sessão precisa de exercícios com nome, grupo, 1 a 30 séries inteiras e repetições.');return;}preserveHistory();state.customPrograms=state.customPrograms||[];const i=state.customPrograms.findIndex(x=>x.id===p.id);if(i<0)state.customPrograms.push(clone(p));else state.customPrograms[i]=clone(p);p.sessions.forEach(t=>delete state.overrides[t]);save();customDraft=null;closeSheet();setTab('programas');}
-function bindCustomPrograms(){const b=document.getElementById('newCustom');if(b)b.onclick=()=>openCustom();document.querySelectorAll('[data-custom-edit]').forEach(b=>b.onclick=()=>openCustom(b.dataset.customEdit));document.querySelectorAll('[data-custom-copy]').forEach(b=>b.onclick=()=>{const old=(state.customPrograms||[]).find(p=>p.id===b.dataset.customCopy),p=clone(old);p.id=uid();p.nome+=' (cópia)';const map={};[p.off,...p.sessions].forEach(t=>map[t]=uid());p.days=p.days.map(t=>map[t]);p.sessions=p.sessions.map(t=>map[t]);p.off=map[p.off];p.plans=Object.fromEntries(Object.entries(old.plans).map(([t,plan])=>[map[t],{...clone(plan),tipo:map[t],t:map[t],ex:plan.ex.map((e,i)=>({...exAt(t,i),id:uid()}))}]));state.customPrograms.push(p);save();render();});document.querySelectorAll('[data-custom-delete]').forEach(b=>b.onclick=()=>{if(!confirm('Excluir este programa? O histórico registrado será preservado.'))return;preserveHistory();state.customPrograms=state.customPrograms.filter(p=>p.id!==b.dataset.customDelete);if(state.programId===b.dataset.customDelete)state.programId='refundini';save();render();});}
+function saveCustomProgram(){captureCustom();const p=customDraft;if(!p.nome||!validWeekCount(p.durationWeeks)||p.sessions.some(t=>!p.plans[t].titulo||!p.plans[t].ex.length||p.plans[t].ex.some(e=>!e.nome||!e.grupo||!Number.isInteger(+e.series)||+e.series<1||+e.series>30||!e.reps))){alert('Informe a duração de 1 a 12 semanas e preencha o nome do programa e das sessões. Cada sessão precisa de exercícios com nome, grupo, 1 a 30 séries inteiras e repetições.');return;}preserveHistory();state.customPrograms=state.customPrograms||[];const i=state.customPrograms.findIndex(x=>x.id===p.id);if(i<0)state.customPrograms.push(clone(p));else state.customPrograms[i]=clone(p);p.sessions.forEach(t=>delete state.overrides[t]);save();customDraft=null;closeSheet();setTab('programas');}
+function bindCustomPrograms(){const b=document.getElementById('newCustom');if(b)b.onclick=()=>openCustom();document.querySelectorAll('[data-custom-edit]').forEach(b=>b.onclick=()=>openCustom(b.dataset.customEdit));document.querySelectorAll('[data-custom-copy]').forEach(b=>b.onclick=()=>{const old=(state.customPrograms||[]).find(p=>p.id===b.dataset.customCopy),p=clone(old);p.id=uid();p.nome+=' (cópia)';const map={};[p.off,...p.sessions].forEach(t=>map[t]=uid());p.days=p.days.map(t=>map[t]);p.sessions=p.sessions.map(t=>map[t]);p.off=map[p.off];p.plans=Object.fromEntries(Object.entries(old.plans).map(([t,plan])=>[map[t],{...clone(plan),tipo:map[t],t:map[t],ex:plan.ex.map((e,i)=>({...exAt(t,i),id:uid()}))}]));state.customPrograms.push(p);save();render();});document.querySelectorAll('[data-custom-delete]').forEach(b=>b.onclick=()=>{if(!confirm('Excluir este programa? O histórico registrado será preservado.'))return;preserveHistory();state.customPrograms=state.customPrograms.filter(p=>p.id!==b.dataset.customDelete);if(state.programId===b.dataset.customDelete&&!activeRun())state.programId='refundini';save();render();});}
+
+// BEGIN CYCLE ENGINE
+const STANDARD_PROGRAM_DATA=[
+  {
+    "id": "boost_pro_ombro",
+    "nome": "Boost PRO Ombro",
+    "autor": "Thiago Kotolak",
+    "durationWeeks": 4,
+    "level": "Intermediário / avançado",
+    "description": "Hipertrofia com ênfase em ombros, com sessões diferentes em cada semana.",
+    "weeks": [
+      {
+        "number": 1,
+        "days": [
+          {
+            "weekday": 1,
+            "title": "Segunda · Semana 1",
+            "exercises": [
+              {
+                "id": "boost_w1_d1_e1",
+                "nome": "Puxada frente (pulldown)",
+                "grupo": "Costas",
+                "sourceName": "Pulley Frente",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d1_e2",
+                "nome": "Pulley Frente Barra Romana",
+                "grupo": "Costas",
+                "sourceName": "Pulley Frente Barra Romana",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d1_e3",
+                "nome": "Remada Pronada na Polia Baixa",
+                "grupo": "Costas",
+                "sourceName": "Remada Pronada na Polia Baixa",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w1_d1_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w1_d1_e4",
+                "nome": "Pulldown com Barra",
+                "grupo": "Costas",
+                "sourceName": "Pulldown com Barra",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w1_d1_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w1_d1_e5",
+                "nome": "Banco de extensão lombar",
+                "grupo": "Posterior de Coxa",
+                "sourceName": "Extensão Lombar no Banco Romano",
+                "series": 3,
+                "reps": "30s",
+                "restSeconds": 90,
+                "technique": "Isometria",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d1_e6",
+                "nome": "Crucifixo Inverso",
+                "grupo": "Posterior de Ombro",
+                "sourceName": "Crucifixo Inverso",
+                "series": 4,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d1_e7",
+                "nome": "Remada Alta na Polia com Barra Reta",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Remada Alta na Polia com Barra Reta",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d1_e8",
+                "nome": "Encolhimento com halteres",
+                "grupo": "Trapézio",
+                "sourceName": "Encolhimento com Halteres",
+                "series": 4,
+                "reps": "15",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 2,
+            "title": "Terça · Semana 1",
+            "exercises": [
+              {
+                "id": "boost_w1_d2_e1",
+                "nome": "Supino Reto",
+                "grupo": "Peito",
+                "sourceName": "Supino Reto",
+                "series": 4,
+                "reps": "12/8/8/6",
+                "restSeconds": 90,
+                "technique": "Carga Progressiva",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d2_e2",
+                "nome": "Dumbell Press Inclinado (45º)",
+                "grupo": "Peito",
+                "sourceName": "Dumbell Press Inclinado (45º)",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w1_d2_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w1_d2_e3",
+                "nome": "Crucifixo Inclinado",
+                "grupo": "Peito",
+                "sourceName": "Crucifixo Inclinado",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w1_d2_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w1_d2_e4",
+                "nome": "Crossover na polia",
+                "grupo": "Peito",
+                "sourceName": "Crossover",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d2_e5",
+                "nome": "Desenvolvimento halteres",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Desenvolvimento com Dumbells",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w1_d2_g2",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w1_d2_e6",
+                "nome": "Desenvolvimento Arnold",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Desenvolvimento Arnold",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w1_d2_g2",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w1_d2_e7",
+                "nome": "Elevação Lateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral",
+                "series": 4,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d2_e8",
+                "nome": "Abdominal máquina",
+                "grupo": "Abdômen",
+                "sourceName": "ABS Máquina",
+                "series": 4,
+                "reps": "20",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 3,
+            "title": "Quarta · Semana 1",
+            "exercises": [
+              {
+                "id": "boost_w1_d3_e1",
+                "nome": "Agachamento no smith",
+                "grupo": "Quadríceps",
+                "sourceName": "Agachamento no Smith",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d3_e2",
+                "nome": "Leg Press Horizontal Unilateral",
+                "grupo": "Quadríceps",
+                "sourceName": "Leg Press Horizontal Unilateral",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d3_e3",
+                "nome": "Agachamento búlgaro",
+                "grupo": "Quadríceps",
+                "sourceName": "Agachamento Búlgaro",
+                "series": 3,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d3_e4",
+                "nome": "Cadeira extensora",
+                "grupo": "Quadríceps",
+                "sourceName": "Cadeira Extensora",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d3_e5",
+                "nome": "Mesa Flexora Unilateral",
+                "grupo": "Posterior de Coxa",
+                "sourceName": "Mesa Flexora Unilateral",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d3_e6",
+                "nome": "Stiff no Smith",
+                "grupo": "Posterior de Coxa",
+                "sourceName": "Stiff no Smith",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d3_e7",
+                "nome": "Cadeira abdutora",
+                "grupo": "Glúteo",
+                "sourceName": "Cadeira Abdutora",
+                "series": 3,
+                "reps": "15",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d3_e8",
+                "nome": "Cadeira Adutora",
+                "grupo": "Adutores",
+                "sourceName": "Cadeira Adutora",
+                "series": 3,
+                "reps": "15",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d3_e9",
+                "nome": "Panturrilha sentado",
+                "grupo": "Panturrilha",
+                "sourceName": "Panturrilha Sentado",
+                "series": 4,
+                "reps": "20",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 4,
+            "title": "Quinta · Semana 1",
+            "exercises": [
+              {
+                "id": "boost_w1_d4_e1",
+                "nome": "Rosca Direta",
+                "grupo": "Bíceps",
+                "sourceName": "Rosca Direta",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d4_e2",
+                "nome": "Rosca inclinada 45º",
+                "grupo": "Bíceps",
+                "sourceName": "Rosca 45º",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d4_e3",
+                "nome": "Rosca Martelo Corda",
+                "grupo": "Bíceps",
+                "sourceName": "Rosca Martelo Corda",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d4_e4",
+                "nome": "Tríceps Testa na Polia Alta",
+                "grupo": "Tríceps",
+                "sourceName": "Tríceps Testa na Polia Alta",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d4_e5",
+                "nome": "Tríceps pulley corda",
+                "grupo": "Tríceps",
+                "sourceName": "Tríceps Pulley Corda",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 0,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w1_d4_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w1_d4_e6",
+                "nome": "Tríceps Testa com Corda",
+                "grupo": "Tríceps",
+                "sourceName": "Tríceps Testa com Corda",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w1_d4_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w1_d4_e7",
+                "nome": "Tríceps coice (kickback)",
+                "grupo": "Tríceps",
+                "sourceName": "Tríceps Coice",
+                "series": 4,
+                "reps": "Falha",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d4_e8",
+                "nome": "Rosca inversa",
+                "grupo": "Antebraço",
+                "sourceName": "Rosca Inversa",
+                "series": 4,
+                "reps": "15",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d4_e9",
+                "nome": "Rosca de punho",
+                "grupo": "Antebraço",
+                "sourceName": "Rosca Punho",
+                "series": 3,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 5,
+            "title": "Sexta · Semana 1",
+            "exercises": [
+              {
+                "id": "boost_w1_d5_e1",
+                "nome": "Desenvolvimento no Smith",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Desenvolvimento no Smith",
+                "series": 4,
+                "reps": "12/8/8/6",
+                "restSeconds": 90,
+                "technique": "Carga Progressiva",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d5_e2",
+                "nome": "Elevação Lateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Carga Progressiva",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d5_e3",
+                "nome": "Elevação Lateral no Cabo Unilateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral no Cabo Unilateral",
+                "series": 3,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d5_e4",
+                "nome": "Elevação Frontal Neutra",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Elevação Frontal Neutra",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w1_d5_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w1_d5_e5",
+                "nome": "Elevação Frontal com Barra",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Elevação Frontal com Barra",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w1_d5_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w1_d5_e6",
+                "nome": "Crucifixo inverso máquina",
+                "grupo": "Posterior de Ombro",
+                "sourceName": "Crucifixo Inverso Máquina",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Carga Progressiva",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d5_e7",
+                "nome": "Crucifixo Inverso Unilateral na Polia",
+                "grupo": "Posterior de Ombro",
+                "sourceName": "Crucifixo Inverso Unilateral na Polia",
+                "series": 3,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d5_e8",
+                "nome": "Encolhimento no Smith (Atrás)",
+                "grupo": "Trapézio",
+                "sourceName": "Encolhimento no Smith (Atrás)",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w1_d5_e9",
+                "nome": "Remada Alta na Polia com Barra Reta",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Remada Alta na Polia com Barra Reta",
+                "series": 3,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "days": [
+          {
+            "weekday": 1,
+            "title": "Segunda · Semana 2",
+            "exercises": [
+              {
+                "id": "boost_w2_d1_e1",
+                "nome": "Remada Curvada",
+                "grupo": "Costas",
+                "sourceName": "Remada Curvada",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d1_e2",
+                "nome": "Pulley Frente Triângulo",
+                "grupo": "Costas",
+                "sourceName": "Pulley Frente Triângulo",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d1_e3",
+                "nome": "Puxada frente (pulldown)",
+                "grupo": "Costas",
+                "sourceName": "Pulley Frente",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 0,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w2_d1_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w2_d1_e4",
+                "nome": "Pulldown com corda",
+                "grupo": "Costas",
+                "sourceName": "Pulldown com Corda",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w2_d1_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w2_d1_e5",
+                "nome": "Banco de extensão lombar",
+                "grupo": "Posterior de Coxa",
+                "sourceName": "Extensão Lombar no Banco Romano",
+                "series": 3,
+                "reps": "30s",
+                "restSeconds": 90,
+                "technique": "Isometria",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d1_e6",
+                "nome": "Crucifixo Inverso na Polia",
+                "grupo": "Posterior de Ombro",
+                "sourceName": "Crucifixo Inverso na Polia",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d1_e7",
+                "nome": "Crucifixo inverso máquina",
+                "grupo": "Posterior de Ombro",
+                "sourceName": "Crucifixo Inverso Máquina",
+                "series": 3,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d1_e8",
+                "nome": "Encolhimento no smith",
+                "grupo": "Trapézio",
+                "sourceName": "Encolhimento no Smith",
+                "series": 4,
+                "reps": "15",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 2,
+            "title": "Terça · Semana 2",
+            "exercises": [
+              {
+                "id": "boost_w2_d2_e1",
+                "nome": "Supino Inclinado",
+                "grupo": "Peito",
+                "sourceName": "Supino Inclinado",
+                "series": 4,
+                "reps": "12/8/8/6",
+                "restSeconds": 90,
+                "technique": "Carga Progressiva",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d2_e2",
+                "nome": "Supino Reto Máquina",
+                "grupo": "Peito",
+                "sourceName": "Supino Reto Máquina",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d2_e3",
+                "nome": "Crucifixo Reto",
+                "grupo": "Peito",
+                "sourceName": "Crucifixo Reto",
+                "series": 4,
+                "reps": "10+Falha",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d2_e4",
+                "nome": "Crossover na polia",
+                "grupo": "Peito",
+                "sourceName": "Crossover",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d2_e5",
+                "nome": "Desenvolvimento máquina",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Desenvolvimento Máquina",
+                "series": 4,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d2_e6",
+                "nome": "Elevação Lateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d2_e7",
+                "nome": "Elevação Frontal Neutra no Banco 45º",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Elevação Frontal Neutra no Banco 45º",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d2_e8",
+                "nome": "Abdominal máquina",
+                "grupo": "Abdômen",
+                "sourceName": "ABS Máquina",
+                "series": 4,
+                "reps": "20",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 3,
+            "title": "Quarta · Semana 2",
+            "exercises": [
+              {
+                "id": "boost_w2_d3_e1",
+                "nome": "Agachamento no smith",
+                "grupo": "Quadríceps",
+                "sourceName": "Agachamento no Smith",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d3_e2",
+                "nome": "Leg press 45",
+                "grupo": "Quadríceps",
+                "sourceName": "Leg Press 45º",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d3_e3",
+                "nome": "Afundo no Smith",
+                "grupo": "Quadríceps",
+                "sourceName": "Afundo no Smith",
+                "series": 3,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d3_e4",
+                "nome": "Cadeira Extensora Unilateral",
+                "grupo": "Quadríceps",
+                "sourceName": "Cadeira Extensora Unilateral",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d3_e5",
+                "nome": "Mesa flexora (deitado)",
+                "grupo": "Posterior de Coxa",
+                "sourceName": "Mesa Flexora",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w2_d3_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w2_d3_e6",
+                "nome": "Stiff",
+                "grupo": "Posterior de Coxa",
+                "sourceName": "Stiff",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w2_d3_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w2_d3_e7",
+                "nome": "Cadeira Flexora Unilateral",
+                "grupo": "Posterior de Coxa",
+                "sourceName": "Cadeira Flexora Unilateral",
+                "series": 3,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d3_e8",
+                "nome": "Elevação pélvica (hip thrust)",
+                "grupo": "Glúteo",
+                "sourceName": "Elevação Pélvica",
+                "series": 4,
+                "reps": "20",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d3_e9",
+                "nome": "Panturrilha sentado",
+                "grupo": "Panturrilha",
+                "sourceName": "Panturrilha Sentado",
+                "series": 4,
+                "reps": "20",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 4,
+            "title": "Quinta · Semana 2",
+            "exercises": [
+              {
+                "id": "boost_w2_d4_e1",
+                "nome": "Rosca 21",
+                "grupo": "Bíceps",
+                "sourceName": "Rosca 21",
+                "series": 4,
+                "reps": "21",
+                "restSeconds": 90,
+                "technique": "set. 21",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d4_e2",
+                "nome": "Rosca Alternada",
+                "grupo": "Bíceps",
+                "sourceName": "Rosca Alternada",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d4_e3",
+                "nome": "Rosca martelo",
+                "grupo": "Bíceps",
+                "sourceName": "Rosca Martelo",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d4_e4",
+                "nome": "Tríceps Testa no Banco Incinado com Barra W",
+                "grupo": "Tríceps",
+                "sourceName": "Tríceps Testa no Banco Incinado com Barra W",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d4_e5",
+                "nome": "Tríceps Pulley",
+                "grupo": "Tríceps",
+                "sourceName": "Tríceps Pulley",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d4_e6",
+                "nome": "Tríceps francês",
+                "grupo": "Tríceps",
+                "sourceName": "Tríceps Francês",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d4_e7",
+                "nome": "Rosca inversa",
+                "grupo": "Antebraço",
+                "sourceName": "Rosca Inversa",
+                "series": 4,
+                "reps": "Falha",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d4_e8",
+                "nome": "Rosca de punho",
+                "grupo": "Antebraço",
+                "sourceName": "Rosca Punho",
+                "series": 4,
+                "reps": "15",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d4_e9",
+                "nome": "ABS Infra Solo",
+                "grupo": "Abdômen",
+                "sourceName": "ABS Infra Solo",
+                "series": 4,
+                "reps": "25",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 5,
+            "title": "Sexta · Semana 2",
+            "exercises": [
+              {
+                "id": "boost_w2_d5_e1",
+                "nome": "Crucifixo inverso máquina",
+                "grupo": "Posterior de Ombro",
+                "sourceName": "Crucifixo Inverso Máquina",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d5_e2",
+                "nome": "Crucifixo Inverso",
+                "grupo": "Posterior de Ombro",
+                "sourceName": "Crucifixo Inverso",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Carga Progressiva",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d5_e3",
+                "nome": "Desenvolvimento máquina",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Desenvolvimento Máquina",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Carga Progressiva",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d5_e4",
+                "nome": "Elevação Lateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d5_e5",
+                "nome": "Elevação Lateral no Banco Inclinado",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral no Banco Inclinado",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d5_e6",
+                "nome": "Elevação Frontal Neutra no Banco 45º",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Elevação Frontal Neutra no Banco 45º",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w2_d5_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w2_d5_e7",
+                "nome": "Elevação Frontal com Barra",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Elevação Frontal com Barra",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w2_d5_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w2_d5_e8",
+                "nome": "Encolhimento com halteres",
+                "grupo": "Trapézio",
+                "sourceName": "Encolhimento com Halteres",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w2_d5_e9",
+                "nome": "Encolhimento no smith",
+                "grupo": "Trapézio",
+                "sourceName": "Encolhimento no Smith",
+                "series": 4,
+                "reps": "15",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "days": [
+          {
+            "weekday": 1,
+            "title": "Segunda · Semana 3",
+            "exercises": [
+              {
+                "id": "boost_w3_d1_e1",
+                "nome": "Levantamento Terra",
+                "grupo": "Lombar",
+                "sourceName": "Levantamento Terra",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d1_e2",
+                "nome": "Puxada frente (pulldown)",
+                "grupo": "Costas",
+                "sourceName": "Pulley Frente",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d1_e3",
+                "nome": "Pulley Frente Triângulo",
+                "grupo": "Costas",
+                "sourceName": "Pulley Frente Triângulo",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d1_e4",
+                "nome": "Remada Unilateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Remada Unilateral",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d1_e5",
+                "nome": "Banco de extensão lombar",
+                "grupo": "Posterior de Coxa",
+                "sourceName": "Extensão Lombar no Banco Romano",
+                "series": 3,
+                "reps": "30s",
+                "restSeconds": 90,
+                "technique": "Isometria",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d1_e6",
+                "nome": "Crucifixo Inverso",
+                "grupo": "Posterior de Ombro",
+                "sourceName": "Crucifixo Inverso",
+                "series": 4,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d1_e7",
+                "nome": "Crucifixo Inverso Unilateral na Polia",
+                "grupo": "Posterior de Ombro",
+                "sourceName": "Crucifixo Inverso Unilateral na Polia",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d1_e8",
+                "nome": "Encolhimento no smith",
+                "grupo": "Trapézio",
+                "sourceName": "Encolhimento no Smith",
+                "series": 4,
+                "reps": "15",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 2,
+            "title": "Terça · Semana 3",
+            "exercises": [
+              {
+                "id": "boost_w3_d2_e1",
+                "nome": "Supino Inclinado no Smith",
+                "grupo": "Peito",
+                "sourceName": "Supino Inclinado no Smith",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "10 Normais + 10 Curtas",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d2_e2",
+                "nome": "Supino reto halteres",
+                "grupo": "Peito",
+                "sourceName": "Dumbell Press Reto",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 0,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w3_d2_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w3_d2_e3",
+                "nome": "Crucifixo Reto",
+                "grupo": "Peito",
+                "sourceName": "Crucifixo Reto",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w3_d2_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w3_d2_e4",
+                "nome": "Supino declinado",
+                "grupo": "Peito",
+                "sourceName": "Supino Declinado",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d2_e5",
+                "nome": "Desenvolvimento no Smith",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Desenvolvimento no Smith",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d2_e6",
+                "nome": "Elevação Lateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 0,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w3_d2_g2",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w3_d2_e7",
+                "nome": "Elevação Frontal",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Elevação Frontal",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w3_d2_g2",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w3_d2_e8",
+                "nome": "Elevação Lateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Rest-Pause 10s",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d2_e9",
+                "nome": "ABS Supra no Cabo",
+                "grupo": "Abdômen",
+                "sourceName": "ABS Supra no Cabo",
+                "series": 4,
+                "reps": "20",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 3,
+            "title": "Quarta · Semana 3",
+            "exercises": [
+              {
+                "id": "boost_w3_d3_e1",
+                "nome": "Agachamento livre",
+                "grupo": "Quadríceps",
+                "sourceName": "Agachamento Livre",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d3_e2",
+                "nome": "Leg Press 45º Unilateral",
+                "grupo": "Quadríceps",
+                "sourceName": "Leg Press 45º Unilateral",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d3_e3",
+                "nome": "Agachamento hack",
+                "grupo": "Quadríceps",
+                "sourceName": "Agachamento Hack",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "10 Normais + 10 Curtas",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d3_e4",
+                "nome": "Cadeira extensora",
+                "grupo": "Quadríceps",
+                "sourceName": "Cadeira Extensora",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d3_e5",
+                "nome": "Cadeira flexora",
+                "grupo": "Posterior de Coxa",
+                "sourceName": "Cadeira Flexora",
+                "series": 4,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d3_e6",
+                "nome": "Stiff com halteres",
+                "grupo": "Posterior de Coxa",
+                "sourceName": "Stiff com Halteres",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d3_e7",
+                "nome": "Cadeira Adutora",
+                "grupo": "Adutores",
+                "sourceName": "Cadeira Adutora",
+                "series": 3,
+                "reps": "20",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d3_e8",
+                "nome": "Elevação pélvica (hip thrust)",
+                "grupo": "Glúteo",
+                "sourceName": "Elevação Pélvica",
+                "series": 4,
+                "reps": "20",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d3_e9",
+                "nome": "Panturrilha sentado",
+                "grupo": "Panturrilha",
+                "sourceName": "Panturrilha Sentado",
+                "series": 4,
+                "reps": "20",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 4,
+            "title": "Quinta · Semana 3",
+            "exercises": [
+              {
+                "id": "boost_w3_d4_e1",
+                "nome": "Rosca Scott",
+                "grupo": "Bíceps",
+                "sourceName": "Rsoca Scott",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d4_e2",
+                "nome": "Duplo Bíceps na Polia",
+                "grupo": "Bíceps",
+                "sourceName": "Duplo Bíceps na Polia",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d4_e3",
+                "nome": "Rosca inclinada 45º",
+                "grupo": "Bíceps",
+                "sourceName": "Rosca 45º",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d4_e4",
+                "nome": "Tríceps Pulley",
+                "grupo": "Tríceps",
+                "sourceName": "Tríceps Pulley",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d4_e5",
+                "nome": "Tríceps mergulho no banco",
+                "grupo": "Tríceps",
+                "sourceName": "Tríceps Banco",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d4_e6",
+                "nome": "Tríceps coice (kickback)",
+                "grupo": "Tríceps",
+                "sourceName": "Tríceps Coice",
+                "series": 4,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d4_e7",
+                "nome": "Rosca inversa",
+                "grupo": "Antebraço",
+                "sourceName": "Rosca Inversa",
+                "series": 4,
+                "reps": "Falha",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d4_e8",
+                "nome": "Rosca de punho",
+                "grupo": "Antebraço",
+                "sourceName": "Rosca Punho",
+                "series": 4,
+                "reps": "15",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d4_e9",
+                "nome": "ABS Infra Declinado",
+                "grupo": "Abdômen",
+                "sourceName": "ABS Infra Declinado",
+                "series": 4,
+                "reps": "15",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 5,
+            "title": "Sexta · Semana 3",
+            "exercises": [
+              {
+                "id": "boost_w3_d5_e1",
+                "nome": "Desenvolvimento Frente",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Desenvolvimento Frente",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d5_e2",
+                "nome": "Elevação Frontal com Barra",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Elevação Frontal com Barra",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d5_e3",
+                "nome": "Elevação Lateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d5_e4",
+                "nome": "Elevação Lateral no Cabo Unilateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral no Cabo Unilateral",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d5_e5",
+                "nome": "Crucifixo inverso máquina",
+                "grupo": "Posterior de Ombro",
+                "sourceName": "Crucifixo Inverso Máquina",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d5_e6",
+                "nome": "Elevação Lateral no Cabo Unilateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral no Cabo Unilateral",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d5_e7",
+                "nome": "Remada Alta na Polia com Barra Reta",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Remada Alta na Polia com Barra Reta",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d5_e8",
+                "nome": "Encolhimento com halteres",
+                "grupo": "Trapézio",
+                "sourceName": "Encolhimento com Halteres",
+                "series": 6,
+                "reps": "15",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w3_d5_e9",
+                "nome": "Elevação Lateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Rest-Pause 10s",
+                "obs": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "days": [
+          {
+            "weekday": 1,
+            "title": "Segunda · Semana 4",
+            "exercises": [
+              {
+                "id": "boost_w4_d1_e1",
+                "nome": "Puxada frente (pulldown)",
+                "grupo": "Costas",
+                "sourceName": "Pulley Frente",
+                "series": 4,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d1_e2",
+                "nome": "Puxada supinada",
+                "grupo": "Costas",
+                "sourceName": "Pulley Frente Supinado",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d1_e3",
+                "nome": "Remada Máquina",
+                "grupo": "Costas",
+                "sourceName": "Remada Máquina",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d1_e4",
+                "nome": "Remada Baixa Aberta",
+                "grupo": "Costas",
+                "sourceName": "Remada Baixa Aberta",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d1_e5",
+                "nome": "Banco de extensão lombar",
+                "grupo": "Posterior de Coxa",
+                "sourceName": "Extensão Lombar no Banco Romano",
+                "series": 3,
+                "reps": "30s",
+                "restSeconds": 90,
+                "technique": "Isometria",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d1_e6",
+                "nome": "Crucifixo inverso máquina",
+                "grupo": "Posterior de Ombro",
+                "sourceName": "Crucifixo Inverso Máquina",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d1_e7",
+                "nome": "Elevação Lateral Unilateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral Unilateral",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d1_e8",
+                "nome": "Remada Alta na Polia com Barra Reta",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Remada Alta na Polia com Barra Reta",
+                "series": 4,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 2,
+            "title": "Terça · Semana 4",
+            "exercises": [
+              {
+                "id": "boost_w4_d2_e1",
+                "nome": "Supino Reto",
+                "grupo": "Peito",
+                "sourceName": "Supino Reto",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w4_d2_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w4_d2_e2",
+                "nome": "Crucifixo Reto",
+                "grupo": "Peito",
+                "sourceName": "Crucifixo Reto",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w4_d2_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w4_d2_e3",
+                "nome": "Supino Inclinado no Smith",
+                "grupo": "Peito",
+                "sourceName": "Supino Inclinado no Smith",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d2_e4",
+                "nome": "Crossover na polia",
+                "grupo": "Peito",
+                "sourceName": "Crossover",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Alto + Baixo",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d2_e5",
+                "nome": "Desenvolvimento halteres",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Desenvolvimento com Dumbells",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d2_e6",
+                "nome": "Elevação Lateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d2_e7",
+                "nome": "Desenvolvimento Arnold",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Desenvolvimento Arnold",
+                "series": 4,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d2_e8",
+                "nome": "Elevação Frontal Supinada no Banco 45º",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Elevação Frontal Supinada no Banco 45º",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Rest-Pause 10s",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d2_e9",
+                "nome": "ABS Supra no Cabo",
+                "grupo": "Abdômen",
+                "sourceName": "ABS Supra no Cabo",
+                "series": 4,
+                "reps": "20",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 3,
+            "title": "Quarta · Semana 4",
+            "exercises": [
+              {
+                "id": "boost_w4_d3_e1",
+                "nome": "Agachamento Frontal",
+                "grupo": "Quadríceps",
+                "sourceName": "Agachamento Frontal",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d3_e2",
+                "nome": "Agachamento búlgaro",
+                "grupo": "Quadríceps",
+                "sourceName": "Agachamento Búlgaro",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d3_e3",
+                "nome": "Agachamento Hack com Pés Juntos",
+                "grupo": "Quadríceps",
+                "sourceName": "Agachamento Hack com Pés Juntos",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "10 Normais + 10 Curtas",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d3_e4",
+                "nome": "Cadeira Extensora Unilateral",
+                "grupo": "Quadríceps",
+                "sourceName": "Cadeira Extensora Unilateral",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d3_e5",
+                "nome": "Mesa flexora (deitado)",
+                "grupo": "Posterior de Coxa",
+                "sourceName": "Mesa Flexora",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d3_e6",
+                "nome": "Stiff no Smith",
+                "grupo": "Posterior de Coxa",
+                "sourceName": "Stiff no Smith",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d3_e7",
+                "nome": "Cadeira abdutora",
+                "grupo": "Glúteo",
+                "sourceName": "Cadeira Abdutora",
+                "series": 3,
+                "reps": "20",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d3_e8",
+                "nome": "Elevação pélvica (hip thrust)",
+                "grupo": "Glúteo",
+                "sourceName": "Elevação Pélvica",
+                "series": 4,
+                "reps": "20",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d3_e9",
+                "nome": "Panturrilha sentado",
+                "grupo": "Panturrilha",
+                "sourceName": "Panturrilha Sentado",
+                "series": 4,
+                "reps": "20",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 4,
+            "title": "Quinta · Semana 4",
+            "exercises": [
+              {
+                "id": "boost_w4_d4_e1",
+                "nome": "Rosca Direta na Polia Baixa",
+                "grupo": "Bíceps",
+                "sourceName": "Rosca Direta na Polia Baixa",
+                "series": 4,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d4_e2",
+                "nome": "Rosca 21",
+                "grupo": "Bíceps",
+                "sourceName": "Rosca 21",
+                "series": 4,
+                "reps": "21",
+                "restSeconds": 90,
+                "technique": "set. 21",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d4_e3",
+                "nome": "Rosca Martelo Corda",
+                "grupo": "Bíceps",
+                "sourceName": "Rosca Martelo Corda",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d4_e4",
+                "nome": "Tríceps pulley corda",
+                "grupo": "Tríceps",
+                "sourceName": "Tríceps Pulley Corda",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w4_d4_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w4_d4_e5",
+                "nome": "Tríceps Testa com Corda",
+                "grupo": "Tríceps",
+                "sourceName": "Tríceps Testa com Corda",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w4_d4_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w4_d4_e6",
+                "nome": "Tríceps Francês Unilateral",
+                "grupo": "Tríceps",
+                "sourceName": "Tríceps Francês Unilateral",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d4_e7",
+                "nome": "Tríceps mergulho no banco",
+                "grupo": "Tríceps",
+                "sourceName": "Tríceps Banco",
+                "series": 3,
+                "reps": "Falha",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d4_e8",
+                "nome": "Rosca Punho (Fazer Unilateral)",
+                "grupo": "Antebraço",
+                "sourceName": "Rosca Punho (Fazer Unilateral)",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d4_e9",
+                "nome": "Rosca inversa",
+                "grupo": "Antebraço",
+                "sourceName": "Rosca Inversa",
+                "series": 3,
+                "reps": "15",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              }
+            ]
+          },
+          {
+            "weekday": 5,
+            "title": "Sexta · Semana 4",
+            "exercises": [
+              {
+                "id": "boost_w4_d5_e1",
+                "nome": "Desenvolvimento halteres",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Desenvolvimento com Dumbells",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 0,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w4_d5_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w4_d5_e2",
+                "nome": "Desenvolvimento Arnold",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Desenvolvimento Arnold",
+                "series": 4,
+                "reps": "12",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": "",
+                "groupId": "boost_w4_d5_g1",
+                "groupType": "Bi-set"
+              },
+              {
+                "id": "boost_w4_d5_e3",
+                "nome": "Elevação Lateral",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral",
+                "series": 4,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d5_e4",
+                "nome": "Elevação Frontal com Barra",
+                "grupo": "Anterior de Ombro",
+                "sourceName": "Elevação Frontal com Barra",
+                "series": 4,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d5_e5",
+                "nome": "Crucifixo Inverso na Polia",
+                "grupo": "Posterior de Ombro",
+                "sourceName": "Crucifixo Inverso na Polia",
+                "series": 4,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d5_e6",
+                "nome": "Elevação Lateral no Banco Inclinado",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Elevação Lateral no Banco Inclinado",
+                "series": 4,
+                "reps": "10",
+                "restSeconds": 0,
+                "technique": "No-Stop",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d5_e7",
+                "nome": "Crucifixo inverso máquina",
+                "grupo": "Posterior de Ombro",
+                "sourceName": "Crucifixo Inverso Máquina",
+                "series": 4,
+                "reps": "10+10",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d5_e8",
+                "nome": "Encolhimento com halteres",
+                "grupo": "Trapézio",
+                "sourceName": "Encolhimento com Halteres",
+                "series": 6,
+                "reps": "15",
+                "restSeconds": 90,
+                "technique": "Falha Concêntrica",
+                "obs": ""
+              },
+              {
+                "id": "boost_w4_d5_e9",
+                "nome": "Remada Alta na Polia com Barra Reta",
+                "grupo": "Lateral de Ombro",
+                "sourceName": "Remada Alta na Polia com Barra Reta",
+                "series": 4,
+                "reps": "4+8+12",
+                "restSeconds": 90,
+                "technique": "Drop-Set",
+                "obs": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "file": "Planilha_Boost_PRO_Ombro_Smartphone_Semana1.pdf",
+        "sha256": "d33ea1c82018d542a99d7e04bb2a733b1d9db5b81d7c563dafbaab013b891544"
+      },
+      {
+        "file": "Planilha_Boost_PRO_Ombro_Smartphone_Semana2.pdf",
+        "sha256": "c30b6cf317a8788362abb1bf9df55745f475dc7c8e3c0f23730efc97eefd04f6"
+      },
+      {
+        "file": "Planilha_Boost_PRO_Ombro_Smartphone_Semana3.pdf",
+        "sha256": "7667634d45df602a3323733b97901cb2c18d69c3c86a186707c3063cf4c7ca01"
+      },
+      {
+        "file": "Planilha_Boost_PRO_Ombro_Smartphone_Semana4.pdf",
+        "sha256": "b0f8ad39807b33acb498256be5de592de44153bd19ddec2652f2d3ccd7b1cf94"
+      }
+    ]
+  }
+];
+/* Programs and dated executions. Embedded into index.html for offline use. */
+function validISODate(value){if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;const d=parseYmd(value);return !Number.isNaN(+d)&&ymd(d)===value;}
+function validWeekCount(n){return Number.isInteger(n)&&n>=1&&n<=12;}
+function normalizeBackup(raw){
+  if(!raw||typeof raw!=='object'||Array.isArray(raw))throw Error('O backup deve conter um objeto de dados.');
+  if(raw.schemaVersion!=null&&(!Number.isInteger(raw.schemaVersion)||raw.schemaVersion<1||raw.schemaVersion>2))throw Error('Versão de backup não suportada.');
+  const s=removeRetiredData(Object.assign({},clone(defaultState),clone(raw)));
+  for(const key of ['log','sessions','overrides'])if(!s[key]||typeof s[key]!=='object'||Array.isArray(s[key]))throw Error('Formato inválido: '+key);
+  for(const key of ['weights','measures','photos','activities','customPrograms'])if(!Array.isArray(s[key]))throw Error('Formato inválido: '+key);
+  for(const [key,field] of [['weights','kg'],['measures',null],['photos',null],['activities',null]]){
+    s[key].forEach((record,index)=>{
+      if(!record||typeof record!=='object'||Array.isArray(record)||!validISODate(record.date))throw Error('Registro inválido em '+key);
+      if(record.id==null)record.id='migrated_'+key+'_'+index+'_'+record.date;
+      if(typeof record.id!=='string'||!/^[-_a-zA-Z0-9]+$/.test(record.id))throw Error('Identificador inválido em '+key);
+      if(field){record[field]=Number(record[field]);if(!Number.isFinite(record[field])||record[field]<=0)throw Error('Peso inválido.');}
+      if(key==='photos'&&typeof record.img!=='string')throw Error('Foto inválida.');
+      if(key==='measures'){if(!record.vals||typeof record.vals!=='object'||Array.isArray(record.vals))throw Error('Medidas inválidas.');for(const name of Object.keys(record.vals)){record.vals[name]=Number(record.vals[name]);if(!Number.isFinite(record.vals[name])||record.vals[name]<=0)throw Error('Valor de medida inválido.');}}
+      if(key==='activities'){if(typeof record.type!=='string')throw Error('Atividade inválida.');for(const name of ['dur','dist','kcal']){record[name]=Number(record[name]||0);if(!Number.isFinite(record[name])||record[name]<0)throw Error('Valor de atividade inválido.');}}
+    });
+  }
+  for(const p of s.customPrograms){
+    if(!p||typeof p.id!=='string'||!/^[-_a-zA-Z0-9]+$/.test(p.id)||['__proto__','constructor','prototype'].includes(p.id)||typeof p.nome!=='string'||!Array.isArray(p.sessions)||p.sessions.length!==3||!Array.isArray(p.days)||p.days.length!==7||!p.plans)throw Error('Programa personalizado incompleto.');
+    if(p.durationWeeks!=null&&!validWeekCount(p.durationWeeks))throw Error('Duração inválida em '+p.nome);
+    if(new Set(p.sessions).size!==3||!p.off||p.sessions.includes(p.off)||p.days.some(t=>t!==p.off&&!p.sessions.includes(t)))throw Error('Calendário inválido em '+p.nome);
+    for(const t of p.sessions){if(!p.plans[t]||!Array.isArray(p.plans[t].ex)||!p.plans[t].ex.length||p.days.filter(x=>x===t).length!==1)throw Error('Sessão inválida em '+p.nome);for(const e of p.plans[t].ex)if(!e||typeof e.nome!=='string'||typeof e.grupo!=='string'||!(parseInt(e.series)>0))throw Error('Exercício inválido em '+p.nome);}
+  }
+  for(const [date,record] of Object.entries(s.log))if(!validISODate(date)||!record||typeof record!=='object'||Array.isArray(record))throw Error('Registro de treino inválido.');
+  for(const root of Object.values(s.log)){
+    if(root.runLogs!=null&&(!root.runLogs||typeof root.runLogs!=='object'||Array.isArray(root.runLogs)))throw Error('Histórico de execuções inválido.');
+    for(const record of [root,...Object.values(root.runLogs||{})]){
+      if(!record||typeof record!=='object'||Array.isArray(record))throw Error('Registro de execução inválido.');
+      if(record.done!=null&&(!record.done||typeof record.done!=='object'||Array.isArray(record.done)))throw Error('Marcações inválidas.');
+      if(record.snapshot&&(!Array.isArray(record.snapshot.ex)||record.snapshot.ex.some(e=>!e||typeof e.nome!=='string'||typeof e.grupo!=='string')))throw Error('Cópia de sessão inválida.');
+    }
+  }
+  for(const [date,records] of Object.entries(s.sessions)){if(!validISODate(date)||!records||typeof records!=='object'||Array.isArray(records))throw Error('Data de sessão inválida.');for(const r of Object.values(records))if(!r||!Array.isArray(r.sets)||r.sets.some(x=>!x||typeof x!=='object'||Array.isArray(x)||x.done!=null&&typeof x.done!=='boolean'||['kg','reps'].some(k=>x[k]!=null&&!['number','string'].includes(typeof x[k]))))throw Error('Séries inválidas no backup.');}
+  if(typeof s.programId!=='string'||!/^[-_a-zA-Z0-9]+$/.test(s.programId)||['__proto__','constructor','prototype'].includes(s.programId))throw Error('Programa selecionado inválido.');
+  if(s.settings!=null&&(typeof s.settings!=='object'||Array.isArray(s.settings)))throw Error('Configurações inválidas.');
+  s.settings=Object.assign({},defaultState.settings,s.settings||{});
+  s.runs=s.runs==null?[]:s.runs;if(!Array.isArray(s.runs))throw Error('Lista de execuções inválida.');
+  const ids=new Set();
+  for(const r of s.runs){
+    if(!r||typeof r.id!=='string'||!/^[-_a-zA-Z0-9]+$/.test(r.id)||['__proto__','constructor','prototype'].includes(r.id)||ids.has(r.id)||!validISODate(r.startDate)||!validWeekCount(r.weekCount)||!Array.isArray(r.schedule)||r.schedule.length!==r.weekCount*7||!['active','paused','elapsed','completed'].includes(r.status))throw Error('Execução de programa inválida.');ids.add(r.id);
+    if(typeof r.programId!=='string'||!/^[-_a-zA-Z0-9]+$/.test(r.programId)||['__proto__','constructor','prototype'].includes(r.programId)||typeof r.programName!=='string'||parseYmd(r.startDate).getDay()!==1||!validISODate(r.endDate))throw Error('Identificação de execução inválida.');
+    if(r.baselinePR&&Object.values(r.baselinePR).some(n=>typeof n!=='number'||!Number.isFinite(n)||n<0))throw Error('Referência de PR inválida.');
+    r.adjustments=r.adjustments==null?[]:r.adjustments;if(!Array.isArray(r.adjustments))throw Error('Replanejamentos inválidos.');r.baselinePR=r.baselinePR||{};
+    if(r.endDate!==r.schedule.map(d=>d.date).sort().at(-1))throw Error('Término incompatível com o calendário.');
+    const dates=new Set(),planIds=new Set();
+    for(const [index,day] of r.schedule.entries()){if(day.index!==index||!Number.isInteger(day.sourceWeek)||day.sourceWeek<1||day.sourceWeek>r.weekCount||!Number.isInteger(day.sourceWeekday)||day.sourceWeekday<0||day.sourceWeekday>6)throw Error('Ordem de planejamento inválida.');if(!validISODate(day.date)||dates.has(day.date)||!day.plan||typeof day.plan.tipo!=='string'||!day.plan.tipo.startsWith('CYCLE_'+r.id+'_')||planIds.has(day.plan.tipo)||!Array.isArray(day.plan.ex)||day.plan.runId!==r.id)throw Error('Planejamento de execução inválido.');if(!day.plan.ex.length||day.plan.ex.some(e=>!e||typeof e.nome!=='string'||typeof e.grupo!=='string'||!day.plan.rest&&(!(parseInt(e.series)>0)||parseInt(e.series)>30)||e.restSeconds!=null&&(typeof e.restSeconds!=='number'||!Number.isFinite(e.restSeconds)||e.restSeconds<0)))throw Error('Prescrição inválida no planejamento.');dates.add(day.date);planIds.add(day.plan.tipo);}
+  }
+  if(raw.schemaVersion!==2){s.activeRunId=null;s.runs=[];}else if(s.activeRunId!=null&&!ids.has(s.activeRunId))throw Error('Execução ativa não encontrada.');
+  if(s.activeRunId)s.programId=s.runs.find(r=>r.id===s.activeRunId).programId;
+  s.schemaVersion=2;s.activeRunId=s.activeRunId||null;
+  return seedInitialPrograms(s);
+}
+function activeRun(){return (state.runs||[]).find(r=>r.id===state.activeRunId&&r.programId===state.programId)||null;}
+function runDay(run,date){return run&&run.schedule.find(d=>d.date===date);}
+function runForTipo(tipo){for(const r of state.runs||[])if(r.schedule.some(d=>d.plan.tipo===tipo))return r;return null;}
+function readDayLog(k,tipo){
+  const r=tipo?runForTipo(tipo):activeRun();const root=state.log[k];
+  return r?(root&&root.runLogs&&root.runLogs[r.id]||null):root||null;
+}
+function allDateLogs(k){const root=state.log[k];return root?[...(root.snapshot||root.done?[root]:[]),...Object.values(root.runLogs||{})]:[];}
+function archivedProgram(id){
+  const r=(state.runs||[]).filter(r=>r.programId===id).at(-1);if(!r)return null;const plans={},weekPlans={};
+  for(const d of r.schedule){plans[d.plan.tipo]=d.plan;weekPlans[d.sourceWeek]=weekPlans[d.sourceWeek]||{};weekPlans[d.sourceWeek][d.sourceWeekday]=d.plan;}
+  return {id,nome:r.programName,notes:r.programNotes||'',autor:'Programa arquivado',emoji:'📅',desc:'Execução preservada após exclusão do modelo.',periodized:true,durationWeeks:r.weekCount,plans,weekPlans,cycle:false,keyForDate:d=>weekPlans[1][d.getDay()].tipo};
+}
+function programById(id){return customCatalog()[id]||PROGRAMS[id]||archivedProgram(id);}
+function baselineRecords(startDate){const out={};for(const [date,sessions] of Object.entries(state.sessions)){if(date>=startDate||date>ymd(today()))continue;for(const [sid,s] of Object.entries(sessions)){const name=exerciseSessionName(sid,s);out[name]=Math.max(out[name]||0,best1RM(s.runId?(s.sets||[]).filter(x=>x.done):s.sets));}}return out;}
+function startProgramRun(id,startDate,count,includeLegacy=false){
+  const previous=clone(state);
+  try{
+    const run=buildProgramRun(id,startDate,count,includeLegacy);
+    const next=normalizeBackup(state);localStorage.setItem(LS_KEY,JSON.stringify(next));
+    // Validate and persist before exposing the new execution; keep existing object references.
+    save();return run;
+  }catch(e){state=previous;throw e;}
+}
+function buildProgramRun(id,startDate,count,includeLegacy){
+  if(window.appDataLoadError)throw Error('Importe um backup válido antes de iniciar um programa.');
+  const p=programById(id),n=Number(count);
+  if(!p)throw Error('Programa não encontrado.');if(!validISODate(startDate)||parseYmd(startDate).getDay()!==1)throw Error('Escolha uma segunda-feira válida para o início.');
+  if(!validWeekCount(n)||p.periodized&&n!==p.durationWeeks)throw Error('Informe uma duração válida entre 1 e 12 semanas.');
+  preserveHistory();
+  const run={id:uid(),programId:id,programName:p.nome,programNotes:p.notes||'',startDate,weekCount:n,status:'active',createdAt:Date.now(),schedule:[],adjustments:[],baselinePR:baselineRecords(startDate)};
+  for(let i=0;i<n*7;i++){
+    const date=ymd(addDays(parseYmd(startDate),i)),wd=parseYmd(date).getDay(),week=Math.floor(i/7)+1;
+    let source;
+    if(p.periodized)source=p.weekPlans[week][wd];
+    else if(id==='refundini'){const key=wd===1?'A':wd===2?'B':wd===3?(week%2?'C1':'C2'):wd===4?'REC':wd===5?(week%2?'D1':'D2'):wd===6?'E':'OFF';source=p.plans[key];}
+    else source=p.plans[p.keyForDate(parseYmd(date))];
+    if(!source)throw Error('Sessão ausente na semana '+week);
+    const plan=clone(source),sourceTipo=plan.tipo;plan.tipo='CYCLE_'+run.id+'_'+i;plan.t=plan.tipo;plan.runId=run.id;plan.weekNumber=week;plan.sourceTipo=sourceTipo;
+    plan.ex=plan.ex.map((e,j)=>{const ex={...e,...((state.overrides[sourceTipo]||{})[e.id||j]||{})};delete ex.sid;delete ex.baseSid;delete ex.planned;return ex;});
+    run.schedule.push({index:i,sourceWeek:week,sourceWeekday:wd,originalDate:date,date,plan});
+  }
+  run.nominalEnd=run.schedule.at(-1).date;run.endDate=run.nominalEnd;
+  const old=activeRun();if(old&&old.status==='active')old.status='paused';
+  state.runs=state.runs||[];state.runs.push(run);state.activeRunId=run.id;state.programId=id;state.schemaVersion=2;
+  const custom=(state.customPrograms||[]).find(x=>x.id===id);if(custom)custom.durationWeeks=n;
+  if(includeLegacy)incorporateLegacyRecords(run);
+  return run;
+}
+/* Link only records with explicit program ownership and a date in this calendar.
+   Keep the original payload in the run for audit; live series have one owner. */
+function legacyImportCandidates(run){
+  return run.schedule.filter(day=>{
+    const root=state.log[day.date];
+    return root&&root.snapshot&&!root.snapshot.rest&&root.snapshot.programId===run.programId&&
+      !root.runLogs?.[run.id]&&!runCompletion(run,day).hasWork&&
+      !Object.values(state.sessions[day.date]||{}).some(s=>s.runId===run.id);
+  });
+}
+function incorporateLegacyRecords(run){
+  const dates=[];
+  for(const day of legacyImportCandidates(run)){
+    const root=state.log[day.date],original=clone(root),snapshot=clone(root.snapshot),records=state.sessions[day.date]||{};
+    const log={runId:run.id,done:{},exerciseChoices:{}};const moved={};
+    snapshot.ex.forEach((ex,i)=>{
+      const oldBase=ex.baseSid||ex.sid?.split('~')[0]||snapshot.tipo+'-'+(ex.id||i);
+      const base=day.plan.tipo+'-'+(ex.id||i);
+      const oldChoice=root.exerciseChoices?.[oldBase];
+      // Some older snapshots contain the replacement but no separate choice map.
+      const planned=clone(ex.planned||ex);delete planned.sid;delete planned.baseSid;delete planned.planned;
+      if(oldChoice)log.exerciseChoices[base]=clone(oldChoice);
+      else if(ex.planned&&ex.nome!==planned.nome)log.exerciseChoices[base]={...clone(ex),customPrescription:true};
+      for(const [sid,record] of Object.entries(records)){
+        if(record.runId||!(sid===oldBase||sid.startsWith(oldBase+'~')))continue;
+        const nextSid=base+sid.slice(oldBase.length),next=clone(record);
+        next.runId=run.id;next.gp=next.gp||ex.grupo;next.nm=next.nm||ex.nome;
+        next.sets.forEach(set=>{if(set.done==null&&root.done?.[sid]===true){set.done=true;set.completionSource='legacy-exercise';}if(set.repsUnit==null)set.repsUnit=isTimedExercise(ex)?'seconds':'reps';});
+        moved[sid]=clone(record);delete records[sid];records[nextSid]=next;
+      }
+      const count=parseInt(oldChoice?.customPrescription?oldChoice.series:planned.series)||3;
+      for(const sid of Object.keys(root.done||{}))if(sid===oldBase||sid.startsWith(oldBase+'~'))log.done[base+sid.slice(oldBase.length)]=false;
+      for(const [sid,record] of Object.entries(records))if(record.runId===run.id&&(sid===base||sid.startsWith(base+'~')))log.done[sid]=record.sets.slice(0,count).filter(set=>set.done).length===count;
+      snapshot.ex[i]={...planned,baseSid:base,sid:base};
+    });
+    // Preserve the actual historical prescription, even if the template has changed.
+    snapshot.tipo=day.plan.tipo;snapshot.t=day.plan.tipo;snapshot.runId=run.id;snapshot.weekNumber=day.sourceWeek;snapshot.sourceTipo=day.plan.sourceTipo;
+    day.plan=clone(snapshot);log.snapshot=clone(snapshot);
+    for(const key of ['start','end'])if(root[key]!=null)log[key]=root[key];
+    run.legacyImports=run.legacyImports||[];delete original.runLogs;
+    run.legacyImports.push({date:day.date,log:original,sessions:moved});
+    for(const key of ['snapshot','done','exerciseChoices','start','end'])delete root[key];
+    root.runLogs=root.runLogs||{};root.runLogs[run.id]=log;dates.push(day.date);
+  }
+  const last=run.schedule.filter(d=>!d.plan.rest).sort((a,b)=>b.date.localeCompare(a.date))[0];
+  if(last&&runCompletion(run,last).complete){run.status='completed';run.finishedOn=last.date;run.finishedAt=Date.now();}
+  return dates;
+}
+function openLegacyImport(){
+  const run=activeRun();if(!run)return;
+  const candidates=legacyImportCandidates(run);
+  openSheet(`<h3>Incorporar histórico anterior</h3><p>${candidates.length} sessão(ões) do mesmo programa e dentro do calendário: ${candidates.map(d=>esc(d.date)).join(', ')||'nenhuma'}.</p><p>As datas, prescrições, substituições, cargas e repetições serão mantidas. Exercícios marcados como concluídos na versão antiga terão suas séries registradas como concluídas; séries sem confirmação continuarão sem confirmação. Registros com vínculo ou dados nesta execução não serão sobrescritos.</p><div class="program-start-actions">${candidates.length?'<button class="btn primary block" id="confirmLegacyImport">Incorporar registros</button>':''}<button class="btn ghost block" onclick="closeSheet()">Cancelar</button></div>`);
+  const button=document.getElementById('confirmLegacyImport');if(button)button.onclick=()=>{
+    const previous=clone(state);try{const current=(state.runs||[]).find(r=>r.id===run.id);if(!current)throw Error("Execução não encontrada.");const dates=incorporateLegacyRecords(current);const next=normalizeBackup(state);localStorage.setItem(LS_KEY,JSON.stringify(next));save();closeSheet();render();alert(dates.length+' sessão(ões) incorporada(s).');}catch(e){state=previous;alert('Não foi possível incorporar os registros. Os dados foram mantidos. '+e.message);}
+  };
+}
+function runCompletion(run,day){
+  const l=readDayLog(day.date,day.plan.tipo);const ex=day.plan.ex||[];
+  if(day.plan.rest)return {complete:false,partial:false,done:0,total:0};
+  let done=0,total=0,hasWork=false;
+  ex.forEach((e,i)=>{const sid=daySlotId(day.date,day.plan.tipo,i),s=(state.sessions[day.date]||{})[sid];const count=seriesCount(day.plan.tipo,i,day.date)||3;total+=count;done+=(s&&s.sets||[]).slice(0,count).filter(x=>x.done).length;if(l&&l.done&&l.done[sid]||s&&(s.sets||[]).some(x=>x.done||x.kg||x.reps))hasWork=true;});
+  return {complete:total>0&&done>=total,partial:hasWork&&done<total,done,total,hasWork};
+}
+function replanProposal(run,date=ymd(today())){
+  if(!run||run.status==='completed')return null;
+  const missed=run.schedule.filter(d=>!d.plan.rest&&d.date<date&&!runCompletion(run,d).hasWork).sort((a,b)=>b.date.localeCompare(a.date));
+  if(!missed.length)return null;
+  const chosen=missed[0],delta=Math.round((parseYmd(date)-parseYmd(chosen.date))/86400000),changes=[];
+  for(const day of run.schedule){if(day.index<chosen.index||!day.plan.rest&&runCompletion(run,day).hasWork)continue;changes.push({index:day.index,oldDate:day.date,date:ymd(addDays(parseYmd(day.date),delta))});}
+  const mapped=run.schedule.map(d=>changes.find(c=>c.index===d.index)?.date||d.date);
+  if(new Set(mapped).size!==mapped.length)throw Error('O replanejamento conflita com uma sessão já registrada.');
+  return {from:chosen.index,missedDate:chosen.date,targetDate:date,delta,changes,newEnd:mapped.slice().sort().at(-1)};
+}
+function applyReplan(id,expected,date=ymd(today())){
+  const run=(state.runs||[]).find(r=>r.id===id),proposal=replanProposal(run,date);
+  if(!proposal||JSON.stringify(proposal)!==JSON.stringify(expected))throw Error('O planejamento mudou. Abra a prévia novamente.');
+  for(const c of proposal.changes)run.schedule[c.index].date=c.date;
+  run.endDate=proposal.newEnd;run.status='active';run.adjustments.push({...proposal,appliedAt:Date.now()});save();return run;
+}
+function previewReplan(){
+  const run=activeRun();let proposal;try{proposal=replanProposal(run);}catch(e){alert(e.message);return;}
+  if(!proposal){alert('Nenhuma sessão perdida sem registros está disponível para retomar. Sessões parciais não são deslocadas.');return;}
+  openSheet(`<h3>Retomar a última sessão perdida</h3><p>A sessão de <b>${esc(proposal.missedDate)}</b> passa para <b>${esc(proposal.targetDate)}</b>.</p><p>O restante não realizado será deslocado em ${proposal.delta} dia(s), incluindo os descansos. Datas já realizadas permanecem iguais.</p><p>Novo término: <b>${esc(proposal.newEnd)}</b>.</p><details><summary>Conferir as ${proposal.changes.length} datas alteradas</summary><table class="cycle-table"><thead><tr><th>Sessão</th><th>Antes</th><th>Depois</th></tr></thead><tbody>${proposal.changes.map(c=>`<tr><td>${esc(run.schedule[c.index].plan.titulo)}</td><td>${esc(c.oldDate)}</td><td>${esc(c.date)}</td></tr>`).join('')}</tbody></table></details><button class="btn primary block" id="applyReplan">Confirmar replanejamento</button><button class="btn ghost block" onclick="closeSheet()">Cancelar</button>`);
+  document.getElementById('applyReplan').onclick=()=>{try{applyReplan(run.id,proposal);closeSheet();selectedDate=null;setTab('hoje');}catch(e){alert(e.message);}};
+}
+function legacyImportSummary(id,startDate,count){
+  const all=Object.entries(state.log).filter(([date,l])=>l.snapshot?.programId===id&&!l.snapshot.rest);
+  if(!validISODate(startDate)||!validWeekCount(count))return 'Informe uma data e duração válidas para conferir os registros.';
+  const end=ymd(addDays(parseYmd(startDate),count*7-1));
+  const dates=all.filter(([date])=>date>=startDate&&date<=end).map(([date])=>date).sort();
+  return dates.length+' sessão(ões) no período'+(dates.length?': '+dates.join(', '):'.')+' · '+(all.length-dates.length)+' fora do período. Registros já vinculados ou com conflito não serão sobrescritos.';
+}
+function openStartProgram(id,forceNew=false){
+  const p=programById(id);if(!p)return;const previous=(state.runs||[]).filter(r=>r.programId===id&&r.status!=='completed').at(-1);
+  openSheet(`<h3>${forceNew?'Reiniciar':'Iniciar'} programa</h3><p>${esc(p.nome)}</p><label class="fld"><span>Data de início (segunda-feira)</span><input id="runStart" type="date" value="${ymd(mondayOf(today()))}"></label><label class="fld"><span>Quantidade de semanas (1 a 12)</span><input id="runWeeks" type="number" min="1" max="12" step="1" value="${p.durationWeeks||''}" ${p.periodized?'readonly':''} required></label>${p.periodized?'<p class="hint">Duração definida pelas semanas deste programa padrão.</p>':''}${!forceNew&&Object.values(state.log).some(l=>l.snapshot?.programId===id)?'<label class="legacy-import-option"><input type="checkbox" id="includeLegacy" checked><span>Incorporar registros antigos deste programa dentro do período informado</span></label><p class="hint">Preserva datas, cargas, repetições e substituições. A marcação antiga de exercício concluído confirma as séries existentes. Sem confirmação antiga, as séries continuam pendentes. Registros fora do período ou já vinculados ficam separados.</p><p class="hint" id="legacyImportPreview"></p>':''}<p class="hint">Uma nova execução mantém os históricos anteriores. A programação avança pelo calendário.</p><div class="program-start-actions"><button class="btn primary block" id="startRun">Confirmar início</button>${previous&&!forceNew?`<button class="btn ghost block" id="resumeRun">Continuar execução de ${esc(previous.startDate)}</button>`:''}<button class="btn ghost block" onclick="closeSheet()">Cancelar</button></div>`);
+  const updatePreview=()=>{const preview=document.getElementById('legacyImportPreview');if(preview)preview.textContent=legacyImportSummary(id,document.getElementById('runStart').value,Number(document.getElementById('runWeeks').value));};
+  document.getElementById('runStart').addEventListener('input',updatePreview);document.getElementById('runWeeks').addEventListener('input',updatePreview);updatePreview();
+  document.getElementById('startRun').onclick=()=>{try{startProgramRun(id,document.getElementById('runStart').value,Number(document.getElementById('runWeeks').value),!!document.getElementById('includeLegacy')?.checked);closeSheet();selectedDate=null;setTab('hoje');}catch(e){alert(e.message);}};
+  const resume=document.getElementById('resumeRun');if(resume)resume.onclick=()=>{const old=activeRun();if(old&&old.id!==previous.id&&old.status==='active')old.status='paused';state.activeRunId=previous.id;state.programId=id;previous.status='active';save();closeSheet();selectedDate=null;setTab('hoje');};
+}
+function pendingProgramView(){
+  if(window.appDataLoadError)return `<div class="card"><h3>Não foi possível carregar os dados</h3><p>${esc(window.appDataLoadError)}</p><p>Os dados originais permanecem no navegador. Exporte uma cópia para recuperação ou importe um backup válido em Ajustes.</p><button class="btn primary" id="recoverOriginal">Salvar dados originais</button></div>`;
+  return `<div class="card"><h3>Configuração pendente</h3><p>Defina a data de início e a quantidade de semanas para iniciar ou continuar este programa. Na configuração, você pode incorporar os registros antigos deste programa ao período informado.</p><button class="btn primary" data-configure="${esc(state.programId)}">Configurar programa</button><button class="btn ghost" data-go="programas">Selecionar outro</button></div>`;
+}
+function cycleBanner(){
+  const r=activeRun();if(!r)return '';
+  const d=runDay(r,ymd(curDate())),week=d?d.sourceWeek:null;
+  return `<div class="card"><b>${esc(r.programName)}</b><div class="hint">${week?'Semana '+week+' de '+r.weekCount+' · ':''}${esc(r.startDate)} a ${esc(r.endDate)}</div><div class="cycle-actions">${legacyImportCandidates(r).length?'<button class="btn ghost" id="importLegacyRun">Incorporar histórico anterior</button>':''}<button class="btn ghost" id="replanRun">Retomar a última sessão perdida</button><button class="btn ghost" data-run-results="${r.id}">Estatísticas do programa</button></div></div>`;
+}
+function groupHeading(plan,i){const e=plan.ex[i];if(!e.groupId)return '';const members=plan.ex.map((x,j)=>({x,j})).filter(o=>o.x.groupId===e.groupId);if(members[0].j!==i)return '';return `<div class="technique-group"><b>${esc(e.groupType||'Grupo combinado')} · exercícios ${members.map(o=>o.j+1).join(' + ')}</b><div>${members.map(o=>esc(o.x.nome)).join(' → ')}</div><div class="hint">Execute os exercícios deste grupo em sequência, respeitando o descanso de cada prescrição.</div></div>`;}
+function isTimedExercise(ex){return /isometria/i.test(ex.technique||'')||/^\s*\d+(?:[–-]\d+)?\s*s\s*$/i.test(ex.reps||'');}
+function persistDayChoice(k,tipo,i,choice){
+  const planned=exAt(tipo,i);snapshotDay(k,tipo);const l=dayLog(k,tipo),base=slotId(tipo,i);l.exerciseChoices=l.exerciseChoices||{};
+  if(choice)l.exerciseChoices[base]=clone(choice);else delete l.exerciseChoices[base];
+  const snap=l.snapshot.ex.find(e=>(e.baseSid||e.sid)===base);if(snap)Object.assign(snap,dayExercise(k,tipo,i),{planned:clone(planned),baseSid:base,sid:daySlotId(k,tipo,i)});
+  if(countDone(k,tipo)!==dayTotal(tipo))delete l.end;save();render();
+}
+function markExerciseSets(k,tipo,i,done){
+  snapshotDay(k,tipo);const sid=daySlotId(k,tipo,i);state.sessions[k]=state.sessions[k]||{};const old=state.sessions[k][sid]||{sets:[]};const count=seriesCount(tipo,i,k)||3;
+  while(old.sets.length<count)old.sets.push({kg:'',reps:''});old.sets.slice(0,count).forEach(s=>s.done=done);const ex=dayExercise(k,tipo,i);old.sets.forEach(set=>set.repsUnit=isTimedExercise(ex)?'seconds':'reps');old.nm=ex.nome;old.gp=ex.grupo;old.runId=runForTipo(tipo)?.id||null;state.sessions[k][sid]=old;dayLog(k,tipo).done[sid]=done;
+}
+function updateSessionCompletion(k,tipo){
+  const l=dayLog(k,tipo),dn=countDone(k,tipo),tot=dayTotal(tipo);
+  const owner=runForTipo(tipo);const hasDone=Object.values(state.sessions[k]||{}).some(s=>(!owner||s.runId===owner.id)&&(s.sets||[]).some(x=>x.done));
+  if(hasDone&&!l.start)l.start=Date.now();if(!hasDone){delete l.start;delete l.end;}
+  if(dn===tot&&tot>0){if(!l.end)l.end=Date.now();}else delete l.end;
+  const run=runForTipo(tipo);if(!run)return false;if(run.status==='completed'&&dn<tot){run.status='active';delete run.finishedAt;delete run.finishedOn;}
+  const last=run.schedule.filter(d=>!d.plan.rest).sort((a,b)=>b.date.localeCompare(a.date))[0];
+  if(last&&last.date===k&&runCompletion(run,last).complete){run.status='completed';run.finishedAt=Date.now();run.finishedOn=k;selectedRunResultId=run.id;return true;}return false;
+}
+function toggleSetCompletion(k,tipo,i,j,done){
+  snapshotDay(k,tipo);const sid=daySlotId(k,tipo,i);state.sessions[k]=state.sessions[k]||{};const r=state.sessions[k][sid]||{sets:[]};while(r.sets.length<=(j))r.sets.push({kg:'',reps:''});r.sets[j].done=done;
+  const ex=dayExercise(k,tipo,i);r.sets.forEach(set=>set.repsUnit=isTimedExercise(ex)?'seconds':'reps');r.nm=ex.nome;r.gp=ex.grupo;r.runId=runForTipo(tipo)?.id||null;state.sessions[k][sid]=r;
+  const n=seriesCount(tipo,i,k)||3;dayLog(k,tipo).done[sid]=r.sets.slice(0,n).filter(x=>x.done).length===n;
+  const completed=updateSessionCompletion(k,tipo);save();if(completed){closeSheet();setTab('run-results');}else{render();if(done&&state.settings.autoRest)openTimer(ex.restSeconds);}
+}
+function runStatistics(run){
+  const sessions=run.schedule.filter(d=>!d.plan.rest),groups={},prs={},actualByName={};let complete=0,partial=0,trained=0,missed=0;
+  for(const day of sessions){const c=runCompletion(run,day);if(c.complete)complete++;if(c.partial)partial++;if(c.done>0)trained++;if(day.date<ymd(today())&&!c.hasWork)missed++;
+    for(const e of day.plan.ex){const g=groups[e.grupo]||(groups[e.grupo]={planned:0,actual:0});g.planned+=parseInt(e.series)||0;}}
+  for(const day of Object.values(state.sessions))for(const s of Object.values(day)){if(s.runId!==run.id)continue;const done=(s.sets||[]).filter(x=>x.done);const g=groups[s.gp]||(groups[s.gp]={planned:0,actual:0});g.actual+=done.length;if(done.length){actualByName[s.nm]=Math.max(actualByName[s.nm]||0,best1RM(done));}}
+  for(const [name,value] of Object.entries(actualByName))if(value>(run.baselinePR&&run.baselinePR[name]||0))prs[name]={before:run.baselinePR&&run.baselinePR[name]||0,after:value};
+  return {planned:sessions.length,trained,complete,partial,missed,groups,prs};
+}
+function viewRunResults(id){
+  const r=(state.runs||[]).find(x=>x.id===(id||selectedRunResultId))||activeRun();if(!r)return pendingProgramView();const s=runStatistics(r);const duration=Math.round((parseYmd(r.endDate)-parseYmd(r.startDate))/86400000)+1;
+  return `<div class="results-back"><button class="btn ghost" id="backRunStats">← Voltar</button></div><div class="hero run-results-hero"><h1>${r.status==='completed'?'Programa concluído':r.status==='elapsed'?'Prazo do programa encerrado':'Estatísticas do programa'}</h1><p>${esc(r.programName)}</p><p>Calendário: ${esc(r.startDate)} a ${esc(r.endDate)}</p>${r.finishedOn?`<p>Última sessão concluída em ${esc(r.finishedOn)}</p>`:''}</div><div class="stats"><div class="stat"><div class="v">${s.trained}/${s.planned}</div><div class="k">Dias treinados / planejados</div></div><div class="stat"><div class="v">${s.complete}</div><div class="k">Sessões completas</div></div><div class="stat"><div class="v">${s.partial}</div><div class="k">Sessões parciais / com registros</div></div><div class="stat"><div class="v">${Math.round(s.trained/s.planned*100)||0}%</div><div class="k">Adesão</div></div></div><div class="card"><p>${s.missed} sessões passadas sem realização. ${s.planned-s.trained} sessões sem séries concluídas no total.</p><p>Duração original: ${r.weekCount} semanas (${r.weekCount*7} dias). Calendário atual: ${duration} dias. Prolongamento: ${duration-r.weekCount*7} dias.</p><h3>Séries por grupo muscular</h3><table class="cycle-table"><thead><tr><th>Grupo principal</th><th>Planejadas</th><th>Realizadas</th></tr></thead><tbody>${Object.entries(s.groups).map(([name,g])=>`<tr><td>${esc(name)}</td><td>${g.planned}</td><td>${g.actual}</td></tr>`).join('')}</tbody></table><p class="hint">Um dia treinado exige ao menos uma série marcada como concluída. Uma série conta apenas quando marcada como concluída. O volume usa o grupo principal do exercício, sem duplicar músculos auxiliares.</p><h3>Exercícios com novo PR: ${Object.keys(s.prs).length}</h3>${Object.entries(s.prs).map(([name,p])=>`<p><b>${esc(name)}</b>: 1RM estimado ${p.before.toFixed(1)} → ${p.after.toFixed(1)} kg${p.before===0?' (primeira referência)':''}</p>`).join('')||'<p>Nenhum novo PR com séries concluídas e carga/repetições numéricas.</p>'}<p class="hint">PR de 1RM estimado pela fórmula de Epley, comparado ao histórico disponível no início desta execução. Registros antigos incorporados contam nesta execução. Uma marcação antiga de exercício concluído confirma apenas as séries existentes; registros sem confirmação permanecem pendentes.</p></div><div class="row" style="gap:8px;flex-wrap:wrap">${r.id===state.activeRunId&&legacyImportCandidates(r).length?'<button class="btn ghost" id="importLegacyRun">Incorporar histórico anterior</button>':''}<button class="btn primary" data-restart="${esc(r.programId)}">Reiniciar programa</button><button class="btn ghost" data-go="programas">Selecionar outro programa</button>${r.status!=='completed'&&r.id===state.activeRunId?'<button class="btn ghost" id="replanRun">Retomar a última sessão perdida</button>':''}</div>`;
+}
+let selectedRunResultId=null;
+let runResultsReturnTab='programas';
+function legacyDates(){const known=new Set((state.runs||[]).map(r=>r.id));return [...new Set([...Object.keys(state.log),...Object.keys(state.sessions)])].filter(k=>{const root=state.log[k];return !!(root&&(root.snapshot||Object.keys(root.done||{}).length))||Object.values(state.sessions[k]||{}).some(s=>!s.runId||!known.has(s.runId));}).sort().reverse();}
+function legacyHistorySummary(){const dates=legacyDates();return dates.length?`<div class="card"><h3>Histórico legado</h3><p>${dates.length} dia(s) de registros anteriores sem vínculo confirmado com uma execução. Esses dados permanecem preservados, sem atribuir datas ou duração a um ciclo.</p><button class="btn ghost" data-go="legacy-history">Consultar registros legados</button></div>`:'';}
+function viewLegacyHistory(){
+ const known=new Set((state.runs||[]).map(r=>r.id));
+ return `<div class="hero"><h1>Histórico legado</h1><p>Consulta dos dados originais. Séries antigas sem confirmação individual não são atribuídas às novas execuções.</p></div>`+legacyDates().map(k=>{
+  const root=state.log[k],records=Object.entries(state.sessions[k]||{}).filter(([sid,s])=>!s.runId||!known.has(s.runId));
+  return `<details class="card"><summary>${esc(k)} · ${records.length} exercício(s) com séries registradas</summary>${root&&root.done?`<p>Marcações antigas de exercício concluído: ${Object.values(root.done).filter(Boolean).length}.</p>`:''}${records.map(([sid,s])=>`<h3>${esc(s.nm||'Exercício '+sid)}</h3><table class="cycle-table"><thead><tr><th>Série</th><th>kg</th><th>Reps / segundos</th><th>Conclusão</th></tr></thead><tbody>${s.sets.map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.kg||'—')}</td><td>${esc(x.reps||'—')}${x.repsUnit==='seconds'?' s':''}</td><td>${x.done===true?'Concluída':x.done===false?'Não marcada':'Não informada'}</td></tr>`).join('')}</tbody></table>`).join('')}</details>`;
+ }).join('')+`<button class="btn ghost" data-go="progresso">Voltar ao progresso</button>`;
+}
+let programPanel='programas';
+function programPanelTabs(){return `<div class="program-tabs" role="tablist" aria-label="Programas e execuções">${[['programas','Programas'],['execucoes','Execuções e resultados']].map(([id,label])=>`<button class="program-tab" id="tab-${id}" role="tab" aria-controls="program-panel" aria-selected="${programPanel===id}" tabindex="${programPanel===id?'0':'-1'}" data-program-panel="${id}">${label}</button>`).join('')}</div>`;}
+function executionHistoryView(){return (state.runs||[]).length?`<div class="section-title">Execuções e resultados</div>`+state.runs.slice().reverse().map(r=>`<div class="card"><b>${esc(r.programName)}</b><p>${esc(r.startDate)} · ${r.weekCount} semanas · ${esc(({active:'Em andamento',paused:'Pausado',elapsed:'Prazo encerrado',completed:'Concluído'})[r.status])}</p><button class="btn ghost" data-run-results="${r.id}">Ver estatísticas</button></div>`).join(''):'';}
+function previewVariationFlip(){
+  const r=activeRun();if(!r||r.programId!=='refundini')return;
+  const choices={C1:'C2',C2:'C1',D1:'D2',D2:'D1'};
+  const eligible=()=>r.schedule.filter(d=>d.date>=ymd(today())&&choices[d.plan.sourceTipo]&&!runCompletion(r,d).hasWork);
+  openSheet(`<h3>Inverter variações C/D</h3><p>C1/C2 e D1/D2 serão invertidos em ${eligible().length} sessões de hoje em diante, sem registros. Datas e sessões já realizadas não mudam. Ajustes não executados dessas sessões serão redefinidos.</p><button class="btn primary block" id="confirmFlip">Confirmar inversão</button><button class="btn ghost block" onclick="closeSheet()">Cancelar</button>`);
+  document.getElementById('confirmFlip').onclick=()=>{
+    if(activeRun()?.id!==r.id)return;
+    const changed=eligible();for(const d of changed){const key=choices[d.plan.sourceTipo],old=d.plan;d.plan={...clone(PLANS[key]),tipo:old.tipo,t:old.tipo,runId:r.id,weekNumber:old.weekNumber,sourceTipo:key};delete state.overrides[old.tipo];const root=state.log[d.date];if(root&&root.runLogs)delete root.runLogs[r.id];}
+    r.adjustments.push({kind:'variation-flip',at:Date.now(),dates:changed.map(d=>d.date)});save();closeSheet();render();
+  };
+}
+function bindCycles(){
+  const selectPanel=(panel)=>{programPanel=panel;render();document.getElementById('tab-'+panel)?.focus();};
+  document.querySelectorAll('[data-program-panel]').forEach(b=>{b.onclick=()=>selectPanel(b.dataset.programPanel);if(b.getAttribute('role')==='tab')b.onkeydown=e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();selectPanel(e.key==='Home'?'programas':e.key==='End'?'execucoes':programPanel==='programas'?'execucoes':'programas');};});
+  const back=document.getElementById('backRunStats');if(back)back.onclick=()=>{let target=runResultsReturnTab;const current=activeRun();if(target==='hoje'&&current&&!selectedDate&&(current.status==='completed'||current.status==='elapsed'))target='programas';setTab(target);};
+  const cycleButton=document.getElementById('cycleBtn'),r=activeRun();if(cycleButton){cycleButton.style.display=r&&r.programId==='refundini'&&r.status==='active'?'':'none';cycleButton.onclick=previewVariationFlip;}
+  document.querySelectorAll('[data-configure]').forEach(b=>b.onclick=()=>openStartProgram(b.dataset.configure));
+  document.querySelectorAll('[data-restart]').forEach(b=>b.onclick=()=>openStartProgram(b.dataset.restart,true));
+  document.querySelectorAll('[data-run-results]').forEach(b=>b.onclick=()=>{runResultsReturnTab=currentTab==='run-results'?'programas':currentTab;selectedRunResultId=b.dataset.runResults;setTab('run-results');});
+  const legacyImport=document.getElementById('importLegacyRun');if(legacyImport)legacyImport.onclick=openLegacyImport;
+  const replan=document.getElementById('replanRun');if(replan)replan.onclick=previewReplan;
+  const recover=document.getElementById('recoverOriginal');if(recover)recover.onclick=()=>{const text=localStorage.getItem(LS_KEY)||'{}',a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'application/json'}));a.download='appfit-dados-originais.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);};
+  document.querySelectorAll('[data-set-done]').forEach(c=>c.onchange=()=>{const k=ymd(curDate());toggleSetCompletion(k,planKeyForDate(curDate()),+c.dataset.i,+c.dataset.s,c.checked);});
+}
+
+for(const data of STANDARD_PROGRAM_DATA){
+ const plans={},weekPlans={};
+ for(const week of data.weeks){weekPlans[week.number]={};for(let wd=0;wd<7;wd++){const day=week.days.find(d=>d.weekday===wd),key=data.id+'_W'+week.number+'_D'+wd;const plan=day?{tipo:key,t:key,titulo:day.title,dia:WD_NAMES[wd],foco:'Hipertrofia · '+data.nome,ex:clone(day.exercises)}:_off(key);plans[key]=plan;weekPlans[week.number][wd]=plan;}}
+ PROGRAMS[data.id]={id:data.id,nome:data.nome,autor:data.autor,emoji:'📅',desc:data.description+' · '+data.level,periodized:true,durationWeeks:data.durationWeeks,plans,weekPlans,cycle:false,keyForDate:d=>weekPlans[1][d.getDay()].tipo};PROG_ORDER.push(data.id);
+}
+// END CYCLE ENGINE
 
 /* ===== INIT ===== */
 document.getElementById("settingsBtn").onclick=openSettings;
@@ -2131,7 +5000,7 @@ if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.s
 if(getFbCfg())fbInit();
 save();
 setTab("hoje");
-if(!localStorage.getItem("treino_onboarded"))setTimeout(()=>{if(!overlay.classList.contains("open"))openOnboard();},500);
+if(!localStorage.getItem("treino_onboarded"))setTimeout(()=>{if(!localStorage.getItem("treino_onboarded")&&!overlay.classList.contains("open"))openOnboard();},500);
 </script>
 </body>
 </html>

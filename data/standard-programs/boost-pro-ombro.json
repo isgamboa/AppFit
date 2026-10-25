@@ -1,0 +1,2134 @@
+{
+  "id": "boost_pro_ombro",
+  "nome": "Boost PRO Ombro",
+  "autor": "Thiago Kotolak",
+  "durationWeeks": 4,
+  "level": "Intermediário / avançado",
+  "description": "Hipertrofia com ênfase em ombros, com sessões diferentes em cada semana.",
+  "weeks": [
+    {
+      "number": 1,
+      "days": [
+        {
+          "weekday": 1,
+          "title": "Segunda · Semana 1",
+          "exercises": [
+            {
+              "id": "boost_w1_d1_e1",
+              "nome": "Puxada frente (pulldown)",
+              "grupo": "Costas",
+              "sourceName": "Pulley Frente",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d1_e2",
+              "nome": "Pulley Frente Barra Romana",
+              "grupo": "Costas",
+              "sourceName": "Pulley Frente Barra Romana",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d1_e3",
+              "nome": "Remada Pronada na Polia Baixa",
+              "grupo": "Costas",
+              "sourceName": "Remada Pronada na Polia Baixa",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w1_d1_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w1_d1_e4",
+              "nome": "Pulldown com Barra",
+              "grupo": "Costas",
+              "sourceName": "Pulldown com Barra",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w1_d1_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w1_d1_e5",
+              "nome": "Banco de extensão lombar",
+              "grupo": "Posterior de Coxa",
+              "sourceName": "Extensão Lombar no Banco Romano",
+              "series": 3,
+              "reps": "30s",
+              "restSeconds": 90,
+              "technique": "Isometria",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d1_e6",
+              "nome": "Crucifixo Inverso",
+              "grupo": "Posterior de Ombro",
+              "sourceName": "Crucifixo Inverso",
+              "series": 4,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d1_e7",
+              "nome": "Remada Alta na Polia com Barra Reta",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Remada Alta na Polia com Barra Reta",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d1_e8",
+              "nome": "Encolhimento com halteres",
+              "grupo": "Trapézio",
+              "sourceName": "Encolhimento com Halteres",
+              "series": 4,
+              "reps": "15",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 2,
+          "title": "Terça · Semana 1",
+          "exercises": [
+            {
+              "id": "boost_w1_d2_e1",
+              "nome": "Supino Reto",
+              "grupo": "Peito",
+              "sourceName": "Supino Reto",
+              "series": 4,
+              "reps": "12/8/8/6",
+              "restSeconds": 90,
+              "technique": "Carga Progressiva",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d2_e2",
+              "nome": "Dumbell Press Inclinado (45º)",
+              "grupo": "Peito",
+              "sourceName": "Dumbell Press Inclinado (45º)",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w1_d2_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w1_d2_e3",
+              "nome": "Crucifixo Inclinado",
+              "grupo": "Peito",
+              "sourceName": "Crucifixo Inclinado",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w1_d2_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w1_d2_e4",
+              "nome": "Crossover na polia",
+              "grupo": "Peito",
+              "sourceName": "Crossover",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d2_e5",
+              "nome": "Desenvolvimento halteres",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Desenvolvimento com Dumbells",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w1_d2_g2",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w1_d2_e6",
+              "nome": "Desenvolvimento Arnold",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Desenvolvimento Arnold",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w1_d2_g2",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w1_d2_e7",
+              "nome": "Elevação Lateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral",
+              "series": 4,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d2_e8",
+              "nome": "Abdominal máquina",
+              "grupo": "Abdômen",
+              "sourceName": "ABS Máquina",
+              "series": 4,
+              "reps": "20",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 3,
+          "title": "Quarta · Semana 1",
+          "exercises": [
+            {
+              "id": "boost_w1_d3_e1",
+              "nome": "Agachamento no smith",
+              "grupo": "Quadríceps",
+              "sourceName": "Agachamento no Smith",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d3_e2",
+              "nome": "Leg Press Horizontal Unilateral",
+              "grupo": "Quadríceps",
+              "sourceName": "Leg Press Horizontal Unilateral",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d3_e3",
+              "nome": "Agachamento búlgaro",
+              "grupo": "Quadríceps",
+              "sourceName": "Agachamento Búlgaro",
+              "series": 3,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d3_e4",
+              "nome": "Cadeira extensora",
+              "grupo": "Quadríceps",
+              "sourceName": "Cadeira Extensora",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d3_e5",
+              "nome": "Mesa Flexora Unilateral",
+              "grupo": "Posterior de Coxa",
+              "sourceName": "Mesa Flexora Unilateral",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d3_e6",
+              "nome": "Stiff no Smith",
+              "grupo": "Posterior de Coxa",
+              "sourceName": "Stiff no Smith",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d3_e7",
+              "nome": "Cadeira abdutora",
+              "grupo": "Glúteo",
+              "sourceName": "Cadeira Abdutora",
+              "series": 3,
+              "reps": "15",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d3_e8",
+              "nome": "Cadeira Adutora",
+              "grupo": "Adutores",
+              "sourceName": "Cadeira Adutora",
+              "series": 3,
+              "reps": "15",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d3_e9",
+              "nome": "Panturrilha sentado",
+              "grupo": "Panturrilha",
+              "sourceName": "Panturrilha Sentado",
+              "series": 4,
+              "reps": "20",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 4,
+          "title": "Quinta · Semana 1",
+          "exercises": [
+            {
+              "id": "boost_w1_d4_e1",
+              "nome": "Rosca Direta",
+              "grupo": "Bíceps",
+              "sourceName": "Rosca Direta",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d4_e2",
+              "nome": "Rosca inclinada 45º",
+              "grupo": "Bíceps",
+              "sourceName": "Rosca 45º",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d4_e3",
+              "nome": "Rosca Martelo Corda",
+              "grupo": "Bíceps",
+              "sourceName": "Rosca Martelo Corda",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d4_e4",
+              "nome": "Tríceps Testa na Polia Alta",
+              "grupo": "Tríceps",
+              "sourceName": "Tríceps Testa na Polia Alta",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d4_e5",
+              "nome": "Tríceps pulley corda",
+              "grupo": "Tríceps",
+              "sourceName": "Tríceps Pulley Corda",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 0,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w1_d4_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w1_d4_e6",
+              "nome": "Tríceps Testa com Corda",
+              "grupo": "Tríceps",
+              "sourceName": "Tríceps Testa com Corda",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w1_d4_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w1_d4_e7",
+              "nome": "Tríceps coice (kickback)",
+              "grupo": "Tríceps",
+              "sourceName": "Tríceps Coice",
+              "series": 4,
+              "reps": "Falha",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d4_e8",
+              "nome": "Rosca inversa",
+              "grupo": "Antebraço",
+              "sourceName": "Rosca Inversa",
+              "series": 4,
+              "reps": "15",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d4_e9",
+              "nome": "Rosca de punho",
+              "grupo": "Antebraço",
+              "sourceName": "Rosca Punho",
+              "series": 3,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 5,
+          "title": "Sexta · Semana 1",
+          "exercises": [
+            {
+              "id": "boost_w1_d5_e1",
+              "nome": "Desenvolvimento no Smith",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Desenvolvimento no Smith",
+              "series": 4,
+              "reps": "12/8/8/6",
+              "restSeconds": 90,
+              "technique": "Carga Progressiva",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d5_e2",
+              "nome": "Elevação Lateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Carga Progressiva",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d5_e3",
+              "nome": "Elevação Lateral no Cabo Unilateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral no Cabo Unilateral",
+              "series": 3,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d5_e4",
+              "nome": "Elevação Frontal Neutra",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Elevação Frontal Neutra",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w1_d5_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w1_d5_e5",
+              "nome": "Elevação Frontal com Barra",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Elevação Frontal com Barra",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w1_d5_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w1_d5_e6",
+              "nome": "Crucifixo inverso máquina",
+              "grupo": "Posterior de Ombro",
+              "sourceName": "Crucifixo Inverso Máquina",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Carga Progressiva",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d5_e7",
+              "nome": "Crucifixo Inverso Unilateral na Polia",
+              "grupo": "Posterior de Ombro",
+              "sourceName": "Crucifixo Inverso Unilateral na Polia",
+              "series": 3,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d5_e8",
+              "nome": "Encolhimento no Smith (Atrás)",
+              "grupo": "Trapézio",
+              "sourceName": "Encolhimento no Smith (Atrás)",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w1_d5_e9",
+              "nome": "Remada Alta na Polia com Barra Reta",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Remada Alta na Polia com Barra Reta",
+              "series": 3,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "days": [
+        {
+          "weekday": 1,
+          "title": "Segunda · Semana 2",
+          "exercises": [
+            {
+              "id": "boost_w2_d1_e1",
+              "nome": "Remada Curvada",
+              "grupo": "Costas",
+              "sourceName": "Remada Curvada",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d1_e2",
+              "nome": "Pulley Frente Triângulo",
+              "grupo": "Costas",
+              "sourceName": "Pulley Frente Triângulo",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d1_e3",
+              "nome": "Puxada frente (pulldown)",
+              "grupo": "Costas",
+              "sourceName": "Pulley Frente",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 0,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w2_d1_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w2_d1_e4",
+              "nome": "Pulldown com corda",
+              "grupo": "Costas",
+              "sourceName": "Pulldown com Corda",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w2_d1_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w2_d1_e5",
+              "nome": "Banco de extensão lombar",
+              "grupo": "Posterior de Coxa",
+              "sourceName": "Extensão Lombar no Banco Romano",
+              "series": 3,
+              "reps": "30s",
+              "restSeconds": 90,
+              "technique": "Isometria",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d1_e6",
+              "nome": "Crucifixo Inverso na Polia",
+              "grupo": "Posterior de Ombro",
+              "sourceName": "Crucifixo Inverso na Polia",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d1_e7",
+              "nome": "Crucifixo inverso máquina",
+              "grupo": "Posterior de Ombro",
+              "sourceName": "Crucifixo Inverso Máquina",
+              "series": 3,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d1_e8",
+              "nome": "Encolhimento no smith",
+              "grupo": "Trapézio",
+              "sourceName": "Encolhimento no Smith",
+              "series": 4,
+              "reps": "15",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 2,
+          "title": "Terça · Semana 2",
+          "exercises": [
+            {
+              "id": "boost_w2_d2_e1",
+              "nome": "Supino Inclinado",
+              "grupo": "Peito",
+              "sourceName": "Supino Inclinado",
+              "series": 4,
+              "reps": "12/8/8/6",
+              "restSeconds": 90,
+              "technique": "Carga Progressiva",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d2_e2",
+              "nome": "Supino Reto Máquina",
+              "grupo": "Peito",
+              "sourceName": "Supino Reto Máquina",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d2_e3",
+              "nome": "Crucifixo Reto",
+              "grupo": "Peito",
+              "sourceName": "Crucifixo Reto",
+              "series": 4,
+              "reps": "10+Falha",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d2_e4",
+              "nome": "Crossover na polia",
+              "grupo": "Peito",
+              "sourceName": "Crossover",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d2_e5",
+              "nome": "Desenvolvimento máquina",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Desenvolvimento Máquina",
+              "series": 4,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d2_e6",
+              "nome": "Elevação Lateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d2_e7",
+              "nome": "Elevação Frontal Neutra no Banco 45º",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Elevação Frontal Neutra no Banco 45º",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d2_e8",
+              "nome": "Abdominal máquina",
+              "grupo": "Abdômen",
+              "sourceName": "ABS Máquina",
+              "series": 4,
+              "reps": "20",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 3,
+          "title": "Quarta · Semana 2",
+          "exercises": [
+            {
+              "id": "boost_w2_d3_e1",
+              "nome": "Agachamento no smith",
+              "grupo": "Quadríceps",
+              "sourceName": "Agachamento no Smith",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d3_e2",
+              "nome": "Leg press 45",
+              "grupo": "Quadríceps",
+              "sourceName": "Leg Press 45º",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d3_e3",
+              "nome": "Afundo no Smith",
+              "grupo": "Quadríceps",
+              "sourceName": "Afundo no Smith",
+              "series": 3,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d3_e4",
+              "nome": "Cadeira Extensora Unilateral",
+              "grupo": "Quadríceps",
+              "sourceName": "Cadeira Extensora Unilateral",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d3_e5",
+              "nome": "Mesa flexora (deitado)",
+              "grupo": "Posterior de Coxa",
+              "sourceName": "Mesa Flexora",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w2_d3_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w2_d3_e6",
+              "nome": "Stiff",
+              "grupo": "Posterior de Coxa",
+              "sourceName": "Stiff",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w2_d3_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w2_d3_e7",
+              "nome": "Cadeira Flexora Unilateral",
+              "grupo": "Posterior de Coxa",
+              "sourceName": "Cadeira Flexora Unilateral",
+              "series": 3,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d3_e8",
+              "nome": "Elevação pélvica (hip thrust)",
+              "grupo": "Glúteo",
+              "sourceName": "Elevação Pélvica",
+              "series": 4,
+              "reps": "20",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d3_e9",
+              "nome": "Panturrilha sentado",
+              "grupo": "Panturrilha",
+              "sourceName": "Panturrilha Sentado",
+              "series": 4,
+              "reps": "20",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 4,
+          "title": "Quinta · Semana 2",
+          "exercises": [
+            {
+              "id": "boost_w2_d4_e1",
+              "nome": "Rosca 21",
+              "grupo": "Bíceps",
+              "sourceName": "Rosca 21",
+              "series": 4,
+              "reps": "21",
+              "restSeconds": 90,
+              "technique": "set. 21",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d4_e2",
+              "nome": "Rosca Alternada",
+              "grupo": "Bíceps",
+              "sourceName": "Rosca Alternada",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d4_e3",
+              "nome": "Rosca martelo",
+              "grupo": "Bíceps",
+              "sourceName": "Rosca Martelo",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d4_e4",
+              "nome": "Tríceps Testa no Banco Incinado com Barra W",
+              "grupo": "Tríceps",
+              "sourceName": "Tríceps Testa no Banco Incinado com Barra W",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d4_e5",
+              "nome": "Tríceps Pulley",
+              "grupo": "Tríceps",
+              "sourceName": "Tríceps Pulley",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d4_e6",
+              "nome": "Tríceps francês",
+              "grupo": "Tríceps",
+              "sourceName": "Tríceps Francês",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d4_e7",
+              "nome": "Rosca inversa",
+              "grupo": "Antebraço",
+              "sourceName": "Rosca Inversa",
+              "series": 4,
+              "reps": "Falha",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d4_e8",
+              "nome": "Rosca de punho",
+              "grupo": "Antebraço",
+              "sourceName": "Rosca Punho",
+              "series": 4,
+              "reps": "15",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d4_e9",
+              "nome": "ABS Infra Solo",
+              "grupo": "Abdômen",
+              "sourceName": "ABS Infra Solo",
+              "series": 4,
+              "reps": "25",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 5,
+          "title": "Sexta · Semana 2",
+          "exercises": [
+            {
+              "id": "boost_w2_d5_e1",
+              "nome": "Crucifixo inverso máquina",
+              "grupo": "Posterior de Ombro",
+              "sourceName": "Crucifixo Inverso Máquina",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d5_e2",
+              "nome": "Crucifixo Inverso",
+              "grupo": "Posterior de Ombro",
+              "sourceName": "Crucifixo Inverso",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Carga Progressiva",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d5_e3",
+              "nome": "Desenvolvimento máquina",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Desenvolvimento Máquina",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Carga Progressiva",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d5_e4",
+              "nome": "Elevação Lateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d5_e5",
+              "nome": "Elevação Lateral no Banco Inclinado",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral no Banco Inclinado",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d5_e6",
+              "nome": "Elevação Frontal Neutra no Banco 45º",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Elevação Frontal Neutra no Banco 45º",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w2_d5_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w2_d5_e7",
+              "nome": "Elevação Frontal com Barra",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Elevação Frontal com Barra",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w2_d5_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w2_d5_e8",
+              "nome": "Encolhimento com halteres",
+              "grupo": "Trapézio",
+              "sourceName": "Encolhimento com Halteres",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w2_d5_e9",
+              "nome": "Encolhimento no smith",
+              "grupo": "Trapézio",
+              "sourceName": "Encolhimento no Smith",
+              "series": 4,
+              "reps": "15",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "days": [
+        {
+          "weekday": 1,
+          "title": "Segunda · Semana 3",
+          "exercises": [
+            {
+              "id": "boost_w3_d1_e1",
+              "nome": "Levantamento Terra",
+              "grupo": "Lombar",
+              "sourceName": "Levantamento Terra",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d1_e2",
+              "nome": "Puxada frente (pulldown)",
+              "grupo": "Costas",
+              "sourceName": "Pulley Frente",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d1_e3",
+              "nome": "Pulley Frente Triângulo",
+              "grupo": "Costas",
+              "sourceName": "Pulley Frente Triângulo",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d1_e4",
+              "nome": "Remada Unilateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Remada Unilateral",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d1_e5",
+              "nome": "Banco de extensão lombar",
+              "grupo": "Posterior de Coxa",
+              "sourceName": "Extensão Lombar no Banco Romano",
+              "series": 3,
+              "reps": "30s",
+              "restSeconds": 90,
+              "technique": "Isometria",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d1_e6",
+              "nome": "Crucifixo Inverso",
+              "grupo": "Posterior de Ombro",
+              "sourceName": "Crucifixo Inverso",
+              "series": 4,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d1_e7",
+              "nome": "Crucifixo Inverso Unilateral na Polia",
+              "grupo": "Posterior de Ombro",
+              "sourceName": "Crucifixo Inverso Unilateral na Polia",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d1_e8",
+              "nome": "Encolhimento no smith",
+              "grupo": "Trapézio",
+              "sourceName": "Encolhimento no Smith",
+              "series": 4,
+              "reps": "15",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 2,
+          "title": "Terça · Semana 3",
+          "exercises": [
+            {
+              "id": "boost_w3_d2_e1",
+              "nome": "Supino Inclinado no Smith",
+              "grupo": "Peito",
+              "sourceName": "Supino Inclinado no Smith",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "10 Normais + 10 Curtas",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d2_e2",
+              "nome": "Supino reto halteres",
+              "grupo": "Peito",
+              "sourceName": "Dumbell Press Reto",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 0,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w3_d2_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w3_d2_e3",
+              "nome": "Crucifixo Reto",
+              "grupo": "Peito",
+              "sourceName": "Crucifixo Reto",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w3_d2_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w3_d2_e4",
+              "nome": "Supino declinado",
+              "grupo": "Peito",
+              "sourceName": "Supino Declinado",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d2_e5",
+              "nome": "Desenvolvimento no Smith",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Desenvolvimento no Smith",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d2_e6",
+              "nome": "Elevação Lateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 0,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w3_d2_g2",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w3_d2_e7",
+              "nome": "Elevação Frontal",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Elevação Frontal",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w3_d2_g2",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w3_d2_e8",
+              "nome": "Elevação Lateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Rest-Pause 10s",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d2_e9",
+              "nome": "ABS Supra no Cabo",
+              "grupo": "Abdômen",
+              "sourceName": "ABS Supra no Cabo",
+              "series": 4,
+              "reps": "20",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 3,
+          "title": "Quarta · Semana 3",
+          "exercises": [
+            {
+              "id": "boost_w3_d3_e1",
+              "nome": "Agachamento livre",
+              "grupo": "Quadríceps",
+              "sourceName": "Agachamento Livre",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d3_e2",
+              "nome": "Leg Press 45º Unilateral",
+              "grupo": "Quadríceps",
+              "sourceName": "Leg Press 45º Unilateral",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d3_e3",
+              "nome": "Agachamento hack",
+              "grupo": "Quadríceps",
+              "sourceName": "Agachamento Hack",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "10 Normais + 10 Curtas",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d3_e4",
+              "nome": "Cadeira extensora",
+              "grupo": "Quadríceps",
+              "sourceName": "Cadeira Extensora",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d3_e5",
+              "nome": "Cadeira flexora",
+              "grupo": "Posterior de Coxa",
+              "sourceName": "Cadeira Flexora",
+              "series": 4,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d3_e6",
+              "nome": "Stiff com halteres",
+              "grupo": "Posterior de Coxa",
+              "sourceName": "Stiff com Halteres",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d3_e7",
+              "nome": "Cadeira Adutora",
+              "grupo": "Adutores",
+              "sourceName": "Cadeira Adutora",
+              "series": 3,
+              "reps": "20",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d3_e8",
+              "nome": "Elevação pélvica (hip thrust)",
+              "grupo": "Glúteo",
+              "sourceName": "Elevação Pélvica",
+              "series": 4,
+              "reps": "20",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d3_e9",
+              "nome": "Panturrilha sentado",
+              "grupo": "Panturrilha",
+              "sourceName": "Panturrilha Sentado",
+              "series": 4,
+              "reps": "20",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 4,
+          "title": "Quinta · Semana 3",
+          "exercises": [
+            {
+              "id": "boost_w3_d4_e1",
+              "nome": "Rosca Scott",
+              "grupo": "Bíceps",
+              "sourceName": "Rsoca Scott",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d4_e2",
+              "nome": "Duplo Bíceps na Polia",
+              "grupo": "Bíceps",
+              "sourceName": "Duplo Bíceps na Polia",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d4_e3",
+              "nome": "Rosca inclinada 45º",
+              "grupo": "Bíceps",
+              "sourceName": "Rosca 45º",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d4_e4",
+              "nome": "Tríceps Pulley",
+              "grupo": "Tríceps",
+              "sourceName": "Tríceps Pulley",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d4_e5",
+              "nome": "Tríceps mergulho no banco",
+              "grupo": "Tríceps",
+              "sourceName": "Tríceps Banco",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d4_e6",
+              "nome": "Tríceps coice (kickback)",
+              "grupo": "Tríceps",
+              "sourceName": "Tríceps Coice",
+              "series": 4,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d4_e7",
+              "nome": "Rosca inversa",
+              "grupo": "Antebraço",
+              "sourceName": "Rosca Inversa",
+              "series": 4,
+              "reps": "Falha",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d4_e8",
+              "nome": "Rosca de punho",
+              "grupo": "Antebraço",
+              "sourceName": "Rosca Punho",
+              "series": 4,
+              "reps": "15",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d4_e9",
+              "nome": "ABS Infra Declinado",
+              "grupo": "Abdômen",
+              "sourceName": "ABS Infra Declinado",
+              "series": 4,
+              "reps": "15",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 5,
+          "title": "Sexta · Semana 3",
+          "exercises": [
+            {
+              "id": "boost_w3_d5_e1",
+              "nome": "Desenvolvimento Frente",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Desenvolvimento Frente",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d5_e2",
+              "nome": "Elevação Frontal com Barra",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Elevação Frontal com Barra",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d5_e3",
+              "nome": "Elevação Lateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d5_e4",
+              "nome": "Elevação Lateral no Cabo Unilateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral no Cabo Unilateral",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d5_e5",
+              "nome": "Crucifixo inverso máquina",
+              "grupo": "Posterior de Ombro",
+              "sourceName": "Crucifixo Inverso Máquina",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d5_e6",
+              "nome": "Elevação Lateral no Cabo Unilateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral no Cabo Unilateral",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d5_e7",
+              "nome": "Remada Alta na Polia com Barra Reta",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Remada Alta na Polia com Barra Reta",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d5_e8",
+              "nome": "Encolhimento com halteres",
+              "grupo": "Trapézio",
+              "sourceName": "Encolhimento com Halteres",
+              "series": 6,
+              "reps": "15",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w3_d5_e9",
+              "nome": "Elevação Lateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Rest-Pause 10s",
+              "obs": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "days": [
+        {
+          "weekday": 1,
+          "title": "Segunda · Semana 4",
+          "exercises": [
+            {
+              "id": "boost_w4_d1_e1",
+              "nome": "Puxada frente (pulldown)",
+              "grupo": "Costas",
+              "sourceName": "Pulley Frente",
+              "series": 4,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d1_e2",
+              "nome": "Puxada supinada",
+              "grupo": "Costas",
+              "sourceName": "Pulley Frente Supinado",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d1_e3",
+              "nome": "Remada Máquina",
+              "grupo": "Costas",
+              "sourceName": "Remada Máquina",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d1_e4",
+              "nome": "Remada Baixa Aberta",
+              "grupo": "Costas",
+              "sourceName": "Remada Baixa Aberta",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d1_e5",
+              "nome": "Banco de extensão lombar",
+              "grupo": "Posterior de Coxa",
+              "sourceName": "Extensão Lombar no Banco Romano",
+              "series": 3,
+              "reps": "30s",
+              "restSeconds": 90,
+              "technique": "Isometria",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d1_e6",
+              "nome": "Crucifixo inverso máquina",
+              "grupo": "Posterior de Ombro",
+              "sourceName": "Crucifixo Inverso Máquina",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d1_e7",
+              "nome": "Elevação Lateral Unilateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral Unilateral",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d1_e8",
+              "nome": "Remada Alta na Polia com Barra Reta",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Remada Alta na Polia com Barra Reta",
+              "series": 4,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 2,
+          "title": "Terça · Semana 4",
+          "exercises": [
+            {
+              "id": "boost_w4_d2_e1",
+              "nome": "Supino Reto",
+              "grupo": "Peito",
+              "sourceName": "Supino Reto",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w4_d2_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w4_d2_e2",
+              "nome": "Crucifixo Reto",
+              "grupo": "Peito",
+              "sourceName": "Crucifixo Reto",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w4_d2_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w4_d2_e3",
+              "nome": "Supino Inclinado no Smith",
+              "grupo": "Peito",
+              "sourceName": "Supino Inclinado no Smith",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d2_e4",
+              "nome": "Crossover na polia",
+              "grupo": "Peito",
+              "sourceName": "Crossover",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Alto + Baixo",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d2_e5",
+              "nome": "Desenvolvimento halteres",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Desenvolvimento com Dumbells",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d2_e6",
+              "nome": "Elevação Lateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d2_e7",
+              "nome": "Desenvolvimento Arnold",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Desenvolvimento Arnold",
+              "series": 4,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d2_e8",
+              "nome": "Elevação Frontal Supinada no Banco 45º",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Elevação Frontal Supinada no Banco 45º",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Rest-Pause 10s",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d2_e9",
+              "nome": "ABS Supra no Cabo",
+              "grupo": "Abdômen",
+              "sourceName": "ABS Supra no Cabo",
+              "series": 4,
+              "reps": "20",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 3,
+          "title": "Quarta · Semana 4",
+          "exercises": [
+            {
+              "id": "boost_w4_d3_e1",
+              "nome": "Agachamento Frontal",
+              "grupo": "Quadríceps",
+              "sourceName": "Agachamento Frontal",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d3_e2",
+              "nome": "Agachamento búlgaro",
+              "grupo": "Quadríceps",
+              "sourceName": "Agachamento Búlgaro",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d3_e3",
+              "nome": "Agachamento Hack com Pés Juntos",
+              "grupo": "Quadríceps",
+              "sourceName": "Agachamento Hack com Pés Juntos",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "10 Normais + 10 Curtas",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d3_e4",
+              "nome": "Cadeira Extensora Unilateral",
+              "grupo": "Quadríceps",
+              "sourceName": "Cadeira Extensora Unilateral",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d3_e5",
+              "nome": "Mesa flexora (deitado)",
+              "grupo": "Posterior de Coxa",
+              "sourceName": "Mesa Flexora",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d3_e6",
+              "nome": "Stiff no Smith",
+              "grupo": "Posterior de Coxa",
+              "sourceName": "Stiff no Smith",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d3_e7",
+              "nome": "Cadeira abdutora",
+              "grupo": "Glúteo",
+              "sourceName": "Cadeira Abdutora",
+              "series": 3,
+              "reps": "20",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d3_e8",
+              "nome": "Elevação pélvica (hip thrust)",
+              "grupo": "Glúteo",
+              "sourceName": "Elevação Pélvica",
+              "series": 4,
+              "reps": "20",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d3_e9",
+              "nome": "Panturrilha sentado",
+              "grupo": "Panturrilha",
+              "sourceName": "Panturrilha Sentado",
+              "series": 4,
+              "reps": "20",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 4,
+          "title": "Quinta · Semana 4",
+          "exercises": [
+            {
+              "id": "boost_w4_d4_e1",
+              "nome": "Rosca Direta na Polia Baixa",
+              "grupo": "Bíceps",
+              "sourceName": "Rosca Direta na Polia Baixa",
+              "series": 4,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d4_e2",
+              "nome": "Rosca 21",
+              "grupo": "Bíceps",
+              "sourceName": "Rosca 21",
+              "series": 4,
+              "reps": "21",
+              "restSeconds": 90,
+              "technique": "set. 21",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d4_e3",
+              "nome": "Rosca Martelo Corda",
+              "grupo": "Bíceps",
+              "sourceName": "Rosca Martelo Corda",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d4_e4",
+              "nome": "Tríceps pulley corda",
+              "grupo": "Tríceps",
+              "sourceName": "Tríceps Pulley Corda",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w4_d4_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w4_d4_e5",
+              "nome": "Tríceps Testa com Corda",
+              "grupo": "Tríceps",
+              "sourceName": "Tríceps Testa com Corda",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w4_d4_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w4_d4_e6",
+              "nome": "Tríceps Francês Unilateral",
+              "grupo": "Tríceps",
+              "sourceName": "Tríceps Francês Unilateral",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d4_e7",
+              "nome": "Tríceps mergulho no banco",
+              "grupo": "Tríceps",
+              "sourceName": "Tríceps Banco",
+              "series": 3,
+              "reps": "Falha",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d4_e8",
+              "nome": "Rosca Punho (Fazer Unilateral)",
+              "grupo": "Antebraço",
+              "sourceName": "Rosca Punho (Fazer Unilateral)",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d4_e9",
+              "nome": "Rosca inversa",
+              "grupo": "Antebraço",
+              "sourceName": "Rosca Inversa",
+              "series": 3,
+              "reps": "15",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            }
+          ]
+        },
+        {
+          "weekday": 5,
+          "title": "Sexta · Semana 4",
+          "exercises": [
+            {
+              "id": "boost_w4_d5_e1",
+              "nome": "Desenvolvimento halteres",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Desenvolvimento com Dumbells",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 0,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w4_d5_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w4_d5_e2",
+              "nome": "Desenvolvimento Arnold",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Desenvolvimento Arnold",
+              "series": 4,
+              "reps": "12",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": "",
+              "groupId": "boost_w4_d5_g1",
+              "groupType": "Bi-set"
+            },
+            {
+              "id": "boost_w4_d5_e3",
+              "nome": "Elevação Lateral",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral",
+              "series": 4,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d5_e4",
+              "nome": "Elevação Frontal com Barra",
+              "grupo": "Anterior de Ombro",
+              "sourceName": "Elevação Frontal com Barra",
+              "series": 4,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d5_e5",
+              "nome": "Crucifixo Inverso na Polia",
+              "grupo": "Posterior de Ombro",
+              "sourceName": "Crucifixo Inverso na Polia",
+              "series": 4,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d5_e6",
+              "nome": "Elevação Lateral no Banco Inclinado",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Elevação Lateral no Banco Inclinado",
+              "series": 4,
+              "reps": "10",
+              "restSeconds": 0,
+              "technique": "No-Stop",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d5_e7",
+              "nome": "Crucifixo inverso máquina",
+              "grupo": "Posterior de Ombro",
+              "sourceName": "Crucifixo Inverso Máquina",
+              "series": 4,
+              "reps": "10+10",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d5_e8",
+              "nome": "Encolhimento com halteres",
+              "grupo": "Trapézio",
+              "sourceName": "Encolhimento com Halteres",
+              "series": 6,
+              "reps": "15",
+              "restSeconds": 90,
+              "technique": "Falha Concêntrica",
+              "obs": ""
+            },
+            {
+              "id": "boost_w4_d5_e9",
+              "nome": "Remada Alta na Polia com Barra Reta",
+              "grupo": "Lateral de Ombro",
+              "sourceName": "Remada Alta na Polia com Barra Reta",
+              "series": 4,
+              "reps": "4+8+12",
+              "restSeconds": 90,
+              "technique": "Drop-Set",
+              "obs": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "Planilha_Boost_PRO_Ombro_Smartphone_Semana1.pdf",
+      "sha256": "d33ea1c82018d542a99d7e04bb2a733b1d9db5b81d7c563dafbaab013b891544"
+    },
+    {
+      "file": "Planilha_Boost_PRO_Ombro_Smartphone_Semana2.pdf",
+      "sha256": "c30b6cf317a8788362abb1bf9df55745f475dc7c8e3c0f23730efc97eefd04f6"
+    },
+    {
+      "file": "Planilha_Boost_PRO_Ombro_Smartphone_Semana3.pdf",
+      "sha256": "7667634d45df602a3323733b97901cb2c18d69c3c86a186707c3063cf4c7ca01"
+    },
+    {
+      "file": "Planilha_Boost_PRO_Ombro_Smartphone_Semana4.pdf",
+      "sha256": "b0f8ad39807b33acb498256be5de592de44153bd19ddec2652f2d3ccd7b1cf94"
+    }
+  ]
+}
