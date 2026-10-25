@@ -63,6 +63,8 @@ button{font-family:inherit}
 input,select,textarea{font-family:inherit;font-size:15px;color:var(--txt);background:var(--bg2);border:1px solid var(--line);border-radius:11px;padding:11px 12px;width:100%;outline:none}
 input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 label.fld{display:block;margin:10px 0}
+.legacy-import-option{display:flex;align-items:flex-start;gap:10px;margin:16px 0;font-size:14px;line-height:1.5}
+.legacy-import-option input{width:20px;height:20px;flex:0 0 20px;padding:0;margin:1px 0;accent-color:var(--accent)}
 label.fld span{display:block;font-size:12px;color:var(--txt2);margin-bottom:5px;letter-spacing:.04em}
 .hero{position:relative;overflow:hidden;border-radius:22px;padding:20px;background:linear-gradient(135deg,#22272f,#171b21);border:1px solid var(--line);margin-top:6px}
 .hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,46,.25),transparent 70%)}
@@ -2092,8 +2094,9 @@ function openSettings(){const s=state.settings;
   document.getElementById("openSyncBtn").onclick=openSync;
   document.getElementById("resetData").onclick=()=>{if(confirm("Apagar TODOS os dados (treinos, séries, cargas e pesos)? Não dá para desfazer.")){localStorage.removeItem(LS_KEY);window.appDataLoadError=null;state=normalizeBackup({});selectedDate=null;selectedRunResultId=null;state.anchor=ymd(mondayOf(today()));save();closeSheet();render();}};
 }
-function exportData(){const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="treino-backup-"+ymd(today())+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);}
-function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const next=normalizeBackup(JSON.parse(r.result));localStorage.setItem(LS_KEY,JSON.stringify(next));state=next;window.appDataLoadError=null;save();closeSheet();selectedDate=null;render();alert("Dados importados. Programas sem data de início ou duração precisam de configuração antes da execução.");}catch(err){alert("Importação cancelada; seus dados atuais foram mantidos. "+err.message);}};r.readAsText(f);}
+function serializeBackup(){if(window.appDataLoadError)throw Error('Os dados originais precisam de recuperação. Use Salvar dados originais.');return JSON.stringify(normalizeBackup(state),null,2);}
+function exportData(){try{const blob=new Blob([serializeBackup()],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="treino-backup-"+ymd(today())+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);}catch(err){alert('Não foi possível exportar o backup. '+err.message);}}
+function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const next=normalizeBackup(JSON.parse(r.result));localStorage.setItem(LS_KEY,JSON.stringify(next));state=next;window.appDataLoadError=null;save();closeSheet();selectedDate=null;selectedRunResultId=null;programPanel="programas";setTab("hoje");alert(activeRun()?"Dados importados. Execuções, calendário e registros restaurados.":"Dados importados. Configure a data de início e a duração do programa. Na configuração, mantenha a opção de incorporar os registros antigos do mesmo programa para incluí-los na semana e nas estatísticas.");}catch(err){alert("Importação cancelada; seus dados atuais foram mantidos. "+err.message);}};r.readAsText(f);}
 
 
 /* ===== FERRAMENTAS (calculadoras) ===== */
@@ -4756,8 +4759,17 @@ function archivedProgram(id){
   return {id,nome:r.programName,notes:r.programNotes||'',autor:'Programa arquivado',emoji:'📅',desc:'Execução preservada após exclusão do modelo.',periodized:true,durationWeeks:r.weekCount,plans,weekPlans,cycle:false,keyForDate:d=>weekPlans[1][d.getDay()].tipo};
 }
 function programById(id){return customCatalog()[id]||PROGRAMS[id]||archivedProgram(id);}
-function baselineRecords(startDate){const out={};for(const [date,sessions] of Object.entries(state.sessions)){if(date>ymd(today()))continue;for(const [sid,s] of Object.entries(sessions)){const name=exerciseSessionName(sid,s);out[name]=Math.max(out[name]||0,best1RM(s.runId?(s.sets||[]).filter(x=>x.done):s.sets));}}return out;}
-function startProgramRun(id,startDate,count){
+function baselineRecords(startDate){const out={};for(const [date,sessions] of Object.entries(state.sessions)){if(date>=startDate||date>ymd(today()))continue;for(const [sid,s] of Object.entries(sessions)){const name=exerciseSessionName(sid,s);out[name]=Math.max(out[name]||0,best1RM(s.runId?(s.sets||[]).filter(x=>x.done):s.sets));}}return out;}
+function startProgramRun(id,startDate,count,includeLegacy=false){
+  const previous=clone(state);
+  try{
+    const run=buildProgramRun(id,startDate,count,includeLegacy);
+    const next=normalizeBackup(state);localStorage.setItem(LS_KEY,JSON.stringify(next));
+    // Validate and persist before exposing the new execution; keep existing object references.
+    save();return run;
+  }catch(e){state=previous;throw e;}
+}
+function buildProgramRun(id,startDate,count,includeLegacy){
   if(window.appDataLoadError)throw Error('Importe um backup válido antes de iniciar um programa.');
   const p=programById(id),n=Number(count);
   if(!p)throw Error('Programa não encontrado.');if(!validISODate(startDate)||parseYmd(startDate).getDay()!==1)throw Error('Escolha uma segunda-feira válida para o início.');
@@ -4779,7 +4791,64 @@ function startProgramRun(id,startDate,count){
   const old=activeRun();if(old&&old.status==='active')old.status='paused';
   state.runs=state.runs||[];state.runs.push(run);state.activeRunId=run.id;state.programId=id;state.schemaVersion=2;
   const custom=(state.customPrograms||[]).find(x=>x.id===id);if(custom)custom.durationWeeks=n;
-  save();return run;
+  if(includeLegacy)incorporateLegacyRecords(run);
+  return run;
+}
+/* Link only records with explicit program ownership and a date in this calendar.
+   Keep the original payload in the run for audit; live series have one owner. */
+function legacyImportCandidates(run){
+  return run.schedule.filter(day=>{
+    const root=state.log[day.date];
+    return root&&root.snapshot&&!root.snapshot.rest&&root.snapshot.programId===run.programId&&
+      !root.runLogs?.[run.id]&&!runCompletion(run,day).hasWork&&
+      !Object.values(state.sessions[day.date]||{}).some(s=>s.runId===run.id);
+  });
+}
+function incorporateLegacyRecords(run){
+  const dates=[];
+  for(const day of legacyImportCandidates(run)){
+    const root=state.log[day.date],original=clone(root),snapshot=clone(root.snapshot),records=state.sessions[day.date]||{};
+    const log={runId:run.id,done:{},exerciseChoices:{}};const moved={};
+    snapshot.ex.forEach((ex,i)=>{
+      const oldBase=ex.baseSid||ex.sid?.split('~')[0]||snapshot.tipo+'-'+(ex.id||i);
+      const base=day.plan.tipo+'-'+(ex.id||i);
+      const oldChoice=root.exerciseChoices?.[oldBase];
+      // Some older snapshots contain the replacement but no separate choice map.
+      const planned=clone(ex.planned||ex);delete planned.sid;delete planned.baseSid;delete planned.planned;
+      if(oldChoice)log.exerciseChoices[base]=clone(oldChoice);
+      else if(ex.planned&&ex.nome!==planned.nome)log.exerciseChoices[base]={...clone(ex),customPrescription:true};
+      for(const [sid,record] of Object.entries(records)){
+        if(record.runId||!(sid===oldBase||sid.startsWith(oldBase+'~')))continue;
+        const nextSid=base+sid.slice(oldBase.length),next=clone(record);
+        next.runId=run.id;next.gp=next.gp||ex.grupo;next.nm=next.nm||ex.nome;
+        next.sets.forEach(set=>{if(set.done==null&&root.done?.[sid]===true){set.done=true;set.completionSource='legacy-exercise';}if(set.repsUnit==null)set.repsUnit=isTimedExercise(ex)?'seconds':'reps';});
+        moved[sid]=clone(record);delete records[sid];records[nextSid]=next;
+      }
+      const count=parseInt(oldChoice?.customPrescription?oldChoice.series:planned.series)||3;
+      for(const sid of Object.keys(root.done||{}))if(sid===oldBase||sid.startsWith(oldBase+'~'))log.done[base+sid.slice(oldBase.length)]=false;
+      for(const [sid,record] of Object.entries(records))if(record.runId===run.id&&(sid===base||sid.startsWith(base+'~')))log.done[sid]=record.sets.slice(0,count).filter(set=>set.done).length===count;
+      snapshot.ex[i]={...planned,baseSid:base,sid:base};
+    });
+    // Preserve the actual historical prescription, even if the template has changed.
+    snapshot.tipo=day.plan.tipo;snapshot.t=day.plan.tipo;snapshot.runId=run.id;snapshot.weekNumber=day.sourceWeek;snapshot.sourceTipo=day.plan.sourceTipo;
+    day.plan=clone(snapshot);log.snapshot=clone(snapshot);
+    for(const key of ['start','end'])if(root[key]!=null)log[key]=root[key];
+    run.legacyImports=run.legacyImports||[];delete original.runLogs;
+    run.legacyImports.push({date:day.date,log:original,sessions:moved});
+    for(const key of ['snapshot','done','exerciseChoices','start','end'])delete root[key];
+    root.runLogs=root.runLogs||{};root.runLogs[run.id]=log;dates.push(day.date);
+  }
+  const last=run.schedule.filter(d=>!d.plan.rest).sort((a,b)=>b.date.localeCompare(a.date))[0];
+  if(last&&runCompletion(run,last).complete){run.status='completed';run.finishedOn=last.date;run.finishedAt=Date.now();}
+  return dates;
+}
+function openLegacyImport(){
+  const run=activeRun();if(!run)return;
+  const candidates=legacyImportCandidates(run);
+  openSheet(`<h3>Incorporar histórico anterior</h3><p>${candidates.length} sessão(ões) do mesmo programa e dentro do calendário: ${candidates.map(d=>esc(d.date)).join(', ')||'nenhuma'}.</p><p>As datas, prescrições, substituições, cargas e repetições serão mantidas. Exercícios marcados como concluídos na versão antiga terão suas séries registradas como concluídas; séries sem confirmação continuarão sem confirmação. Registros com vínculo ou dados nesta execução não serão sobrescritos.</p><div class="program-start-actions">${candidates.length?'<button class="btn primary block" id="confirmLegacyImport">Incorporar registros</button>':''}<button class="btn ghost block" onclick="closeSheet()">Cancelar</button></div>`);
+  const button=document.getElementById('confirmLegacyImport');if(button)button.onclick=()=>{
+    const previous=clone(state);try{const current=(state.runs||[]).find(r=>r.id===run.id);if(!current)throw Error("Execução não encontrada.");const dates=incorporateLegacyRecords(current);const next=normalizeBackup(state);localStorage.setItem(LS_KEY,JSON.stringify(next));save();closeSheet();render();alert(dates.length+' sessão(ões) incorporada(s).');}catch(e){state=previous;alert('Não foi possível incorporar os registros. Os dados foram mantidos. '+e.message);}
+  };
 }
 function runCompletion(run,day){
   const l=readDayLog(day.date,day.plan.tipo);const ex=day.plan.ex||[];
@@ -4810,20 +4879,29 @@ function previewReplan(){
   openSheet(`<h3>Retomar a última sessão perdida</h3><p>A sessão de <b>${esc(proposal.missedDate)}</b> passa para <b>${esc(proposal.targetDate)}</b>.</p><p>O restante não realizado será deslocado em ${proposal.delta} dia(s), incluindo os descansos. Datas já realizadas permanecem iguais.</p><p>Novo término: <b>${esc(proposal.newEnd)}</b>.</p><details><summary>Conferir as ${proposal.changes.length} datas alteradas</summary><table class="cycle-table"><thead><tr><th>Sessão</th><th>Antes</th><th>Depois</th></tr></thead><tbody>${proposal.changes.map(c=>`<tr><td>${esc(run.schedule[c.index].plan.titulo)}</td><td>${esc(c.oldDate)}</td><td>${esc(c.date)}</td></tr>`).join('')}</tbody></table></details><button class="btn primary block" id="applyReplan">Confirmar replanejamento</button><button class="btn ghost block" onclick="closeSheet()">Cancelar</button>`);
   document.getElementById('applyReplan').onclick=()=>{try{applyReplan(run.id,proposal);closeSheet();selectedDate=null;setTab('hoje');}catch(e){alert(e.message);}};
 }
+function legacyImportSummary(id,startDate,count){
+  const all=Object.entries(state.log).filter(([date,l])=>l.snapshot?.programId===id&&!l.snapshot.rest);
+  if(!validISODate(startDate)||!validWeekCount(count))return 'Informe uma data e duração válidas para conferir os registros.';
+  const end=ymd(addDays(parseYmd(startDate),count*7-1));
+  const dates=all.filter(([date])=>date>=startDate&&date<=end).map(([date])=>date).sort();
+  return dates.length+' sessão(ões) no período'+(dates.length?': '+dates.join(', '):'.')+' · '+(all.length-dates.length)+' fora do período. Registros já vinculados ou com conflito não serão sobrescritos.';
+}
 function openStartProgram(id,forceNew=false){
   const p=programById(id);if(!p)return;const previous=(state.runs||[]).filter(r=>r.programId===id&&r.status!=='completed').at(-1);
-  openSheet(`<h3>${forceNew?'Reiniciar':'Iniciar'} programa</h3><p>${esc(p.nome)}</p><label class="fld"><span>Data de início (segunda-feira)</span><input id="runStart" type="date" value="${ymd(mondayOf(today()))}"></label><label class="fld"><span>Quantidade de semanas (1 a 12)</span><input id="runWeeks" type="number" min="1" max="12" step="1" value="${p.durationWeeks||''}" ${p.periodized?'readonly':''} required></label>${p.periodized?'<p class="hint">Duração definida pelas semanas deste programa padrão.</p>':''}<p class="hint">Uma nova execução mantém os históricos anteriores. A programação avança pelo calendário.</p><div class="program-start-actions"><button class="btn primary block" id="startRun">Confirmar início</button>${previous&&!forceNew?`<button class="btn ghost block" id="resumeRun">Continuar execução de ${esc(previous.startDate)}</button>`:''}<button class="btn ghost block" onclick="closeSheet()">Cancelar</button></div>`);
-  document.getElementById('startRun').onclick=()=>{try{startProgramRun(id,document.getElementById('runStart').value,Number(document.getElementById('runWeeks').value));closeSheet();selectedDate=null;setTab('hoje');}catch(e){alert(e.message);}};
+  openSheet(`<h3>${forceNew?'Reiniciar':'Iniciar'} programa</h3><p>${esc(p.nome)}</p><label class="fld"><span>Data de início (segunda-feira)</span><input id="runStart" type="date" value="${ymd(mondayOf(today()))}"></label><label class="fld"><span>Quantidade de semanas (1 a 12)</span><input id="runWeeks" type="number" min="1" max="12" step="1" value="${p.durationWeeks||''}" ${p.periodized?'readonly':''} required></label>${p.periodized?'<p class="hint">Duração definida pelas semanas deste programa padrão.</p>':''}${!forceNew&&Object.values(state.log).some(l=>l.snapshot?.programId===id)?'<label class="legacy-import-option"><input type="checkbox" id="includeLegacy" checked><span>Incorporar registros antigos deste programa dentro do período informado</span></label><p class="hint">Preserva datas, cargas, repetições e substituições. A marcação antiga de exercício concluído confirma as séries existentes. Sem confirmação antiga, as séries continuam pendentes. Registros fora do período ou já vinculados ficam separados.</p><p class="hint" id="legacyImportPreview"></p>':''}<p class="hint">Uma nova execução mantém os históricos anteriores. A programação avança pelo calendário.</p><div class="program-start-actions"><button class="btn primary block" id="startRun">Confirmar início</button>${previous&&!forceNew?`<button class="btn ghost block" id="resumeRun">Continuar execução de ${esc(previous.startDate)}</button>`:''}<button class="btn ghost block" onclick="closeSheet()">Cancelar</button></div>`);
+  const updatePreview=()=>{const preview=document.getElementById('legacyImportPreview');if(preview)preview.textContent=legacyImportSummary(id,document.getElementById('runStart').value,Number(document.getElementById('runWeeks').value));};
+  document.getElementById('runStart').addEventListener('input',updatePreview);document.getElementById('runWeeks').addEventListener('input',updatePreview);updatePreview();
+  document.getElementById('startRun').onclick=()=>{try{startProgramRun(id,document.getElementById('runStart').value,Number(document.getElementById('runWeeks').value),!!document.getElementById('includeLegacy')?.checked);closeSheet();selectedDate=null;setTab('hoje');}catch(e){alert(e.message);}};
   const resume=document.getElementById('resumeRun');if(resume)resume.onclick=()=>{const old=activeRun();if(old&&old.id!==previous.id&&old.status==='active')old.status='paused';state.activeRunId=previous.id;state.programId=id;previous.status='active';save();closeSheet();selectedDate=null;setTab('hoje');};
 }
 function pendingProgramView(){
   if(window.appDataLoadError)return `<div class="card"><h3>Não foi possível carregar os dados</h3><p>${esc(window.appDataLoadError)}</p><p>Os dados originais permanecem no navegador. Exporte uma cópia para recuperação ou importe um backup válido em Ajustes.</p><button class="btn primary" id="recoverOriginal">Salvar dados originais</button></div>`;
-  return `<div class="card"><h3>Configuração pendente</h3><p>Defina a data de início e a quantidade de semanas para iniciar ou continuar este programa. Os registros anteriores permanecem como histórico legado.</p><button class="btn primary" data-configure="${esc(state.programId)}">Configurar programa</button><button class="btn ghost" data-go="programas">Selecionar outro</button></div>`;
+  return `<div class="card"><h3>Configuração pendente</h3><p>Defina a data de início e a quantidade de semanas para iniciar ou continuar este programa. Na configuração, você pode incorporar os registros antigos deste programa ao período informado.</p><button class="btn primary" data-configure="${esc(state.programId)}">Configurar programa</button><button class="btn ghost" data-go="programas">Selecionar outro</button></div>`;
 }
 function cycleBanner(){
   const r=activeRun();if(!r)return '';
   const d=runDay(r,ymd(curDate())),week=d?d.sourceWeek:null;
-  return `<div class="card"><b>${esc(r.programName)}</b><div class="hint">${week?'Semana '+week+' de '+r.weekCount+' · ':''}${esc(r.startDate)} a ${esc(r.endDate)}</div><div class="cycle-actions"><button class="btn ghost" id="replanRun">Retomar a última sessão perdida</button><button class="btn ghost" data-run-results="${r.id}">Estatísticas do programa</button></div></div>`;
+  return `<div class="card"><b>${esc(r.programName)}</b><div class="hint">${week?'Semana '+week+' de '+r.weekCount+' · ':''}${esc(r.startDate)} a ${esc(r.endDate)}</div><div class="cycle-actions">${legacyImportCandidates(r).length?'<button class="btn ghost" id="importLegacyRun">Incorporar histórico anterior</button>':''}<button class="btn ghost" id="replanRun">Retomar a última sessão perdida</button><button class="btn ghost" data-run-results="${r.id}">Estatísticas do programa</button></div></div>`;
 }
 function groupHeading(plan,i){const e=plan.ex[i];if(!e.groupId)return '';const members=plan.ex.map((x,j)=>({x,j})).filter(o=>o.x.groupId===e.groupId);if(members[0].j!==i)return '';return `<div class="technique-group"><b>${esc(e.groupType||'Grupo combinado')} · exercícios ${members.map(o=>o.j+1).join(' + ')}</b><div>${members.map(o=>esc(o.x.nome)).join(' → ')}</div><div class="hint">Execute os exercícios deste grupo em sequência, respeitando o descanso de cada prescrição.</div></div>`;}
 function isTimedExercise(ex){return /isometria/i.test(ex.technique||'')||/^\s*\d+(?:[–-]\d+)?\s*s\s*$/i.test(ex.reps||'');}
@@ -4862,7 +4940,7 @@ function runStatistics(run){
 }
 function viewRunResults(id){
   const r=(state.runs||[]).find(x=>x.id===(id||selectedRunResultId))||activeRun();if(!r)return pendingProgramView();const s=runStatistics(r);const duration=Math.round((parseYmd(r.endDate)-parseYmd(r.startDate))/86400000)+1;
-  return `<div class="results-back"><button class="btn ghost" id="backRunStats">← Voltar</button></div><div class="hero run-results-hero"><h1>${r.status==='completed'?'Programa concluído':r.status==='elapsed'?'Prazo do programa encerrado':'Estatísticas do programa'}</h1><p>${esc(r.programName)}</p><p>Calendário: ${esc(r.startDate)} a ${esc(r.endDate)}</p>${r.finishedOn?`<p>Última sessão concluída em ${esc(r.finishedOn)}</p>`:''}</div><div class="stats"><div class="stat"><div class="v">${s.trained}/${s.planned}</div><div class="k">Dias treinados / planejados</div></div><div class="stat"><div class="v">${s.complete}</div><div class="k">Sessões completas</div></div><div class="stat"><div class="v">${s.partial}</div><div class="k">Sessões parciais / com registros</div></div><div class="stat"><div class="v">${Math.round(s.trained/s.planned*100)||0}%</div><div class="k">Adesão</div></div></div><div class="card"><p>${s.missed} sessões passadas sem realização. ${s.planned-s.trained} sessões sem séries concluídas no total.</p><p>Duração original: ${r.weekCount} semanas (${r.weekCount*7} dias). Calendário atual: ${duration} dias. Prolongamento: ${duration-r.weekCount*7} dias.</p><h3>Séries por grupo muscular</h3><table class="cycle-table"><thead><tr><th>Grupo principal</th><th>Planejadas</th><th>Realizadas</th></tr></thead><tbody>${Object.entries(s.groups).map(([name,g])=>`<tr><td>${esc(name)}</td><td>${g.planned}</td><td>${g.actual}</td></tr>`).join('')}</tbody></table><p class="hint">Um dia treinado exige ao menos uma série marcada como concluída. Uma série conta apenas quando marcada como concluída. O volume usa o grupo principal do exercício, sem duplicar músculos auxiliares.</p><h3>Exercícios com novo PR: ${Object.keys(s.prs).length}</h3>${Object.entries(s.prs).map(([name,p])=>`<p><b>${esc(name)}</b>: 1RM estimado ${p.before.toFixed(1)} → ${p.after.toFixed(1)} kg${p.before===0?' (primeira referência)':''}</p>`).join('')||'<p>Nenhum novo PR com séries concluídas e carga/repetições numéricas.</p>'}<p class="hint">PR de 1RM estimado pela fórmula de Epley, comparado ao histórico disponível no início desta execução. Dados legados não são atribuídos automaticamente a um ciclo.</p></div><div class="row" style="gap:8px;flex-wrap:wrap"><button class="btn primary" data-restart="${esc(r.programId)}">Reiniciar programa</button><button class="btn ghost" data-go="programas">Selecionar outro programa</button>${r.status!=='completed'&&r.id===state.activeRunId?'<button class="btn ghost" id="replanRun">Retomar a última sessão perdida</button>':''}</div>`;
+  return `<div class="results-back"><button class="btn ghost" id="backRunStats">← Voltar</button></div><div class="hero run-results-hero"><h1>${r.status==='completed'?'Programa concluído':r.status==='elapsed'?'Prazo do programa encerrado':'Estatísticas do programa'}</h1><p>${esc(r.programName)}</p><p>Calendário: ${esc(r.startDate)} a ${esc(r.endDate)}</p>${r.finishedOn?`<p>Última sessão concluída em ${esc(r.finishedOn)}</p>`:''}</div><div class="stats"><div class="stat"><div class="v">${s.trained}/${s.planned}</div><div class="k">Dias treinados / planejados</div></div><div class="stat"><div class="v">${s.complete}</div><div class="k">Sessões completas</div></div><div class="stat"><div class="v">${s.partial}</div><div class="k">Sessões parciais / com registros</div></div><div class="stat"><div class="v">${Math.round(s.trained/s.planned*100)||0}%</div><div class="k">Adesão</div></div></div><div class="card"><p>${s.missed} sessões passadas sem realização. ${s.planned-s.trained} sessões sem séries concluídas no total.</p><p>Duração original: ${r.weekCount} semanas (${r.weekCount*7} dias). Calendário atual: ${duration} dias. Prolongamento: ${duration-r.weekCount*7} dias.</p><h3>Séries por grupo muscular</h3><table class="cycle-table"><thead><tr><th>Grupo principal</th><th>Planejadas</th><th>Realizadas</th></tr></thead><tbody>${Object.entries(s.groups).map(([name,g])=>`<tr><td>${esc(name)}</td><td>${g.planned}</td><td>${g.actual}</td></tr>`).join('')}</tbody></table><p class="hint">Um dia treinado exige ao menos uma série marcada como concluída. Uma série conta apenas quando marcada como concluída. O volume usa o grupo principal do exercício, sem duplicar músculos auxiliares.</p><h3>Exercícios com novo PR: ${Object.keys(s.prs).length}</h3>${Object.entries(s.prs).map(([name,p])=>`<p><b>${esc(name)}</b>: 1RM estimado ${p.before.toFixed(1)} → ${p.after.toFixed(1)} kg${p.before===0?' (primeira referência)':''}</p>`).join('')||'<p>Nenhum novo PR com séries concluídas e carga/repetições numéricas.</p>'}<p class="hint">PR de 1RM estimado pela fórmula de Epley, comparado ao histórico disponível no início desta execução. Registros antigos incorporados contam nesta execução. Uma marcação antiga de exercício concluído confirma apenas as séries existentes; registros sem confirmação permanecem pendentes.</p></div><div class="row" style="gap:8px;flex-wrap:wrap">${r.id===state.activeRunId&&legacyImportCandidates(r).length?'<button class="btn ghost" id="importLegacyRun">Incorporar histórico anterior</button>':''}<button class="btn primary" data-restart="${esc(r.programId)}">Reiniciar programa</button><button class="btn ghost" data-go="programas">Selecionar outro programa</button>${r.status!=='completed'&&r.id===state.activeRunId?'<button class="btn ghost" id="replanRun">Retomar a última sessão perdida</button>':''}</div>`;
 }
 let selectedRunResultId=null;
 let runResultsReturnTab='programas';
@@ -4897,6 +4975,7 @@ function bindCycles(){
   document.querySelectorAll('[data-configure]').forEach(b=>b.onclick=()=>openStartProgram(b.dataset.configure));
   document.querySelectorAll('[data-restart]').forEach(b=>b.onclick=()=>openStartProgram(b.dataset.restart,true));
   document.querySelectorAll('[data-run-results]').forEach(b=>b.onclick=()=>{runResultsReturnTab=currentTab==='run-results'?'programas':currentTab;selectedRunResultId=b.dataset.runResults;setTab('run-results');});
+  const legacyImport=document.getElementById('importLegacyRun');if(legacyImport)legacyImport.onclick=openLegacyImport;
   const replan=document.getElementById('replanRun');if(replan)replan.onclick=previewReplan;
   const recover=document.getElementById('recoverOriginal');if(recover)recover.onclick=()=>{const text=localStorage.getItem(LS_KEY)||'{}',a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'application/json'}));a.download='appfit-dados-originais.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);};
   document.querySelectorAll('[data-set-done]').forEach(c=>c.onchange=()=>{const k=ymd(curDate());toggleSetCompletion(k,planKeyForDate(curDate()),+c.dataset.i,+c.dataset.s,c.checked);});

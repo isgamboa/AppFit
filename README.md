@@ -131,10 +131,26 @@ Em **⚙️ Ajustes**, exporte um backup JSON ou importe no outro aparelho. O fo
 atual usa `schemaVersion: 2`, incluindo execuções, calendários, ajustes e séries.
 O backup é validado por inteiro antes de substituir o estado atual.
 
-Arquivos anteriores são migrados sem inventar ciclos: registros antigos continuam
-no **Histórico legado**, consultável em Progresso, sem associação arbitrária a datas
-de início ou duração. Os modelos importados precisam de configuração antes da execução.
-Dados de ingestão retirados do app não são restaurados.
+Arquivos anteriores precisam da data de início e da duração do programa. Ao configurar,
+a opção **Incorporar registros antigos deste programa dentro do período informado**
+vem selecionada e mostra as datas encontradas. Somente registros com identificação
+explícita do mesmo programa e dentro do calendário são incorporados. Datas, prescrições,
+cargas, repetições e substituições são preservadas, mesmo se o modelo mudou depois.
+Exercícios marcados como concluídos na versão antiga confirmam suas séries existentes;
+séries sem confirmação permanecem pendentes. As semanas e estatísticas passam a usar
+esses registros. A referência de PR usa o histórico anterior à data de início.
+
+Se a execução já foi configurada sem o histórico, use **Incorporar histórico anterior**
+no cartão do programa em Hoje. A prévia pede confirmação e não sobrescreve registros
+existentes dessa execução. Registros de outro programa, fora do período ou sem
+identificação suficiente permanecem no **Histórico legado**, em Progresso.
+Os originais incorporados ficam arquivados no backup da execução para auditoria;
+as séries ativas são transferidas uma única vez, evitando contagem duplicada.
+
+A exportação valida o estado e inclui ciclos e dados incorporados; reimportar o novo
+backup restaura os vínculos sem configurar novamente. Falhas de armazenamento ao criar
+ou incorporar uma execução preservam o estado anterior. Dados de ingestão retirados
+do app não são restaurados.
 
 Formato inválido ou versão futura não substituem os dados atuais. Se os dados já
 salvos no navegador forem incompatíveis, o app mantém o conteúdo original, oferece
