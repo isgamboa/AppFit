@@ -32,7 +32,7 @@ e revisados antes de gerar seus JSONs.
 ## Catálogo e nomes
 
 A carga inicial do Boost ampliou o catálogo de 94 para 153 exercícios;
-o Endomonster adicionou outros 35, totalizando 188. Correspondências sem ambiguidade
+o Endomonster adicionou outros 35 e o Protocol Black outros 30, totalizando 218. Correspondências sem ambiguidade
 (por exemplo ABS Máquina → Abdominal máquina) reaproveitam o catálogo. Variações
 unilaterais, equipamentos e ângulos diferentes não são colapsados. Nomes genéricos
 como Supino Reto e Crucifixo Inverso permanecem genéricos, sem inventar equipamento.
@@ -100,3 +100,47 @@ e fica separado da contagem de séries musculares. A classificação genérica d
 Remada Unilateral foi corrigida de Lateral de Ombro para Costas, conferida em
 One-Arm Dumbbell Row e aplicada ao modelo Boost também. Cópias de execuções já
 iniciadas não são alteradas por essa correção.
+
+## Protocol Black
+
+Programa avançado de Laércio Refundini, transcrito de 12 PDFs: 72 sessões,
+766 prescrições e 51 bi-sets. A capa identifica o nível avançado. Domingo é descanso.
+Os links dos documentos e os rodapés com dados pessoais não foram incorporados.
+
+```sh
+python3 scripts/import-protocol-black-pdfs.py /diretorio/dos/pdfs --week12-abductor-sets 4
+python3 scripts/import-exercises.py
+python3 scripts/embed-cycles.py
+npm run check:data
+```
+
+O script requer PyMuPDF (`python3 -m pip install pymupdf`) e usa as coordenadas do
+texto para distinguir linhas, colunas e os marcadores de bi-set. É específico
+dos documentos fornecidos. As contagens por tabela foram comparadas com uma extração
+independente por `pdftotext -layout`; os agrupamentos foram conferidos visualmente.
+
+- As células compartilhadas de **NO REPS** e **60 a 90"** foram propagadas a todas
+  as prescrições das respectivas sessões. `restRangeSeconds: [60, 90]` preserva a
+  faixa e `restSeconds: 90` define o tempo inicial do cronômetro.
+- As duas colunas de técnicas são preservadas separadamente, incluindo 99 entradas
+  em Técnica 2. A semana 6 não contém técnicas e não recebe técnicas inventadas.
+- As séries originais de Cluster, M-TUT, FST-7 e outras técnicas não foram expandidas
+  em etapas automáticas. Nomes repetidos permanecem como ocorrências independentes.
+- A Cadeira Abdutora da terça-feira da semana 12 está com séries em branco na fonte.
+  O usuário confirmou **4 séries**, mantendo **NO REPS**. A ocorrência usa
+  `seriesSource: "user-confirmed"`; o importador exige o parâmetro explícito para
+  reproduzir a decisão sem inferir um valor.
+- Prancha Ventral mantém o texto NO REPS, com o tempo realizado registrado em segundos.
+
+Os 30 novos exercícios têm grupo principal e busca no YouTube pelo próprio nome,
+sem substituições inventadas. Nomes genéricos ou com equipamento/pegada diferentes
+não foram colapsados: por exemplo, Remada Máquina (Aberta/Pronada) e Remada Máquina
+(Fechada), além de Deltoide Posterior Máquina e Crucifixo Inverso Máquina, que aparecem
+como participantes distintos de grupos na fonte. Correspondências explícitas, como
+Dumbell Press Inclinado (30°) e Supino inclinado halteres 30º, reutilizam o catálogo.
+
+Para conferência dos grupos foi consultada a base anatômica pública citada acima:
+Inverted Row → costas; Push-Ups - Close Triceps Position → tríceps; Concentration
+Curls/Incline Dumbbell Curl → bíceps; Cable Rope Overhead Triceps Extension → tríceps.
+Os demais cadastros seguem os grupos principais dos movimentos correspondentes já
+pesquisados no catálogo (abdômen, panturrilhas, quadríceps, posterior de coxa e ombros).

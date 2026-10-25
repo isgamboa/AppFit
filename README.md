@@ -36,7 +36,7 @@ Há um programa ativo por vez, com históricos independentes para cada execuçã
 | Personalizado ABC ou full-body | Editor de três sessões, dias da semana escolhidos pelo usuário e duração de 1 a 12 semanas. |
 
 Os programas padrão incluem **ABCDE + Full Body**, **Saitama**, **Ramon Dino**,
-**Arnold**, **CBum**, **Boost PRO Ombro** e **Endomonster**. Também está disponível o modelo personalizado
+**Arnold**, **CBum**, **Boost PRO Ombro**, **Endomonster** e **Protocol Black**. Também está disponível o modelo personalizado
 **Full-body | Força, Hipertrofia e Condicionamento (v1.1)**, com sessões na terça,
 quinta e sábado, carregado a partir da planilha aprovada.
 
@@ -79,6 +79,20 @@ das séries musculares nas estatísticas. Ele participa da conclusão da sessão
 sem criar automaticamente uma atividade ou estimativa de kcal. Prescrições mistas,
 como `10+15s`, aceitam repetições e segundos no mesmo campo e ficam fora dos PRs
 de 1RM. Os PDFs originais e seus links não são incorporados ao aplicativo.
+
+### Protocol Black
+
+Programa padrão avançado de **Laércio Refundini**, com **12 semanas**, **72 sessões**
+de segunda a sábado, **766 prescrições** e **51 bi-sets**. Domingo é descanso.
+As técnicas das duas colunas dos PDFs são exibidas, incluindo Cluster, M-TUT,
+FST-7, Strip-Set, Oclusão e combinações com Drop-Set. O controle das etapas permanece manual.
+
+A indicação **NO REPS** e o descanso **60 a 90 segundos**, compartilhados na tabela,
+valem para cada exercício da sessão. O cronômetro começa em 90 segundos e a faixa
+continua visível. Registre as repetições efetivamente realizadas; não é definida
+uma meta numérica ausente na fonte. A única lacuna de séries, na Cadeira Abdutora
+da terça-feira da semana 12, foi preenchida com **4 séries**, conforme confirmação
+do usuário, preservando **NO REPS**.
 
 ### Faltas e replanejamento
 
@@ -228,7 +242,7 @@ Abra `http://127.0.0.1:8000`. Os principais arquivos são:
 | [src/cycles.js](src/cycles.js) | Motor de execuções, calendários, resultados e migração. |
 | [data/standard-programs/](data/standard-programs/README.md) | Programas padrão com variação entre semanas. |
 | [data/programas/](data/programas/) | Modelo full-body aprovado e incorporado ao app. |
-| [exports/banco-exercicios-appfit.csv](exports/banco-exercicios-appfit.csv) | Catálogo com 188 exercícios: nome, grupo muscular, duas substituições e URL de vídeo. |
+| [exports/banco-exercicios-appfit.csv](exports/banco-exercicios-appfit.csv) | Catálogo com 218 exercícios: nome, grupo muscular, duas substituições e URL de vídeo. |
 | [tests/](tests/README.md) | Suítes automatizadas e instruções de validação. |
 
 Após alterar o motor ou os dados, atualize as cópias embutidas no HTML e valide:
@@ -249,6 +263,7 @@ no JSDOM. O teste opcional de navegador requer Playwright disponível no Node e 
 ```sh
 CHROMIUM_PATH=/usr/bin/chromium node tests/browser-cycles.cjs
 CHROMIUM_PATH=/usr/bin/chromium node tests/browser-endomonster.cjs
+CHROMIUM_PATH=/usr/bin/chromium node tests/browser-protocol-black.cjs
 ```
 
 Os fluxos foram verificados em computador e celular. Firebase real e a instalação

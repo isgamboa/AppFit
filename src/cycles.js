@@ -2,7 +2,8 @@
 function validISODate(value){if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;const d=parseYmd(value);return !Number.isNaN(+d)&&ymd(d)===value;}
 function validWeekCount(n){return Number.isInteger(n)&&n>=1&&n<=12;}
 function validExerciseTiming(ex){
-  return (ex.durationUnit==null||['seconds','minutes','mixed'].includes(ex.durationUnit))&&
+  return (ex.restRangeSeconds==null||Array.isArray(ex.restRangeSeconds)&&ex.restRangeSeconds.length===2&&ex.restRangeSeconds.every(n=>typeof n==='number'&&Number.isFinite(n)&&n>=0)&&ex.restRangeSeconds[0]<=ex.restSeconds&&ex.restSeconds<=ex.restRangeSeconds[1])&&
+    (ex.durationUnit==null||['seconds','minutes','mixed'].includes(ex.durationUnit))&&
     (ex.durationMinutes==null||typeof ex.durationMinutes==='number'&&Number.isFinite(ex.durationMinutes)&&ex.durationMinutes>0)&&
     (ex.kind==null||ex.kind==='cardio')&&
     (ex.kind!=='cardio'||ex.durationUnit==='minutes'&&typeof ex.durationMinutes==='number'&&ex.durationMinutes>0);

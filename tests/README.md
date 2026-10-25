@@ -18,6 +18,7 @@ Teste opcional no Chromium (com Playwright disponível no Node):
 ```sh
 CHROMIUM_PATH=/usr/bin/chromium node tests/browser-cycles.cjs
 CHROMIUM_PATH=/usr/bin/chromium node tests/browser-endomonster.cjs
+CHROMIUM_PATH=/usr/bin/chromium node tests/browser-protocol-black.cjs
 ```
 
 Ele usa um servidor efêmero local e verifica computador/celular: ativação com data,
@@ -27,3 +28,8 @@ Firebase real e instalação/offline completo da PWA não são cobertos.
 
 O teste de navegador Endomonster cobre cardio em minutos, técnicas combinadas,
 registros mistos, download real do backup, reimportação, recarga e conclusão.
+
+`protocol-black.mjs` confere contagens por tabela, agrupamentos, células compartilhadas,
+a correção de séries aprovada, duas colunas de técnicas, faixa de descanso,
+registro de repetições realizadas, backup e conclusão. O teste de navegador
+Protocol Black valida esses controles em computador e celular.

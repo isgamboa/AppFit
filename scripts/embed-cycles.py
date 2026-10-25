@@ -27,6 +27,7 @@ for program in data:
    ids=set()
    for ex in day['exercises']:
     assert ex['id'] not in ids and ex['id'] not in program_ids and ex['nome'] in catalog and ex['grupo'] and ex['series']>0 and (ex['restSeconds'] is None or ex['restSeconds']>=0);ids.add(ex['id']);program_ids.add(ex['id'])
+    if ex.get('restRangeSeconds') is not None:assert len(ex['restRangeSeconds'])==2 and 0<=ex['restRangeSeconds'][0]<=ex['restSeconds']<=ex['restRangeSeconds'][1]
     assert ex.get('durationUnit') in {None,'seconds','minutes','mixed'}
     if ex.get('kind')=='cardio':assert ex['durationUnit']=='minutes' and ex['durationMinutes']>0
     if ex['restSeconds'] is None:assert ex.get('kind')=='cardio'
