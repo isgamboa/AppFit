@@ -186,6 +186,8 @@ function viewLegacyHistory(){
   return `<details class="card"><summary>${esc(k)} · ${records.length} exercício(s) com séries registradas</summary>${root&&root.done?`<p>Marcações antigas de exercício concluído: ${Object.values(root.done).filter(Boolean).length}.</p>`:''}${records.map(([sid,s])=>`<h3>${esc(s.nm||'Exercício '+sid)}</h3><table class="cycle-table"><thead><tr><th>Série</th><th>kg</th><th>Reps / segundos</th><th>Conclusão</th></tr></thead><tbody>${s.sets.map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.kg||'—')}</td><td>${esc(x.reps||'—')}${x.repsUnit==='seconds'?' s':''}</td><td>${x.done===true?'Concluída':x.done===false?'Não marcada':'Não informada'}</td></tr>`).join('')}</tbody></table>`).join('')}</details>`;
  }).join('')+`<button class="btn ghost" data-go="progresso">Voltar ao progresso</button>`;
 }
+let programPanel='programas';
+function programPanelTabs(){return `<div class="program-tabs" role="tablist" aria-label="Programas e execuções">${[['programas','Programas'],['execucoes','Execuções e resultados']].map(([id,label])=>`<button class="program-tab" id="tab-${id}" role="tab" aria-controls="program-panel" aria-selected="${programPanel===id}" tabindex="${programPanel===id?'0':'-1'}" data-program-panel="${id}">${label}</button>`).join('')}</div>`;}
 function executionHistoryView(){return (state.runs||[]).length?`<div class="section-title">Execuções e resultados</div>`+state.runs.slice().reverse().map(r=>`<div class="card"><b>${esc(r.programName)}</b><p>${esc(r.startDate)} · ${r.weekCount} semanas · ${esc(({active:'Em andamento',paused:'Pausado',elapsed:'Prazo encerrado',completed:'Concluído'})[r.status])}</p><button class="btn ghost" data-run-results="${r.id}">Ver estatísticas</button></div>`).join(''):'';}
 function previewVariationFlip(){
   const r=activeRun();if(!r||r.programId!=='refundini')return;
@@ -199,6 +201,8 @@ function previewVariationFlip(){
   };
 }
 function bindCycles(){
+  const selectPanel=(panel)=>{programPanel=panel;render();document.getElementById('tab-'+panel)?.focus();};
+  document.querySelectorAll('[data-program-panel]').forEach(b=>{b.onclick=()=>selectPanel(b.dataset.programPanel);if(b.getAttribute('role')==='tab')b.onkeydown=e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();selectPanel(e.key==='Home'?'programas':e.key==='End'?'execucoes':programPanel==='programas'?'execucoes':'programas');};});
   const back=document.getElementById('backRunStats');if(back)back.onclick=()=>{let target=runResultsReturnTab;const current=activeRun();if(target==='hoje'&&current&&!selectedDate&&(current.status==='completed'||current.status==='elapsed'))target='programas';setTab(target);};
   const cycleButton=document.getElementById('cycleBtn'),r=activeRun();if(cycleButton){cycleButton.style.display=r&&r.programId==='refundini'&&r.status==='active'?'':'none';cycleButton.onclick=previewVariationFlip;}
   document.querySelectorAll('[data-configure]').forEach(b=>b.onclick=()=>openStartProgram(b.dataset.configure));

@@ -98,7 +98,8 @@ As estatísticas incluem:
   quando a execução foi criada; apenas séries concluídas entram nesse resultado.
 
 Nessa página ficam **Reiniciar programa** e **Selecionar outro programa**. Os resultados
-também estão acessíveis pela lista de execuções na seleção de programas.
+também estão acessíveis pela aba **Execuções e resultados**, separada da aba
+**Programas** na seleção de treinos.
 
 ## Meus programas e recursos mantidos
 
