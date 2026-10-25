@@ -1,184 +1,223 @@
 # AppFit — Treino
 
-Aplicativo de treino, atividades e acompanhamento corporal em HTML, CSS e JavaScript.
-Funciona localmente e offline, sem cadastro obrigatório. Este é o fork
-[isgamboa/AppFit](https://github.com/isgamboa/AppFit), baseado em
-[DUK22/AppFit](https://github.com/DUK22/AppFit).
+App de musculação, atividades físicas e acompanhamento corporal, em português.
+Monte um ABC ou full-body, siga programas com variação entre semanas e acompanhe
+cargas, séries e resultados. Funciona com um único HTML, localmente e offline,
+sem cadastro obrigatório.
 
-## Programas com duração e execuções independentes
+Este é o fork [isgamboa/AppFit](https://github.com/isgamboa/AppFit), baseado no
+trabalho de [DUK22/AppFit](https://github.com/DUK22/AppFit). As personalizações são
+mantidas neste repositório. Não são abertos pull requests para o projeto original.
 
-Todos os programas exigem **data de início em uma segunda-feira** e **duração de
-1 a 12 semanas** para começar uma execução. Isso se aplica aos programas padrão,
-aos personalizados e aos modelos anteriores. Salvar um modelo não o ativa.
+## Começar a usar
 
-- **Programas padrão periodizados:** exercícios, séries e técnicas podem variar
-  em cada dia de cada semana; a duração é definida pelo programa.
-- **Programas semanais anteriores:** a programação semanal se repete pela duração
-  informada na ativação. O ABCDE original mantém a alternância C1/C2 e D1/D2.
-- **Programas personalizados:** continuam com editor de três sessões ABC ou full-body,
-  escolha dos dias e uma duração em semanas. Não há editor manual de 84 sessões.
+1. [Baixe o HTML da versão principal](https://github.com/isgamboa/AppFit/raw/refs/heads/main/index.html)
+   e abra o arquivo no navegador. Se o link abrir o código, use **Salvar como**.
+2. Em **Hoje → trocar treino**, selecione um programa padrão ou crie o seu.
+3. Informe a **data de início, em uma segunda-feira**, e a **duração de 1 a 12 semanas**.
+   Nos programas com variação entre semanas, a duração é definida pelo próprio programa.
+4. Em **Hoje**, registre carga e repetições e marque as séries concluídas.
+   Consulte o planejamento e os registros diários em **Semana**.
 
-O modelo do programa é separado de cada execução. Alterações no modelo personalizado
-valem para novas execuções; o planejamento iniciado mantém sua cópia. Reiniciar cria
-outra execução, preservando resultados e históricos anteriores, inclusive quando
-existem registros de duas execuções na mesma data.
+O aplicativo não precisa de instalação de dependências nem de servidor para abrir
+o HTML local. Os dados ficam no navegador: exporte um backup antes de trocar de
+aparelho, navegador ou endereço de acesso. Vídeos e sincronização exigem internet.
+
+## Programas e planejamento
+
+Todos os treinos têm início e duração definidos, inclusive os personalizados e os
+modelos importados de versões anteriores. Salvar um modelo não inicia a execução.
+Há um programa ativo por vez, com históricos independentes para cada execução.
+
+| Tipo | Como funciona |
+| --- | --- |
+| Padrão com variação entre semanas | Exercícios, séries, técnicas e descansos podem variar a cada dia, por até 12 semanas. |
+| Padrão semanal | A programação semanal se repete durante o período escolhido. O ABCDE mantém a alternância C1/C2 e D1/D2. |
+| Personalizado ABC ou full-body | Editor de três sessões, dias da semana escolhidos pelo usuário e duração de 1 a 12 semanas. |
+
+Os programas padrão incluem **ABCDE + Full Body**, **Saitama**, **Ramon Dino**,
+**Arnold**, **CBum** e **Boost PRO Ombro**. Também está disponível o modelo personalizado
+**Full-body | Força, Hipertrofia e Condicionamento (v1.1)**, com sessões na terça,
+quinta e sábado, carregado a partir da planilha aprovada.
+
+### Criar e gerenciar seus treinos
+
+Em **trocar treino → Criar meu treino**, escolha ABC ou full-body, dê um nome ao
+programa, informe a duração e defina três dias distintos. Nas sessões A, B e C,
+adicione exercícios do catálogo, ajuste séries, repetições e observações, remova
+ou reordene exercícios. Você pode salvar vários modelos, editá-los e duplicá-los.
+
+Cada execução mantém uma cópia do planejamento. Editar o modelo vale para novas
+execuções; reiniciar cria outra execução e preserva os resultados anteriores.
+Registros de execuções diferentes na mesma data também ficam separados.
+
+A seleção de treinos tem duas abas: **Programas**, para escolher e criar treinos,
+e **Execuções e resultados**, para consultar o histórico e as estatísticas.
 
 ### Boost PRO Ombro
 
-Primeiro programa padrão com variação diária, transcrito de quatro PDFs fornecidos:
-**4 semanas, 20 sessões de segunda a sexta e 174 prescrições**, com nível
-intermediário/avançado e ênfase em hipertrofia de ombros. Sábado e domingo são descanso.
-Exercícios repetidos com prescrições diferentes têm identificadores separados.
+Programa padrão de **4 semanas**, com **20 sessões de segunda a sexta**, descanso
+no fim de semana e **174 prescrições de exercícios**. Tem nível intermediário/avançado
+e ênfase em hipertrofia de ombros. Exercícios repetidos com prescrições diferentes
+são mantidos como entradas distintas.
 
-O programa está na lista de seleção. Os links dos PDFs não foram utilizados.
-Novos exercícios receberam grupo muscular e busca de execução no YouTube. Veja os
-dados e os critérios de conversão em [data/standard-programs](data/standard-programs/README.md).
-Outros programas periodizados podem ter até 12 semanas, com até 84 sessões.
-A inclusão de PDFs é um processo de análise/carga no desenvolvimento, sem upload de PDF no app.
-
-## Como usar
-
-Baixe o [index.html](index.html) e abra no navegador. Nenhuma instalação de dependências
-é necessária para usar o aplicativo. Dados ficam no navegador; mantenha backups antes
-de trocar de dispositivo, endereço ou navegador.
-
-1. Em **Hoje → trocar treino**, escolha um programa.
-2. Informe a segunda-feira de início e a quantidade de semanas. Nos periodizados,
-   a duração vem preenchida e é fixa.
-3. Confirme o início. **Hoje** e **Semana** exibem a sessão correspondente à data,
-   identificando a semana do programa.
-4. Registre carga e repetições e marque as séries concluídas. A ação de conclusão
-   do exercício e **Marcar tudo como feito** continuam disponíveis como atalhos.
-
-Modelos antigos ou dados sem início/duração ficam com **Configuração pendente** até
-que esses campos sejam informados. Isso não apaga os registros anteriores.
+O programa foi transcrito de quatro PDFs. Os links dos documentos não foram
+reutilizados; novos exercícios receberam grupo muscular e links de busca no YouTube.
+Os critérios e dados estão em [data/standard-programs](data/standard-programs/README.md).
+A inclusão de outros programas por PDF é feita no desenvolvimento; não há importador
+de PDF nem editor manual de até 84 sessões na interface do app.
 
 ### Faltas e replanejamento
 
-Por padrão, o programa avança pelo calendário, mesmo quando há faltas. A ação
-**Retomar a última sessão perdida** apresenta uma prévia das datas afetadas.
-Após confirmação, a sessão perdida mais recente passa para hoje; as datas posteriores
-sem realização são deslocadas pelo mesmo intervalo, incluindo os descansos.
+O planejamento avança pelo calendário, mesmo quando você falta. A opção
+**Retomar a última sessão perdida** mostra uma prévia e, após confirmação, traz
+para hoje a sessão perdida mais recente. As datas posteriores sem realização são
+deslocadas pelo mesmo intervalo, incluindo os descansos.
 
-Sessões com séries concluídas ou valores já registrados não são deslocadas. Isso
-protege sessões parciais e os dados anotados. Conflitos de datas são recusados sem
-alterar o planejamento. Faltas anteriores à sessão retomada permanecem no histórico.
-Os dias da semana podem mudar, e a execução pode durar mais de 12 semanas no calendário:
-o limite se refere à programação original, não ao prolongamento por faltas.
+Sessões com séries concluídas ou valores registrados mantêm suas datas. Conflitos
+de datas são recusados sem alterar o planejamento. Faltas anteriores à sessão
+retomada permanecem no histórico. O replanejamento pode mudar os dias da semana
+e prolongar o calendário além de 12 semanas; o limite vale para o programa original.
 
-### Técnicas, descanso e substituições
+## Executar o treino
 
-As prescrições mostram técnica e descanso por exercício. **Bi-sets e tri-sets**
-têm cabeçalho com os participantes, números dos exercícios e destaque visual em
-cada integrante. As técnicas como Drop-set, Rest-pause e No-stop são exibidas;
-a execução interna de suas etapas permanece manual.
+- Registre **carga e repetições por série** e marque cada série concluída. Concluir
+  um exercício ou usar **Marcar tudo como feito** funciona como atalho.
+- Consulte a técnica e o descanso de cada prescrição. **Bi-sets e tri-sets** mostram
+  claramente os exercícios integrantes, com cabeçalho e destaque visual.
+- Use o cronômetro com o descanso prescrito, inclusive zero segundos. Sem prescrição
+  específica, vale o tempo definido em Ajustes. Há opção de descanso automático.
+- Consulte o vídeo pelo botão **Execução** e troque o exercício pelas substituições
+  sugeridas ou pelo catálogo durante aquela sessão.
 
-O cronômetro respeita o descanso prescrito, inclusive **zero segundos**. Para exercícios
-sem descanso específico, usa o valor dos Ajustes. Isometrias mostram segundos no
-campo da série e não entram no cálculo de PR de 1RM.
+As substituições valem apenas para aquele dia e mantêm as metas de séries e
+repetições. Cargas e conclusões ficam associadas ao exercício efetivamente escolhido;
+voltar à escolha anterior restaura seus valores. Exercícios manuais sem URL cadastrada
+usam uma busca no YouTube.
 
-As substituições do catálogo valem apenas para aquele dia e mantêm as metas de séries
-e repetições. Cargas, repetições e marcas de conclusão permanecem associadas ao exercício
-selecionado. Voltar à escolha anterior restaura seus valores. O botão **Execução** usa
-a URL do catálogo; exercícios manuais sem cadastro usam busca no YouTube.
+Drop-set, Rest-pause e outras técnicas são exibidas como prescritas; o controle das
+etapas dessas técnicas continua manual. Isometrias usam segundos no registro e
+não entram no cálculo de PR de 1RM. Aquecimento, alongamento, calculadoras de 1RM
+e anilhas e a inversão das variações C/D do ABCDE continuam disponíveis. A inversão
+pede confirmação e afeta somente sessões futuras sem registros.
 
-### Conclusão e resultados
+## Resultados e progresso
 
-Concluir a última sessão agendada abre automaticamente os resultados. O programa
-não reinicia sozinho. Se o prazo passar sem concluir essa sessão, a página identifica
-o prazo encerrado e permite consultar os resultados ou replanejar uma falta.
+Ao concluir a última sessão agendada, o app abre os resultados do programa,
+mesmo que existam faltas anteriores. O programa não reinicia automaticamente.
+Se o prazo terminar sem essa conclusão, a tela indica prazo encerrado e permite
+consultar os resultados ou replanejar uma falta.
 
-As estatísticas incluem:
+As estatísticas de cada execução mostram:
 
-- Dias treinados versus planejados: um dia treinado exige ao menos uma série concluída.
-- Sessões completas, parciais/com registros, faltas e adesão.
-- Séries planejadas e realizadas por grupo muscular principal, sem duplicar auxiliares.
-- Duração original e calendário após replanejamento.
-- Exercícios com novo PR de 1RM estimado (Epley), comparado ao histórico disponível
-  quando a execução foi criada; apenas séries concluídas entram nesse resultado.
+- Dias treinados versus planejados, sessões completas e parciais, faltas e adesão.
+- Séries planejadas e realizadas por grupo muscular principal, sem duplicar músculos auxiliares.
+- Duração original, calendário atual e prolongamento por replanejamento.
+- PRs de 1RM estimado pela fórmula de Epley, comparados ao histórico anterior à data de início.
 
-Nessa página ficam **Reiniciar programa** e **Selecionar outro programa**. Os resultados
-também estão acessíveis pela aba **Execuções e resultados**, separada da aba
-**Programas** na seleção de treinos.
+Um dia treinado exige ao menos uma série concluída. Apenas séries concluídas entram
+no volume realizado e nos PRs do programa. Registros sem confirmação continuam
+visíveis como dados parciais. Na tela de resultados, você pode voltar, **Reiniciar
+programa** ou **Selecionar outro programa**. O histórico fica em **Execuções e resultados**.
 
-## Meus programas e recursos mantidos
+As abas **Corpo** e **Progresso** mantêm o acompanhamento de peso, medidas, fotos,
+gráficos, cargas e recordes gerais por exercício.
 
-Em **trocar treino → Criar meu treino**, escolha ABC ou full-body, informe a duração,
-defina três dias distintos e monte as sessões A, B e C. É possível adicionar exercícios
-do banco, editar séries/repetições/observações, remover e reordenar. Salve vários
-programas, duplique-os e escolha qual executar.
+## Atividades físicas
 
-Continuam disponíveis: programas ABCDE, Saitama, Ramon Dino, Arnold e CBum;
-registro de cargas; vídeos de execução; gráficos e recordes gerais; calculadoras
-de 1RM e anilhas; aquecimento e alongamento; peso, medidas e fotos; atividades físicas;
-exportação/importação e sincronização opcional. As variações C/D do ABCDE podem ser
-invertidas, com confirmação, nas sessões futuras sem registros da execução.
+Registre duração, intensidade e, quando aplicável, distância. O app calcula uma
+estimativa de gasto energético: `MET × peso em kg × duração em horas`, com fator
+0,85 para intensidade leve, 1 para moderada e 1,15 para intensa. Usa o último peso
+registrado ou 75 kg de referência.
 
-Dieta, metas de ingestão de kcal/macros, refeições, alimentos, TMB e controle de água
-foram removidos, inclusive seus dados antigos. Os gastos de atividades permanecem.
-Muay Thai, Boxe, Basquete, Ciclismo e Natação não aparecem em novos registros;
-os históricos dessas atividades foram preservados. Padel e Remo olímpico estão disponíveis.
+**Padel** usa aproximação de **6 MET**, baseada em tênis em duplas; **Remo olímpico**
+usa **7 MET**, como aproximação de esforço moderado na água. Esses valores são
+provisórios e não foram validados em uma fonte específica; o aviso também aparece no app.
 
-A estimativa de atividades é `MET × peso × horas`, com fatores 0,85 (leve) e 1,15
-(intensa), usando o último peso ou 75 kg de referência. **Padel usa aproximação de
-6 MET por tênis em duplas; Remo olímpico usa aproximação de 7 MET para esforço
-moderado na água. Esses dois valores são provisórios e não foram validados em uma
-fonte específica acessível neste ambiente.** O aviso aparece na interface.
+Muay Thai, Boxe, Basquete, Ciclismo e Natação foram retirados das opções para novos
+registros, preservando seus históricos. Controle de água, dieta, refeições, metas
+de ingestão de kcal/macros e TMB foram removidos. O gasto estimado das atividades
+permanece disponível.
 
-## Backups, migração e privacidade
+## Backup, importação e dados antigos
 
-Em **⚙️ Ajustes**, exporte um backup JSON ou importe no outro aparelho. O formato
-atual usa `schemaVersion: 2`, incluindo execuções, calendários, ajustes e séries.
-O backup é validado por inteiro antes de substituir o estado atual.
+Em **⚙️ Ajustes**, exporte ou importe um arquivo JSON. O formato atual usa
+`schemaVersion: 2` e inclui programas, execuções, calendários, ajustes, séries e
+os demais dados do app. A exportação valida os dados; a importação valida o arquivo
+antes de substituir o conteúdo atual. **Importar substitui os dados atuais; não é
+uma combinação de dois backups.** Guarde uma cópia antes de importar.
 
-Arquivos anteriores precisam da data de início e da duração do programa. Ao configurar,
-a opção **Incorporar registros antigos deste programa dentro do período informado**
-vem selecionada e mostra as datas encontradas. Somente registros com identificação
-explícita do mesmo programa e dentro do calendário são incorporados. Datas, prescrições,
-cargas, repetições e substituições são preservadas, mesmo se o modelo mudou depois.
-Exercícios marcados como concluídos na versão antiga confirmam suas séries existentes;
-séries sem confirmação permanecem pendentes. As semanas e estatísticas passam a usar
-esses registros. A referência de PR usa o histórico anterior à data de início.
+### Importar uma versão anterior
 
-Se a execução já foi configurada sem o histórico, use **Incorporar histórico anterior**
-no cartão do programa em Hoje. A prévia pede confirmação e não sobrescreve registros
-existentes dessa execução. Registros de outro programa, fora do período ou sem
-identificação suficiente permanecem no **Histórico legado**, em Progresso.
-Os originais incorporados ficam arquivados no backup da execução para auditoria;
-as séries ativas são transferidas uma única vez, evitando contagem duplicada.
+1. Importe o backup em Ajustes. Caso faltem início ou duração, o app mostra
+   **Configuração pendente**.
+2. Configure a data de início e a quantidade de semanas do programa.
+3. Mantenha marcada **Incorporar registros antigos deste programa dentro do período
+   informado**. A prévia informa as datas encontradas e os registros fora do período.
+4. Confirme: os registros compatíveis passam a aparecer em **Semana** e nas
+   estatísticas da execução, com datas, prescrições, cargas, repetições e substituições preservadas.
 
-A exportação valida o estado e inclui ciclos e dados incorporados; reimportar o novo
-backup restaura os vínculos sem configurar novamente. Falhas de armazenamento ao criar
-ou incorporar uma execução preservam o estado anterior. Dados de ingestão retirados
-do app não são restaurados.
+Somente registros identificados como pertencentes ao mesmo programa e dentro do
+calendário são incorporados. A prescrição histórica é preservada mesmo quando o
+modelo foi alterado depois. Na versão antiga, a marcação de exercício concluído
+confirma suas séries existentes; séries sem confirmação permanecem pendentes.
 
-Formato inválido ou versão futura não substituem os dados atuais. Se os dados já
-salvos no navegador forem incompatíveis, o app mantém o conteúdo original, oferece
-sua exportação para recuperação e aguarda um backup válido. A mesma validação protege
-a entrada pela sincronização.
+Se a execução já foi criada sem incorporar o histórico, use **Incorporar histórico
+anterior** no cartão do programa em Hoje ou nas estatísticas, quando disponível.
+A ação apresenta uma prévia e não sobrescreve registros dessa execução.
 
-A sincronização automática é opcional: siga [CONFIGURAR-SYNC.md](CONFIGURAR-SYNC.md).
-Quando ativada, envia os dados ao projeto Firebase configurado. Fotos permanecem no
-aparelho e podem ser transferidas pelo backup. O uso local não exige conta.
-Firebase e links do YouTube exigem internet.
+Registros de outro programa, fora do período ou sem identificação suficiente
+continuam no **Histórico legado**, em Progresso. Os originais incorporados são
+arquivados no backup da execução para auditoria, e as séries ativas são transferidas
+uma única vez, evitando contagem duplicada. Dados de dieta e água removidos não são restaurados.
 
-## PWA
+### Exportar e restaurar a versão atual
 
-Para instalar como aplicativo, hospede em HTTPS ou sirva em localhost. Inclua
-`index.html`, `sw.js`, `manifest.webmanifest` e os três ícones PNG. Abrir somente o
-HTML local não registra o service worker; a instalação depende do navegador.
-O HTML continua autocontido para execução local.
+Um novo backup mantém os vínculos entre registros e execuções. Ao reimportá-lo,
+o app restaura o calendário e as estatísticas sem exigir configuração novamente.
+Arquivos inválidos ou de versão futura não substituem os dados atuais. Falhas de
+armazenamento ao importar, iniciar ou incorporar uma execução preservam os dados anteriores.
 
-## Desenvolvimento e verificação
+Se o conteúdo salvo no navegador não puder ser carregado, o app oferece **Salvar
+dados originais** para recuperação e aguarda um backup válido. A mesma validação
+de entrada também protege a sincronização.
 
-Node.js 24 e Python 3 foram usados na validação. Para instalar e servir:
+## Armazenamento, sincronização e instalação
+
+O app usa o armazenamento local do navegador; não há servidor de banco de dados
+obrigatório. Limpar os dados do navegador pode apagar os registros locais.
+A sincronização com Firebase é opcional: veja [CONFIGURAR-SYNC.md](CONFIGURAR-SYNC.md).
+Quando ativada, envia os dados ao projeto configurado. As fotos permanecem no
+aparelho e podem ser transferidas por backup. O uso local não exige conta.
+
+Para instalar como **PWA**, hospede em HTTPS ou sirva em localhost, incluindo
+`index.html`, `sw.js`, `manifest.webmanifest`, `icon-192.png`, `icon-512.png` e
+`apple-touch-icon.png`. A instalação depende do navegador. Abrir apenas o HTML
+local funciona sem registrar o service worker; o arquivo continua autocontido.
+
+## Desenvolvimento e validação
+
+A interface usa HTML, CSS e JavaScript, sem etapa de build obrigatória para uso.
+Node.js 24 e Python 3 foram usados no desenvolvimento. Para instalar as dependências
+de teste e servir os arquivos localmente:
 
 ```sh
 npm ci
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Após editar o motor ou os dados, atualize o HTML autocontido:
+Abra `http://127.0.0.1:8000`. Os principais arquivos são:
+
+| Caminho | Conteúdo |
+| --- | --- |
+| [index.html](index.html) | Aplicativo completo para uso local e hospedagem. |
+| [src/cycles.js](src/cycles.js) | Motor de execuções, calendários, resultados e migração. |
+| [data/standard-programs/](data/standard-programs/README.md) | Programas padrão com variação entre semanas. |
+| [data/programas/](data/programas/) | Modelo full-body aprovado e incorporado ao app. |
+| [exports/banco-exercicios-appfit.csv](exports/banco-exercicios-appfit.csv) | Catálogo com 153 exercícios: nome, grupo muscular, duas substituições e URL de vídeo. |
+| [tests/](tests/README.md) | Suítes automatizadas e instruções de validação. |
+
+Após alterar o motor ou os dados, atualize as cópias embutidas no HTML e valide:
 
 ```sh
 python3 scripts/import-exercises.py
@@ -188,22 +227,18 @@ npm test
 npm run check:data
 ```
 
-`src/cycles.js` contém o motor de execuções. Os JSONs em `data/standard-programs/`
-contêm programas padrão periodizados, e `data/programas/` mantém o modelo full-body
-aprovado anteriormente. O catálogo atual tem **153 exercícios**, com cinco campos
-de origem no [CSV](exports/banco-exercicios-appfit.csv). Não há servidor de banco de dados.
-
-Os testes usam JSDOM com canvas e áudio simulados. Há também teste opcional de
-navegador, que requer Playwright disponível no Node e Chromium instalado:
+A suíte cobre programas personalizados, substituições, atividades, calendários,
+replanejamento, conclusão, PRs e migração, incluindo exportação/reimportação de
+histórico antigo, conflitos e falhas de armazenamento. Canvas e áudio são simulados
+no JSDOM. O teste opcional de navegador requer Playwright disponível no Node e Chromium:
 
 ```sh
 CHROMIUM_PATH=/usr/bin/chromium node tests/browser-cycles.cjs
 ```
 
-Foram verificados os fluxos em telas de computador e celular. Essas verificações
-não substituem teste com Firebase real ou validação completa da instalação/offline da PWA.
-Arquivos auxiliares `_*.js`, `_*.mjs` e cópias HTML herdadas não são a suíte atual;
-use `npm test`.
+Os fluxos foram verificados em computador e celular. Firebase real e a instalação
+e operação offline completa da PWA não são cobertos por essa suíte. Arquivos auxiliares
+`_*.js`, `_*.mjs` e cópias HTML herdadas não são a suíte atual; use `npm test`.
 
 ## Autoria e licença
 
